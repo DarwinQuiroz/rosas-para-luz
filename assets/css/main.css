@@ -1865,6 +1865,60 @@ h1 {
 }
 
 /* Agregar más estilos según sea necesario */
+<!DOCTYPE
+  html
+  > <html
+  lang="es"
+  > <head
+  > <meta
+  charset="UTF-8"
+  > <title
+  > Feliz
+  Día
+  mi
+  hermosa
+  Luz</title
+  > <style
+  > body {
+  background-color: #020a0f;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Efectos de animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px #ff758c;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff4b5c;
+  }
+}
+
 #playButton {
   display: none;
   position: absolute;
@@ -1873,15 +1927,16 @@ h1 {
   background: linear-gradient(45deg, #ff4b5c, #ff758c);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 0 10px #ff758c;
-  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeIn 1s ease forwards, glow 2s infinite ease-in-out,
+    heartbeat 1.5s infinite ease-in-out;
+  opacity: 0; /* se mostrará con fadeIn */
 }
 
 #playButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #ff4b5c;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff4b5c;
 }
