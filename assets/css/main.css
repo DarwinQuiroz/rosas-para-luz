@@ -1887,7 +1887,7 @@ h1 {
   height: 100vh;
 }
 
-/* Efectos de animación */
+/* 🌟 Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1919,6 +1919,17 @@ h1 {
   }
 }
 
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px) scale(1.5);
+    opacity: 0;
+  }
+}
+
 #playButton {
   display: none;
   position: absolute;
@@ -1931,12 +1942,23 @@ h1 {
   border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
+  opacity: 0;
   animation: fadeIn 1s ease forwards, glow 2s infinite ease-in-out,
     heartbeat 1.5s infinite ease-in-out;
-  opacity: 0; /* se mostrará con fadeIn */
+  z-index: 10;
 }
 
 #playButton:hover {
   transform: scale(1.1);
   box-shadow: 0 0 30px #ff4b5c;
+}
+
+/* ❤️ corazones flotantes */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  color: #ff4b5c;
+  animation: floatUp 2s ease-out forwards;
+  pointer-events: none;
+  z-index: 5;
 }
