@@ -9,6 +9,7 @@
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="assets/css/galaxy.css" />
+    <link rel="stylesheet" href="assets/css/back-button.css" />
 
     <title>Galaxia de Amor con Saturno</title>
 
@@ -17,13 +18,14 @@
 </head>
 
 <body>
+    <button class="back-button" onclick="goBack()">⬅ Volver</button>
     <div class="cielo" id="cielo-estrellas">
         <div class="luna"></div>
     </div>
 
     <div id="cargando">
         <div class="contenido-cargando">
-            <h2> Preparando todo para ti, mi amor</h2><span id="puntos-cargando">...</span>
+            <h2>Preparando todo para ti.</h2><span id="puntos-cargando">...</span>
             <div class="cargador-reloj" id="cargador-reloj">
                 <div class="manecilla-reloj"></div>
                 <div class="centro-reloj"></div>
@@ -35,7 +37,7 @@
     <div id="contenedor-escena"></div>
 
     <div id="superposicion-ui">
-        <button id="alternar-audio">OFF</button>
+        <button id="alternar-audio">PLAY</button>
         <div id="indicador-toque"></div>
         <div id="instrucciones">Toca la pantalla ❤️ </div>
         <div class="galeria">
@@ -59,6 +61,11 @@
     <script src="assets/js/plugins/three.min.js"></script>
     <script src="assets/js/plugins/OrbitControls.min.js"></script>
     <script src="assets/js/galaxy.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = "/"; // Cambia por la URL de tu página principal
+        }
+    </script>
 </body>
 
 </html>

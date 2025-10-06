@@ -70,7 +70,7 @@ const mensajesImagen = [
   "Eres la luz que ilumina mi vida cada día",
   "Cada momento a tu lado es un regalo del universo",
   "Tu sonrisa es mi mayor tesoro",
-  "Contigo he encontrado el amor verdadero",
+  "Tú haces que sonreír sea mi hábito favorito",
 ];
 
 const crearEstrellasCSS = (cantidad) => {
@@ -522,11 +522,11 @@ const alternarAudio = () => {
   const botonAudio = document.getElementById("alternar-audio");
 
   if (audioHabilitado) {
-    botonAudio.textContent = "ON";
+    botonAudio.textContent = "PLAY";
     botonAudio.style.background = "rgba(255, 105, 180, 0.3)";
     reproducirAudio();
   } else {
-    botonAudio.textContent = "OFF";
+    botonAudio.textContent = "STOP";
     botonAudio.style.background = "rgba(255, 255, 255, 0.15)";
     pausarAudio();
   }
@@ -564,7 +564,7 @@ const manejarInteraccion = (e) => {
 
   if (!audioReproducido) {
     audioHabilitado = true;
-    document.getElementById("alternar-audio").textContent = "ON";
+    document.getElementById("alternar-audio").textContent = "PLAY";
     document.getElementById("alternar-audio").style.background =
       "rgba(255, 105, 180, 0.3)";
     reproducirAudio();

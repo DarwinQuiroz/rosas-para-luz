@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/hearts.css" />
+    <link rel="stylesheet" href="assets/css/back-button.css" />
 
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
@@ -14,6 +15,7 @@
   </head>
 
   <body class="container">
+    <button class="back-button" onclick="goBack()">⬅ Volver</button>
     <!-- <audio src="assets/sound/andrea.mp3" autoplay></audio> -->
     <audio id="musica" autoplay loop>
       <source src="assets/sound/andrea.mp3" type="audio/mpeg" />
@@ -519,5 +521,10 @@
     <div class="footer-text">🌹 Feliz Día mi hermosa Luz 🌹</div>
 
     <script src="assets/js/main.js"></script>
+    <script>
+      function goBack() {
+        window.location.href = "/";
+      }
+    </script>
   </body>
 </html>

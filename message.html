@@ -9,13 +9,16 @@
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="assets/css/message.css" />
+    <link rel="stylesheet" href="assets/css/back-button.css" />
 
-    <title>Para ti, mi hermosa</title>
+    <title>Para tí, mi hermosa</title>
 </head>
 
 <body>
+    <button class="back-button" onclick="goBack()">⬅ Volver</button>
     <div id="intro-screen">
-        <div id="intro-text">Tengo algo para ti mi amor</div>
+        <div id="intro-text">Tengo algo para tí, mi hermosa.</div>
+        <span id="intro-text-2">Toca el corazón...</span>
         <div id="heart" role="button" aria-label="Comenzar presentación">❤️</div>
     </div>
 
@@ -85,6 +88,11 @@
     </audio>
 
     <script src="assets/js/message.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = "/";
+        }
+    </script>
 </body>
 
 </html>
