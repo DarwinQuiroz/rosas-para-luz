@@ -89,3 +89,94 @@ body {
   transform: scale(1.1);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* 🔹 Botón principal */
+.main-btn {
+  background: linear-gradient(45deg, #ff4b8b, #ff77a9);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.main-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+/* 🔸 Contenedor desplegable */
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  margin-top: 10px;
+}
+
+.dropdown.show .dropdown-content {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* 🌷 Botones secundarios */
+.small-btn {
+  background: linear-gradient(45deg, #ff94c2, #ffa6d1);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 85%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 153, 204, 0.3);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlide 0.4s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+.small-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(45deg, #ff77a9, #ffb3d9);
+  box-shadow: 0 6px 12px rgba(255, 153, 204, 0.4);
+}
+
+/* ✨ Animación de aparición */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica la animación al mostrarse */
+.dropdown.show .dropdown-content .small-btn:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.dropdown.show .dropdown-content .small-btn:nth-child(2) {
+  animation-delay: 0.25s;
+}

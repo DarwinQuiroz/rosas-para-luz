@@ -22,8 +22,6 @@
             <img src="assets/img/luz_3.jpeg" alt="Foto secundaria 2">
         </div>
 
-        <!-- <h1 class="title">L U Z</h1> -->
-
         <p class="message">
             💕 Feliz Día a la odontóloga que no solo cuida sonrisas,
             sino que también hace latir más fuerte mi corazón con cada gesto.
@@ -31,7 +29,36 @@
         </p>
 
         <a href="flower.html" class="btn">💖 Click Aquí</a>
-    </div>
+        <!-- <div class="dropdown">
+                                    <button class="main-btn">Click Aquí</button>
+                                    <div class="dropdown-content">
+                                        <a href="flower.html" class="small-btn">💖 Feliz día!</a>
+                                        <a href="galaxy.html" class="small-btn">✨ Galaxia</a>
+                                        <a href="message.html" class="small-btn"> Algo para tí</a>
+            </div>
+        </div> -->
+        </div>
+        
+        <!-- <script>
+                            onload = () => {
+                                const dropdown = document.querySelector('.dropdown');
+                                const mainBtn = document.querySelector('.main-btn');
+                
+                                mainBtn.addEventListener('click', () => {
+                                    dropdown.classList.toggle('show');
+                
+                                    // Reinicia animaciones al cerrar
+                                    if (!dropdown.classList.contains('show')) {
+                                        const buttons = dropdown.querySelectorAll('.small-btn');
+                                        buttons.forEach(btn => {
+                                            btn.style.animation = 'none';
+                                            btn.offsetHeight; // fuerza reflow
+                                            btn.style.animation = '';
+                                        });
+                                    }
+                                });
+                            };
+                        </script> -->
 </body>
 
 </html>
