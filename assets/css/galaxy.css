@@ -91,7 +91,8 @@ h2 {
 
 #instrucciones {
     position: absolute;
-    bottom: 50px;
+    /* bottom: 50px; */
+    top: 135px;
     left: 0;
     width: 100%;
     text-align: center;
@@ -259,7 +260,8 @@ h2 {
 
 .galeria {
     position: absolute;
-    bottom: 100px;
+    /* bottom: 80px; */
+    top: 70px;
     left: 0;
     width: 100%;
     display: flex;
