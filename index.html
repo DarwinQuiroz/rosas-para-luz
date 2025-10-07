@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <title>Feliz Día Odontóloga</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="card">
-        <video src="assets/img/luz.mp4" alt="Imagen 1" class="main-img" autoplay loop muted></video>
+      <video
+        src="assets/img/luz.mp4"
+        alt="Imagen 1"
+        class="main-img"
+        autoplay
+        loop
+        muted
+      ></video>
 
-        <div class="gallery">
-            <img src="assets/img/luz_2.jpeg" alt="Foto secundaria 1">
-            <img src="assets/img/luz_3.jpeg" alt="Foto secundaria 2">
+      <div class="gallery">
+        <img src="assets/img/luz_2.jpeg" alt="Foto secundaria 1" />
+        <img src="assets/img/luz_3.jpeg" alt="Foto secundaria 2" />
+      </div>
+
+      <p class="message">
+        💕 Feliz Día a la odontóloga que no solo cuida sonrisas, sino que
+        también hace latir más fuerte mi corazón con cada gesto. Gracias por
+        iluminar mi vida con tu sonrisa. 🌸
+      </p>
+
+      <!-- <a href="flower.html" class="btn">💖 Click Aquí</a> -->
+      <div class="dropdown">
+        <button class="main-btn">Click Aquí</button>
+        <div class="dropdown-content">
+          <a href="flower.html" class="small-btn">Feliz día!</a>
+          <a href="message.html" class="small-btn">Algo para tí</a>
+          <a href="galaxy.html" class="small-btn">Galaxia</a>
         </div>
-
-        <p class="message">
-            💕 Feliz Día a la odontóloga que no solo cuida sonrisas,
-            sino que también hace latir más fuerte mi corazón con cada gesto.
-            Gracias por iluminar mi vida con tu sonrisa. 🌸
-        </p>
-
-        <a href="flower.html" class="btn">💖 Click Aquí</a>
-        <!-- <div class="dropdown">
-            <button class="main-btn">Click Aquí</button>
-            <div class="dropdown-content">
-                <a href="flower.html" class="small-btn">Feliz día!</a>
-                <a href="message.html" class="small-btn">Algo para tí</a>
-                <a href="galaxy.html" class="small-btn">Galaxia</a>
-            </div>
-        </div> -->
+      </div>
     </div>
-        
-    <!-- <script>
-        onload = () => {
-            const dropdown = document.querySelector('.dropdown');
-            const mainBtn = document.querySelector('.main-btn');
 
-            mainBtn.addEventListener('click', () => {
-                dropdown.classList.toggle('show');
+    <script>
+      onload = () => {
+        const dropdown = document.querySelector(".dropdown");
+        const mainBtn = document.querySelector(".main-btn");
 
-                // Reinicia animaciones al cerrar
-                if (!dropdown.classList.contains('show')) {
-                    const buttons = dropdown.querySelectorAll('.small-btn');
-                    buttons.forEach(btn => {
-                        btn.style.animation = 'none';
-                        btn.offsetHeight; // fuerza reflow
-                        btn.style.animation = '';
-                    });
-                }
+        mainBtn.addEventListener("click", () => {
+          dropdown.classList.toggle("show");
+
+          if (!dropdown.classList.contains("show")) {
+            const buttons = dropdown.querySelectorAll(".small-btn");
+            buttons.forEach((btn) => {
+              btn.style.animation = "none";
+              btn.offsetHeight;
+              btn.style.animation = "";
             });
-        };
-    </script> -->
-</body>
-
+          }
+        });
+      };
+    </script>
+  </body>
 </html>

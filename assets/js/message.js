@@ -163,6 +163,11 @@ function startPresentation() {
 
   // Reproducir música
   bgMusic.volume = 0.3; // Volumen más bajo para mejor experiencia
+
+  const timeMusic = bgMusic.currentTime;
+
+  bgMusic.currentTime = timeMusic + 10;
+
   bgMusic.play().catch((e) => console.log("Autoplay bloqueado:", e));
 
   // Iniciar intervalo para cambiar slides automáticamente

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
@@ -12,87 +11,79 @@
     <link rel="stylesheet" href="assets/css/back-button.css" />
 
     <title>Para tí, mi hermosa</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <button class="back-button" onclick="goBack()">⬅ Volver</button>
     <div id="intro-screen">
-        <div id="intro-text">Tengo algo para tí, mi hermosa.</div>
-        <span id="intro-text-2">Toca el corazón...</span>
-        <div id="heart" role="button" aria-label="Comenzar presentación">❤️</div>
+      <div id="intro-text">Tengo algo para tí, mi hermosa.</div>
+      <span id="intro-text-2">Toca el corazón...</span>
+      <div id="heart" role="button" aria-label="Comenzar presentación">❤️</div>
     </div>
 
     <div class="stars" id="stars" aria-hidden="true"></div>
 
     <div class="slide" id="slide1">
-        <div class="message" id="message1">
-
-            <div class="hacker-text">Eres la estrella que ilumina mi universo</div>
-        </div>
-        <img src="assets/img/gifs/kiss-1.gif" alt="Pareja abrazándose">
+      <div class="message" id="message1">
+        <div class="hacker-text">Eres la estrella que ilumina mi universo</div>
+      </div>
+      <img src="assets/img/gifs/kiss-1.gif" alt="Pareja abrazándose" />
     </div>
 
     <div class="slide" id="slide2">
-        <div class="message" id="message2">
-
-            <div class="hacker-text">Cada momento a tu lado es un regalo</div>
-        </div>
-        <img src="assets/img/gifs/kiss-2.gif" alt="Pareja feliz">
+      <div class="message" id="message2">
+        <div class="hacker-text">Cada momento a tu lado es un regalo</div>
+      </div>
+      <img src="assets/img/gifs/kiss-2.gif" alt="Pareja feliz" />
     </div>
 
     <div class="slide" id="slide3">
-        <div class="message" id="message3">
-
-            <div class="hacker-text">Tu sonrisa es mi lugar favorito</div>
-        </div>
-        <img src="assets/img/gifs/kiss-3.gif" alt="Personaje sonriendo">
+      <div class="message" id="message3">
+        <div class="hacker-text">Tu sonrisa es mi lugar favorito</div>
+      </div>
+      <img src="assets/img/gifs/kiss-3.gif" alt="Personaje sonriendo" />
     </div>
 
     <div class="slide" id="slide4">
-        <div class="message" id="message4">
-
-            <div class="hacker-text">Eres mi pensamiento favorito</div>
-        </div>
-        <img src="assets/img/gifs/kiss-4.gif" alt="Personaje pensando">
+      <div class="message" id="message4">
+        <div class="hacker-text">Eres mi pensamiento favorito</div>
+      </div>
+      <img src="assets/img/gifs/kiss-4.gif" alt="Personaje pensando" />
     </div>
 
     <div class="slide" id="slide5">
-        <div class="message" id="message5">
-
-            <div class="hacker-text">Contigo hasta el fin del universo</div>
-        </div>
-        <img src="assets/img/gifs/kiss-5.gif" alt="Pareja besándose">
+      <div class="message" id="message5">
+        <div class="hacker-text">Contigo hasta el fin del universo</div>
+      </div>
+      <img src="assets/img/gifs/kiss-5.gif" alt="Pareja besándose" />
     </div>
 
     <div class="slide" id="slide6">
-        <div class="message" id="message6">
-
-            <div class="hacker-text">Eres mi sueño hecho realidad</div>
-        </div>
-        <img src="assets/img/gifs/kiss-6.gif" alt="Pareja juntos">
+      <div class="message" id="message6">
+        <div class="hacker-text">Eres mi sueño hecho realidad</div>
+      </div>
+      <img src="assets/img/gifs/kiss-6.gif" alt="Pareja juntos" />
     </div>
 
     <div class="slide" id="slide7">
-        <div class="message" id="message7">
-
-            <div class="hacker-text">Te amo más que a las estrellas</div>
-        </div>
-        <img src="assets/img/gifs/kiss-7.gif" alt="Corazones animados">
+      <div class="message" id="message7">
+        <div class="hacker-text">Te amo más que a las estrellas</div>
+      </div>
+      <img src="assets/img/gifs/kiss-7.gif" alt="Corazones animados" />
     </div>
 
     <div class="progress-dots" id="progress-dots"></div>
 
     <audio id="bg-music" loop>
-        <source src="assets/sound/a.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
+      <source src="assets/sound/a.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
     </audio>
 
     <script src="assets/js/message.js"></script>
     <script>
-        function goBack() {
-            window.location.href = "index.html";
-        }
+      function goBack() {
+        window.location.href = "index.html";
+      }
     </script>
-</body>
-
+  </body>
 </html>
