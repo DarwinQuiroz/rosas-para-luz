@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ti, Mi Amor</title>
 
+     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap');
 
@@ -183,9 +185,18 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="assets/css/back-button.css" />
 </head>
 
 <body>
+    <button class="back-button" onclick="goBack()">⬅ Volver</button>
+
+    <audio id="music-sound" loop>
+      <source src="assets/sound/querer-querernos.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <div class="carta">
         <section class="seccion visible">
             <h1 class="titulo">Buenos días, mi amor</h1>
@@ -274,11 +285,12 @@
 
 
     <script>
+        const audioPlayer = document.getElementById("music-sound");
+
+        onload = () => {
+        
+        };
         document.addEventListener('DOMContentLoaded', () => {
-            const audioPlayer = new Audio();
-            audioPlayer.src = 'https://bcodestorague.anteroteobaldob.workers.dev/share/anteroteobaldob_gmail_com/AUDIO/those%20eyes%20.mp3';
-            audioPlayer.loop = true;
-            audioPlayer.volume = 0.3;
             let musicStarted = false;
 
             const startMusic = () => {
@@ -310,13 +322,13 @@
                 heart.style.animation = `heart-fly ${Math.random() * 3 + 2}s linear forwards`;
 
                 document.head.insertAdjacentHTML('beforeend', `
-            <style>
-                @keyframes heart-fly {
-                    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-                    100% { transform: translate(-50%, -150%) scale(0.5); opacity: 0; }
-                }
-            </style>
-        `);
+                    <style>
+                        @keyframes heart-fly {
+                            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+                            100% { transform: translate(-50%, -150%) scale(0.5); opacity: 0; }
+                        }
+                    </style>`
+                );
 
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 2000);
@@ -349,7 +361,7 @@
 
             secciones.forEach(seccion => observer.observe(seccion));
 
-            function crearPetalos() {
+            const crearPetalos = () => {
                 const colores = ['#ff9bb8', '#e75480', '#c9a0dc', '#ffd6e8'];
                 const contenedor = document.querySelector('.flotantes');
 
