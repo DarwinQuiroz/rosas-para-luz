@@ -1,12 +1,18 @@
 
 const audioPlayer = document.getElementById("music-sound");
+const playButton = document.getElementById("playButton");
 
 document.addEventListener('DOMContentLoaded', () => {
     let musicStarted = false;
 
     const startMusic = () => {
         if (!musicStarted) {
-            audioPlayer.play().catch(e => console.log(e));
+            audioPlayer.play().catch(e => {
+                playButton.style.display = "block";
+                setTimeout(() => {
+                    playButton.style.opacity = "1";
+                }, 50);
+            });
             musicStarted = true;
         }
     };
@@ -17,6 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', () => {
         startMusic();
+    });
+
+    playButton.addEventListener("click", () => {
+        audioPlayer.play().then(() => {
+            setTimeout(() => {
+                playButton.style.display = "none";
+            }, 1500);
+        }).catch((err) => {
+            console.log("No se pudo reproducir el audio: " + err.message);
+    });
     });
 
     const createHeart = (x, y) => {
