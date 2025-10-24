@@ -175,7 +175,7 @@ body {
 }
 
 #playButton {
-  display: none;
+  display: block;
   position: absolute;
   top: 20px;
   right: 25px;
@@ -186,7 +186,6 @@ body {
   border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
-  opacity: 0;
   animation: fadeIn 1s ease forwards, glow 2s infinite ease-in-out,
     heartbeat 1.5s infinite ease-in-out;
   z-index: 10;

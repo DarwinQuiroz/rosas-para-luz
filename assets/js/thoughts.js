@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const startMusic = () => {
         if (!musicStarted) {
-            audioPlayer.play().catch(e => {
+            audioPlayer.play().then(() => {
+                playButton.style.display = "none";
+            }).catch(e => {
                 playButton.style.display = "block";
                 setTimeout(() => {
                     playButton.style.opacity = "1";
