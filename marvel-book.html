@@ -13,14 +13,23 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="assets/css/back-button.css" />
     <link rel="stylesheet" href="assets/css/marvel-book.css" />
   </head>
   <body>
+    <button class="back-button" onclick="goBack()">⬅ Volver</button>
+
     <div class="stars" id="stars"></div>
     <div class="scene" id="scene">
       <div class="book closed closed-front" id="book"></div>
     </div>
     <div class="hearts" id="hearts"></div>
+
+    <script>
+      function goBack() {
+        window.location.href = "index.html";
+      }
+    </script>
 
     <script src="assets/js/marvel-book.js"></script>
   </body>
