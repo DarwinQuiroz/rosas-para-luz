@@ -108,7 +108,7 @@
       (a.style.top = "20px"),
       (a.style.right = "20px"),
       (a.style.padding = "10px 16px"),
-      (a.style.fontSize = "1.2rem"),
+      (a.style.fontSize = "2rem"),
       (a.style.background = "transparent"),
       (a.style.border = "2px solid white"),
       (a.style.borderRadius = "8px"),
