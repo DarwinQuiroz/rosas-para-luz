@@ -1,68 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
-    <title>Para tí, mi hermosa</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <title>Para tí, mi hermosa</title>
   </head>
 
-  <body>
-    <div class="card">
-      <video
-        src="assets/img/luz.mp4"
-        alt="Imagen 1"
-        class="main-img"
-        autoplay
-        loop
-        muted
-      ></video>
+<body>
+  <div class="card">
+    <video src="assets/img/luz.mp4" alt="Imagen 1" class="main-img" autoplay loop muted></video>
 
-      <div class="gallery">
-        <img src="assets/img/luz_2.jpeg" alt="Foto secundaria 1" />
-        <img src="assets/img/luz_3.jpeg" alt="Foto secundaria 2" />
-      </div>
-
-      <p class="message">
-        💕 Feliz Día a la odontóloga que no solo cuida sonrisas, sino que
-        también hace latir más fuerte mi corazón con cada gesto. Gracias por
-        iluminar mi vida con tu sonrisa. 🌸
-      </p>
-      
-      <!-- Carrusel de botones -->
-      <div class="slider-container">
-        <a href="flower.html" class="slide">🌸 Feliz día</a>
-        <a href="message.html" class="slide">💌 Algo para ti</a>
-        <a href="galaxy.html" class="slide">🌌 Galaxia</a>
-        <a href="thoughts.html" class="slide">💭 Pensamientos</a>
-        <a href="my-heart.html" class="slide">❤️ Mi corazón</a>
-        <a href="marvel-book.html" class="slide">📖 Libro</a>
-      </div>
+    <div class="gallery">
+      <img src="assets/img/luz_2.jpeg" alt="Foto secundaria 1" />
+      <img src="assets/img/luz_3.jpeg" alt="Foto secundaria 2" />
     </div>
 
-    <script>
-      onload = () => {
-        const dropdown = document.querySelector(".dropdown");
-        const mainBtn = document.querySelector(".main-btn");
+    <p class="message" id="message">
+      💕 Feliz Día a la odontóloga que no solo cuida sonrisas, sino que
+      también hace latir más fuerte mi corazón con cada gesto. Gracias por
+      iluminar mi vida con tu sonrisa. 🌸
+    </p>
 
-        mainBtn.addEventListener("click", () => {
-          dropdown.classList.toggle("show");
+    <p class="wait-text" id="waitText">⏳ Espera un momento por favor, preciosa...</p>
+    
+    
+    <div class="slider-container" id="slider-container">
+      <a href="flower.html" class="slide"
+        data-msg="🌸 Hoy quiero recordarte lo increíble que eres, no solo por tu profesión, sino por la luz que llevas dentro.">🌸
+        Feliz
+        día</a>
+      <a href="message.html" class="slide"
+        data-msg="💌 Eres esa sonrisa que aparece sin razón, ese pensamiento bonito en mis días.">💌 Algo
+        para ti</a>
+      <a href="galaxy.html" class="slide"
+        data-msg="🌌 Si tuviera que elegir una estrella, elegiría tu sonrisa, porque ilumina más que cualquier galaxia.">🌌
+        Galaxia</a>
+      <a href="thoughts.html" class="slide"
+        data-msg="💭 Cada vez que pienso en ti, el mundo parece un lugar más suave, más cálido, más mío.">💭
+        Pensamientos</a>
+      <a href="my-heart.html" class="slide"
+        data-msg="❤️ Si mi corazón tuviera un lenguaje, pronunciaría tu nombre en cada latido.">v Mi
+        corazón</a>
+      <a href="marvel-book.html" class="slide"
+        data-msg="📖 En el libro de mi vida, tú eres el capítulo más bonito que quiero releer mil veces.">📖 Libro</a>
+    </div>
+    </div>
 
-          if (!dropdown.classList.contains("show")) {
-            const buttons = dropdown.querySelectorAll(".small-btn");
-            buttons.forEach((btn) => {
-              btn.style.animation = "none";
-              btn.offsetHeight;
-              btn.style.animation = "";
-            });
-          }
-        });
-      };
-    </script>
+
+  <script>
+      const slides = document.querySelectorAll('.slide');
+      const message = document.getElementById('message');
+      const slideDiv = document.getElementById('slider-container');
+      const waitText = document.getElementById('waitText');
+
+      slides.forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          waitText.style.display = "block";
+          message.style.opacity = 0;
+          slideDiv.style.opacity = 0;
+
+        setTimeout(() => {
+          message.textContent = btn.dataset.msg;
+          message.style.opacity = 1;
+        }, 300);
+
+        setTimeout(() => {
+          location.href = btn.href;
+        }, 4000);
+      });
+    });
+</script>
   </body>
+
 </html>

@@ -161,6 +161,17 @@ body {
   box-shadow: 0 6px 12px rgba(249, 168, 212, 0.6);
 }
 
+/* Texto "Espera un momento" */
+.wait-text {
+  display: none;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #ec4899;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  animation: fadeIn 0.5s ease forwards, pulse 1.5s ease-in-out infinite;
+}
+
 /* Responsivo */
 @media (max-width: 480px) {
   .slide {
