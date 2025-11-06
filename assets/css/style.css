@@ -117,6 +117,59 @@ body {
   box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
 }
 
+/* Carrusel de botones secundarios */
+.slider-container {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.slider-container::-webkit-scrollbar-thumb {
+  background: #f9a8d4;
+  border-radius: 10px;
+}
+
+.slide {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  min-width: 80px;
+  background: linear-gradient(135deg, #f9a8d4, #f472b6);
+  color: white;
+  font-weight: 400;
+  text-decoration: none;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 20px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 8px rgba(249, 168, 212, 0.4);
+}
+
+.slide:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(249, 168, 212, 0.6);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .slide {
+    min-width: 110px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+}
+
 /* 🔸 Contenedor desplegable */
 .dropdown-content {
   display: flex;
