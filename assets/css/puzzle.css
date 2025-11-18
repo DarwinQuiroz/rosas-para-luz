@@ -1,0 +1,340 @@
+body {
+    overscroll-behavior: none;
+    font-family: 'Playfair Display', serif;
+    margin: 20;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fce7f3 0%, #e9d5ff 100%);
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+#backgroundCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#container {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(159, 18, 92, 0.6);
+    border: 4px solid #db2777;
+    background: linear-gradient(145deg, #fff1f9 0%, #f9e2eb 100%);
+    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 9.5rem;
+    font-weight: 900;
+    color: #be185d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+#resetButton, #previewButton {
+    width: 100%;
+    max-width: 180px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #db2777);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#previewButton {
+    background: linear-gradient(135deg, #005dff, #4b6cb7);
+}
+
+#resetButton:hover, #previewButton:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #c61f66, #e0569b);
+}
+
+#previewButton:hover {
+    background: linear-gradient(135deg, #0047cc, #3a5ba1);
+}
+
+#resetButton::after, #previewButton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+#resetButton:hover::after, #previewButton:hover::after {
+    width: 300%;
+    height: 300%;
+}
+
+#resetButton:focus, #previewButton:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#resetButton:active, #previewButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+#resetButton:disabled, #previewButton:disabled {
+    background: linear-gradient(135deg, #cccccc, #e0e0e0);
+    border-color: transparent;
+    color: #999999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#previewModal, #completionModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+#previewModal img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 6px solid #db2777;
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+    transform: scale(0.8);
+    animation: modalPop 0.5s ease-out forwards;
+}
+
+#completionModal div {
+    background: linear-gradient(145deg, #fff1f9 0%, #f9e2eb 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 4px solid #db2777;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transform: scale(0.8);
+    animation: modalPop 0.5s ease-out forwards;
+    max-width: 90%;
+    max-height: 80vh;
+    /* Limit height to 80% of viewport height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    position: relative;
+}
+
+#completionModal h2 {
+    font-size: 1.8rem;
+    /* Slightly smaller font for readability */
+    font-weight: 600;
+    color: #be185d;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    /* Improved line spacing */
+    text-align: left;
+    /* Left-align for better readability of long text */
+    padding: 0 1rem;
+    /* Add padding for text */
+}
+
+@keyframes modalPop {
+    to {
+        transform: scale(1);
+    }
+}
+
+#completionModal button {
+    position: sticky;
+    top: 10px;
+    right: 10px;
+    background: #db2777;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    float: right;
+    /* Align button to the right */
+}
+
+#playPauseButton {
+    width: 100%;
+    max-width: 180px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#playPauseButton:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #db2777, #ec4899);
+}
+
+#playPauseButton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+#playPauseButton:hover::after {
+    width: 300%;
+    height: 300%;
+}
+
+#playPauseButton:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#playPauseButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+#playPauseButton:disabled {
+    background: linear-gradient(135deg, #cccccc, #e0e0e0);
+    border-color: transparent;
+    color: #999999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+@media (max-width: 640px) {
+    #playPauseButton {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+#previewModal button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: #db2777;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#completionModal button:hover {
+    background: #be185d;
+    transform: scale(1.1);
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 5.4rem;
+    }
+
+    .button-container {
+        flex-direction: row;
+        gap: 12px;
+        max-width: 100%;
+    }
+
+    #resetButton, #previewButton {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    #container {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    #completionModal h2 {
+        font-size: 1.2rem;
+        /* Smaller font for mobile */
+        line-height: 1.5;
+    }
+
+    #completionModal div {
+        padding: 0.5rem;
+        max-height: 70vh;
+        /* Slightly smaller height for mobile */
+    }
+
+    #completionModal button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 641px) {
+    #container {
+        max-width: 900px;
+    }
+}
