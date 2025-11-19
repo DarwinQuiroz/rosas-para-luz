@@ -1,5 +1,8 @@
 .back-button {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
     top: 15px;
     left: 15px;
     background: transparent;
