@@ -11,7 +11,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:wght@400;700&family=Roboto:wght@300&display=swap"
         rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/back-button.css" />
+
     <style>
         * {
             margin: 0;
@@ -180,6 +183,7 @@
         .container {
             max-width: 1000px;
             margin: 2rem auto;
+            top: 5rem;
             padding: 2.5rem;
             background: linear-gradient(135deg, #fff5f7 0%, #fae4ee 100%);
             border-radius: 25px;
@@ -951,7 +955,10 @@
 </head>
 
 <body>
+    <button class="back-button" onclick="goBack()">⬅ Volver</button>
+
     <div class="decorations" id="decorations-container"></div>
+
     <div class="music-control">
         <button class="music-btn" id="musicBtn" aria-label="Toggle music">
             <i class="fas fa-play" id="playIcon"></i>
@@ -961,10 +968,12 @@
             <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" aria-label="Volume control">
         </div>
     </div>
+
     <audio id="backgroundMusic" loop preload="auto">
-        <source src="https://dedicapag.com/es//PagProponer/musica.mp3" type="audio/mpeg">
+        <source src="assets/sound/te-vi-venir.m4a" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
+
     <div class="container">
         <header class="header">
             <h1>Para Mi Persona Favorita, Luz</h1>
@@ -1079,6 +1088,11 @@
         <p>Creado con amor eterno para ti ❤️</p>
     </footer>
 
+<script>
+    function goBack() {
+        window.location.href = "index.html";
+    }
+</script>
     <script>
         let typewriterTimeout = null;
 
