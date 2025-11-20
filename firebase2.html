@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Database Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      .status {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .status.connected {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .status.disconnected {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #764ba2;
+      }
+
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      .data-list {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 2px solid #eee;
+      }
+
+      .data-list h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .item {
+        background: #f5f5f5;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border-left: 4px solid #667eea;
+      }
+
+      .item-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .item-ip {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .item-fecha {
+        color: #999;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
+      .item-navegador {
+        color: #999;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
+      .delete-btn {
+        width: auto;
+        padding: 6px 12px;
+        background: #dc3545;
+        font-size: 12px;
+      }
+
+      .delete-btn:hover {
+        background: #c82333;
+      }
+
+      .loading {
+        text-align: center;
+        color: #667eea;
+      }
+
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Firebase Database</h1>
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <div class="form-group">
+        <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      </div>
+
+      <div class="form-group">
+        <label
+          >Navegador:
+          <strong id="miNavegador" style="color: #667eea">-</strong></label
+        >
+      </div>
+
+      <button onclick="agregarDatos()">Guardar Datos</button>
+
+      <div class="data-list">
+        <h2>Datos Guardados:</h2>
+        <div id="datosGuardados" class="loading">Cargando datos...</div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+      // ⚠️ IMPORTANTE: Reemplaza esto con tus credenciales de Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyBD3kKuQ6ZoPMzt5Ewiw8qD9xQ9a9NPymA",
+        authDomain: "luz-html.firebaseapp.com",
+        projectId: "luz-html",
+        storageBucket: "luz-html.firebasestorage.app",
+        messagingSenderId: "966256347636",
+        appId: "1:966256347636:web:22ca68e77db86011f5d1a1",
+        measurementId: "G-4WGPST90BG",
+        databaseURL: "https://luz-html-default-rtdb.firebaseio.com/",
+      };
+
+      // Inicializar Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+
+      // Variables globales
+      let datosRef = db.ref("visitas");
+      let estadoConectado = false;
+
+      // Detectar conexión
+      firebase
+        .database()
+        .ref(".info/connected")
+        .on("value", (snapshot) => {
+          estadoConectado = snapshot.val();
+          const statusDiv = document.getElementById("status");
+
+          if (estadoConectado) {
+            statusDiv.textContent = "✓ Conectado a Firebase";
+            statusDiv.className = "status connected";
+          } else {
+            statusDiv.textContent = "✗ Desconectado";
+            statusDiv.className = "status disconnected";
+          }
+        });
+
+      // Detectar IP
+      async function detectarIP() {
+        try {
+          const response = await fetch("https://api.ipify.org?format=json");
+          const data = await response.json();
+          document.getElementById("miIP").textContent = data.ip;
+          return data.ip;
+        } catch (error) {
+          console.error("Error al detectar IP:", error);
+          document.getElementById("miIP").textContent = "No disponible";
+          return "No disponible";
+        }
+      }
+
+      // Actualizar fecha y hora en tiempo real
+      function actualizarFechaHora() {
+        const ahora = new Date();
+        const opciones = {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        const fechaFormato = ahora.toLocaleString("es-ES", opciones);
+        document.getElementById("fechaHora").textContent = fechaFormato;
+      }
+
+      // Detectar navegador
+      function detectarNavegador() {
+        const ua = navigator.userAgent;
+        let navegador = "Desconocido";
+
+        if (ua.indexOf("Firefox") > -1) navegador = "Firefox";
+        else if (ua.indexOf("Chrome") > -1) navegador = "Chrome";
+        else if (ua.indexOf("Safari") > -1) navegador = "Safari";
+        else if (ua.indexOf("Edge") > -1) navegador = "Edge";
+        else if (ua.indexOf("Opera") > -1) navegador = "Opera";
+        else if (ua.indexOf("Trident") > -1) navegador = "Internet Explorer";
+
+        return navegador;
+      }
+
+      // Inicializar
+      detectarIP();
+      actualizarFechaHora();
+      document.getElementById("miNavegador").textContent = detectarNavegador();
+      setInterval(actualizarFechaHora, 1000);
+
+      // Cargar datos en tiempo real
+      datosRef.on("value", (snapshot) => {
+        const datosGuardados = document.getElementById("datosGuardados");
+
+        if (snapshot.exists()) {
+          let html = "";
+          const datos = snapshot.val();
+
+          // Ordenar por fecha descendente
+          const idsOrdenados = Object.keys(datos).sort((a, b) => {
+            return new Date(datos[b].fecha) - new Date(datos[a].fecha);
+          });
+
+          idsOrdenados.forEach((id) => {
+            const registro = datos[id];
+            html += `
+                        <div class="item">
+                            <div class="item-ip">📍 IP: ${registro.ip}</div>
+                            <div class="item-fecha">📅 ${registro.fecha}</div>
+                            <div class="item-navegador">🌐 ${registro.navegador}</div>
+                            <button class="delete-btn" onclick="eliminarDato('${id}')">Eliminar</button>
+                        </div>
+                    `;
+          });
+          datosGuardados.innerHTML = html;
+        } else {
+          datosGuardados.innerHTML =
+            '<p style="color: #999;">No hay datos guardados aún</p>';
+        }
+      });
+
+      // Función para agregar datos
+      function agregarDatos() {
+        const ip = document.getElementById("miIP").textContent;
+        const fecha = document.getElementById("fechaHora").textContent;
+        const navegador = detectarNavegador();
+        const errorDiv = document.getElementById("error");
+
+        // Validar que la IP se haya detectado correctamente
+        if (ip === "Detectando..." || ip === "No disponible") {
+          mostrarError("Esperando a detectar tu IP...");
+          return;
+        }
+
+        // Guardar en Firebase
+        datosRef
+          .push({
+            ip: ip,
+            fecha: fecha,
+            navegador: navegador,
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
+          })
+          .then(() => {
+            errorDiv.style.display = "none";
+            // Mostrar mensaje de éxito temporal
+            const mensajeExito = document.createElement("div");
+            mensajeExito.className = "status connected";
+            mensajeExito.textContent = "✓ Datos guardados correctamente";
+            document
+              .querySelector(".container")
+              .insertBefore(mensajeExito, errorDiv.nextSibling);
+            setTimeout(() => mensajeExito.remove(), 3000);
+          })
+          .catch((error) => {
+            mostrarError("Error al guardar: " + error.message);
+          });
+      }
+
+      // Función para eliminar datos
+      function eliminarDato(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+          datosRef
+            .child(id)
+            .remove()
+            .catch((error) => {
+              mostrarError("Error al eliminar: " + error.message);
+            });
+        }
+      }
+
+      // Mostrar errores
+      function mostrarError(mensaje) {
+        const errorDiv = document.getElementById("error");
+        errorDiv.textContent = mensaje;
+        errorDiv.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
