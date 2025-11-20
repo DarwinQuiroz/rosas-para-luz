@@ -38,7 +38,8 @@ function openLetterModal() {
   const typewriterText = document.getElementById("typewriterText");
   typewriterText.innerHTML = "";
 
-  const letterContent = `Mi amor, cada momento contigo es un tesoro. Desde el día en que te conocí, supe que eras mi destino. Gracias por cada risa, cada abrazo, cada sueño compartido. Hoy celebramos nuestro amor, y te prometo amarte siempre.`;
+  const letterContent = `Me detuve a admirarte mientras tú sonreías, y vaya que tienes una sonrisa preciosa, puedo decir que le agregas luz a los días oscuros, que hace feliz a mis ojos cada vez que te miran, que contagias de alegría un día aburrido. Me encanta cuando te admiro, por que soy fan de los atardeceres, pero más de tu sonrisa.`;
+
   const texts = letterContent.split("\\n").filter((line) => line.trim() !== "");
 
   if (typewriterTimeout) {
