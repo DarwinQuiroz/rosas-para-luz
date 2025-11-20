@@ -371,9 +371,9 @@ function createLoveLetter() {
   const letter = document.createElement("div");
   letter.classList.add("love-letter");
   const messages = [
-    "\u2764\ufe0f Eres mi todo",
-    "\u2764\ufe0f Mi amor eterno",
-    "\ud83d\udc8c Juntos por siempre",
+    "\u2764\ufe0f Mi hermosa Luz",
+    "\u2764\ufe0f Mi lugar favorito",
+    "\ud83d\udc8c Mi calma y mi tormenta",
     "\ud83e\udd70 Te amo",
   ];
   letter.textContent = messages[Math.floor(Math.random() * messages.length)];
