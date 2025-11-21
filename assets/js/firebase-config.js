@@ -80,6 +80,10 @@ function detectarNavegador() {
 
 // Función para agregar datos
 function agregarDatos(pagina) {
+  const arrUrl = window.location.href.split("/");
+
+  if (arrUrl[2].includes("localhost")) return;
+
   const ip = document.getElementById("miIP").textContent;
   const fecha = document.getElementById("fechaHora").textContent;
   const navegador = detectarNavegador();
