@@ -1,81 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Para ti, mi hermosa</title>
-    <meta name="description"
-        content="Click the heart to release love phrases. Optimized for smooth performance on mobile." />
+    <meta
+      name="description"
+      content="Click the heart to release love phrases. Optimized for smooth performance on mobile."
+    />
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
-    <link rel="stylesheet" href="assets/css/my-heart.css">
+    <link rel="stylesheet" href="assets/css/my-heart.css" />
     <link rel="stylesheet" href="assets/css/back-button.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <button class="back-button" onclick="goBack()">⬅ Volver</button>
 
     <div class="scene" id="scene" data-bg="stars">
-        <div class="heart-container">
-            <button class="heart-btn" id="heartBtn" aria-label="Press the heart">
-                <span class="heart">
-                    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <defs>
-                            <radialGradient id="g" cx="50%" cy="40%" r="70%">
-                                <stop offset="0%" stop-color="#ff5f7a" />
-                                <stop offset="40%" stop-color="#ff2b4f" />
-                                <stop offset="100%" stop-color="#c91534" />
-                            </radialGradient>
-                        </defs>
-                        <path class="core"
-                            d="M100,162.2C17.7,99.5,6,77.5,6,52.3C6,27.1,27.1,6,52.3,6c15.4,0,30.8,7.7,40,20.6l7.7,9.6l7.7-9.6 c9.2-12.9,24.6-20.6,40-20.6c25.2,0,46.3,21.1,46.3,46.3c0,25.2-11.7,47.2-94,109.9L100,162.2L100,162.2z"
-                            fill="url(#g)" />
-                        <path class="shine"
-                            d="M73 47c-12 0-23 6-29 16-2 3-1 7 2 9 3 2 7 1 9-2 4-7 12-11 20-11 4 0 7-3 7-7s-3-5-9-5Z" />
-                    </svg>
-                </span>
-            </button>
-        </div>
+      <div class="heart-container">
+        <button class="heart-btn" id="heartBtn" aria-label="Press the heart">
+          <span class="heart">
+            <svg
+              viewBox="0 0 200 180"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <defs>
+                <radialGradient id="g" cx="50%" cy="40%" r="70%">
+                  <stop offset="0%" stop-color="#ff5f7a" />
+                  <stop offset="40%" stop-color="#ff2b4f" />
+                  <stop offset="100%" stop-color="#c91534" />
+                </radialGradient>
+              </defs>
+              <path
+                class="core"
+                d="M100,162.2C17.7,99.5,6,77.5,6,52.3C6,27.1,27.1,6,52.3,6c15.4,0,30.8,7.7,40,20.6l7.7,9.6l7.7-9.6 c9.2-12.9,24.6-20.6,40-20.6c25.2,0,46.3,21.1,46.3,46.3c0,25.2-11.7,47.2-94,109.9L100,162.2L100,162.2z"
+                fill="url(#g)"
+              />
+              <path
+                class="shine"
+                d="M73 47c-12 0-23 6-29 16-2 3-1 7 2 9 3 2 7 1 9-2 4-7 12-11 20-11 4 0 7-3 7-7s-3-5-9-5Z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
 
-        <!-- Music player -->
-        <div class="music-player" id="musicPlayer" role="region" aria-label="Music player">
-            <button class="play-pause-btn" id="playPauseBtn" aria-label="Play or pause">
-                <svg id="playIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                </svg>
-                <svg id="pauseIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"
-                    aria-hidden="true">
-                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                </svg>
-            </button>
-            <div class="progress-container">
-                <div class="song-info">Te didico cada latido de mi corazón ❤️</div>
-                <div class="progress-bar" id="progressBar" aria-label="Seek bar" role="slider">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="time-display">
-                    <span id="currentTime">0:00</span>
-                    <span id="totalTime">0:00</span>
-                </div>
-            </div>
+      <!-- Music player -->
+      <div
+        class="music-player"
+        id="musicPlayer"
+        role="region"
+        aria-label="Music player"
+      >
+        <button
+          class="play-pause-btn"
+          id="playPauseBtn"
+          aria-label="Play or pause"
+        >
+          <svg
+            id="playIcon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <svg
+            id="pauseIcon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            style="display: none"
+            aria-hidden="true"
+          >
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        </button>
+        <div class="progress-container">
+          <div class="song-info">Te didico cada latido de mi corazón ❤️</div>
+          <div
+            class="progress-bar"
+            id="progressBar"
+            aria-label="Seek bar"
+            role="slider"
+          >
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">0:00</span>
+          </div>
         </div>
-
+      </div>
     </div>
 
     <audio id="audioPlayer" loop>
-        <source src="assets/sound/gansta.mp3" type="audio/mpeg">
+      <source src="assets/sound/gansta.mp3" type="audio/mpeg" />
     </audio>
 
     <script>
-        function goBack() {
-            window.location.href = "index.html";
-        }
+      function goBack() {
+        window.location.href = "index.html";
+      }
     </script>
     <script src="assets/js/my-heart.js"></script>
-</body>
 
+    <div class="container" style="display: none">
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script src="assets/js/firebase-config.js"></script>
+
+    <script>
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
+
+        setTimeout(() => {
+          agregarDatos("Mi Corazón");
+        }, 1000);
+      })();
+    </script>
+  </body>
 </html>

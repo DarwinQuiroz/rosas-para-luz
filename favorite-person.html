@@ -45,11 +45,6 @@
       </div>
     </div>
 
-    <!-- <audio id="backgroundMusic" loop preload="auto">
-        <source src="assets/sound/te-vi-venir.m4a" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio> -->
-
     <div class="container">
       <header class="header">
         <h1>Para mi persona favorita, mi hermosa Luz</h1>
@@ -67,35 +62,6 @@
           </video>
         </div>
       </div>
-      
-      <!-- <div class="carousel">
-                    <div
-          class="image-container"
-          style="
-            background-image: url('assets/img/luz_2.jpeg');
-          "
-        >
-          <img
-            src="assets/img/luz_2.jpeg"
-            alt="Nuestra primera aventura"
-          />
-        </div>
-        <div
-          class="image-container"
-          style="
-            background-image: url('assets/img/luz_3.jpeg');
-          "
-        >
-          <img
-            src="assets/img/luz_3.jpeg"
-            alt="Atardeceres juntos"
-          />
-        </div>
-        <div class="carousel-nav">
-          <button id="prev-slide">‹</button>
-          <button id="next-slide">›</button>
-        </div>
-      </div> -->
 
       <div style="text-align: center; margin: 2rem 0">
         <button class="action-btn" id="openLetterBtn">
@@ -138,40 +104,6 @@
           </div>
       </section>
 
-      <!-- <section class="promises">
-        <h2>Mis Promesas para Ti</h2>
-        <div class="promise-list">
-          <div class="promise-item">
-            <h3>Amor Eterno</h3>
-            <p>
-              Te amaré con todo mi corazón, en cada instante, a través de todas
-              las estaciones de la vida.
-            </p>
-          </div>
-          <div class="promise-item">
-            <h3>Respeto Absoluto</h3>
-            <p>
-              Honraré tus sueños y tu esencia, porque eres mi tesoro más
-              preciado.
-            </p>
-          </div>
-          <div class="promise-item">
-            <h3>Aventuras Inolvidables</h3>
-            <p>
-              Crearemos una vida llena de vida, viajes, risas y momentos que
-              atesoraremos siempre.
-            </p>
-          </div>
-          <div class="promise-item">
-            <h3>Crecimiento Juntos</h3>
-            <p>
-              Nos elevaremos mutuamente, celebrando cada triunfo y aprendiendo
-              de cada desafío.
-            </p>
-          </div>
-        </div>
-      </section> -->
-
       <div class="countdown">
         <h2>
           El tiempo que ha pasado desde aquel momento especial, 03/05/2025.
@@ -208,6 +140,18 @@
       </div>
     </div>
 
+    <div class="container" style="display: none">
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
+    </div>
+
     <footer class="footer">
       <p>Hecho con amor eterno para ti ❤️</p>
     </footer>
@@ -219,5 +163,21 @@
     </script>
 
     <script src="assets/js/favorite-person.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script src="assets/js/firebase-config.js"></script>
+
+    <script>
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
+
+        setTimeout(() => {
+          agregarDatos("Persona Favorita");
+        }, 1000);
+      })();
+    </script>
   </body>
 </html>

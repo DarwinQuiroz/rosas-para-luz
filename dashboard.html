@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
+    <title>Dashboard - Registros Firebase</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 15px;
+      }
+
+      @media (min-width: 768px) {
+        body {
+          padding: 20px;
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      @media (min-width: 768px) {
+        .header {
+          padding: 30px;
+          margin-bottom: 30px;
+        }
+      }
+
+      .header h1 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .header h1 {
+          font-size: 32px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .header-info {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+
+      @media (min-width: 768px) {
+        .header-info {
+          gap: 30px;
+          margin-top: 20px;
+        }
+      }
+
+      .info-card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info-label {
+        color: #999;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .info-value {
+        color: #667eea;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .status {
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .status.connected {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .status.disconnected {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .table-container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .table-header {
+        background: #f8f9fa;
+        padding: 20px;
+        border-bottom: 2px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .table-header h2 {
+        color: #333;
+        font-size: 18px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 10px;
+      }
+
+      @media (max-width: 480px) {
+        .table-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+          padding: 15px;
+        }
+
+        .table-header h2 {
+          font-size: 16px;
+        }
+
+        .btn-group {
+          width: 100%;
+          gap: 8px;
+        }
+
+        .btn-group button {
+          flex: 1;
+          padding: 8px 12px !important;
+          font-size: 12px !important;
+        }
+      }
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-refresh {
+        background: #667eea;
+        color: white;
+      }
+
+      .btn-refresh:hover {
+        background: #764ba2;
+      }
+
+      .btn-delete-all {
+        background: #dc3545;
+        color: white;
+      }
+
+      .btn-delete-all:hover {
+        background: #c82333;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background: #f8f9fa;
+        border-bottom: 2px solid #ddd;
+      }
+
+      th {
+        padding: 15px;
+        text-align: left;
+        color: #555;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #333;
+      }
+
+      tbody tr:hover {
+        background: #f5f5f5;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      @media (max-width: 768px) {
+        th {
+          padding: 12px 8px;
+          font-size: 11px;
+        }
+
+        td {
+          padding: 12px 8px;
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        table {
+          font-size: 12px;
+        }
+
+        th,
+        td {
+          padding: 8px 6px;
+          font-size: 11px;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+          width: 30px;
+        }
+
+        .ip-badge,
+        .navegador-badge,
+        .fecha-badge {
+          font-size: 10px;
+          padding: 3px 6px;
+          display: block;
+          word-break: break-all;
+        }
+
+        .btn-delete {
+          padding: 4px 8px !important;
+          font-size: 10px !important;
+        }
+      }
+
+      .ip-badge {
+        background: #e7f3ff;
+        color: #0066cc;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+      }
+
+      .navegador-badge {
+        background: #fff3cd;
+        color: #856404;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .fecha-badge {
+        color: #666;
+        font-size: 13px;
+      }
+
+      .btn-delete {
+        background: #dc3545;
+        color: white;
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      .btn-delete:hover {
+        background: #c82333;
+      }
+
+      .no-data {
+        padding: 40px;
+        text-align: center;
+        color: #999;
+      }
+
+      .no-data-icon {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+
+      .loading {
+        padding: 40px;
+        text-align: center;
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border-left: 4px solid #dc3545;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 32px;
+        font-weight: 700;
+        color: #667eea;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        color: #999;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+          "
+        >
+          <h1>📊 Dashboard</h1>
+          <div id="status" class="status disconnected">Conectando...</div>
+        </div>
+
+        <div class="header-info">
+          <div class="info-card">
+            <span class="info-label">Registros Totales</span>
+            <span class="info-value" id="totalRegistros">0</span>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Última Actualización</span>
+            <span class="info-value" id="ultimaActualizacion">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="errorMessage" class="error-message" style="display: none"></div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="totalIPs">0</div>
+          <div class="stat-label">IPs Únicas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalNavegadores">0</div>
+          <div class="stat-label">Navegadores Únicos</div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-header">
+          <h2>📋 Registros</h2>
+          <div class="btn-group">
+            <button class="btn-refresh" onclick="cargarDatos()">
+              🔄 Actualizar
+            </button>
+            <button class="btn-delete-all" onclick="eliminarTodo()">
+              🗑️ Eliminar Todo
+            </button>
+          </div>
+        </div>
+
+        <div id="tablaContenedor">
+          <div class="loading">Cargando datos...</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+      // ⚠️ IMPORTANTE: Reemplaza esto con tus credenciales de Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyBD3kKuQ6ZoPMzt5Ewiw8qD9xQ9a9NPymA",
+        authDomain: "luz-html.firebaseapp.com",
+        projectId: "luz-html",
+        storageBucket: "luz-html.firebasestorage.app",
+        messagingSenderId: "966256347636",
+        appId: "1:966256347636:web:22ca68e77db86011f5d1a1",
+        measurementId: "G-4WGPST90BG",
+        databaseURL: "https://luz-html-default-rtdb.firebaseio.com/",
+      };
+
+      // Inicializar Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+      let datosRef = db.ref("visitas");
+
+      // Detectar conexión
+      firebase
+        .database()
+        .ref(".info/connected")
+        .on("value", (snapshot) => {
+          const statusDiv = document.getElementById("status");
+
+          if (snapshot.val()) {
+            statusDiv.textContent = "✓ Conectado";
+            statusDiv.className = "status connected";
+          } else {
+            statusDiv.textContent = "✗ Desconectado";
+            statusDiv.className = "status disconnected";
+          }
+        });
+
+      // Cargar datos en tiempo real
+      datosRef.on("value", (snapshot) => {
+        if (snapshot.exists()) {
+          const datos = snapshot.val();
+          mostrarTabla(datos);
+          actualizarEstadisticas(datos);
+        } else {
+          mostrarSinDatos();
+        }
+        actualizarTimestamp();
+      });
+
+      // Mostrar tabla con los datos
+      function mostrarTabla(datos) {
+        const tablaContenedor = document.getElementById("tablaContenedor");
+
+        // Convertir datos a array y ordenar por fecha descendente
+        const registros = Object.entries(datos)
+          .map(([id, data]) => ({
+            id,
+            ...data,
+          }))
+          .sort((a, b) => {
+            return new Date(b.fecha) - new Date(a.fecha);
+          });
+
+        let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>IP</th>
+                            <th>Navegador</th>
+                            <th>Página</th>
+                            <th>Fecha y Hora</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+        registros.forEach((registro, index) => {
+          html += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td><span class="ip-badge">${registro.ip}</span></td>
+                        <td><span class="navegador-badge">🌐 ${
+                          registro.navegador
+                        }</span></td>
+                        <td><span class="ip-badge">${
+                          registro.pagina
+                        }</span></td>
+                        <td><span class="fecha-badge">📅 ${
+                          registro.fecha
+                        }</span></td>
+                        <td>
+                            <button class="btn-delete" onclick="eliminarRegistro('${
+                              registro.id
+                            }')">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                `;
+        });
+
+        html += `
+                    </tbody>
+                </table>
+            `;
+
+        tablaContenedor.innerHTML = html;
+      }
+
+      // Mostrar sin datos
+      function mostrarSinDatos() {
+        const tablaContenedor = document.getElementById("tablaContenedor");
+        tablaContenedor.innerHTML = `
+                <div class="no-data">
+                    <div class="no-data-icon">📭</div>
+                    <h3>No hay registros</h3>
+                    <p>Aún no se han guardado datos en la base de datos</p>
+                </div>
+            `;
+        document.getElementById("totalRegistros").textContent = "0";
+        document.getElementById("totalIPs").textContent = "0";
+        document.getElementById("totalNavegadores").textContent = "0";
+      }
+
+      // Actualizar estadísticas
+      function actualizarEstadisticas(datos) {
+        const registros = Object.values(datos);
+        const ipsUnicas = new Set(registros.map((r) => r.ip));
+        const navegadoresUnicos = new Set(registros.map((r) => r.navegador));
+
+        document.getElementById("totalRegistros").textContent =
+          registros.length;
+        document.getElementById("totalIPs").textContent = ipsUnicas.size;
+        document.getElementById("totalNavegadores").textContent =
+          navegadoresUnicos.size;
+      }
+
+      // Actualizar timestamp
+      function actualizarTimestamp() {
+        const ahora = new Date();
+        const opciones = {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        document.getElementById("ultimaActualizacion").textContent =
+          ahora.toLocaleString("es-ES", opciones);
+      }
+
+      // Eliminar registro individual
+      function eliminarRegistro(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+          datosRef
+            .child(id)
+            .remove()
+            .catch((error) => {
+              mostrarError("Error al eliminar: " + error.message);
+            });
+        }
+      }
+
+      // Eliminar todo
+      function eliminarTodo() {
+        if (
+          confirm(
+            "⚠️ ¿Estás seguro? Esta acción eliminará TODOS los registros y no se puede deshacer."
+          )
+        ) {
+          if (confirm("Confirma nuevamente para eliminar TODO:")) {
+            datosRef.remove().catch((error) => {
+              mostrarError("Error al eliminar: " + error.message);
+            });
+          }
+        }
+      }
+
+      // Cargar datos manualmente
+      function cargarDatos() {
+        cargarDatos();
+      }
+
+      // Mostrar errores
+      function mostrarError(mensaje) {
+        const errorDiv = document.getElementById("errorMessage");
+        errorDiv.textContent = mensaje;
+        errorDiv.style.display = "block";
+        setTimeout(() => {
+          errorDiv.style.display = "none";
+        }, 5000);
+      }
+
+      // Inicializar timestamp al cargar
+      actualizarTimestamp();
+    </script>
+  </body>
+</html>
