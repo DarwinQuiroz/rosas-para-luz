@@ -1,40 +1,490 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navidad Contigo 🎄💖</title>
-    <link rel="stylesheet" href="assets/css/christmas.css">
+    <title>Tarjeta Navideña</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+    
+        /* Efecto de nieve */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            animation: fall linear infinite;
+            opacity: 0.8;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+    
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    
+        /* Luces navideñas */
+        .lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1;
+        }
+    
+        .light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+    
+        .light:nth-child(odd) {
+            background: #ff6b6b;
+            box-shadow: 0 0 10px #ff6b6b;
+        }
+    
+        .light:nth-child(even) {
+            background: #4ecdc4;
+            box-shadow: 0 0 10px #4ecdc4;
+            animation-delay: 0.75s;
+        }
+    
+        @keyframes blink {
+    
+            0%,
+            100% {
+                opacity: 1;
+            }
+    
+            50% {
+                opacity: 0.3;
+            }
+        }
+    
+        .container {
+            background: linear-gradient(145deg, #ffffff 0%, #fff5f5 100%);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 2;
+            border: 3px solid #d4af37;
+            animation: cardEntrance 0.8s ease-out;
+        }
+    
+        @keyframes cardEntrance {
+            from {
+                transform: scale(0.8) rotateY(-10deg);
+                opacity: 0;
+            }
+    
+            to {
+                transform: scale(1) rotateY(0);
+                opacity: 1;
+            }
+        }
+    
+        /* Decoraciones en las esquinas */
+        .corner-decoration {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.6;
+        }
+    
+        .corner-decoration.top-left {
+            top: 10px;
+            left: 10px;
+        }
+    
+        .corner-decoration.top-right {
+            top: 10px;
+            right: 10px;
+        }
+    
+        .corner-decoration.bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+    
+        .corner-decoration.bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+    
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+    
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #c41e3a;
+            box-shadow: 0 0 20px rgba(196, 30, 58, 0.5),
+                0 0 40px rgba(255, 215, 0, 0.3);
+            object-fit: cover;
+            animation: glow 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+    
+        @keyframes glow {
+    
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(196, 30, 58, 0.5),
+                    0 0 40px rgba(255, 215, 0, 0.3);
+            }
+    
+            50% {
+                box-shadow: 0 0 30px rgba(196, 30, 58, 0.8),
+                    0 0 50px rgba(255, 215, 0, 0.5);
+            }
+        }
+    
+        .tree-container {
+            margin: 20px 0;
+            position: relative;
+            animation: treeGrow 1s ease-out 0.3s both;
+        }
+    
+        @keyframes treeGrow {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+    
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    
+        .star {
+            font-size: 2.5em;
+            margin-bottom: -10px;
+            display: inline-block;
+            animation: starTwinkle 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px gold);
+        }
+    
+        @keyframes starTwinkle {
+    
+            0%,
+            100% {
+                transform: rotate(-10deg) scale(1);
+            }
+    
+            50% {
+                transform: rotate(10deg) scale(1.2);
+            }
+        }
+    
+        .tree {
+            font-size: 6em;
+            line-height: 0.8;
+            position: relative;
+        }
+    
+        .tree-trunk {
+            font-size: 3em;
+            margin-top: -15px;
+        }
+    
+        .heart-float {
+            position: absolute;
+            font-size: 1.5em;
+            animation: floatHeart 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+    
+        .heart-float:nth-child(1) {
+            top: 20%;
+            left: -30px;
+            animation-delay: 0s;
+        }
+    
+        .heart-float:nth-child(2) {
+            top: 40%;
+            right: -30px;
+            animation-delay: 1s;
+        }
+    
+        .heart-float:nth-child(3) {
+            bottom: 30%;
+            left: -25px;
+            animation-delay: 2s;
+        }
+    
+        @keyframes floatHeart {
+    
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+    
+            50% {
+                transform: translateY(-20px) scale(1.1);
+            }
+        }
+    
+        .message {
+            color: #2c3e50;
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: center;
+            margin: 25px 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            font-style: italic;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+    
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .emoji-decoration {
+            display: inline-block;
+            margin: 0 3px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+    
+        @keyframes bounce {
+    
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+    
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+    
+        .button {
+            background: linear-gradient(135deg, #e63946 0%, #c41e3a 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.4);
+            transition: all 0.3s ease;
+            animation: buttonPulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        @keyframes buttonPulse {
+    
+            0%,
+            100% {
+                transform: scale(1);
+            }
+    
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    
+        .button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+    
+        .button:hover:before {
+            width: 300px;
+            height: 300px;
+        }
+    
+        .button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(196, 30, 58, 0.6);
+        }
+    
+        .button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+    
+        .button span {
+            position: relative;
+            z-index: 1;
+        }
+    
+        /* Confetti al hacer click */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confettiFall 3s linear;
+        }
+    
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Luces navideñas -->
+    <div class="lights"></div>
 
-    <div class="snow"></div>
+    <div class="container">
+        <div class="corner-decoration top-left">🎄</div>
+        <div class="corner-decoration top-right">❄️</div>
+        <div class="corner-decoration bottom-left">⭐</div>
+        <div class="corner-decoration bottom-right">🎁</div>
 
-    <div class="card">
+        <div class="heart-float">💕</div>
+        <div class="heart-float">💖</div>
+        <div class="heart-float">💝</div>
 
-        <!-- Imagen romántica -->
-        <img src="assets/img/luz_3.jpeg" class="main-img">
-
-        <!-- Árbol navideño animado -->
-        <div class="tree">
-            <div class="star">⭐</div>
-            <div class="layer l1"></div>
-            <div class="layer l2"></div>
-            <div class="layer l3"></div>
-            <div class="trunk"></div>
+        <div class="profile-section">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop" alt="Profile"
+                class="profile-pic" id="profilePic">
         </div>
 
-        <!-- Texto animado -->
-        <p id="mensaje" class="text animated-text"></p>
+        <div class="tree-container">
+            <div class="star">⭐</div>
+            <div class="tree">🌲</div>
+            <div class="tree-trunk">🟫</div>
+            </div>
+            
+            <p class="message">
+                En esta Navidad quiero agradecerte por iluminar mi vida como las luces del árbol,
+                por hacerme sentir amado cada día y por regalarme la magia más bonita: tu sonrisa.
+                <span class="emoji-decoration">🎄</span><span class="emoji-decoration">❤️</span>
+            </p>
+            
+            <button class="button" id="giftButton">
+                <span>🎁</span>
+                <span>Abrir regalo</span>
+            </button>
+            </div>
 
-        <!-- Botón romántico para abrir regalo -->
-        <button class="gift-btn" id="giftBtn">🎁 Abrir regalo</button>
+    <script>
+        // Crear copos de nieve
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
 
-    </div>
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
 
-    <script src="assets/js/christmas.js"></script>
+        setInterval(createSnowflake, 200);
+
+        // Crear luces navideñas
+        const lightsContainer = document.querySelector('.lights');
+        for (let i = 0; i < 30; i++) {
+            const light = document.createElement('div');
+            light.classList.add('light');
+            lightsContainer.appendChild(light);
+        }
+
+        // Confetti al hacer click
+        document.getElementById('giftButton').addEventListener('click', function (e) {
+            for (let i = 0; i < 50; i++) {
+                createConfetti(e.clientX, e.clientY);
+            }
+
+            setTimeout(() => {
+                alert('¡Feliz Navidad! 🎄❤️\n\nEres el mejor regalo que la vida me pudo dar. Te amo ❤️');
+            }, 100);
+        });
+
+        function createConfetti(x, y) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94'];
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = x + 'px';
+            confetti.style.top = y + 'px';
+            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+
+            // Permitir cambiar la foto de perfil
+            document.getElementById('profilePic').addEventListener('click', function () {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.onchange = e => {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = event => {
+                        document.getElementById('profilePic').src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                };
+                input.click();
+            });
+        </script>
 </body>
-
 </html>
