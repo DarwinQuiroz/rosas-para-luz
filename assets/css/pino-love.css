@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "mountains_of_christmasregular";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/mountainsofchristmas-webfont.woff2")
+      format("woff2"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/mountainsofchristmas-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+svg {
+  width: 90%;
+  height: 90%;
+  visibility: hidden;
+  z-index: 10;
+  position: relative;
+}
+
+#snowCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#effectsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.love-text {
+  position: absolute;
+  font-family: "Indie Flower";
+
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 30;
+  will-change: transform, opacity;
+}
+
+.firework-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.sparkle {
+  /* mix-blend-mode:luminosity */
+}
+#endMessage {
+  font-family: mountains_of_christmasregular;
+  font-size: 2rem;
+  text-anchor: middle;
+  text-align: center;
+  fill: #26ff00;
+  color: #ffffff;
+  opacity: 0;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
