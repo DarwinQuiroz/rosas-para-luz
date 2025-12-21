@@ -80,9 +80,10 @@ svg {
 .sparkle {
   /* mix-blend-mode:luminosity */
 }
+
 #endMessage {
   font-family: mountains_of_christmasregular;
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-anchor: middle;
   text-align: center;
   fill: #26ff00;
@@ -90,4 +91,39 @@ svg {
   opacity: 0;
   letter-spacing: 1px;
   font-weight: 500;
+}
+
+.music-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.music-btn {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #d81b60, #ad1457);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(135, 94, 94, 0.4);
+  transition: all 0.3s ease;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(216, 27, 96, 0.6);
+}
+
+.music-btn:active {
+  transform: scale(0.95);
 }

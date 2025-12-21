@@ -404,6 +404,7 @@ document.getElementById("love-letters-btn").addEventListener("click", () => {
     setTimeout(createLoveLetter, i * 200);
   }
 });
+
 function setupMusicControls() {
   const music = document.getElementById("backgroundMusic");
   const musicBtn = document.getElementById("musicBtn");
