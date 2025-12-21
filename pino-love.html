@@ -14,8 +14,18 @@
       href="https://fonts.googleapis.com/css?family=Indie+Flower"
       rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/back-button.css" />
   </head>
   <body>
+    <button class="back-button" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
     <!-- <div id="pino-love">
     </div> -->
     <canvas id="snowCanvas"></canvas>
@@ -169,7 +179,7 @@
         <circle class="sparkle" fill="url(#dotGrad)" cx="0" cy="0" r="50" />
       </g>
       <foreignObject id="endMessage" x="0" y="550" width="800" height="250">
-        <span class="endMessage"> ¡Feliz Navidad! </span>
+        <span class="endMessage"> ¡Feliz navidad mi hermosa Luz! </span>
       </foreignObject>
     </svg>
 
@@ -289,6 +299,12 @@
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Physics2DPlugin3.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/EasePack3.min.js"></script>
     <script src="assets/js/pino-love.js"></script>
-    <script src="assets/js/gift.js"></script>
+    <!-- <script src="assets/js/gift.js"></script> -->
+
+    <script>
+      function goBack() {
+        window.location.href = "index.html";
+      }
+    </script>
   </body>
 </html>

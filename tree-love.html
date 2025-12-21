@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Árbol de Navidad Romántico 🎄 by AlexDev</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/tree-love.css" />
+  </head>
+
+  <body>
+    <div class="background-glow"></div>
+
+    <div class="container">
+      <div class="tree">
+        <svg
+          class="tree__star"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 113.32 108.44"
+        >
+          <path
+            d="M90.19 104.33L57.12 87.38 24.4 105l5.91-36.69L3.44 42.65l36.72-5.72 16.1-33.5L73.06 36.6l36.83 4.97-26.35 26.21z"
+            fill="none"
+            stroke-width="6.88"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+        <div class="tree__base"></div>
+      </div>
+
+      <div class="text-overlay">
+        <h1>Feliz Navidad, mi hermosa Luz</h1>
+        <p id="dynamic-message" class="fade-text">Iluminas mi vida ✨</p>
+      </div>
+    </div>
+
+    <script>
+      const treeContainer = document.querySelector(".tree");
+      const totalLights = 250;
+      const spirals = 5;
+      const baseRotationSpeed = 1800;
+
+      for (let i = 0; i < totalLights; i++) {
+        const light = document.createElement("div");
+        light.classList.add("tree__light");
+        const progress = i / totalLights;
+        const y = progress * 100;
+        const radius = 12.5 * (1 - progress);
+        const spiralOffset = (360 / spirals) * (i % spirals);
+        const rotate = progress * baseRotationSpeed + spiralOffset;
+        const speed = Math.random() * 3 + 2;
+        const delay = Math.random() * -5;
+        light.style.setProperty("--y", y);
+        light.style.setProperty("--rotate", rotate);
+        light.style.setProperty("--radius", radius);
+        light.style.setProperty("--speed", speed);
+        light.style.setProperty("--delay", delay);
+        treeContainer.insertBefore(light, treeContainer.firstChild);
+      }
+
+      function createSnow() {
+        const snowflakeCount = 70;
+        const body = document.body;
+        for (let i = 0; i < snowflakeCount; i++) {
+          const snowflake = document.createElement("div");
+          snowflake.classList.add("snowflake");
+          const x = Math.random() * 100;
+          const delay = Math.random() * 20;
+          const duration = Math.random() * 10 + 10;
+          const size = Math.random() * 0.8 + 0.2;
+          const opacity = Math.random() * 0.5 + 0.3;
+          snowflake.style.left = `${x}vw`;
+          snowflake.style.animationDelay = `-${delay}s`;
+          snowflake.style.animationDuration = `${duration}s`;
+          snowflake.style.width = `${size}vmin`;
+          snowflake.style.height = `${size}vmin`;
+          snowflake.style.opacity = opacity;
+          body.appendChild(snowflake);
+        }
+      }
+      createSnow();
+
+      const messages = [
+        "Iluminas mi vida ✨",
+        "Eres mi mejor regalo 🎁",
+        "Mi deseo de Navidad eres tú ❤️",
+        "Juntos es mi lugar favorito ❄️",
+        "Gracias por tanto amor...",
+      ];
+      let messageIndex = 0;
+      const messageElement = document.getElementById("dynamic-message");
+
+      function cycleMessages() {
+        messageElement.classList.remove("fade-text");
+        void messageElement.offsetWidth;
+        messageIndex = (messageIndex + 1) % messages.length;
+        messageElement.textContent = messages[messageIndex];
+        messageElement.classList.add("fade-text");
+      }
+      setInterval(cycleMessages, 5000);
+
+      const imagePaths = [
+        "assets/img/1.png",
+        "assets/img/2.png",
+        "assets/img/3.png",
+        "assets/img/4.png",
+        "assets/img/5.png",
+      ];
+
+      const particleContainer = document.createElement("div");
+      particleContainer.id = "particle-container";
+      document.body.appendChild(particleContainer);
+
+      function createParticle(x, y) {
+        const count = 5;
+
+        for (let i = 0; i < count; i++) {
+          const type = Math.floor(Math.random() * imagePaths.length);
+          const imageSrc = imagePaths[type];
+
+          const p = document.createElement("img");
+          p.src = imageSrc;
+          p.classList.add("particle-img");
+
+          p.style.left = `${x}px`;
+          p.style.top = `${y}px`;
+
+          const size = Math.random() * 40 + 30;
+          p.style.width = `${size}px`;
+          p.style.height = "auto";
+
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = Math.random() * 120 + 60;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+          const rot = (Math.random() - 0.5) * 500;
+
+          p.style.setProperty("--tx", `${tx}px`);
+          p.style.setProperty("--ty", `${ty}px`);
+          p.style.setProperty("--rot", `${rot}deg`);
+
+          p.onerror = function () {
+            this.style.display = "none";
+          };
+
+          particleContainer.appendChild(p);
+
+          setTimeout(() => {
+            p.remove();
+          }, 2000);
+        }
+      }
+      function showTeAmo(x, y) {
+        const textElement = document.createElement("span");
+        textElement.classList.add("floating-text");
+        const frasesRandom = ["Te amo", "Feliz Navidad", "Mi hermosa"];
+        textElement.innerText =
+          frasesRandom[Math.floor(Math.random() * frasesRandom.length)];
+        textElement.style.left = x + "px";
+        textElement.style.top = y + "px";
+        document.body.appendChild(textElement);
+        setTimeout(() => {
+          textElement.remove();
+        }, 1400);
+      }
+
+      document.addEventListener("click", function (e) {
+        if (e.target.closest(".text-overlay")) return;
+
+        createParticle(e.clientX, e.clientY);
+        showTeAmo(e.clientX, e.clientY);
+      });
+    </script>
+  </body>
+</html>
