@@ -1,590 +1,674 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
     <title>Rompecabezas del Amor</title>
-    <script src="assets/js/plugins/konva.min.js"></script>
-    <script src="assets/js/plugins/tailwindcss.min.js"></script>
+    <script src="../assets/js/plugins/konva.min.js"></script>
+    <script src="../assets/js/plugins/tailwindcss.min.js"></script>
 
-    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
-    <link rel="stylesheet" href="assets/css/puzzle.css">
-</head>
+    <link rel="icon" href="../assets/img/flowers.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../assets/css/puzzle.css" />
+  </head>
 
-<body class="flex flex-col items-center justify-start min-h-screen p-2">
+  <body class="flex flex-col items-center justify-start min-h-screen p-2">
     <canvas id="backgroundCanvas"></canvas>
-    <h1 class="font-extrabold text-3xl sm:text-6xl md:text-[3.5rem] text-center">Rompecabezas del Amor</h1>
+    <h1
+      class="font-extrabold text-3xl sm:text-6xl md:text-[3.5rem] text-center"
+    >
+      Rompecabezas del Amor
+    </h1>
     <div id="container" class="mb-4"></div>
 
-    <div class="button-container flex flex-row justify-center items-center gap-6 w-full max-w-lg">
-        <button id="previewButton" class="shadow-xl">Ver Imagen</button>
-        <button id="playPauseButton" class="shadow-xl">▶</button>
-        <button id="resetButton" class="shadow-xl">Reinciar</button>
-
+    <div
+      class="button-container flex flex-row justify-center items-center gap-6 w-full max-w-lg"
+    >
+      <button id="previewButton" class="shadow-xl">Ver Imagen</button>
+      <button id="playPauseButton" class="shadow-xl">▶</button>
+      <button id="resetButton" class="shadow-xl">Reinciar</button>
     </div>
-    <audio id="backgroundMusic" src="assets/sound/querer.mp3" preload="auto" loop></audio>
+    <audio
+      id="backgroundMusic"
+      src="../assets/sound/querer.mp3"
+      preload="auto"
+      loop
+    ></audio>
     <div id="previewModal">
-        <img id="previewImage" src="assets/img/luz_2.jpeg" alt="Puzzle Preview">
-        <button id="closeModal">Cerrar</button>
+      <img
+        id="previewImage"
+        src="../assets/img/luz_2.jpeg"
+        alt="Puzzle Preview"
+      />
+      <button id="closeModal">Cerrar</button>
     </div>
     <div id="completionModal">
-        <div>
-            <h2>💖 Hoy, en tu Día, quiero recordarte lo especial que eres.
-                Tu sonrisa ilumina mis días, tu ternura alegra mi corazón y tu esencia hace que todo sea más bonito.
-                Eres una bendición en mi vida, mi motivo de alegría y quien llena mis días de amor y dulzura. 🌷💞</h2>
+      <div>
+        <h2>
+          💖 Hoy, en tu Día, quiero recordarte lo especial que eres. Tu sonrisa
+          ilumina mis días, tu ternura alegra mi corazón y tu esencia hace que
+          todo sea más bonito. Eres una bendición en mi vida, mi motivo de
+          alegría y quien llena mis días de amor y dulzura. 🌷💞
+        </h2>
 
-            <button id="closeCompletionModal" style="margin-left: 20px;">Cerrar</button>
-
-
-        </div>
+        <button id="closeCompletionModal" style="margin-left: 20px">
+          Cerrar
+        </button>
+      </div>
     </div>
-    <audio id="correctSound" src="assets/sound/bien.mp3" preload="auto"></audio>
+    <audio
+      id="correctSound"
+      src="../assets/sound/bien.mp3"
+      preload="auto"
+    ></audio>
 
     <script>
-        // Romantic particle background with glowing hearts and sparkles
-        const canvas = document.getElementById('backgroundCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+      // Romantic particle background with glowing hearts and sparkles
+      const canvas = document.getElementById("backgroundCanvas");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+      }
+
+      function initParticles() {
+        particles = [];
+        const particleCount = Math.floor(
+          (window.innerWidth * window.innerHeight) / 10000
+        );
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 20 + 10,
+            speedX: (Math.random() - 0.5) * 0.5,
+            speedY: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5 + 0.3,
+            type: Math.random() < 0.7 ? "heart" : "sparkle",
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 2,
+          });
         }
+      }
 
+      function drawHeart(x, y, size, rotation) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate((rotation * Math.PI) / 180);
+        ctx.beginPath();
+        ctx.moveTo(0, size * 0.3);
+        ctx.bezierCurveTo(
+          -size * 0.5,
+          -size * 0.5,
+          -size,
+          -size * 0.2,
+          -size,
+          size * 0.3
+        );
+        ctx.bezierCurveTo(-size, size * 0.8, 0, size * 1.2, 0, size * 1.2);
+        ctx.bezierCurveTo(0, size * 1.2, size, size * 0.8, size, size * 0.3);
+        ctx.bezierCurveTo(
+          size,
+          -size * 0.2,
+          size * 0.5,
+          -size * 0.5,
+          0,
+          size * 0.3
+        );
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
 
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.floor(window.innerWidth * window.innerHeight / 10000);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 20 + 10,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.5 + 0.3,
-                    type: Math.random() < 0.7 ? 'heart' : 'sparkle',
-                    rotation: Math.random() * 360,
-                    rotationSpeed: (Math.random() - 0.5) * 2
-                });
-            }
+      function drawSparkle(x, y, size) {
+        ctx.beginPath();
+        ctx.moveTo(x, y - size);
+        ctx.lineTo(x, y + size);
+        ctx.moveTo(x - size, y);
+        ctx.lineTo(x + size, y);
+        ctx.moveTo(x - size * 0.7, y - size * 0.7);
+        ctx.lineTo(x + size * 0.7, y + size * 0.7);
+        ctx.moveTo(x - size * 0.7, y + size * 0.7);
+        ctx.lineTo(x + size * 0.7, y - size * 0.7);
+        ctx.stroke();
+      }
+
+      function drawParticles() {
+        ctx.fillStyle = "rgba(251, 207, 232, 0.2)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((p) => {
+          if (p.type === "heart") {
+            ctx.fillStyle = `rgba(219, 39, 119, ${p.opacity})`;
+            drawHeart(p.x, p.y, p.size / 2, p.rotation);
+          } else {
+            ctx.strokeStyle = `rgba(255, 255, 255, ${p.opacity})`;
+            ctx.lineWidth = 2;
+            drawSparkle(p.x, p.y, p.size / 2);
+          }
+
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.rotation += p.rotationSpeed;
+          p.opacity = Math.max(0.3, p.opacity + (Math.random() - 0.5) * 0.02);
+
+          if (p.x < 0 || p.x > canvas.width) p.speedX = -p.speedX;
+          if (p.y < 0 || p.y > canvas.height) p.speedY = -p.speedY;
+        });
+      }
+
+      function animateParticles() {
+        drawParticles();
+        requestAnimationFrame(animateParticles);
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      animateParticles();
+
+      const GRID_SIZE = 6;
+      let PIECE_SIZE = 100;
+      let stage,
+        layer,
+        slotLayer,
+        pieces = [],
+        imageObj = null;
+
+      const connectors = { top: [], left: [] };
+
+      let tabRadius, tabWidth, tabDepth, tabPosition;
+
+      function calculateDimensions() {
+        const availableWidth = window.innerWidth - 40;
+        let ps = Math.floor(Math.min(availableWidth, 600) / GRID_SIZE);
+        let boardSize = ps * GRID_SIZE;
+        let extraWidth = 0;
+        let extraHeight = 0;
+        if (window.innerWidth > 640) {
+          extraWidth = 400;
+          extraHeight = 0;
+        } else {
+          extraWidth = 0;
+          extraHeight = Math.max(250, ps * 2);
         }
-
-        function drawHeart(x, y, size, rotation) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate((rotation * Math.PI) / 180);
-            ctx.beginPath();
-            ctx.moveTo(0, size * 0.3);
-            ctx.bezierCurveTo(
-                -size * 0.5, -size * 0.5, -size, -size * 0.2, -size, size * 0.3
-            );
-            ctx.bezierCurveTo(-size, size * 0.8, 0, size * 1.2, 0, size * 1.2);
-            ctx.bezierCurveTo(0, size * 1.2, size, size * 0.8, size, size * 0.3);
-            ctx.bezierCurveTo(size, -size * 0.2, size * 0.5, -size * 0.5, 0, size * 0.3);
-            ctx.closePath();
-            ctx.fill();
-            ctx.restore();
+        let totalWidth = boardSize + extraWidth;
+        let totalHeight = boardSize + extraHeight;
+        const maxTotalWidth = Math.min(availableWidth, 900);
+        if (totalWidth > maxTotalWidth) {
+          extraWidth = maxTotalWidth - boardSize;
+          totalWidth = maxTotalWidth;
         }
-
-        function drawSparkle(x, y, size) {
-            ctx.beginPath();
-            ctx.moveTo(x, y - size);
-            ctx.lineTo(x, y + size);
-            ctx.moveTo(x - size, y);
-            ctx.lineTo(x + size, y);
-            ctx.moveTo(x - size * 0.7, y - size * 0.7);
-            ctx.lineTo(x + size * 0.7, y + size * 0.7);
-            ctx.moveTo(x - size * 0.7, y + size * 0.7);
-            ctx.lineTo(x + size * 0.7, y - size * 0.7);
-            ctx.stroke();
+        const maxTotalHeight = window.innerHeight - 140;
+        if (totalHeight > maxTotalHeight) {
+          extraHeight = maxTotalHeight - boardSize;
+          totalHeight = maxTotalHeight;
         }
-
-        function drawParticles() {
-            ctx.fillStyle = 'rgba(251, 207, 232, 0.2)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                if (p.type === 'heart') {
-                    ctx.fillStyle = `rgba(219, 39, 119, ${p.opacity})`;
-                    drawHeart(p.x, p.y, p.size / 2, p.rotation);
-                } else {
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${p.opacity})`;
-                    ctx.lineWidth = 2;
-                    drawSparkle(p.x, p.y, p.size / 2);
-                }
-
-                p.x += p.speedX;
-                p.y += p.speedY;
-                p.rotation += p.rotationSpeed;
-                p.opacity = Math.max(0.3, p.opacity + (Math.random() - 0.5) * 0.02);
-
-                if (p.x < 0 || p.x > canvas.width) p.speedX = -p.speedX;
-                if (p.y < 0 || p.y > canvas.height) p.speedY = -p.speedY;
-            });
-        }
-
-        function animateParticles() {
-            drawParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        animateParticles();
-
-        const GRID_SIZE = 6;
-        let PIECE_SIZE = 100;
-        let stage, layer, slotLayer, pieces = [], imageObj = null;
-
-        const connectors = { top: [], left: [] };
-
-        let tabRadius, tabWidth, tabDepth, tabPosition;
-
-        function calculateDimensions() {
-            const availableWidth = window.innerWidth - 40;
-            let ps = Math.floor(Math.min(availableWidth, 600) / GRID_SIZE);
-            let boardSize = ps * GRID_SIZE;
-            let extraWidth = 0;
-            let extraHeight = 0;
-            if (window.innerWidth > 640) {
-                extraWidth = 400;
-                extraHeight = 0;
-            } else {
-                extraWidth = 0;
-                extraHeight = Math.max(250, ps * 2);
-            }
-            let totalWidth = boardSize + extraWidth;
-            let totalHeight = boardSize + extraHeight;
-            const maxTotalWidth = Math.min(availableWidth, 900);
-            if (totalWidth > maxTotalWidth) {
-                extraWidth = maxTotalWidth - boardSize;
-                totalWidth = maxTotalWidth;
-            }
-            const maxTotalHeight = window.innerHeight - 140;
-            if (totalHeight > maxTotalHeight) {
-                extraHeight = maxTotalHeight - boardSize;
-                totalHeight = maxTotalHeight;
-            }
-            return { ps, boardSize, extraWidth, extraHeight, totalWidth, totalHeight };
-        }
-
-        function initStage(boardSize, extraWidth, extraHeight) {
-            stage = new Konva.Stage({
-                container: 'container',
-                width: boardSize + extraWidth,
-                height: boardSize + extraHeight
-            });
-
-            slotLayer = new Konva.Layer();
-            layer = new Konva.Layer();
-            stage.add(slotLayer);
-            stage.add(layer);
-
-            const container = document.getElementById('container');
-            container.style.width = `${boardSize + extraWidth}px`;
-            container.style.height = `${boardSize + extraHeight}px`;
-        }
-
-        imageObj = new Image();
-        imageObj.src = 'assets/img/luz_2.jpeg';
-        imageObj.onload = () => {
-            const dims = calculateDimensions();
-            PIECE_SIZE = dims.ps;
-
-            tabRadius = PIECE_SIZE * 0.35;
-            tabWidth = PIECE_SIZE * 0.4;
-            tabDepth = PIECE_SIZE * 0.21;
-            tabPosition = PIECE_SIZE * 0.5;
-
-            initStage(dims.boardSize, dims.extraWidth, dims.extraHeight);
-            createPuzzle();
+        return {
+          ps,
+          boardSize,
+          extraWidth,
+          extraHeight,
+          totalWidth,
+          totalHeight,
         };
+      }
 
-        document.getElementById('resetButton').addEventListener('click', () => {
-            if (imageObj) {
-                const dims = calculateDimensions();
-                PIECE_SIZE = dims.ps;
-
-                tabRadius = PIECE_SIZE * 0.35;
-                tabWidth = PIECE_SIZE * 0.4;
-                tabDepth = PIECE_SIZE * 0.21;
-                tabPosition = PIECE_SIZE * 0.5;
-
-                initStage(dims.boardSize, dims.extraWidth, dims.extraHeight);
-                createPuzzle();
-            }
+      function initStage(boardSize, extraWidth, extraHeight) {
+        stage = new Konva.Stage({
+          container: "container",
+          width: boardSize + extraWidth,
+          height: boardSize + extraHeight,
         });
 
-        document.getElementById('previewButton').addEventListener('click', () => {
-            document.getElementById('previewModal').style.display = 'flex';
+        slotLayer = new Konva.Layer();
+        layer = new Konva.Layer();
+        stage.add(slotLayer);
+        stage.add(layer);
+
+        const container = document.getElementById("container");
+        container.style.width = `${boardSize + extraWidth}px`;
+        container.style.height = `${boardSize + extraHeight}px`;
+      }
+
+      imageObj = new Image();
+      imageObj.src = "../assets/img/luz_2.jpeg";
+      imageObj.onload = () => {
+        const dims = calculateDimensions();
+        PIECE_SIZE = dims.ps;
+
+        tabRadius = PIECE_SIZE * 0.35;
+        tabWidth = PIECE_SIZE * 0.4;
+        tabDepth = PIECE_SIZE * 0.21;
+        tabPosition = PIECE_SIZE * 0.5;
+
+        initStage(dims.boardSize, dims.extraWidth, dims.extraHeight);
+        createPuzzle();
+      };
+
+      document.getElementById("resetButton").addEventListener("click", () => {
+        if (imageObj) {
+          const dims = calculateDimensions();
+          PIECE_SIZE = dims.ps;
+
+          tabRadius = PIECE_SIZE * 0.35;
+          tabWidth = PIECE_SIZE * 0.4;
+          tabDepth = PIECE_SIZE * 0.21;
+          tabPosition = PIECE_SIZE * 0.5;
+
+          initStage(dims.boardSize, dims.extraWidth, dims.extraHeight);
+          createPuzzle();
+        }
+      });
+
+      document.getElementById("previewButton").addEventListener("click", () => {
+        document.getElementById("previewModal").style.display = "flex";
+      });
+
+      document.getElementById("closeModal").addEventListener("click", () => {
+        document.getElementById("previewModal").style.display = "none";
+      });
+
+      document
+        .getElementById("closeCompletionModal")
+        .addEventListener("click", () => {
+          document.getElementById("completionModal").style.display = "none";
         });
 
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('previewModal').style.display = 'none';
-        });
+      window.addEventListener("resize", () => {
+        if (imageObj) {
+          const dims = calculateDimensions();
+          PIECE_SIZE = dims.ps;
 
-        document.getElementById('closeCompletionModal').addEventListener('click', () => {
-            document.getElementById('completionModal').style.display = 'none';
-        });
+          tabRadius = PIECE_SIZE * 0.35;
+          tabWidth = PIECE_SIZE * 0.4;
+          tabDepth = PIECE_SIZE * 0.21;
+          tabPosition = PIECE_SIZE * 0.5;
 
-        window.addEventListener('resize', () => {
-            if (imageObj) {
-                const dims = calculateDimensions();
-                PIECE_SIZE = dims.ps;
-
-                tabRadius = PIECE_SIZE * 0.35;
-                tabWidth = PIECE_SIZE * 0.4;
-                tabDepth = PIECE_SIZE * 0.21;
-                tabPosition = PIECE_SIZE * 0.5;
-
-                initStage(dims.boardSize, dims.extraWidth, dims.extraHeight);
-                createPuzzle();
-                initParticles();
-            }
-        });
-
-        function createPuzzle() {
-            pieces = [];
-            layer.removeChildren();
-            slotLayer.removeChildren();
-
-            connectors.top = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(0));
-            connectors.left = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(0));
-
-            for (let row = 0; row < GRID_SIZE; row++) {
-                for (let col = 0; col < GRID_SIZE; col++) {
-                    if (row > 0) {
-                        connectors.top[row][col] = -connectors.top[row - 1][col];
-                    } else {
-                        connectors.top[row][col] = Math.random() > 0.5 ? 1 : -1;
-                    }
-                    if (col > 0) {
-                        connectors.left[row][col] = -connectors.left[row][col - 1];
-                    } else {
-                        connectors.left[row][col] = Math.random() > 0.5 ? 1 : -1;
-                    }
-                }
-            }
-
-            const boardSize = PIECE_SIZE * GRID_SIZE;
-            for (let row = 0; row < GRID_SIZE; row++) {
-                for (let col = 0; col < GRID_SIZE; col++) {
-                    const slot = new Konva.Path({
-                        x: col * PIECE_SIZE,
-                        y: row * PIECE_SIZE,
-                        data: generatePuzzlePiecePath(row, col),
-                        stroke: '#f9a8d4',
-                        strokeWidth: 1,
-                        dash: [4, 4]
-                    });
-                    slotLayer.add(slot);
-
-                    const piece = createPuzzlePiece(row, col);
-                    pieces.push(piece);
-                    layer.add(piece);
-                }
-            }
-
-            slotLayer.draw();
-            shufflePieces(boardSize);
-            layer.draw();
+          initStage(dims.boardSize, dims.extraWidth, dims.extraHeight);
+          createPuzzle();
+          initParticles();
         }
+      });
 
-        function createPuzzlePiece(row, col) {
-            const group = new Konva.Group({
-                x: 0, y: 0,
-                draggable: true,
-                correctX: col * PIECE_SIZE,
-                correctY: row * PIECE_SIZE,
-                row, col,
-                dragBoundFunc: function (pos) {
-                    const containerEl = stage.container();
-                    const maxX = containerEl.offsetWidth - PIECE_SIZE;
-                    const maxY = containerEl.offsetHeight - PIECE_SIZE;
-                    return {
-                        x: Math.max(0, Math.min(pos.x, maxX)),
-                        y: Math.max(0, Math.min(pos.y, maxY))
-                    };
-                }
-            });
+      function createPuzzle() {
+        pieces = [];
+        layer.removeChildren();
+        slotLayer.removeChildren();
 
-            const fullSize = PIECE_SIZE * GRID_SIZE;
-            const scaleX = imageObj.width / fullSize;
-            const scaleY = imageObj.height / fullSize;
+        connectors.top = Array.from({ length: GRID_SIZE }, () =>
+          Array(GRID_SIZE).fill(0)
+        );
+        connectors.left = Array.from({ length: GRID_SIZE }, () =>
+          Array(GRID_SIZE).fill(0)
+        );
 
-            const shape = new Konva.Path({
-                x: 0, y: 0,
-                data: generatePuzzlePiecePath(row, col),
-                fillPatternImage: imageObj,
-                fillPatternOffset: {
-                    x: col * PIECE_SIZE * scaleX,
-                    y: row * PIECE_SIZE * scaleY
-                },
-                fillPatternScale: {
-                    x: 1 / scaleX,
-                    y: 1 / scaleY
-                },
-                stroke: '#db2777',
-                strokeWidth: 1
-            });
-
-            group.add(shape);
-
-            group.on('dragstart touchstart', () => {
-                group.moveToTop();
-                layer.draw();
-            });
-
-            group.on('dragend touchend', () => {
-                const { correctX, correctY } = group.attrs;
-                if (Math.abs(group.x() - correctX) < PIECE_SIZE / 4 &&
-                    Math.abs(group.y() - correctY) < PIECE_SIZE / 4) {
-                    group.position({ x: correctX, y: correctY });
-                    group.moveToBottom();
-                    layer.draw();
-                    const sound = document.getElementById('correctSound');
-                    sound.play().catch(error => console.error('Error al reproducir el sonido:', error));
-                    createHeartExplosion(correctX + PIECE_SIZE / 2, correctY + PIECE_SIZE / 2);
-                    checkPuzzleCompletion();
-                }
-            });
-
-            return group;
-        }
-
-        function generatePuzzlePiecePath(row, col) {
-            const s = PIECE_SIZE;
-            const r = tabRadius;
-            const w = tabWidth;
-            const d = tabDepth;
-            const p = tabPosition;
-
-            const top = row === 0 ? 0 : connectors.top[row][col];
-            const bottom = row === GRID_SIZE - 1 ? 0 : -connectors.top[row + 1][col];
-            const left = col === 0 ? 0 : connectors.left[row][col];
-            const right = col === GRID_SIZE - 1 ? 0 : -connectors.left[row][col + 1];
-
-            let path = `M 0 0 `;
-
-            path += `L ${p - w / 2} 0 `;
-            if (top !== 0) {
-                path += `a ${w / 2} ${d} 0 0 ${top > 0 ? 1 : 0} ${w} 0 `;
-            }
-            path += `L ${s} 0 `;
-
-            path += `L ${s} ${p - w / 2} `;
-            if (right !== 0) {
-                path += `a ${d} ${w / 2} 0 0 ${right > 0 ? 1 : 0} 0 ${w} `;
-            }
-            path += `L ${s} ${s} `;
-
-            path += `L ${p + w / 2} ${s} `;
-            if (bottom !== 0) {
-                path += `a ${w / 2} ${d} 0 0 ${bottom > 0 ? 1 : 0} -${w} 0 `;
-            }
-            path += `L 0 ${s} `;
-
-            path += `L 0 ${p + w / 2} `;
-            if (left !== 0) {
-                path += `a ${d} ${w / 2} 0 0 ${left > 0 ? 1 : 0} 0 -${w} `;
-            }
-            path += `Z`;
-
-            return path;
-        }
-
-        function shufflePieces(boardSize) {
-            const margin = 10;
-            const stageWidth = stage.width();
-            const stageHeight = stage.height();
-            pieces.forEach(p => {
-                let x, y;
-                if (window.innerWidth > 640) {
-                    // Desktop: prefer right side
-                    let pieceStartX = boardSize + margin;
-                    let pieceEndX = stageWidth - PIECE_SIZE - margin;
-                    if (pieceEndX < pieceStartX) {
-                        pieceStartX = margin;
-                        pieceEndX = stageWidth - PIECE_SIZE - margin;
-                    }
-                    const areaX = pieceEndX - pieceStartX;
-                    x = pieceStartX + Math.random() * areaX;
-
-                    let pieceStartY = margin;
-                    let pieceEndY = stageHeight - PIECE_SIZE - margin;
-                    const areaY = pieceEndY - pieceStartY;
-                    y = pieceStartY + Math.random() * areaY;
-                } else {
-                    // Mobile: prefer below
-                    let pieceStartY = boardSize + margin;
-                    let pieceEndY = stageHeight - PIECE_SIZE - margin;
-                    if (pieceEndY < pieceStartY) {
-                        pieceStartY = margin;
-                        pieceEndY = stageHeight - PIECE_SIZE - margin;
-                    }
-                    const areaY = pieceEndY - pieceStartY;
-                    y = pieceStartY + Math.random() * areaY;
-
-                    let pieceStartX = margin;
-                    let pieceEndX = stageWidth - PIECE_SIZE - margin;
-                    const areaX = pieceEndX - pieceStartX;
-                    x = pieceStartX + Math.random() * areaX;
-                }
-                p.position({ x, y });
-            });
-            layer.draw();
-        }
-
-        function checkPuzzleCompletion() {
-            if (pieces.every(p =>
-                Math.abs(p.x() - p.attrs.correctX) < 1 &&
-                Math.abs(p.y() - p.attrs.correctY) < 1)) {
-                setTimeout(() => {
-                    document.getElementById('completionModal').style.display = 'flex';
-                }, 500);
-            }
-        }
-
-        function createHeartExplosion(x, y) {
-            const heartCount = 12;
-            const heartSize = PIECE_SIZE * 0.25;
-
-            const heartPath = `M 0 ${heartSize * 0.2}
-                   C -${heartSize * 0.65} -${heartSize * 0.35}, -${heartSize * 0.95}, ${heartSize * 0.15}, -${heartSize * 0.95}, ${heartSize * 0.55}
-                   C -${heartSize * 0.95}, ${heartSize * 0.95}, -${heartSize * 0.35}, ${heartSize * 1.25}, 0, ${heartSize * 1.25}
-                   C ${heartSize * 0.35}, ${heartSize * 1.25}, ${heartSize * 0.95}, ${heartSize * 0.95}, ${heartSize * 0.95}, ${heartSize * 0.55}
-                   C ${heartSize * 0.95}, ${heartSize * 0.15}, ${heartSize * 0.65}, -${heartSize * 0.35}, 0, ${heartSize * 0.2} Z`;
-
-            for (let i = 0; i < heartCount; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = 60 + Math.random() * 120;
-                const heart = new Konva.Path({
-                    x: x,
-                    y: y,
-                    data: heartPath,
-                    fill: '#db2777',
-                    scale: { x: 0.4, y: 0.4 },
-                    opacity: 2,
-                    rotation: Math.random() * 360
-                });
-
-                layer.add(heart);
-
-                const anim = new Konva.Tween({
-                    node: heart,
-                    duration: 1.2,
-                    x: x + Math.cos(angle) * speed,
-                    y: y + Math.sin(angle) * speed,
-                    scaleX: 1.1,
-                    scaleY: 1.1,
-                    opacity: 0,
-                    rotation: heart.rotation() + 360,
-                    easing: Konva.Easings.EaseOut,
-                    onFinish: () => {
-                        heart.destroy();
-                        layer.draw();
-                    }
-                });
-
-                anim.play();
-            }
-
-            layer.draw();
-        }
-        const playPauseButton = document.getElementById('playPauseButton');
-        const backgroundMusic = document.getElementById('backgroundMusic');
-        let isPaused = true; // Start in paused state
-
-        playPauseButton.addEventListener('click', () => {
-            isPaused = !isPaused;
-            if (isPaused) {
-                backgroundMusic.pause();
-                playPauseButton.textContent = '▶';
+        for (let row = 0; row < GRID_SIZE; row++) {
+          for (let col = 0; col < GRID_SIZE; col++) {
+            if (row > 0) {
+              connectors.top[row][col] = -connectors.top[row - 1][col];
             } else {
-                backgroundMusic.play().catch(error => console.error('Error al reproducir la música:', error));
-                playPauseButton.textContent = '⏸';
+              connectors.top[row][col] = Math.random() > 0.5 ? 1 : -1;
             }
+            if (col > 0) {
+              connectors.left[row][col] = -connectors.left[row][col - 1];
+            } else {
+              connectors.left[row][col] = Math.random() > 0.5 ? 1 : -1;
+            }
+          }
+        }
+
+        const boardSize = PIECE_SIZE * GRID_SIZE;
+        for (let row = 0; row < GRID_SIZE; row++) {
+          for (let col = 0; col < GRID_SIZE; col++) {
+            const slot = new Konva.Path({
+              x: col * PIECE_SIZE,
+              y: row * PIECE_SIZE,
+              data: generatePuzzlePiecePath(row, col),
+              stroke: "#f9a8d4",
+              strokeWidth: 1,
+              dash: [4, 4],
+            });
+            slotLayer.add(slot);
+
+            const piece = createPuzzlePiece(row, col);
+            pieces.push(piece);
+            layer.add(piece);
+          }
+        }
+
+        slotLayer.draw();
+        shufflePieces(boardSize);
+        layer.draw();
+      }
+
+      function createPuzzlePiece(row, col) {
+        const group = new Konva.Group({
+          x: 0,
+          y: 0,
+          draggable: true,
+          correctX: col * PIECE_SIZE,
+          correctY: row * PIECE_SIZE,
+          row,
+          col,
+          dragBoundFunc: function (pos) {
+            const containerEl = stage.container();
+            const maxX = containerEl.offsetWidth - PIECE_SIZE;
+            const maxY = containerEl.offsetHeight - PIECE_SIZE;
+            return {
+              x: Math.max(0, Math.min(pos.x, maxX)),
+              y: Math.max(0, Math.min(pos.y, maxY)),
+            };
+          },
         });
 
-        // Ensure music is paused initially
-        backgroundMusic.pause();
+        const fullSize = PIECE_SIZE * GRID_SIZE;
+        const scaleX = imageObj.width / fullSize;
+        const scaleY = imageObj.height / fullSize;
 
-        // Lógica para cerrar el modal
-        const closeButton = document.getElementById('closeCompletionModal');
-        closeButton.addEventListener('click', () => {
-            document.getElementById('completionModal').style.display = 'none';
+        const shape = new Konva.Path({
+          x: 0,
+          y: 0,
+          data: generatePuzzlePiecePath(row, col),
+          fillPatternImage: imageObj,
+          fillPatternOffset: {
+            x: col * PIECE_SIZE * scaleX,
+            y: row * PIECE_SIZE * scaleY,
+          },
+          fillPatternScale: {
+            x: 1 / scaleX,
+            y: 1 / scaleY,
+          },
+          stroke: "#db2777",
+          strokeWidth: 1,
         });
+
+        group.add(shape);
+
+        group.on("dragstart touchstart", () => {
+          group.moveToTop();
+          layer.draw();
+        });
+
+        group.on("dragend touchend", () => {
+          const { correctX, correctY } = group.attrs;
+          if (
+            Math.abs(group.x() - correctX) < PIECE_SIZE / 4 &&
+            Math.abs(group.y() - correctY) < PIECE_SIZE / 4
+          ) {
+            group.position({ x: correctX, y: correctY });
+            group.moveToBottom();
+            layer.draw();
+            const sound = document.getElementById("correctSound");
+            sound
+              .play()
+              .catch((error) =>
+                console.error("Error al reproducir el sonido:", error)
+              );
+            createHeartExplosion(
+              correctX + PIECE_SIZE / 2,
+              correctY + PIECE_SIZE / 2
+            );
+            checkPuzzleCompletion();
+          }
+        });
+
+        return group;
+      }
+
+      function generatePuzzlePiecePath(row, col) {
+        const s = PIECE_SIZE;
+        const r = tabRadius;
+        const w = tabWidth;
+        const d = tabDepth;
+        const p = tabPosition;
+
+        const top = row === 0 ? 0 : connectors.top[row][col];
+        const bottom =
+          row === GRID_SIZE - 1 ? 0 : -connectors.top[row + 1][col];
+        const left = col === 0 ? 0 : connectors.left[row][col];
+        const right =
+          col === GRID_SIZE - 1 ? 0 : -connectors.left[row][col + 1];
+
+        let path = `M 0 0 `;
+
+        path += `L ${p - w / 2} 0 `;
+        if (top !== 0) {
+          path += `a ${w / 2} ${d} 0 0 ${top > 0 ? 1 : 0} ${w} 0 `;
+        }
+        path += `L ${s} 0 `;
+
+        path += `L ${s} ${p - w / 2} `;
+        if (right !== 0) {
+          path += `a ${d} ${w / 2} 0 0 ${right > 0 ? 1 : 0} 0 ${w} `;
+        }
+        path += `L ${s} ${s} `;
+
+        path += `L ${p + w / 2} ${s} `;
+        if (bottom !== 0) {
+          path += `a ${w / 2} ${d} 0 0 ${bottom > 0 ? 1 : 0} -${w} 0 `;
+        }
+        path += `L 0 ${s} `;
+
+        path += `L 0 ${p + w / 2} `;
+        if (left !== 0) {
+          path += `a ${d} ${w / 2} 0 0 ${left > 0 ? 1 : 0} 0 -${w} `;
+        }
+        path += `Z`;
+
+        return path;
+      }
+
+      function shufflePieces(boardSize) {
+        const margin = 10;
+        const stageWidth = stage.width();
+        const stageHeight = stage.height();
+        pieces.forEach((p) => {
+          let x, y;
+          if (window.innerWidth > 640) {
+            // Desktop: prefer right side
+            let pieceStartX = boardSize + margin;
+            let pieceEndX = stageWidth - PIECE_SIZE - margin;
+            if (pieceEndX < pieceStartX) {
+              pieceStartX = margin;
+              pieceEndX = stageWidth - PIECE_SIZE - margin;
+            }
+            const areaX = pieceEndX - pieceStartX;
+            x = pieceStartX + Math.random() * areaX;
+
+            let pieceStartY = margin;
+            let pieceEndY = stageHeight - PIECE_SIZE - margin;
+            const areaY = pieceEndY - pieceStartY;
+            y = pieceStartY + Math.random() * areaY;
+          } else {
+            // Mobile: prefer below
+            let pieceStartY = boardSize + margin;
+            let pieceEndY = stageHeight - PIECE_SIZE - margin;
+            if (pieceEndY < pieceStartY) {
+              pieceStartY = margin;
+              pieceEndY = stageHeight - PIECE_SIZE - margin;
+            }
+            const areaY = pieceEndY - pieceStartY;
+            y = pieceStartY + Math.random() * areaY;
+
+            let pieceStartX = margin;
+            let pieceEndX = stageWidth - PIECE_SIZE - margin;
+            const areaX = pieceEndX - pieceStartX;
+            x = pieceStartX + Math.random() * areaX;
+          }
+          p.position({ x, y });
+        });
+        layer.draw();
+      }
+
+      function checkPuzzleCompletion() {
+        if (
+          pieces.every(
+            (p) =>
+              Math.abs(p.x() - p.attrs.correctX) < 1 &&
+              Math.abs(p.y() - p.attrs.correctY) < 1
+          )
+        ) {
+          setTimeout(() => {
+            document.getElementById("completionModal").style.display = "flex";
+          }, 500);
+        }
+      }
+
+      function createHeartExplosion(x, y) {
+        const heartCount = 12;
+        const heartSize = PIECE_SIZE * 0.25;
+
+        const heartPath = `M 0 ${heartSize * 0.2}
+                   C -${heartSize * 0.65} -${heartSize * 0.35}, -${
+          heartSize * 0.95
+        }, ${heartSize * 0.15}, -${heartSize * 0.95}, ${heartSize * 0.55}
+                   C -${heartSize * 0.95}, ${heartSize * 0.95}, -${
+          heartSize * 0.35
+        }, ${heartSize * 1.25}, 0, ${heartSize * 1.25}
+                   C ${heartSize * 0.35}, ${heartSize * 1.25}, ${
+          heartSize * 0.95
+        }, ${heartSize * 0.95}, ${heartSize * 0.95}, ${heartSize * 0.55}
+                   C ${heartSize * 0.95}, ${heartSize * 0.15}, ${
+          heartSize * 0.65
+        }, -${heartSize * 0.35}, 0, ${heartSize * 0.2} Z`;
+
+        for (let i = 0; i < heartCount; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 60 + Math.random() * 120;
+          const heart = new Konva.Path({
+            x: x,
+            y: y,
+            data: heartPath,
+            fill: "#db2777",
+            scale: { x: 0.4, y: 0.4 },
+            opacity: 2,
+            rotation: Math.random() * 360,
+          });
+
+          layer.add(heart);
+
+          const anim = new Konva.Tween({
+            node: heart,
+            duration: 1.2,
+            x: x + Math.cos(angle) * speed,
+            y: y + Math.sin(angle) * speed,
+            scaleX: 1.1,
+            scaleY: 1.1,
+            opacity: 0,
+            rotation: heart.rotation() + 360,
+            easing: Konva.Easings.EaseOut,
+            onFinish: () => {
+              heart.destroy();
+              layer.draw();
+            },
+          });
+
+          anim.play();
+        }
+
+        layer.draw();
+      }
+      const playPauseButton = document.getElementById("playPauseButton");
+      const backgroundMusic = document.getElementById("backgroundMusic");
+      let isPaused = true; // Start in paused state
+
+      playPauseButton.addEventListener("click", () => {
+        isPaused = !isPaused;
+        if (isPaused) {
+          backgroundMusic.pause();
+          playPauseButton.textContent = "▶";
+        } else {
+          backgroundMusic
+            .play()
+            .catch((error) =>
+              console.error("Error al reproducir la música:", error)
+            );
+          playPauseButton.textContent = "⏸";
+        }
+      });
+
+      // Ensure music is paused initially
+      backgroundMusic.pause();
+
+      // Lógica para cerrar el modal
+      const closeButton = document.getElementById("closeCompletionModal");
+      closeButton.addEventListener("click", () => {
+        document.getElementById("completionModal").style.display = "none";
+      });
     </script>
     <script>
-        // Chặn chuột phải
-        document.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
+      // Chặn chuột phải
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      // Chặn F12, Ctrl+U, Ctrl+Shift+I/J/C/S, Cmd+Opt+I (Mac)
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "F12" ||
+          (e.ctrlKey &&
+            e.shiftKey &&
+            ["i", "j", "c", "s"].includes(e.key.toLowerCase())) ||
+          (e.ctrlKey && e.key.toLowerCase() === "u") ||
+          (e.metaKey && e.altKey && e.key.toLowerCase() === "i") || // Cmd + Opt + I
+          (e.metaKey && e.key.toLowerCase() === "u") // Cmd + U
+        ) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Xóa console methods
+      console.log = () => {};
+      console.debug = () => {};
+      console.warn = () => {};
+      console.info = () => {};
+
+      // Phát hiện DevTools bằng thời gian thực thi debugger
+      // setInterval(() => {
+      //     const before = new Date().getTime();
+      //     debugger;
+      //     const after = new Date().getTime();
+      //     if (after - before > 100) {
+      //         document.body.innerHTML =
+      //             '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Error</title><style>body { background: #f8c9d4; color: #ff477e; font-family: Nunito, sans-serif; text-align: center; padding: 50px; }</style></head><body><h1>🔒 ¡No abras las herramientas de desarrollador!</h1><p>Esta página es especial y privada. Disfrútala tal como está. 💜</p><img src="/es/PagFloresMoradas/assets/cora.svg" alt="Corazón" style="width: 100px; margin: 20px auto;"></body></html>';
+      //     }
+      // }, 1000);
+
+      // Phát hiện mở console qua toString tampering
+      (function () {
+        const element = new Image();
+        Object.defineProperty(element, "id", {
+          get: function () {
+            document.body.innerHTML =
+              '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Error</title><style>body { background: #f8c9d4; color: #ff477e; font-family: Nunito, sans-serif; text-align: center; padding: 50px; }</style></head><body><h1>⚠️ ¡No abras la consola!</h1><p>Esto es un secreto entre nosotros. 😘</p><img src="/es/PagFloresMoradas/assets/cora.svg" alt="Corazón" style="width: 100px; margin: 20px auto;"></body></html>';
+            throw new Error("Console is blocked");
+          },
         });
 
-        // Chặn F12, Ctrl+U, Ctrl+Shift+I/J/C/S, Cmd+Opt+I (Mac)
-        document.addEventListener("keydown", function (e) {
-            if (
-                e.key === "F12" ||
-                (e.ctrlKey && e.shiftKey && ["i", "j", "c", "s"].includes(e.key.toLowerCase())) ||
-                (e.ctrlKey && e.key.toLowerCase() === "u") ||
-                (e.metaKey && e.altKey && e.key.toLowerCase() === "i") || // Cmd + Opt + I
-                (e.metaKey && e.key.toLowerCase() === "u") // Cmd + U
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
+        setInterval(() => {
+          console.log(element);
+          // console.clear();
+        }, 2000);
+      })();
 
-        // Xóa console methods
-        console.log = () => { };
-        console.debug = () => { };
-        console.warn = () => { };
-        console.info = () => { };
+      // Ngăn inspect element qua mouse drag
+      document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+      });
 
-        // Phát hiện DevTools bằng thời gian thực thi debugger
-        // setInterval(() => {
-        //     const before = new Date().getTime();
-        //     debugger;
-        //     const after = new Date().getTime();
-        //     if (after - before > 100) {
-        //         document.body.innerHTML =
-        //             '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Error</title><style>body { background: #f8c9d4; color: #ff477e; font-family: Nunito, sans-serif; text-align: center; padding: 50px; }</style></head><body><h1>🔒 ¡No abras las herramientas de desarrollador!</h1><p>Esta página es especial y privada. Disfrútala tal como está. 💜</p><img src="/es/PagFloresMoradas/assets/cora.svg" alt="Corazón" style="width: 100px; margin: 20px auto;"></body></html>';
-        //     }
-        // }, 1000);
-
-        // Phát hiện mở console qua toString tampering
-        (function () {
-            const element = new Image();
-            Object.defineProperty(element, 'id', {
-                get: function () {
-                    document.body.innerHTML =
-                        '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Error</title><style>body { background: #f8c9d4; color: #ff477e; font-family: Nunito, sans-serif; text-align: center; padding: 50px; }</style></head><body><h1>⚠️ ¡No abras la consola!</h1><p>Esto es un secreto entre nosotros. 😘</p><img src="/es/PagFloresMoradas/assets/cora.svg" alt="Corazón" style="width: 100px; margin: 20px auto;"></body></html>';
-                    throw new Error("Console is blocked");
-                }
-            });
-
-            setInterval(() => {
-                console.log(element);
-                // console.clear();
-            }, 2000);
-        })();
-
-        // Ngăn inspect element qua mouse drag
-        document.addEventListener('dragstart', function (e) {
-            e.preventDefault();
-        });
-
-        // Ngăn chọn toàn bộ (Ctrl+A)
-        document.addEventListener('keydown', function (e) {
-            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-                e.preventDefault();
-            }
-        });
+      // Ngăn chọn toàn bộ (Ctrl+A)
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "a") {
+          e.preventDefault();
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>
