@@ -1,32 +1,36 @@
-// Datos de chocolates desde PHP
+const arrUrl = window.location.href.split("/");
+let rutaImg = arrUrl[2].includes("localhost")
+  ? "../assets/img/gifs/"
+  : "../rosas-para-luz/assets/img/gifs/";
+
 const chocolatesData = [
   {
     name: "Trufa de Chocolate",
     title: "Eres mi dulzura",
     message:
       "Cada momento contigo es tan dulce como este chocolate. Te amo con todo mi corazón.",
-    image: "../assets/img/gifs/gatito-1.gif",
+    image: `${rutaImg}gatito-1.gif`,
   },
   {
     name: "Chocolate Blanco",
     title: "Mi amor puro",
     message:
       "Como el chocolate blanco, mi amor por ti es puro y sincero. Eres lo mejor de mi vida.",
-    image: "../assets/img/gifs/gatito-2.gif",
+    image: `${rutaImg}gatito-2.gif`,
   },
   {
     name: "Chocolate con Leche",
     title: "Juntos siempre",
     message:
       "Como el chocolate con leche, somos la combinacion perfecta. Contigo todo es mejor.",
-    image: "../assets/img/gifs/kiss-5.gif",
+    image: `${rutaImg}kiss-5.gif`,
   },
   {
     name: "Trufa Especial",
     title: "Eres especial",
     message:
       "Tan especial como una trufa, asi eres tú para mí. Gracias por existir en mi vida.",
-    image: "../assets/img/gifs/gatito-4.gif",
+    image: `${rutaImg}gatito-4.gif`,
   },
 ];
 
