@@ -38,6 +38,39 @@ const positionMap = {
   "bottom-right": 3,
 };
 
+const container = document.querySelector(".particles");
+const symbols = ["💗", "🌸", "✨", "💖"];
+
+function createParticle() {
+  const particle = document.createElement("span");
+  particle.classList.add("particle");
+  particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+
+  particle.style.left = Math.random() * 100 + "vw";
+  particle.style.fontSize = Math.random() * 10 + 12 + "px";
+  particle.style.animationDuration = Math.random() * 5 + 6 + "s";
+
+  container.appendChild(particle);
+
+  setTimeout(() => {
+    particle.remove();
+  }, 12000);
+}
+
+// Genera partículas lentamente
+setInterval(createParticle, 700);
+
+function showHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = "50%";
+  heart.style.top = "50%";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 1000);
+}
+
 // Pre-cargar imagenes cuando la pagina carga
 function preloadImages() {
   chocolatesData.forEach((choco, index) => {
@@ -229,13 +262,13 @@ document.addEventListener("DOMContentLoaded", () => {
         this.toggleBtn.addEventListener("click", () => this.toggle());
         document.addEventListener("fullscreenchange", () => this.updateIcon());
         document.addEventListener("webkitfullscreenchange", () =>
-          this.updateIcon(),
+          this.updateIcon()
         );
         document.addEventListener("mozfullscreenchange", () =>
-          this.updateIcon(),
+          this.updateIcon()
         );
         document.addEventListener("MSFullscreenChange", () =>
-          this.updateIcon(),
+          this.updateIcon()
         );
       }
     },
@@ -247,15 +280,11 @@ function setupMusicControls() {
   const musicBtn = document.getElementById("musicBtn");
   const playIcon = document.getElementById("playIcon");
   const pauseIcon = document.getElementById("pauseIcon");
-  const volumeSlider = document.getElementById("volumeSlider");
-  const volumeControl = document.getElementById("volumeControl");
 
-  if (!music || !musicBtn || !volumeSlider || !volumeControl) {
+  if (!music || !musicBtn) {
     console.error("Music or control elements not found");
     return;
   }
-
-  music.volume = volumeSlider.value;
 
   music.load();
   music.currentTime = 0;
@@ -293,64 +322,11 @@ function setupMusicControls() {
   musicBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleMusic();
-    if (!volumeControl.classList.contains("visible")) {
-      volumeControl.classList.add("visible");
-      clearTimeout(hideVolumeTimeout);
-      hideVolumeTimeout = setTimeout(
-        () => volumeControl.classList.remove("visible"),
-        2000,
-      );
-    } else {
-      volumeControl.classList.remove("visible");
-    }
-  });
-
-  let hideVolumeTimeout = null;
-  volumeSlider.addEventListener("input", (e) => {
-    music.volume = e.target.value;
-    console.log("Volume set to:", music.volume);
-    clearTimeout(hideVolumeTimeout);
-    volumeControl.classList.add("visible");
-  });
-
-  volumeSlider.addEventListener("change", () => {
-    hideVolumeTimeout = setTimeout(
-      () => volumeControl.classList.remove("visible"),
-      2000,
-    );
-  });
-
-  volumeControl.addEventListener("mouseenter", () =>
-    clearTimeout(hideVolumeTimeout),
-  );
-  volumeControl.addEventListener("mouseleave", () => {
-    hideVolumeTimeout = setTimeout(
-      () => volumeControl.classList.remove("visible"),
-      2000,
-    );
-  });
-
-  volumeSlider.addEventListener("touchstart", (e) => {
-    e.stopPropagation();
-    clearTimeout(hideVolumeTimeout);
-  });
-  volumeSlider.addEventListener("touchend", () => {
-    hideVolumeTimeout = setTimeout(
-      () => volumeControl.classList.remove("visible"),
-      2000,
-    );
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!volumeControl.contains(e.target) && !musicBtn.contains(e.target)) {
-      volumeControl.classList.remove("visible");
-      clearTimeout(hideVolumeTimeout);
-    }
   });
 
   music.addEventListener("loadeddata", () => console.log("Audio data loaded"));
   music.addEventListener("error", (e) =>
-    console.error("Audio error:", e.message),
+    console.error("Audio error:", e.message)
   );
   music.addEventListener("play", () => console.log("Music play event"));
   music.addEventListener("pause", () => console.log("Music pause event"));

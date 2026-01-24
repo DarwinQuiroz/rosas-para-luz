@@ -1,717 +1,788 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background:
-        radial-gradient(ellipse at top, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
-        linear-gradient(180deg, #f8c8c4 0%, #f5b8b5 30%, #e8a5a0 70%, #d4908a 100%);
-    overflow: hidden;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at top,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      rgba(139, 0, 0, 0.15) 0%,
+      transparent 50%
+    ),
+    linear-gradient(180deg, #f8c8c4 0%, #f5b8b5 30%, #e8a5a0 70%, #d4908a 100%);
+  overflow: hidden;
+  margin: 0;
+}
+
+.title {
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  }
 }
 
 .main-title {
-    font-family: "Great Vibes", cursive;
-    font-size: 90px;
-    color: #8b0000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 0;
-    text-align: center;
+  font-family: "Great Vibes", cursive;
+  font-size: 90px;
+  color: #8b0000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  text-align: center;
 }
 
 .chocolate-box {
-    position: relative;
-    height: 480px;
-    width: 480px;
-    cursor: pointer;
-    margin-top: -10px;
+  position: relative;
+  height: 480px;
+  width: 480px;
+  cursor: pointer;
+  margin-top: -10px;
 }
 
 .chocolate-box:before,
 .chocolate-box:after {
-    content: "";
-    position: absolute;
+  content: "";
+  position: absolute;
 }
 
 .chocolate-box:before {
-    width: 256px;
-    height: 256px;
-    background-color: #4b301b;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    box-shadow: 16px 16px #392312;
+  width: 256px;
+  height: 256px;
+  background-color: #4b301b;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  box-shadow: 16px 16px #392312;
 }
 
 .chocolate-box:after {
-    width: 109px;
-    height: 109px;
-    background-color: #2b0900;
-    top: 130px;
-    left: 128px;
-    box-shadow: 112px 0 #2b0900, 112px 112px #2b0900, 0px 112px #2b0900;
+  width: 109px;
+  height: 109px;
+  background-color: #2b0900;
+  top: 130px;
+  left: 128px;
+  box-shadow:
+    112px 0 #2b0900,
+    112px 112px #2b0900,
+    0px 112px #2b0900;
 }
 
 .chocs {
-    position: absolute;
-    z-index: 1;
+  position: absolute;
+  z-index: 1;
 }
 
 .top-left {
-    top: 147px;
-    left: 144px;
+  top: 147px;
+  left: 144px;
 }
 
 .top-left:hover {
-    transform: rotate(25deg);
+  transform: rotate(25deg);
 }
 
 .top-left:active {
-    opacity: 0;
+  opacity: 0;
 }
 
 .bottom-right {
-    left: 259px;
-    top: 259px;
+  left: 259px;
+  top: 259px;
 }
 
 .bottom-right:hover {
-    transform: rotate(25deg);
+  transform: rotate(25deg);
 }
 
 .bottom-right:active {
-    opacity: 0;
+  opacity: 0;
 }
 
 .top-left,
 .bottom-right {
-    position: absolute;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    background-color: #d12511;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 32px 0 #d12511;
-    filter: drop-shadow(3px 3px #ab1503) drop-shadow(-3px 3px #ab1503);
-    transition: .2s;
+  position: absolute;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background-color: #d12511;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 32px 0 #d12511;
+  filter: drop-shadow(3px 3px #ab1503) drop-shadow(-3px 3px #ab1503);
+  transition: 0.2s;
 }
 
 .top-left:after,
 .top-left:before,
 .bottom-right:before,
 .bottom-right:after {
-    content: "";
-    position: absolute;
+  content: "";
+  position: absolute;
 }
 
 .top-left:before,
 .bottom-right:before {
-    width: 48px;
-    height: 48px;
-    background-color: #d12511;
-    transform: rotate(-45deg);
-    top: 16px;
-    left: 16px;
+  width: 48px;
+  height: 48px;
+  background-color: #d12511;
+  transform: rotate(-45deg);
+  top: 16px;
+  left: 16px;
 }
 
 .top-left:after,
 .bottom-right:after {
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, .3);
-    width: 16px;
-    height: 16px;
-    top: 8px;
-    left: 56px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 16px;
+  height: 16px;
+  top: 8px;
+  left: 56px;
 }
 
 .top-right {
-    position: absolute;
-    border-radius: 50%;
-    background-color: #fee8c0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 72px;
-    height: 72px;
-    top: 147px;
-    left: 259px;
-    filter: drop-shadow(3px 3px #ceb587) drop-shadow(-3px 3px #ceb587);
-    overflow: hidden;
-    transition: .2s;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fee8c0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 72px;
+  height: 72px;
+  top: 147px;
+  left: 259px;
+  filter: drop-shadow(3px 3px #ceb587) drop-shadow(-3px 3px #ceb587);
+  overflow: hidden;
+  transition: 0.2s;
 }
 
 .top-right:before,
 .top-right:after {
-    content: "";
-    position: absolute;
-    background-color: #93522b;
-    width: 160px;
-    height: 5px;
-    left: -8px;
+  content: "";
+  position: absolute;
+  background-color: #93522b;
+  width: 160px;
+  height: 5px;
+  left: -8px;
 }
 
 .top-right:before {
-    top: 24px;
-    transform: rotate(-35deg);
-    box-shadow: 0 -24px #93522b;
+  top: 24px;
+  transform: rotate(-35deg);
+  box-shadow: 0 -24px #93522b;
 }
 
 .top-right:after {
-    top: 0;
-    transform: rotate(-15deg);
-    box-shadow: 0 27px #93522b, 0 48px #93522b;
+  top: 0;
+  transform: rotate(-15deg);
+  box-shadow:
+    0 27px #93522b,
+    0 48px #93522b;
 }
 
 .bottom-left:hover {
-    transform: rotate(25deg);
+  transform: rotate(25deg);
 }
 
 .bottom-left:active {
-    opacity: 0;
+  opacity: 0;
 }
 
 .top-right:hover {
-    transform: rotate(25deg);
+  transform: rotate(25deg);
 }
 
 .top-right:active {
-    opacity: 0;
+  opacity: 0;
 }
 
 .bottom-left {
-    position: absolute;
-    border-radius: 50%;
-    background-color: #503520;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 72px;
-    height: 72px;
-    top: 259px;
-    left: 147px;
-    filter: drop-shadow(3px 3px #342010) drop-shadow(-3px 3px #342010);
-    overflow: hidden;
-    transition: .2s;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #503520;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 72px;
+  height: 72px;
+  top: 259px;
+  left: 147px;
+  filter: drop-shadow(3px 3px #342010) drop-shadow(-3px 3px #342010);
+  overflow: hidden;
+  transition: 0.2s;
 }
 
 .bottom-left:before,
 .bottom-left:after {
-    content: "";
-    position: absolute;
-    background-color: #fde7c7;
-    width: 160px;
-    height: 5px;
-    left: -8px;
+  content: "";
+  position: absolute;
+  background-color: #fde7c7;
+  width: 160px;
+  height: 5px;
+  left: -8px;
 }
 
 .bottom-left:before {
-    top: 24px;
-    transform: rotate(-35deg);
-    box-shadow: 0 -24px #fde7c7;
+  top: 24px;
+  transform: rotate(-35deg);
+  box-shadow: 0 -24px #fde7c7;
 }
 
 .bottom-left:after {
-    top: 0;
-    transform: rotate(-15deg);
-    box-shadow: 0 27px #fde7c7, 0 48px #fde7c7;
+  top: 0;
+  transform: rotate(-15deg);
+  box-shadow:
+    0 27px #fde7c7,
+    0 48px #fde7c7;
 }
 
 .box-bottom {
-    position: absolute;
-    background-color: #392312;
-    width: 24px;
-    height: 24px;
-    transform: rotate(45deg);
-    left: 355px;
-    top: 117px;
-    z-index: -1;
-    box-shadow: 0px 338px #392312;
+  position: absolute;
+  background-color: #392312;
+  width: 24px;
+  height: 24px;
+  transform: rotate(45deg);
+  left: 355px;
+  top: 117px;
+  z-index: -1;
+  box-shadow: 0px 338px #392312;
 }
 
 .cover {
-    position: absolute;
-    background-color: #cf2611;
-    width: 240px;
-    height: 240px;
-    border: 8px solid #ae1605;
-    z-index: 2;
-    top: 112px;
-    left: 112px;
-    transform-origin: top;
-    transition: .2s;
-    overflow: hidden;
+  position: absolute;
+  background-color: #cf2611;
+  width: 240px;
+  height: 240px;
+  border: 8px solid #ae1605;
+  z-index: 2;
+  top: 112px;
+  left: 112px;
+  transform-origin: top;
+  transition: 0.2s;
+  overflow: hidden;
 }
 
 .chocolate-box:hover .cover {
-    transform: rotateX(170deg);
-    box-shadow: 8px -8px 32px rgba(0, 0, 0, .5);
+  transform: rotateX(170deg);
+  box-shadow: 8px -8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .chocolate-box:hover .cover:before {
-    display: none;
+  display: none;
 }
 
 .cover:before {
-    position: absolute;
-    content: "Click aqui";
-    color: #ffead2;
-    font-family: "Dancing Script", cursive;
-    padding-top: 27px;
-    padding-bottom: 27px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 42px;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    border: 3px double;
+  position: absolute;
+  content: "Click aqui";
+  color: #ffead2;
+  font-family: "Dancing Script", cursive;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 42px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  border: 3px double;
 }
 
 .cover:after {
-    position: absolute;
-    content: "";
-    background-color: #ffead2;
-    height: 16px;
-    width: 160px;
-    transform: rotate(-45deg);
-    left: -32px;
-    box-shadow: -8px 264px #ffead2;
+  position: absolute;
+  content: "";
+  background-color: #ffead2;
+  height: 16px;
+  width: 160px;
+  transform: rotate(-45deg);
+  left: -32px;
+  box-shadow: -8px 264px #ffead2;
 }
 
 /* Etiquetas de nombres de chocolate */
 .choco-label {
-    position: absolute;
-    display: none;
-    color: #4a2c1a;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 500;
-    transition: .2s;
-    background: rgba(255, 234, 210, 0.95);
-    padding: 8px 16px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 2px solid #d4a574;
-    width: 200px;
-    text-align: center;
-    word-break: break-word;
-    overflow-wrap: break-word;
+  position: absolute;
+  display: none;
+  color: #4a2c1a;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  transition: 0.2s;
+  background: rgba(255, 234, 210, 0.95);
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid #d4a574;
+  width: 200px;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 #label-top-right {
-    top: 155px;
-    left: 360px;
+  top: 155px;
+  left: 360px;
 }
 
 #label-bottom-left {
-    top: 267px;
-    left: -95px;
+  top: 267px;
+  left: -95px;
 }
 
 #label-bottom-right {
-    left: 360px;
-    top: 267px;
+  left: 360px;
+  top: 267px;
 }
 
 #label-top-left {
-    left: -95px;
-    top: 155px;
+  left: -95px;
+  top: 155px;
 }
 
 /* Modal de mensaje de amor */
 .love-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(139, 69, 69, 0.8) 0%, rgba(50, 20, 20, 0.95) 100%);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 69, 69, 0.8) 0%,
+    rgba(50, 20, 20, 0.95) 100%
+  );
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
 }
 
 .love-modal.active {
-    display: flex;
+  display: flex;
 }
 
 .love-message {
-    background: linear-gradient(145deg, #c41e3a, #8b0000);
-    padding: 50px 60px;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.5),
-        inset 0 2px 15px rgba(255, 255, 255, 0.2),
-        0 0 0 8px rgba(196, 30, 58, 0.4);
-    animation: floatIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    max-width: 420px;
-    position: relative;
-    border: 3px solid #ff6b6b;
+  background: linear-gradient(145deg, #c41e3a, #8b0000);
+  padding: 50px 60px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.5),
+    inset 0 2px 15px rgba(255, 255, 255, 0.2),
+    0 0 0 8px rgba(196, 30, 58, 0.4);
+  animation: floatIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 420px;
+  position: relative;
+  border: 3px solid #ff6b6b;
 }
 
 .love-message::before {
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 30px;
-    background: linear-gradient(145deg, #c41e3a, #a01530);
-    border: 3px solid #ff6b6b;
-    border-bottom: none;
-    border-radius: 30px 30px 0 0;
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 30px;
+  background: linear-gradient(145deg, #c41e3a, #a01530);
+  border: 3px solid #ff6b6b;
+  border-bottom: none;
+  border-radius: 30px 30px 0 0;
 }
 
 .love-message::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    width: 15px;
-    height: 15px;
-    background: #8b0000;
-    border-right: 3px solid #ff6b6b;
-    border-bottom: 3px solid #ff6b6b;
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 15px;
+  height: 15px;
+  background: #8b0000;
+  border-right: 3px solid #ff6b6b;
+  border-bottom: 3px solid #ff6b6b;
 }
 
 @keyframes floatIn {
-    0% {
-        transform: scale(0.5) translateY(50px);
-        opacity: 0;
-    }
+  0% {
+    transform: scale(0.5) translateY(50px);
+    opacity: 0;
+  }
 
-    100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 .love-message h2 {
-    color: #fff;
-    font-family: "Great Vibes", cursive;
-    font-size: 48px;
-    margin: 10px 0 10px 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: "Great Vibes", cursive;
+  font-size: 48px;
+  margin: 10px 0 10px 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .love-message p {
-    color: #ffe4e1;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 18px;
-    font-style: italic;
-    margin: 0;
-    line-height: 1.7;
-    padding: 0 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+  color: #ffe4e1;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.7;
+  padding: 0 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .close-btn {
-    margin-top: 10px;
-    padding: 12px 40px;
-    background: linear-gradient(145deg, #fff, #ffe4e1);
-    color: #8b0000;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: "Playfair Display", Georgia, serif;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+  padding: 12px 40px;
+  background: linear-gradient(145deg, #fff, #ffe4e1);
+  color: #8b0000;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .close-btn:hover {
-    background: linear-gradient(145deg, #ffe4e1, #ffd0cc);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(145deg, #ffe4e1, #ffd0cc);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .modal-image {
-    max-width: 280px;
-    max-height: 200px;
-    object-fit: contain;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    display: none;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 280px;
+  max-height: 200px;
+  object-fit: contain;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .modal-image.has-image {
-    display: block;
+  display: block;
 }
 
 /* Decoraciones laterales del modal */
 .decor-left,
 .decor-right {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    opacity: 0.3;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
 }
 
 .decor-left {
-    top: 20px;
-    left: 20px;
-    border-left: 3px solid #ff6b6b;
-    border-top: 3px solid #ff6b6b;
+  top: 20px;
+  left: 20px;
+  border-left: 3px solid #ff6b6b;
+  border-top: 3px solid #ff6b6b;
 }
 
 .decor-right {
-    bottom: 20px;
-    right: 20px;
-    border-right: 3px solid #ff6b6b;
-    border-bottom: 3px solid #ff6b6b;
+  bottom: 20px;
+  right: 20px;
+  border-right: 3px solid #ff6b6b;
+  border-bottom: 3px solid #ff6b6b;
 }
 
 /* Responsive para celulares */
 @media (max-width: 600px) {
-    .main-title {
-        font-size: 70px;
-        margin-top: -30px;
-    }
+  .main-title {
+    font-size: 70px;
+    margin-top: -30px;
+  }
 
-    .chocolate-box {
-        transform: scale(0.8);
-        margin-top: -40px;
-    }
+  .chocolate-box {
+    transform: scale(0.8);
+    margin-top: -40px;
+  }
 
-    .choco-label {
-        font-size: 14px;
-        padding: 6px 12px;
-        white-space: normal !important;
-        word-wrap: break-word;
-        max-width: 120px;
-    }
+  .choco-label {
+    font-size: 14px;
+    padding: 6px 12px;
+    white-space: normal !important;
+    word-wrap: break-word;
+    max-width: 120px;
+  }
 
-    #label-top-right {
-        left: 320px;
-    }
+  #label-top-right {
+    left: 320px;
+  }
 
-    #label-bottom-left {
-        left: -60px;
-    }
+  #label-bottom-left {
+    left: -60px;
+  }
 
-    #label-bottom-right {
-        left: 320px;
-    }
+  #label-bottom-right {
+    left: 320px;
+  }
 
-    #label-top-left {
-        left: -50px;
-    }
+  #label-top-left {
+    left: -50px;
+  }
 
-    .love-message {
-        padding: 30px 25px;
-        margin: 20px;
-        max-width: 320px;
-    }
+  .love-message {
+    padding: 30px 25px;
+    margin: 20px;
+    max-width: 320px;
+  }
 
-    .love-message h2 {
-        font-size: 36px;
-    }
+  .love-message h2 {
+    font-size: 36px;
+  }
 
-    .love-message p {
-        font-size: 16px;
-    }
+  .love-message p {
+    font-size: 16px;
+  }
 
-    .close-btn {
-        padding: 10px 30px;
-        font-size: 14px;
-    }
+  .close-btn {
+    padding: 10px 30px;
+    font-size: 14px;
+  }
 
-    .decor-left,
-    .decor-right {
-        width: 40px;
-        height: 40px;
-    }
+  .decor-left,
+  .decor-right {
+    width: 40px;
+    height: 40px;
+  }
 
-    .modal-image {
-        max-width: 200px;
-        max-height: 150px;
-    }
+  .modal-image {
+    max-width: 200px;
+    max-height: 150px;
+  }
 }
 
 @media (max-width: 400px) {
-    .main-title {
-        font-size: 50px;
-        margin-top: -20px;
-    }
+  .main-title {
+    font-size: 50px;
+    margin-top: -20px;
+  }
 
-    .chocolate-box {
-        transform: scale(0.7);
-        margin-top: -60px;
-    }
+  .chocolate-box {
+    transform: scale(0.7);
+    margin-top: -60px;
+  }
 
-    .love-message {
-        padding: 25px 20px;
-        max-width: 280px;
-    }
+  .love-message {
+    padding: 25px 20px;
+    max-width: 280px;
+  }
 
-    .love-message h2 {
-        font-size: 30px;
-    }
+  .love-message h2 {
+    font-size: 30px;
+  }
 
-    .love-message p {
-        font-size: 14px;
-    }
+  .love-message p {
+    font-size: 14px;
+  }
 
-    .modal-image {
-        max-width: 160px;
-        max-height: 120px;
-    }
+  .modal-image {
+    max-width: 160px;
+    max-height: 120px;
+  }
 }
 
 .text-white {
-    color: white !important;
+  color: white !important;
 }
 
 .btn-fullscreen-toggle {
-    background-color: rgba(209, 37, 17, 0.8);
-    border: 1px solid #8b0000;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 10px;
-    transition: all 0.3s ease;
+  background-color: rgba(209, 37, 17, 0.8);
+  border: 1px solid #8b0000;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease;
 }
 
 .btn-fullscreen-toggle:hover {
-    background-color: #d12511;
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
+  background-color: #d12511;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
 }
 
 .music-control {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .music-btn {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #d12511, #8b0000);
-    border: 1px solid #8b0000;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #d12511, #8b0000);
+  border: 1px solid #8b0000;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
 }
 
 .music-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.7);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(139, 0, 0, 0.7);
 }
 
 .music-btn:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .music-btn svg {
-    width: 24px;
-    height: 24px;
-    fill: #fff;
+  width: 24px;
+  height: 24px;
+  fill: #fff;
 }
 
 .volume-control {
-    width: 120px;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(139, 0, 0, 0.7);
-    margin-top: 10px;
-    display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  width: 120px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(139, 0, 0, 0.7);
+  margin-top: 10px;
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .volume-control.visible {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .volume-control input {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
 }
 
 .volume-control input::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #ff4d6d;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ff4d6d;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .volume-control input::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: #ff4d6d;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    border: none;
+  width: 16px;
+  height: 16px;
+  background: #ff4d6d;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
 /* Mobile adjustments */
 @media only screen and (max-width: 768px) {
-    .music-control {
-        right: 15px;
-    }
+  .music-control {
+    right: 15px;
+  }
 
-    .music-btn {
-        width: 35px;
-        height: 35px;
-    }
+  .music-btn {
+    width: 35px;
+    height: 35px;
+  }
 
-    .music-btn svg {
-        width: 22px;
-        height: 22px;
-    }
+  .music-btn svg {
+    width: 22px;
+    height: 22px;
+  }
 
-    .volume-control {
-        width: 100px;
-        margin-top: 8px;
-    }
+  .volume-control {
+    width: 100px;
+    margin-top: 8px;
+  }
 
-    .volume-control input {
-        height: 10px;
-    }
+  .volume-control input {
+    height: 10px;
+  }
 
-    .volume-control input::-webkit-slider-thumb {
-        width: 18px;
-        height: 18px;
-    }
+  .volume-control input::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+  }
 
-    .volume-control input::-moz-range-thumb {
-        width: 18px;
-        height: 18px;
-    }
+  .volume-control input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Contenedor de partículas */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Partícula individual */
+.particle {
+  position: absolute;
+  top: -10px;
+  font-size: 14px;
+  opacity: 0.4;
+  animation: fall linear infinite;
+}
+
+/* Animación de caída lenta */
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(110vh) translateX(30px) rotate(360deg);
+    opacity: 0;
+  }
 }

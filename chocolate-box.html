@@ -1,84 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Para ti, mi amor</title>
+    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <link rel="stylesheet" href="assets/css/back-button.css" />
-    <link rel="stylesheet" href="assets/css/chocolate-box.css">
-</head>
+    <link rel="stylesheet" href="assets/css/chocolate-box.css" />
+  </head>
 
-<body>
-    <button class="back-button" onclick="goBack()">⬅ Volver</button>
+  <body>
+    <button class="back-button" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
 
-    <h1 class="main-title">Para ti, mi amor</h1>
+    <div class="particles"></div>
+
+    <h1 class="main-title title">Para mi hermosa Luz</h1>
     <div class="music-control">
-        <button class="music-btn" id="musicBtn" aria-label="Toggle music">
-            <svg id="playIcon" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-            </svg>
-            <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
-                <path d="M6 19h4V5H6zm8-14v14h4V5z" />
-            </svg>
-        </button>
-        <div class="volume-control" id="volumeControl">
-            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" aria-label="Volume control">
-        </div>
+      <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+          <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+        </svg>
+      </button>
     </div>
+
     <audio id="backgroundMusic" loop preload="auto">
-        <source src="https://dedicapag.com/es/PagChoco/musicas/Camila - Todo Cambió.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
+      <source src="assets/sound/todo-cambio.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
     </audio>
+
     <div class="chocolate-box">
-        <div class="chocs">
-            <div id="top-left" class="top-left"></div>
-            <div id="top-right" class="top-right"></div>
-            <div id="bottom-left" class="bottom-left"></div>
-            <div id="bottom-right" class="bottom-right"></div>
-        </div>
-        <div class="box-bottom"></div>
-        <div class="cover"></div>
-        <div id="label-top-left" class="choco-label">Trufa de Chocolate</div>
-        <div id="label-top-right" class="choco-label">Chocolate Blanco</div>
-        <div id="label-bottom-left" class="choco-label">Chocolate con Leche</div>
-        <div id="label-bottom-right" class="choco-label">Trufa Especial</div>
+      <div class="chocs">
+        <div id="top-left" class="top-left"></div>
+        <div id="top-right" class="top-right"></div>
+        <div id="bottom-left" class="bottom-left"></div>
+        <div id="bottom-right" class="bottom-right"></div>
+      </div>
+      <div class="box-bottom"></div>
+      <div class="cover"></div>
+      <div id="label-top-left" class="choco-label">Trufa de Chocolate</div>
+      <div id="label-top-right" class="choco-label">Chocolate Blanco</div>
+      <div id="label-bottom-left" class="choco-label">Chocolate con Leche</div>
+      <div id="label-bottom-right" class="choco-label">Trufa Especial</div>
     </div>
 
     <!-- Modal de mensaje de amor -->
     <div id="loveModal" class="love-modal">
-        <div class="love-message">
-            <div class="decor-left"></div>
-            <div class="decor-right"></div>
-            <h2 id="modalTitle"></h2>
-            <p id="modalText"></p>
-            <img id="modalImage" class="modal-image" src="" alt="Imagen de amor">
-            <button class="close-btn" onclick="closeModal()">Cerrar</button>
-        </div>
+      <div class="love-message">
+        <div class="decor-left"></div>
+        <div class="decor-right"></div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <img id="modalImage" class="modal-image" src="" alt="Imagen de amor" />
+        <button class="close-btn" onclick="closeModal()">Cerrar</button>
+      </div>
     </div>
 
     <div class="container" style="display: none">
-        <div id="status" class="status disconnected">Conectando...</div>
-        <div id="error" class="error" style="display: none"></div>
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
 
-        <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
-        <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
-        <label>Navegador:
-            <strong id="miNavegador" style="color: #667eea">-</strong></label>
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/chocolate-box.js"></script>
 
     <script>
-        function goBack() {
-            window.location.href = "index.html";
-        }
+      function goBack() {
+        window.location.href = "index.html";
+      }
     </script>
 
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -87,15 +97,14 @@
     <script src="assets/js/firebase-config.js"></script>
 
     <script>
-        (function () {
-            detectarIP();
-            actualizarFechaHora();
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
 
-            setTimeout(() => {
-                agregarDatos("Chocolate");
-            }, 1000);
-        })();
+        setTimeout(() => {
+          agregarDatos("Chocolate");
+        }, 1000);
+      })();
     </script>
-</body>
-
+  </body>
 </html>
