@@ -448,7 +448,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let counterInterval;
 
   const episodeData = {
-    1: { title: "1. hola", description: "asdasdasds asdsadsadsad" },
+    1: {
+      title: "1. Bajo la luz del corazón",
+      description:
+        "Un instante breve, pero lleno de significado, donde el tiempo parece detenerse.",
+    },
   };
 
   profileCards.forEach((card) => {
@@ -516,8 +520,8 @@ document.addEventListener("DOMContentLoaded", function () {
       episodesRow.innerHTML = `                        <div class="episode-thumb" data-episode="1" data-image="${rutaAssets}img/cover-2.png">
                             <img src="${rutaAssets}img/cover-2.png" alt="Episodio 1" />
                             <div class="episode-number">1</div>
-                            <div class="episode-duration">1hora</div>
-                            <div class="episode-overlay">1. hola</div>
+                            <div class="episode-duration">Una eternidad</div>
+                            <div class="episode-overlay">1. Bajo la luz del corazón</div>
                         </div>
                     `;
       attachEpisodeListeners();
@@ -530,7 +534,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let sectionText = document.createElement("p");
       sectionText.className = "section-text";
       sectionText.textContent =
-        "Contigo, cada instante se siente especial, como si el mundo se detuviera solo para vernos. Tus gestos, tus silencios… todo en ti escribe una historia que no necesita guion.";
+        "Contigo, cada instante se siente especial, como si el mundo se detuviera solo para vernos. Tus gestos, tus silencios… todo en ti escribe una historia que no necesita guión.";
       heroSection.appendChild(sectionText);
     } else if (section === "musica") {
       seriesLabel.style.display = "none";
@@ -554,12 +558,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="lista-subtitle">Cada día descubro más motivos para quererte. Aquí hay algunos que iluminan mi corazón. ♥</p>
                         <ul class="lista-reasons">
                             <li>Por tu sonrisa</li>
-                                                        <li>Por tu sonrisa</li>
-                                                        <li>Por tu valentía</li>
-                                                        <li>Por tu escencia</li>
-                                                        <li>Por tu ternura</li>
-                                                        <li>Por tu voz</li>
-                                                    </ul>
+                            <li>Por tu mirada</li>
+                            <li>Por tu valentía</li>
+                            <li>Por tu escencia</li>
+                            <li>Por tu ternura</li>
+                            <li>Por tu voz</li>
+                        </ul>
                     `;
       heroSection.appendChild(listaContent);
       return;
@@ -590,15 +594,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateSection("inicio");
 
-  playButton.addEventListener("click", function () {
-    wasMusicPlaying = window.profilePlayer.isPlaying;
-    if (wasMusicPlaying) {
-      window.profilePlayer.togglePlay();
-    }
-    videoPlayer.style.display = "flex";
+  //   playButton.addEventListener("click", function () {
+  //     wasMusicPlaying = window.profilePlayer.isPlaying;
+  //     if (wasMusicPlaying) {
+  //       window.profilePlayer.togglePlay();
+  //     }
+  //     videoPlayer.style.display = "flex";
 
-    romanticVideo.play();
-  });
+  //     romanticVideo.play();
+  //   });
 
   infoButton.addEventListener("click", function () {
     infoModal.style.display = "flex";
