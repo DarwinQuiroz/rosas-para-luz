@@ -5,28 +5,28 @@ const chocolatesData = [
     title: "Eres mi dulzura",
     message:
       "Cada momento contigo es tan dulce como este chocolate. Te amo con todo mi corazón.",
-    image: "",
+    image: "../assets/img/gifs/gatito-1.gif",
   },
   {
     name: "Chocolate Blanco",
     title: "Mi amor puro",
     message:
       "Como el chocolate blanco, mi amor por ti es puro y sincero. Eres lo mejor de mi vida.",
-    image: "",
+    image: "../assets/img/gifs/gatito-2.gif",
   },
   {
     name: "Chocolate con Leche",
     title: "Juntos siempre",
     message:
       "Como el chocolate con leche, somos la combinacion perfecta. Contigo todo es mejor.",
-    image: "",
+    image: "../assets/img/gifs/kiss-5.gif",
   },
   {
     name: "Trufa Especial",
     title: "Eres especial",
     message:
       "Tan especial como una trufa, asi eres tú para mí. Gracias por existir en mi vida.",
-    image: "",
+    image: "../assets/img/gifs/gatito-4.gif",
   },
 ];
 
