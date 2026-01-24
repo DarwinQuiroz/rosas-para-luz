@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link
+      rel="preload"
+      as="image"
+      href="vecteezy_ai-generated-a-loving-couple-holding-a-glittering-red-heart_38126758.jpeg"
+    /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Para Ti</title>
+    <link rel="stylesheet" href="assets/css/netflix-page.css" />
+  </head>
+  <style>
+    .hero-section.inicio {
+      background:
+        linear-gradient(77deg, rgba(0, 0, 0, 0.6), transparent 85%),
+        url("../assets/img/cover.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
+
+  <body>
+    <!-- Profile Selection Screen -->
+    <section id="profile-selection">
+      <div class="netflix-logo">
+        <svg
+          viewBox="0 0 111 30"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+        >
+          <g>
+            <path
+              d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z"
+            ></path>
+          </g>
+        </svg>
+      </div>
+      <h1 class="profile-title">¿Quién está viendo ahora?</h1>
+
+      <div class="profiles-container">
+        <div class="profile-card" data-profile="hands">
+          <div class="profile-image">
+            <img src="assets/img/luz_2.jpeg" alt="Perfil 2" />
+          </div>
+          <div class="profile-name">Luz</div>
+        </div>
+      </div>
+      <div class="player-container" id="player">
+        <div class="spotify-icon">♪</div>
+        <div class="player-header">
+          <img
+            src="../assets/img/disco.png"
+            alt="Album Cover"
+            class="album-cover"
+            id="albumCover"
+          />
+          <div class="song-info">
+            <div class="song-title" id="songTitle">
+              The Weeknd - Die For You
+            </div>
+          </div>
+          <button class="favorite-btn" id="favoriteBtn">♡</button>
+        </div>
+        <div class="controls">
+          <button class="control-btn play-btn" id="playBtn">
+            <svg class="play-icon-svg" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+        <div class="volume-controls">
+          <span class="volume-icon" id="volumeIcon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+              />
+            </svg>
+          </span>
+          <div class="volume-slider-container" id="volumeSliderContainer">
+            <div class="volume-slider-vertical" id="volumeSliderVertical">
+              <div class="volume-slider-fill" id="volumeSliderFill"></div>
+            </div>
+            <div class="volume-percentage" id="volumePercentage">70%</div>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar">
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="time-info">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+        <div class="wave-animation"></div>
+        <audio
+          id="audioPlayer"
+          src="assets/sound/die-for-you.mp3"
+          preload="auto"
+        ></audio>
+      </div>
+    </section>
+
+    <!-- Main Content Screen -->
+    <section id="series-detail">
+      <div class="netflix-logo">
+        <svg
+          viewBox="0 0 111 30"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+        >
+          <g>
+            <path
+              d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z"
+            ></path>
+          </g>
+        </svg>
+      </div>
+      <button class="back-button" id="back-to-profiles">
+        Gestionar perfiles
+      </button>
+      <div class="hero-section inicio">
+        <nav class="nav-bar">
+          <div class="nav-item active" data-nav="inicio">Inicio</div>
+          <div class="nav-item" data-nav="series">Series</div>
+          <div class="nav-item" data-nav="musica">Música</div>
+          <div class="nav-item" data-nav="lista">Mi lista</div>
+        </nav>
+        <div class="series-content">
+          <div class="series-label"></div>
+          <h1 class="series-title">Un poquito de nosotros</h1>
+          <div class="year-duration">
+            13+ 2025 • 1 episodios • Romance • Drama
+          </div>
+          <p class="series-description">
+            Eres el tesoro más valioso que tengo, prometo cuidarte y estar
+            contigo en las buenas y en las malas. El amor es una decisión y yo
+            decido estar contigo el resto de mi vida. Te amo como nunca lo he
+            hecho, mi amor ♥
+          </p>
+          <div class="action-buttons">
+            <button class="play-button" id="play-button">
+              <span class="play-icon">▶</span> Reproducir
+            </button>
+            <button class="info-button" id="info-button">
+              <span class="info-icon">ⓘ</span> Más información
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="episodes-section">
+        <h2 class="episodes-title">Episodios</h2>
+        <div class="episodes-row">
+          <div
+            class="episode-thumb"
+            data-episode="1"
+            data-image="assets/img/cover-2.png"
+          >
+            <img src="assets/img/cover-2.png" alt="Episodio 1" />
+            <div class="episode-number">1</div>
+            <div class="episode-duration">1hora</div>
+            <div class="episode-overlay">1. hola</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Music Player in Music Section -->
+      <div
+        class="music-player-section"
+        id="music-player-section"
+        style="display: none"
+      >
+        <div class="player-container" id="music-section-player">
+          <div class="spotify-icon">♪</div>
+          <div class="player-header">
+            <img
+              src="../assets/img/disco.png"
+              alt="Album Cover"
+              class="album-cover"
+              id="musicAlbumCover"
+            />
+            <div class="song-info">
+              <div class="song-title" id="musicSongTitle">
+                The Weeknd - Die For You
+              </div>
+            </div>
+            <button class="favorite-btn" id="musicFavoriteBtn">♡</button>
+          </div>
+          <div class="controls">
+            <button class="control-btn play-btn" id="musicPlayBtn">
+              <svg class="play-icon-svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </button>
+          </div>
+          <div class="volume-controls">
+            <span class="volume-icon" id="musicVolumeIcon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+                />
+              </svg>
+            </span>
+            <div
+              class="volume-slider-container"
+              id="musicVolumeSliderContainer"
+            >
+              <div
+                class="volume-slider-vertical"
+                id="musicVolumeSliderVertical"
+              >
+                <div
+                  class="volume-slider-fill"
+                  id="musicVolumeSliderFill"
+                ></div>
+              </div>
+              <div class="volume-percentage" id="musicVolumePercentage">
+                70%
+              </div>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" id="musicProgressBar">
+              <div class="progress" id="musicProgress"></div>
+            </div>
+            <div class="time-info">
+              <span id="musicCurrentTime">0:00</span>
+              <span id="musicDuration">0:00</span>
+            </div>
+          </div>
+          <div class="wave-animation"></div>
+          <audio
+            id="musicAudioPlayer"
+            src="https://dedicapag.com/es/PagNet/music/The%20Weeknd%20-%20Die%20For%20You.mp3"
+            preload="auto"
+          ></audio>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Modal -->
+    <div class="modal" id="info-modal">
+      <div class="modal-content">
+        <button class="close-modal" id="close-modal">×</button>
+        <div
+          class="modal-image"
+          style="background-image: url(&quot;../assets/img/cover-2.png&quot;)"
+        >
+          <img src="../assets/img/cover-2.png" alt="Serie romántica" />
+        </div>
+        <div class="modal-info">
+          <h2 class="modal-title">Un poquito de nosotros</h2>
+          <p class="modal-details">
+            <strong
+              >Duración: 1 episodios • Año: 2024 Clasificación: 13+ • Género:
+              Romance, Drama</strong
+            ><br /><br />
+            Una serie íntima que explora el poder transformador del amor
+            verdadero...<br /><br />
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Episode Detail Modal -->
+    <div class="episode-modal" id="episode-modal">
+      <div class="episode-modal-content">
+        <button class="close-episode-modal" id="close-episode-modal">×</button>
+        <img
+          class="episode-modal-image"
+          id="episode-modal-image"
+          src=""
+          alt="Episode Image"
+        />
+        <div class="episode-modal-info">
+          <h3 class="episode-modal-title" id="episode-modal-title"></h3>
+          <p
+            class="episode-modal-description"
+            id="episode-modal-description"
+          ></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <!-- Video Player -->
+    <div class="video-player" id="video-player">
+      <div class="video-container">
+        <button class="close-video" id="close-video">×</button>
+        <video controls id="romantic-video">
+          <source
+            src="https://f004.backblazeb2.com/file/Dedicapag-Net-2025/videos%2F6974fbdc5e918_grok_video_2026-01-24-12-03-06.mp4"
+            type="video/mp4"
+          />
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </div>
+    </div>
+
+    <script>
+      // Music Player JavaScript
+      class MusicPlayer {
+        constructor(
+          containerId,
+          audioId,
+          playBtnId,
+          favoriteBtnId,
+          progressBarId,
+          progressId,
+          currentTimeId,
+          durationId,
+          volumeIconId,
+          volumeSliderContainerId,
+          volumeSliderFillId,
+          volumePercentageId,
+          albumCoverId,
+        ) {
+          this.isPlaying = false;
+          this.isFavorite = false;
+          this.volume = 0.7;
+          this.showVolumeSlider = false;
+          this.songInfo = {
+            title: "The Weeknd - Die For You",
+            cover: "disco.png",
+            audio: "../assets/sound/die-for-you.mp3",
+          };
+
+          this.containerId = containerId;
+          this.audioId = audioId;
+          this.playBtnId = playBtnId;
+          this.favoriteBtnId = favoriteBtnId;
+          this.progressBarId = progressBarId;
+          this.progressId = progressId;
+          this.currentTimeId = currentTimeId;
+          this.durationId = durationId;
+          this.volumeIconId = volumeIconId;
+          this.volumeSliderContainerId = volumeSliderContainerId;
+          this.volumeSliderFillId = volumeSliderFillId;
+          this.volumePercentageId = volumePercentageId;
+          this.albumCoverId = albumCoverId;
+
+          this.initializeElements();
+          this.attachEventListeners();
+          this.updateVolumeDisplay();
+          this.checkAudioAvailability();
+        }
+        initializeSharedAudio() {
+          // Solo actualizar las referencias de tiempo y progreso
+          this.audioPlayer.addEventListener("timeupdate", () => {
+            if (
+              this.player.style.display !== "none" &&
+              this.player.closest("#music-player-section")?.style.display ===
+                "block"
+            ) {
+              this.currentTime = this.audioPlayer.currentTime;
+              this.updateProgress();
+            }
+          });
+        }
+
+        initializeElements() {
+          this.player = document.getElementById(this.containerId);
+          this.audioPlayer = document.getElementById(this.audioId);
+          this.playBtn = document.getElementById(this.playBtnId);
+          this.favoriteBtn = document.getElementById(this.favoriteBtnId);
+          this.progressBar = document.getElementById(this.progressBarId);
+          this.progress = document.getElementById(this.progressId);
+          this.currentTimeEl = document.getElementById(this.currentTimeId);
+          this.durationEl = document.getElementById(this.durationId);
+          this.albumCover = document.getElementById(this.albumCoverId);
+          this.volumeIcon = document.getElementById(this.volumeIconId);
+          this.volumeSliderContainer = document.getElementById(
+            this.volumeSliderContainerId,
+          );
+          this.volumeSliderFill = document.getElementById(
+            this.volumeSliderFillId,
+          );
+          this.volumePercentage = document.getElementById(
+            this.volumePercentageId,
+          );
+
+          // Set initial volume
+          this.audioPlayer.volume = this.volume;
+        }
+
+        checkAudioAvailability() {
+          // Check if audio file is accessible
+          fetch(this.songInfo.audio, { method: "HEAD" })
+            .then((response) => {
+              if (!response.ok) {
+                console.error(
+                  `Audio file not accessible: ${this.songInfo.audio}, Status: ${response.status}`,
+                );
+              } else {
+                console.log(`Audio file found: ${this.songInfo.audio}`);
+              }
+            })
+            .catch((error) => {
+              console.error(
+                `Error checking audio file: ${this.songInfo.audio}`,
+                error,
+              );
+            });
+        }
+
+        attachEventListeners() {
+          this.audioPlayer.addEventListener("loadedmetadata", () => {
+            this.updateDurationDisplay();
+          });
+
+          this.audioPlayer.addEventListener("canplay", () => {
+            this.updateDurationDisplay();
+          });
+
+          this.audioPlayer.addEventListener("timeupdate", () => {
+            this.currentTime = this.audioPlayer.currentTime;
+            this.updateProgress();
+          });
+
+          this.audioPlayer.addEventListener("ended", () => {
+            this.togglePlay();
+          });
+
+          this.audioPlayer.addEventListener("error", (e) => {
+            console.error("Audio playback error:", e);
+            console.error("Error code:", this.audioPlayer.error.code);
+            console.error("Error message:", this.audioPlayer.error.message);
+          });
+
+          this.playBtn.addEventListener("click", () => this.togglePlay());
+          this.favoriteBtn.addEventListener("click", () =>
+            this.toggleFavorite(),
+          );
+          this.progressBar.addEventListener("click", (e) => this.seekTo(e));
+          this.albumCover.addEventListener("click", () => this.togglePlay());
+          this.volumeIcon.addEventListener("click", () =>
+            this.toggleVolumeSlider(),
+          );
+
+          const volumeSliderVertical = this.volumeSliderContainer.querySelector(
+            ".volume-slider-vertical",
+          );
+          if (volumeSliderVertical) {
+            volumeSliderVertical.addEventListener("click", (e) =>
+              this.setVolumeFromVerticalBar(e),
+            );
+          }
+
+          document.addEventListener("click", (e) => {
+            if (!e.target.closest(".volume-controls")) {
+              this.hideVolumeSlider();
+            }
+          });
+        }
+
+        // Reemplazar syncWith() con esta función más simple
+        linkPlayers(otherPlayer) {
+          // Solo sincroniza estados visuales, no el audio
+          this.isPlaying = otherPlayer.isPlaying;
+          this.isFavorite = otherPlayer.isFavorite;
+          this.volume = otherPlayer.volume;
+
+          // Actualizar UI sin tocar el audio
+          if (this.isPlaying) {
+            this.playBtn.innerHTML = `
+            <svg class="pause-icon-svg" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        `;
+            this.player.classList.add("playing");
+          } else {
+            this.playBtn.innerHTML = `
+            <svg class="play-icon-svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+        `;
+            this.player.classList.remove("playing");
+          }
+
+          this.favoriteBtn.textContent = this.isFavorite ? "❤" : "♡";
+          this.favoriteBtn.classList.toggle("active", this.isFavorite);
+          this.updateVolumeDisplay();
+        }
+
+        togglePlay() {
+          this.isPlaying = !this.isPlaying;
+
+          if (this.isPlaying) {
+            this.playBtn.innerHTML = `
+            <svg class="pause-icon-svg" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        `;
+
+            // Fix for audio quality issues after pause/resume
+            const currentTime = this.audioPlayer.currentTime;
+            const playPromise = this.audioPlayer.play();
+
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  // Audio started successfully
+                  this.player.classList.add("playing");
+                })
+                .catch((error) => {
+                  console.error("Error playing audio:", error);
+                  // Try to fix audio issues by slightly adjusting currentTime
+                  this.audioPlayer.currentTime = currentTime + 0.01;
+                  setTimeout(() => {
+                    this.audioPlayer
+                      .play()
+                      .then(() => {
+                        this.player.classList.add("playing");
+                      })
+                      .catch((retryError) => {
+                        console.error("Retry play failed:", retryError);
+                        this.isPlaying = false;
+                        this.playBtn.innerHTML = `
+                                    <svg class="play-icon-svg" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                `;
+                        this.player.classList.remove("playing");
+                      });
+                  }, 100);
+                });
+            } else {
+              this.player.classList.add("playing");
+            }
+          } else {
+            this.playBtn.innerHTML = `
+            <svg class="play-icon-svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+        `;
+            this.audioPlayer.pause();
+            this.player.classList.remove("playing");
+
+            // Small delay to ensure proper pause state
+            setTimeout(() => {
+              if (!this.isPlaying) {
+                this.audioPlayer.currentTime = this.audioPlayer.currentTime;
+              }
+            }, 50);
+          }
+
+          // Sync with other player
+          // Cambiar estas líneas al final de togglePlay():
+          if (window.profilePlayer && this !== window.profilePlayer) {
+            window.profilePlayer.linkPlayers(this);
+          } else if (window.musicPlayer && this !== window.musicPlayer) {
+            window.musicPlayer.linkPlayers(this);
+          }
+        }
+        // Agregar esta función después del constructor
+        resetAudioBuffer() {
+          const currentTime = this.audioPlayer.currentTime;
+          const wasPlaying = !this.audioPlayer.paused;
+
+          this.audioPlayer.load();
+          this.audioPlayer.currentTime = currentTime;
+
+          if (wasPlaying) {
+            this.audioPlayer.play().catch((error) => {
+              console.error("Error resetting audio buffer:", error);
+            });
+          }
+        }
+
+        toggleFavorite() {
+          this.isFavorite = !this.isFavorite;
+          this.favoriteBtn.textContent = this.isFavorite ? "❤" : "♡";
+          this.favoriteBtn.classList.toggle("active", this.isFavorite);
+
+          if (window.profilePlayer && this !== window.profilePlayer) {
+            window.profilePlayer.isFavorite = this.isFavorite;
+            window.profilePlayer.favoriteBtn.textContent = this.isFavorite
+              ? "❤"
+              : "♡";
+            window.profilePlayer.favoriteBtn.classList.toggle(
+              "active",
+              this.isFavorite,
+            );
+          } else if (window.musicPlayer && this !== window.musicPlayer) {
+            window.musicPlayer.isFavorite = this.isFavorite;
+            window.musicPlayer.favoriteBtn.textContent = this.isFavorite
+              ? "❤"
+              : "♡";
+            window.musicPlayer.favoriteBtn.classList.toggle(
+              "active",
+              this.isFavorite,
+            );
+          }
+        }
+
+        seekTo(e) {
+          const rect = this.progressBar.getBoundingClientRect();
+          const percent = (e.clientX - rect.left) / rect.width;
+          const newTime = percent * this.audioPlayer.duration;
+
+          // Ensure clean seek
+          this.audioPlayer.currentTime = newTime;
+          this.currentTime = newTime;
+
+          // Force a small buffer refresh to prevent audio quality issues
+          if (this.isPlaying) {
+            const playPromise = this.audioPlayer.play();
+            if (playPromise !== undefined) {
+              playPromise.catch((error) => {
+                console.error("Error after seek:", error);
+                setTimeout(() => {
+                  this.audioPlayer.play();
+                }, 50);
+              });
+            }
+          }
+
+          this.updateProgress();
+
+          // Sync with other player
+          if (window.profilePlayer && this !== window.profilePlayer) {
+            window.profilePlayer.audioPlayer.currentTime = newTime;
+          } else if (window.musicPlayer && this !== window.musicPlayer) {
+            window.musicPlayer.audioPlayer.currentTime = newTime;
+          }
+        }
+
+        toggleVolumeSlider() {
+          this.showVolumeSlider = !this.showVolumeSlider;
+          if (this.showVolumeSlider) {
+            this.volumeSliderContainer.classList.add("show");
+          } else {
+            this.volumeSliderContainer.classList.remove("show");
+          }
+        }
+
+        hideVolumeSlider() {
+          this.showVolumeSlider = false;
+          this.volumeSliderContainer.classList.remove("show");
+        }
+
+        setVolumeFromVerticalBar(e) {
+          const rect = e.target.getBoundingClientRect();
+          const percent = (rect.bottom - e.clientY) / rect.height;
+          this.setVolume(percent);
+        }
+
+        setVolume(value) {
+          this.volume = Math.max(0, Math.min(1, value));
+          this.audioPlayer.volume = this.volume;
+          this.updateVolumeDisplay();
+
+          if (window.profilePlayer && this !== window.profilePlayer) {
+            window.profilePlayer.volume = this.volume;
+            window.profilePlayer.audioPlayer.volume = this.volume;
+            window.profilePlayer.updateVolumeDisplay();
+          } else if (window.musicPlayer && this !== window.musicPlayer) {
+            window.musicPlayer.volume = this.volume;
+            window.musicPlayer.audioPlayer.volume = this.volume;
+            window.musicPlayer.updateVolumeDisplay();
+          }
+        }
+
+        updateVolumeDisplay() {
+          this.volumeSliderFill.style.height = this.volume * 100 + "%";
+          this.volumePercentage.textContent =
+            Math.round(this.volume * 100) + "%";
+        }
+
+        updateProgress() {
+          const percent = (this.currentTime / this.audioPlayer.duration) * 100;
+          this.progress.style.width = percent + "%";
+          this.currentTimeEl.textContent = this.formatTime(this.currentTime);
+        }
+
+        formatTime(seconds) {
+          if (isNaN(seconds)) return "0:00";
+          const mins = Math.floor(seconds / 60);
+          const secs = Math.floor(seconds % 60);
+          return `${mins}:${secs.toString().padStart(2, "0")}`;
+        }
+        updateDurationDisplay() {
+          if (
+            this.audioPlayer.duration &&
+            !isNaN(this.audioPlayer.duration) &&
+            this.audioPlayer.duration > 0
+          ) {
+            this.duration = this.audioPlayer.duration;
+            this.durationEl.textContent = this.formatTime(this.duration);
+          }
+        }
+      }
+
+      // Netflix Interface JavaScript
+      document.addEventListener("DOMContentLoaded", function () {
+        window.profilePlayer = new MusicPlayer(
+          "player",
+          "audioPlayer",
+          "playBtn",
+          "favoriteBtn",
+          "progressBar",
+          "progress",
+          "currentTime",
+          "duration",
+          "volumeIcon",
+          "volumeSliderContainer",
+          "volumeSliderFill",
+          "volumePercentage",
+          "albumCover",
+        );
+
+        window.musicPlayer = new MusicPlayer(
+          "music-section-player",
+          "musicAudioPlayer",
+          "musicPlayBtn",
+          "musicFavoriteBtn",
+          "musicProgressBar",
+          "musicProgress",
+          "musicCurrentTime",
+          "musicDuration",
+          "musicVolumeIcon",
+          "musicVolumeSliderContainer",
+          "musicVolumeSliderFill",
+          "musicVolumePercentage",
+          "musicAlbumCover",
+        );
+        window.musicPlayer.audioPlayer = window.profilePlayer.audioPlayer;
+        window.musicPlayer.initializeSharedAudio();
+
+        let wasMusicPlaying = false;
+        const profileSelection = document.getElementById("profile-selection");
+        const seriesDetail = document.getElementById("series-detail");
+        const backButton = document.getElementById("back-to-profiles");
+        const profileCards = document.querySelectorAll(".profile-card");
+        const navItems = document.querySelectorAll(".nav-item");
+        const playButton = document.getElementById("play-button");
+        const infoButton = document.getElementById("info-button");
+        const infoModal = document.getElementById("info-modal");
+        const closeModal = document.getElementById("close-modal");
+        const episodeModal = document.getElementById("episode-modal");
+        const closeEpisodeModal = document.getElementById(
+          "close-episode-modal",
+        );
+        const episodeModalImage = document.getElementById(
+          "episode-modal-image",
+        );
+        const episodeModalTitle = document.getElementById(
+          "episode-modal-title",
+        );
+        const episodeModalDescription = document.getElementById(
+          "episode-modal-description",
+        );
+        const videoPlayer = document.getElementById("video-player");
+        const closeVideo = document.getElementById("close-video");
+        const romanticVideo = document.getElementById("romantic-video");
+        const episodeThumbs = document.querySelectorAll(".episode-thumb");
+        const heroSection = document.querySelector(".hero-section");
+        const episodesSection = document.querySelector(".episodes-section");
+        const musicPlayerSection = document.getElementById(
+          "music-player-section",
+        );
+        const startDate = new Date("2024-01-01T00:00:00");
+        let counterInterval;
+
+        const episodeData = {
+          1: { title: "1. hola", description: "asdasdasds asdsadsadsad" },
+        };
+
+        profileCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            profileSelection.style.opacity = "0";
+            setTimeout(() => {
+              profileSelection.style.display = "none";
+              seriesDetail.style.display = "flex";
+              setTimeout(() => {
+                seriesDetail.classList.add("fade-in");
+              }, 10);
+            }, 300);
+          });
+        });
+
+        backButton.addEventListener("click", function () {
+          seriesDetail.classList.remove("fade-in");
+          seriesDetail.style.display = "none";
+          setTimeout(() => {
+            profileSelection.style.display = "flex";
+            setTimeout(() => {
+              profileSelection.style.opacity = "1";
+            }, 10);
+          }, 300);
+          romanticVideo.pause();
+        });
+
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navItems.forEach((nav) => nav.classList.remove("active"));
+            this.classList.add("active");
+            const navType = this.getAttribute("data-nav");
+            updateSection(navType);
+          });
+        });
+
+        function updateSection(section) {
+          heroSection.className = "hero-section " + section;
+          const seriesLabel = document.querySelector(".series-label");
+          const seriesTitle = document.querySelector(".series-title");
+          const yearDuration = document.querySelector(".year-duration");
+          const seriesDescription = document.querySelector(
+            ".series-description",
+          );
+          const episodesTitle = document.querySelector(".episodes-title");
+          const episodesRow = document.querySelector(".episodes-row");
+          playButton.style.display = "none";
+          infoButton.style.display = "none";
+          episodesSection.style.display = "none";
+          musicPlayerSection.style.display = "none";
+          let listaContent = document.querySelector(".lista-content");
+          if (listaContent) listaContent.remove();
+          let sectionText = document.querySelector(".section-text");
+          if (sectionText) sectionText.remove();
+
+          if (section === "inicio") {
+            seriesLabel.style.display = "flex";
+            seriesLabel.innerHTML = "";
+            seriesTitle.textContent = "Un poquito de nosotros";
+            yearDuration.innerHTML = "13+ 2025 • 1 episodios • Romance • Drama";
+            seriesDescription.innerHTML =
+              "Eres el tesoro más valioso que tengo, prometo cuidarte y estar contigo en las buenas y en las malas. El amor es una decisión y yo decido estar contigo el resto de mi vida. Te amo como nunca lo he hecho, mi amor ♥";
+            playButton.style.display = "flex";
+            infoButton.style.display = "flex";
+            episodesSection.style.display = "block";
+            episodesTitle.textContent = "Episodios";
+            episodesRow.innerHTML = `                        <div class="episode-thumb" data-episode="1" data-image="../assets/img/cover-2.png">
+                            <img src="../assets/img/cover-2.png" alt="Episodio 1" />
+                            <div class="episode-number">1</div>
+                            <div class="episode-duration">1hora</div>
+                            <div class="episode-overlay">1. hola</div>
+                        </div>
+                    `;
+            attachEpisodeListeners();
+          } else if (section === "series") {
+            seriesLabel.style.display = "none";
+            seriesTitle.textContent = "";
+            yearDuration.innerHTML = "";
+            seriesDescription.textContent = "";
+            heroSection.querySelector(".series-content").style.display =
+              "block";
+            let sectionText = document.createElement("p");
+            sectionText.className = "section-text";
+            sectionText.textContent =
+              "Contigo, cada instante se siente especial, como si el mundo se detuviera solo para vernos. Tus gestos, tus silencios… todo en ti escribe una historia que no necesita guion.";
+            heroSection.appendChild(sectionText);
+          } else if (section === "musica") {
+            seriesLabel.style.display = "none";
+            seriesTitle.textContent = "";
+            yearDuration.innerHTML = "";
+            seriesDescription.textContent = "";
+            heroSection.querySelector(".series-content").style.display =
+              "block";
+            //let sectionText = document.createElement('p');
+            //sectionText.className = 'section-text';
+            //sectionText.textContent = 'Disfruta de una selección de canciones que capturan el espíritu del amor y la emoción.';
+            // heroSection.appendChild(sectionText);
+            musicPlayerSection.style.display = "block";
+            // Solo sincronizar UI, no pausar/reproducir
+            window.musicPlayer.linkPlayers(window.profilePlayer);
+          } else if (section === "lista") {
+            heroSection.querySelector(".series-content").style.display = "none";
+            let listaContent = document.createElement("div");
+            listaContent.className = "lista-content";
+            listaContent.innerHTML = `
+                        <h1 class="lista-title">Razones por las que te amo</h1>
+                        <p class="lista-subtitle">Cada día descubro más motivos para quererte. Aquí hay algunos que iluminan mi corazón. ♥</p>
+                        <ul class="lista-reasons">
+                            <li>Por tu sonrisa</li>
+                                                        <li>Por tu sonrisa</li>
+                                                        <li>Por tu valentía</li>
+                                                        <li>Por tu escencia</li>
+                                                        <li>Por tu ternura</li>
+                                                        <li>Por tu voz</li>
+                                                    </ul>
+                    `;
+            heroSection.appendChild(listaContent);
+            return;
+          }
+          if (section !== "lista") {
+            heroSection.querySelector(".series-content").style.display =
+              "block";
+          }
+          function attachEpisodeListeners() {
+            const newThumbs = document.querySelectorAll(".episode-thumb");
+            newThumbs.forEach((thumb) => {
+              thumb.addEventListener("click", function () {
+                const episode = this.getAttribute("data-episode");
+                const imageUrl = this.getAttribute("data-image");
+                const data = episodeData[episode];
+                if (data) {
+                  episodeModalImage.src = imageUrl;
+                  episodeModalTitle.textContent = data.title;
+                  episodeModalDescription.textContent = data.description;
+                  episodeModal.style.display = "flex";
+                }
+              });
+            });
+          }
+          if (section === "inicio") {
+            attachEpisodeListeners();
+          }
+        }
+
+        updateSection("inicio");
+
+        playButton.addEventListener("click", function () {
+          wasMusicPlaying = window.profilePlayer.isPlaying;
+          if (wasMusicPlaying) {
+            window.profilePlayer.togglePlay();
+          }
+          videoPlayer.style.display = "flex";
+
+          romanticVideo.play();
+        });
+
+        infoButton.addEventListener("click", function () {
+          infoModal.style.display = "flex";
+        });
+
+        closeModal.addEventListener("click", function () {
+          infoModal.style.display = "none";
+        });
+
+        closeEpisodeModal.addEventListener("click", function () {
+          episodeModal.style.display = "none";
+        });
+
+        closeVideo.addEventListener("click", function () {
+          videoPlayer.style.display = "none";
+
+          romanticVideo.pause();
+
+          if (wasMusicPlaying) {
+            window.profilePlayer.togglePlay();
+          }
+          wasMusicPlaying = false;
+        });
+
+        episodeThumbs.forEach((thumb) => {
+          thumb.addEventListener("click", function () {
+            const episode = this.getAttribute("data-episode");
+            const imageUrl = this.getAttribute("data-image");
+            const data = episodeData[episode];
+            if (data) {
+              episodeModalImage.src = imageUrl;
+              episodeModalTitle.textContent = data.title;
+              episodeModalDescription.textContent = data.description;
+              episodeModal.style.display = "flex";
+            }
+          });
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target === infoModal) infoModal.style.display = "none";
+          if (event.target === episodeModal)
+            episodeModal.style.display = "none";
+          if (event.target === videoPlayer) {
+            videoPlayer.style.display = "none";
+            romanticVideo.pause();
+          }
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            if (infoModal.style.display === "flex")
+              infoModal.style.display = "none";
+            if (episodeModal.style.display === "flex")
+              episodeModal.style.display = "none";
+            if (videoPlayer.style.display === "flex") {
+              videoPlayer.style.display = "none";
+              romanticVideo.pause();
+            }
+          }
+        });
+
+        let touchStart = null;
+        document.addEventListener("touchstart", function (e) {
+          touchStart = e.touches[0].clientY;
+        });
+
+        document.addEventListener("touchend", function (e) {
+          if (!touchStart) return;
+          let touchEnd = e.changedTouches[0].clientY;
+          let diff = touchStart - touchEnd;
+          touchStart = null;
+          if (Math.abs(diff) < 50) return;
+        });
+      });
+    </script>
+  </body>
+</html>
