@@ -21,7 +21,22 @@
     <button class="back-button" onclick="goBack()">
         <i class="fa-solid fa-arrow-left"></i>
     </button>
+
+    <div class="music-control">
+        <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+            <svg id="playIcon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+            </svg>
+        </button>
+    </div>
     
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="assets/sound/si-dios-fuera-poeta.mp3" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+    </audio>
     <!-- <div id="pantalla-carta" class="overlay-carta">
         <div class="carta-container" onclick="abrirPeriodico()">
             <img src="assets/img/newspaper/carta.png" alt="Sobre" class="carta-img">
@@ -97,7 +112,7 @@
                     </div>
 
                     <div class="sopa-seccion" onclick="jugarSopa()">
-                        <p class="sopa-titulo"> SOPA DE AMOR</p>
+                        <p class="sopa-titulo"> SOPA DE LETRAS</p>
                         <div id="mini-sopa" class="sopa-grid-mini"></div>
                         <p class="sopa-instruccion">(Clic para ampliar y jugar)</p>
                     </div>
