@@ -8,6 +8,9 @@
 
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="assets/css/back-button.css" />
     <link rel="stylesheet" href="assets/css/newspaper.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -15,25 +18,36 @@
 
 <body>
 
-    <div id="pantalla-carta" class="overlay-carta">
+    <button class="back-button" onclick="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    
+    <!-- <div id="pantalla-carta" class="overlay-carta">
         <div class="carta-container" onclick="abrirPeriodico()">
             <img src="assets/img/newspaper/carta.png" alt="Sobre" class="carta-img">
         </div>
-    </div>
+    </div> -->
 
-    <div class="periodico-wrapper animate-entrance" id="periodico-contenido" style="display: none;">
+    <div class="periodico-wrapper animate-entrance" id="periodico-contenido">
         <div class="periodico">
             <header class="header-main">
                 <div class="info-top">
-                    <span>EDICIÓN LIMITADA PARA LA MEJOR NOVIA</span>
+                    <span>EDICIÓN LIMITADA PARA LA MÁS HERMOSA</span>
                     <span>ESTABLECIDO DESDE EL DÍA QUE TE CONOCÍ</span>
                 </div>
                 <section class="name">
                     <h1>My Valentine's Day</h1>
                 </section>
+                
                 <section class="info-bar">
                     <p>VOL. ∞ - NO. 1</p>
+                </section>
+                
+                <section class="info-bar">
                     <p>CIUDAD DEL AMOR, 2026</p>
+                </section>
+                
+                <section class="info-bar">
                     <p>PRECIO: UN BESO</p>
                 </section>
             </header>
@@ -113,7 +127,7 @@
 
             <hr class="separator">
 
-            <section class="gallery">
+            <!-- <section class="gallery">
                 <h2 class="section-title">Tu & Yo</h2>
                 <div class="gallery-grid">
                     <div class="polaroid"><img src="assets/img/newspaper/45.png" alt="1">
@@ -129,7 +143,17 @@
                         <p>Tú y yo</p>
                     </div>
                 </div>
-            </section>
+            </section> -->
+            
+            <div class="container" style="display: none">
+                <div id="status" class="status disconnected">Conectando...</div>
+                <div id="error" class="error" style="display: none"></div>
+            
+                <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+                <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+                <label>Navegador:
+                    <strong id="miNavegador" style="color: #667eea">-</strong></label>
+            </div>
 
             <footer class="interactive-footer">
                 <h3>¿QUÉ TANTO ME AMAS HOY?</h3>
@@ -142,62 +166,29 @@
         </div>
     </div>
 
+    <script src="assets/js/newspaper.js"></script>
+    <script src="assets/js/newspaper-game.js"></script>
+
     <script>
-        function abrirPeriodico() {
-            document.getElementById('pantalla-carta').style.display = 'none';
-            document.getElementById('periodico-contenido').style.display = 'block';
-            const v = document.getElementById('miVideo');
-            v.muted = false;
-            v.play();
-        }
+      function goBack() {
+        window.location.href = "index.html";
+      }
+    </script>
 
-        const palabrasOcultas = ["AMOR", "VIDA", "TUYO", "SIEMPRE"];
-        const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const tamaño = 8;
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-        function generarContenidoSopa() {
-            let html = '';
-            for (let i = 0; i < tamaño * tamaño; i++) {
-                html += `<span>${letras.charAt(Math.floor(Math.random() * letras.length))}</span>`;
-            }
-            return html;
-        }
+    <script src="assets/js/firebase-config.js"></script>
 
-        document.getElementById('mini-sopa').innerHTML = generarContenidoSopa();
+    <script>
+        (function () {
+            detectarIP();
+            actualizarFechaHora();
 
-        function jugarSopa() {
-            Swal.fire({
-                title: 'Sopa de Letras',
-                html: `<p style="margin-bottom:15px;">Encuentra las palabras: <br><b>${palabrasOcultas.join(", ")}</b></p>
-                   <div class="sopa-grid-popup">${generarContenidoSopa()}</div>
-                   <p style="font-size: 0.8em; margin-top: 15px; font-style: italic;">¡Tómale captura cuando las encuentres!</p>`,
-                confirmButtonText: '¡Lo logré!',
-                confirmButtonColor: '#8b0000',
-                background: '#fdf6e3 url(https://www.transparenttextures.com/patterns/parchment.png)',
-                customClass: {
-                    popup: 'swal-sopa-container'
-                }
-            });
-        }
-
-        function mostrarAlerta() {
-            Swal.fire({
-                title: '¡URGENTE!',
-                text: "¿Aceptas seguir escribiendo esta historia conmigo?",
-                icon: 'heart',
-                iconColor: '#8b0000',
-                showCancelButton: true,
-                confirmButtonText: '¡Sí, mil veces sí!',
-                cancelButtonText: '¡Obvio!',
-                background: '#fdf6e3 url(https://www.transparenttextures.com/patterns/parchment.png)',
-                backdrop: `rgba(139, 0, 0, 0.3)`
-            });
-        }
-
-        function respuestaAmor(tipo) {
-            let msg = tipo === 'mucho' ? '¡Yo te amo mucho más!' : tipo === 'infinito' ? '¡Nuestro amor es eterno!' : '¡Y mañana será aún mejor!';
-            Swal.fire({ title: '❤️', text: msg, confirmButtonColor: '#8b0000', background: '#fdf6e3 url(https://www.transparenttextures.com/patterns/parchment.png)' });
-        }
+            setTimeout(() => {
+                agregarDatos("Newspaper");
+            }, 1000);
+        })();
     </script>
 </body>
 

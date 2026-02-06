@@ -8,11 +8,214 @@
     --burn-edge: rgba(65, 38, 14, 0.3);
 }
 
-* {
-    cursor: url('../img/newspaper/puntero.png'), auto !important;
-
+.success-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: #8fbc8f;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: none;
+    animation: slideIn 0.5s ease;
 }
 
+.subtitle {
+    font-size: large;
+    text-align: center;
+    color: #8b7355;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.words-to-find {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px dashed #c9a87c;
+}
+
+.word-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.word-item {
+    font-size: small;
+    padding: 8px 15px;
+    background: #f0e6d8;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #5c4a3a;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.word-item.found {
+    background: #8fbc8f;
+    color: white;
+    text-decoration: line-through;
+    border-color: #6b9b6b;
+}
+
+.grid-container {
+    display: inline-grid;
+    gap: 1.5px;
+    /* background: #c9a87c; */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+}
+
+.cell {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #5c4a3a;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.cell:hover {
+    background: #fff9f0;
+    transform: scale(1.05);
+}
+
+.cell.selecting {
+    background: #ffd700;
+    border-color: #ffb700;
+}
+
+.cell.found {
+    background: #8fbc8f;
+    color: white;
+    border-color: #6b9b6b;
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 20px;
+    color: #8b7355;
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reset-button,
+.hint-button {
+    display: inline-block;
+    margin: 10px 5px 0;
+    padding: 12px 25px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-button {
+    background: #c9a87c;
+}
+
+.reset-button:hover {
+    background: #b08960;
+    transform: scale(1.05);
+}
+
+.hint-button {
+    background: #8fbc8f;
+}
+
+.hint-button:hover {
+    background: #6b9b6b;
+    transform: scale(1.05);
+}
+
+.cell.hint {
+    background: #ffe4b5 !important;
+    animation: pulse 1s ease-in-out 3;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.progress {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #5c4a3a;
+    font-weight: bold;
+}
+
+.difficulty-indicator {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #8b7355;
+    font-style: italic;
+}
+
+.difficulty-indicator .difficulty-stars {
+    color: #ffd700;
+    font-size: 1.2em;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .cell {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
 
 .overlay-carta {
     position: fixed;
