@@ -186,14 +186,14 @@ function initGame() {
   createGrid();
   createWordList();
   updateProgress();
-  showDifficulty();
+  // showDifficulty();
 }
 
 // Mostrar indicador de dificultad
 function showDifficulty() {
   const avgLength =
     WORDS.reduce((sum, word) => sum + word.length, 0) / WORDS.length;
-  const indicator = document.getElementById("difficultyIndicator");
+  // const indicator = document.getElementById("difficultyIndicator");
 
   let difficulty = "";
   let stars = "";
@@ -209,7 +209,7 @@ function showDifficulty() {
     stars = "⭐⭐⭐";
   }
 
-  indicator.innerHTML = `Dificultad: <span class="difficulty-stars">${stars}</span> ${difficulty}`;
+  // indicator.innerHTML = `Dificultad: <span class="difficulty-stars">${stars}</span> ${difficulty}`;
 }
 
 // Crear la cuadrícula

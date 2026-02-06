@@ -33,7 +33,6 @@ function jugarSopa() {
         <div class="grid-container" id="grid"></div>
 
         <div class="progress" id="progress">Palabras encontradas: 0/5</div>
-        <div class="difficulty-indicator" id="difficultyIndicator"></div>
 
         <div class="success-message" id="successMessage">
             🎉 ¡Felicidades! ¡Has encontrado todas las palabras! 🎉
