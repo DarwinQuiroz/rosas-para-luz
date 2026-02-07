@@ -1,0 +1,124 @@
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #d12511, #8b0000);
+    border: 1px solid #8b0000;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.7);
+}
+
+.music-btn:active {
+    transform: scale(0.95);
+}
+
+.music-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+.volume-control {
+    width: 120px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(139, 0, 0, 0.7);
+    margin-top: 10px;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.volume-control.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.volume-control input {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.volume-control input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.volume-control input::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+/* Mobile adjustments */
+@media only screen and (max-width: 768px) {
+    .music-control {
+        right: 15px;
+    }
+
+    .music-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .music-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .volume-control {
+        width: 100px;
+        margin-top: 8px;
+    }
+
+    .volume-control input {
+        height: 10px;
+    }
+
+    .volume-control input::-webkit-slider-thumb {
+        width: 18px;
+        height: 18px;
+    }
+
+    .volume-control input::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+    }
+}
