@@ -15,9 +15,17 @@ body {
 }
 
 @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .message {
@@ -34,8 +42,13 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 .message:hover {
@@ -53,19 +66,48 @@ body {
 }
 
 @keyframes floatHearts {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-150px) scale(1.5); opacity: 0.5; }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-150px) scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
-.hearts:nth-child(2) { left: 25%; animation-duration: 6s; }
-.hearts:nth-child(3) { left: 40%; animation-duration: 7s; }
-.hearts:nth-child(4) { left: 60%; animation-duration: 8s; }
-.hearts:nth-child(5) { left: 75%; animation-duration: 9s; }
+.hearts:nth-child(2) {
+    left: 25%;
+    animation-duration: 6s;
+}
+
+.hearts:nth-child(3) {
+    left: 40%;
+    animation-duration: 7s;
+}
+
+.hearts:nth-child(4) {
+    left: 60%;
+    animation-duration: 8s;
+}
+
+.hearts:nth-child(5) {
+    left: 75%;
+    animation-duration: 9s;
+}
 
 .text-container {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .charming-text {
@@ -83,17 +125,62 @@ body {
     word-wrap: break-word;
 }
 
-.charming-text:nth-child(1) { top: 15%; left: 5%; text-align: left; animation-duration: 6s; }
-.charming-text:nth-child(2) { top: 25%; left: 5%; text-align: left; animation-duration: 7s; }
-.charming-text:nth-child(3) { top: 35%; left: 5%; text-align: left; animation-duration: 8s; }
-.charming-text:nth-child(4) { top: 15%; right: 5%; text-align: right; animation-duration: 6s; }
-.charming-text:nth-child(5) { top: 25%; right: 5%; text-align: right; animation-duration: 7s; }
-.charming-text:nth-child(6) { top: 35%; right: 5%; text-align: right; animation-duration: 8s; }
+.charming-text:nth-child(1) {
+    top: 15%;
+    left: 5%;
+    text-align: left;
+    animation-duration: 6s;
+}
+
+.charming-text:nth-child(2) {
+    top: 25%;
+    left: 5%;
+    text-align: left;
+    animation-duration: 7s;
+}
+
+.charming-text:nth-child(3) {
+    top: 35%;
+    left: 5%;
+    text-align: left;
+    animation-duration: 8s;
+}
+
+.charming-text:nth-child(4) {
+    top: 15%;
+    right: 5%;
+    text-align: right;
+    animation-duration: 6s;
+}
+
+.charming-text:nth-child(5) {
+    top: 25%;
+    right: 5%;
+    text-align: right;
+    animation-duration: 7s;
+}
+
+.charming-text:nth-child(6) {
+    top: 35%;
+    right: 5%;
+    text-align: right;
+    animation-duration: 8s;
+}
 
 @keyframes fadeInText {
-    0% { opacity: 0; }
-    50% { opacity: 0.5; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .flowers {
@@ -104,16 +191,46 @@ body {
 }
 
 @keyframes flowerAnimation {
-    0% { transform: translateY(0); opacity: 0; }
-    50% { transform: translateY(-50px); opacity: 1; }
-    100% { transform: translateY(0); opacity: 0; }
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
 }
 
-.flowers:nth-child(1) { left: 10%; animation-duration: 6s; }
-.flowers:nth-child(2) { left: 30%; animation-duration: 7s; }
-.flowers:nth-child(3) { left: 50%; animation-duration: 8s; }
-.flowers:nth-child(4) { left: 70%; animation-duration: 9s; }
-.flowers:nth-child(5) { left: 90%; animation-duration: 10s; }
+.flowers:nth-child(1) {
+    left: 10%;
+    animation-duration: 6s;
+}
+
+.flowers:nth-child(2) {
+    left: 30%;
+    animation-duration: 7s;
+}
+
+.flowers:nth-child(3) {
+    left: 50%;
+    animation-duration: 8s;
+}
+
+.flowers:nth-child(4) {
+    left: 70%;
+    animation-duration: 9s;
+}
+
+.flowers:nth-child(5) {
+    left: 90%;
+    animation-duration: 10s;
+}
 
 .bubbles {
     position: absolute;
@@ -124,16 +241,46 @@ body {
 }
 
 @keyframes bubbleAnimation {
-    0% { transform: translateY(0) scale(1); opacity: 0.8; }
-    50% { transform: translateY(-100px) scale(1.3); opacity: 0.4; }
-    100% { transform: translateY(0) scale(1); opacity: 0.8; }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(-100px) scale(1.3);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
 }
 
-.bubbles:nth-child(1) { left: 10%; animation-duration: 8s; }
-.bubbles:nth-child(2) { left: 30%; animation-duration: 9s; }
-.bubbles:nth-child(3) { left: 50%; animation-duration: 10s; }
-.bubbles:nth-child(4) { left: 70%; animation-duration: 11s; }
-.bubbles:nth-child(5) { left: 90%; animation-duration: 12s; }
+.bubbles:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+}
+
+.bubbles:nth-child(2) {
+    left: 30%;
+    animation-duration: 9s;
+}
+
+.bubbles:nth-child(3) {
+    left: 50%;
+    animation-duration: 10s;
+}
+
+.bubbles:nth-child(4) {
+    left: 70%;
+    animation-duration: 11s;
+}
+
+.bubbles:nth-child(5) {
+    left: 90%;
+    animation-duration: 12s;
+}
 
 #bubbles-text {
     position: absolute;
@@ -146,7 +293,7 @@ body {
 
 .text-bubble {
     position: absolute;
-    font-size: 18px;
+    font-size: 15px;
     font-family: 'Cursive', sans-serif;
     color: #d63384;
     background-color: rgba(255, 255, 255, 0.7);
@@ -158,9 +305,20 @@ body {
 }
 
 @keyframes floatText {
-    0% { opacity: 0; transform: scale(0.5) translateY(0px); }
-    50% { opacity: 1; transform: scale(1.2) translateY(-50px); }
-    100% { opacity: 0; transform: scale(1) translateY(-100px); }
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(0px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) translateY(-50px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1) translateY(-100px);
+    }
 }
 
 @media (max-width: 768px) {
@@ -169,10 +327,23 @@ body {
         background-position: center top;
     }
 
-    .message { font-size: 24px; padding: 20px; }
-    .charming-text { font-size: 16px; padding: 8px 16px; }
-    .flowers { font-size: 25px; }
-    .bubbles { font-size: 20px; }
+    .message {
+        font-size: 24px;
+        padding: 20px;
+    }
+
+    .charming-text {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .flowers {
+        font-size: 25px;
+    }
+
+    .bubbles {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 768px) {
