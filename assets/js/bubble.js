@@ -1,7 +1,6 @@
 const messages = [
   "Te amo muchísimo ❤️",
   "Eres una diosa 💃",
-  "Tan elegante y tan sencilla 👄",
   "Gracias por estar en mi vida 🌟",
   "Eres mi persona favorita 💕",
   "Tú y yo, siempre 💖",
