@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Galería - 8va Maravilla</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/back-button.css" />
+    <link rel="stylesheet" href="assets/css/music-control.css" />
+    <link rel="stylesheet" href="assets/css/galery.css" />
+  </head>
+
+  <body>
+    <button class="back-button" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <div class="music-control">
+      <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+          <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+        </svg>
+      </button>
+    </div>
+
+    <audio id="backgroundMusic" loop preload="auto">
+      <source src="assets/sound/la-8va-maravilla.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div class="valentine-header">
+      <div class="valentine-text-container">
+        <span class="text-msg">Eres mi persona favorita ❤️</span>
+        <span class="text-msg">Te amo cada día más 🌹</span>
+        <span class="text-msg">Siempre juntos tú y yo ✨</span>
+        <span class="text-msg">Gracias por existir 💌</span>
+        <span class="text-msg">¡Feliz San Valentín! 💘</span>
+      </div>
+    </div>
+
+    <div class="scene">
+      <div class="a3d" style="--n: 12">
+        <img
+          class="card"
+          src="assets/img/galery/1.jpeg"
+          style="--i: 0"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/2.jpeg"
+          style="--i: 1"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/3.jpeg"
+          style="--i: 2"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/4.jpeg"
+          style="--i: 3"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/5.jpeg"
+          style="--i: 4"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/6.jpeg"
+          style="--i: 5"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/7.jpeg"
+          style="--i: 6"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/8.jpeg"
+          style="--i: 7"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/9.jpeg"
+          style="--i: 8"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/10.jpeg"
+          style="--i: 9"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/11.jpeg"
+          style="--i: 10"
+          alt="img"
+        />
+        <img
+          class="card"
+          src="assets/img/galery/12.jpg"
+          style="--i: 11"
+          alt="img"
+        />
+      </div>
+    </div>
+
+    <div class="valentine-footer">
+      <img src="assets/img/galery/foto.png" alt="Corazón" />
+    </div>
+
+    <div class="container" style="display: none">
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
+    </div>
+
+    <script src="assets/js/music-control.js"></script>
+
+    <script>
+      function goBack() {
+        window.location.href = "index.html";
+      }
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script src="assets/js/firebase-config.js"></script>
+
+    <script>
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
+
+        setTimeout(() => {
+          agregarDatos("Galería");
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>
