@@ -161,13 +161,13 @@ body {
 /* Móviles grandes */
 @media (max-width: 768px) {
   .valentine-footer img {
-    width: 250px;
+    width: 255px;
   }
 }
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
   .valentine-footer img {
-    width: 200px;
+    width: 210px;
   }
 }
