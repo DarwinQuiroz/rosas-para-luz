@@ -145,29 +145,28 @@ body {
 }
 
 .valentine-footer img {
-  width: 400px;
+  /* width: 400px; */
+  width: clamp(160px, 35vw, 400px);
   animation: heartbeat 1.5s infinite ease-in-out;
-  /* width: clamp(160px, 35vw, 400px);
-  animation: heartbeat 1.5s infinite ease-in-out; */
 }
 
 /* Tablets */
 @media (max-width: 1024px) {
   .valentine-footer img {
-    width: 300px;
+    width: 330px;
   }
 }
 
 /* Móviles grandes */
 @media (max-width: 768px) {
   .valentine-footer img {
-    width: 260px;
+    width: 270px;
   }
 }
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
   .valentine-footer img {
-    width: 230px;
+    width: 240px;
   }
 }
