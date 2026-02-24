@@ -1,0 +1,154 @@
+:root {
+    --bg-color: #fdf6f0;
+    --primary-pastel: #ffdde1;
+    --secondary-pastel: #ee9ca7;
+    --accent-mint: #d4f1f4;
+    --text-color: #5d5d5d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- Animaciones de Entrada --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Hero Section --- */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-pastel) 0%, #ffffff 100%);
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: var(--secondary-pastel);
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* --- Sección de Frases --- */
+.message-section {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 2px solid var(--primary-pastel);
+}
+
+.phrase {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* --- Galería de Fotos --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-frame {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: rotate(var(--r));
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: var(--accent-mint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #88bdbc;
+    overflow: hidden;
+}
+
+/* --- Confeti Canvas --- */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+footer {
+    padding: 40px;
+    text-align: center;
+    background: var(--primary-pastel);
+    margin-top: 50px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
