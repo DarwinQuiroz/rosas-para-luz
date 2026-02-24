@@ -10,10 +10,33 @@
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <link rel="stylesheet" href="assets/css/birthday.css">
+    <link rel="stylesheet" href="assets/css/back-button.css" />
+    <link rel="stylesheet" href="assets/css/music-control.css" />
 </head>
 
 <body>
+    <button class="back-button" onclick="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    
+    <div class="music-control">
+        <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+            <svg id="playIcon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+            </svg>
+        </button>
+    </div>
+    
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="assets/sound/quiereme-asi.mp3" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
     <canvas id="confetti-canvas"></canvas>
 
@@ -45,11 +68,43 @@
         </div>
     </div>
 
+    <div class="container" style="display: none">
+        <div id="status" class="status disconnected">Conectando...</div>
+        <div id="error" class="error" style="display: none"></div>
+    
+        <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+        <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+        <label>Navegador:
+            <strong id="miNavegador" style="color: #667eea">-</strong></label>
+    </div>
+
     <footer>
         <p>Hecho con ❤️ para alguien especial</p>
     </footer>
 
+    <script src="assets/js/music-control.js"></script>
     <script src="assets/js/birthday.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    
+    <script src="assets/js/firebase-config.js"></script>
+    
+    <script>
+        (function () {
+            detectarIP();
+            actualizarFechaHora();
+
+            setTimeout(() => {
+                agregarDatos("Burbujas");
+            }, 1000);
+        })();
+    </script>
 </body>
 
 </html>

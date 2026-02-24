@@ -1,7 +1,6 @@
 // --- Animación de Revelado al Scroll ---
 window.addEventListener("scroll", () => {
   const reveals = document.querySelectorAll(".reveal");
-
   reveals.forEach((reveal) => {
     const windowHeight = window.innerHeight;
     const revealTop = reveal.getBoundingClientRect().top;
@@ -34,21 +33,15 @@ function startConfetti() {
       y: Math.random() * canvas.height - canvas.height,
       r: Math.random() * 6 + 4,
       d: Math.random() * 10,
-      color: `hsl($ {
-                        Math.random() * 360
-                    }
-
-                    , 70%, 80%)`,
+      color: `hsl(${Math.random() * 360}, 70%, 80%)`,
       tilt: Math.random() * 10 - 10,
     });
   }
-
   renderConfetti();
 }
 
 function renderConfetti() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   confetti.forEach((p, i) => {
     ctx.beginPath();
     ctx.lineWidth = p.r;
@@ -61,11 +54,7 @@ function renderConfetti() {
     p.tilt = Math.sin(p.d) * 15;
 
     if (p.y > canvas.height) {
-      confetti[i] = {
-        ...p,
-        y: -20,
-        x: Math.random() * canvas.width,
-      };
+      confetti[i] = { ...p, y: -20, x: Math.random() * canvas.width };
     }
   });
   requestAnimationFrame(renderConfetti);
