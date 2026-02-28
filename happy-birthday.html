@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Feliz Cumpleaños</title>
+    <meta
+      name="description"
+      content="Una página especial para celebrar tu cumpleaños número 23. ¡Felicidades!"
+    />
+
+    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/back-button.css" />
+    <link rel="stylesheet" href="assets/css/music-control.css" />
+    <link rel="stylesheet" href="assets/css/happy-birthday.css" />
+  </head>
+
+  <body>
+    <button class="back-button" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <div class="music-control">
+      <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+          <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+        </svg>
+      </button>
+    </div>
+
+    <audio id="backgroundMusic" loop preload="auto">
+      <source src="assets/sound/quiereme-asi.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Floating Particles Background -->
+    <div class="particles-container"></div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container"></div>
+
+    <!-- ============================
+       MAIN WRAPPER
+       ============================ -->
+    <div class="main-wrapper">
+      <!-- ========== HERO: Cake & Title ========== -->
+      <section class="hero-section" id="hero">
+        <!-- Animated Cake -->
+        <div class="cake-container">
+          <!-- Flame glow -->
+          <div class="flame-glow"></div>
+
+          <!-- Flame -->
+          <div class="flame-container">
+            <div class="flame"></div>
+          </div>
+
+          <!-- Wick -->
+          <div class="wick"></div>
+
+          <!-- Candle with number 23 -->
+          <div class="candle">
+            <span class="candle-number">23</span>
+          </div>
+
+          <!-- Top Layer -->
+          <div class="cake-layer cake-layer-top">
+            <div class="drip" style="left: 15px; height: 20px"></div>
+            <div
+              class="drip"
+              style="right: 20px; height: 15px; animation-delay: 0.7s"
+            ></div>
+          </div>
+
+          <!-- Middle Layer -->
+          <div class="cake-layer cake-layer-middle">
+            <div class="drip" style="left: 18px; height: 25px"></div>
+            <div
+              class="drip"
+              style="left: 60px; height: 18px; animation-delay: 0.5s"
+            ></div>
+            <div
+              class="drip"
+              style="right: 30px; height: 22px; animation-delay: 1s"
+            ></div>
+            <div
+              class="drip"
+              style="right: 12px; height: 16px; animation-delay: 1.3s"
+            ></div>
+          </div>
+
+          <!-- Bottom Layer -->
+          <div class="cake-layer cake-layer-bottom">
+            <div class="drip" style="left: 20px; height: 28px"></div>
+            <div
+              class="drip"
+              style="left: 70px; height: 20px; animation-delay: 0.6s"
+            ></div>
+            <div
+              class="drip"
+              style="right: 50px; height: 32px; animation-delay: 1s"
+            ></div>
+            <div
+              class="drip"
+              style="right: 15px; height: 24px; animation-delay: 1.5s"
+            ></div>
+          </div>
+
+          <!-- Decorative dots -->
+          <div class="cake-dots bottom-dots">
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+          </div>
+          <div class="cake-dots middle-dots">
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+            <div class="cake-dot"></div>
+          </div>
+
+          <!-- Plate -->
+          <div class="cake-plate"></div>
+        </div>
+
+        <!-- Hero Text -->
+        <div class="hero-text">
+          <p class="subtitle">✨ Hoy es un día muy especial ✨</p>
+          <h1>
+            ¡Feliz Cumpleaños mi hermosa Luz!
+            <span class="name">Mi Persona Especial</span>
+          </h1>
+          <div class="age-badge">🎂 23 Años de Maravilla 🎂</div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <!-- <div class="scroll-indicator">
+                <span>Descubre más</span>
+                <div class="scroll-arrow"></div>
+            </div> -->
+      </section>
+
+      <!-- ========== PHRASES SECTION ========== -->
+      <section class="section phrases-section" id="frases">
+        <div class="section-title">
+          <!-- <h2>Frases Especiales Para Ti</h2> -->
+          <div class="decoration">
+            <span class="line"></span>
+            <span class="star">✦</span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="phrases-grid">
+          <!-- Phrase 1 -->
+          <div class="phrase-card">
+            <span class="phrase-icon">🌸</span>
+            <p>
+              "Cada día a tu lado es un regalo. Hoy celebro el mejor regalo que
+              la vida me dio: tú."
+            </p>
+            <span class="author">— Con todo mi cariño</span>
+          </div>
+
+          <!-- Phrase 2 -->
+          <div class="phrase-card">
+            <span class="phrase-icon">🦋</span>
+            <p>
+              "23 años de luz, de sonrisas, de momentos que atesoro en el
+              corazón para siempre."
+            </p>
+            <span class="author">— Para ti, siempre</span>
+          </div>
+
+          <!-- Phrase 3 -->
+          <div class="phrase-card">
+            <span class="phrase-icon">🌟</span>
+            <p>
+              "Eres la estrella más brillante en mi universo. ¡Que este nuevo
+              año te traiga toda la felicidad!"
+            </p>
+            <span class="author">— Tu admirador(a)</span>
+          </div>
+
+          <!-- Phrase 4 -->
+          <div class="phrase-card">
+            <span class="phrase-icon">🌷</span>
+            <p>
+              "Tu sonrisa ilumina cada rincón al que llegas. Hoy el mundo
+              celebra que existas."
+            </p>
+            <span class="author">— Desde el corazón</span>
+          </div>
+
+          <!-- Phrase 5 -->
+          <div class="phrase-card">
+            <span class="phrase-icon">💫</span>
+            <p>
+              "Eres magia pura. No cambies nunca, el mundo necesita esa luz tan
+              bonita que llevas dentro."
+            </p>
+            <span class="author">— Con amor infinito</span>
+          </div>
+
+          <!-- Phrase 6 -->
+          <div class="phrase-card">
+            <span class="phrase-icon">🎀</span>
+            <p>
+              "Hoy no solo soplas velas, hoy el cielo sonríe porque alguien como
+              tú cumple un año más."
+            </p>
+            <span class="author">— Tu persona favorita</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== PHOTO GALLERY ========== -->
+      <section class="section gallery-section" id="galeria">
+        <div class="section-title">
+          <!-- <h2>Nuestros Momentos</h2> -->
+          <div class="decoration">
+            <span class="line"></span>
+            <span class="star">✦</span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Photo 1 -->
+          <div class="gallery-item">
+            <div class="photo-placeholder">
+              <img src="assets/img/galery/1.jpeg" alt="Foto 1" />
+            </div>
+            <div class="gallery-overlay">
+              <p>Los ojitos más lindos ✨</p>
+            </div>
+          </div>
+
+          <!-- Photo 2 -->
+          <div class="gallery-item">
+            <div
+              class="photo-placeholder"
+              style="background: linear-gradient(135deg, #bde0fe, #c8f0e0)"
+            >
+              <img src="assets/img/galery/2.jpeg" alt="Foto 1" />
+            </div>
+            <div class="gallery-overlay">
+              <p>La carita más hermosa 💕</p>
+            </div>
+          </div>
+
+          <!-- Photo 3 -->
+          <div class="gallery-item">
+            <div
+              class="photo-placeholder"
+              style="background: linear-gradient(135deg, #fef3c7, #fdd9b5)"
+            >
+              <img src="assets/img/galery/3.jpeg" alt="Foto 1" />
+            </div>
+            <div class="gallery-overlay">
+              <p>Siempre brillando 🌟</p>
+            </div>
+          </div>
+
+          <!-- Photo 4 -->
+          <div class="gallery-item">
+            <div
+              class="photo-placeholder"
+              style="background: linear-gradient(135deg, #e6d7f1, #f8c8dc)"
+            >
+              <img src="assets/img/galery/4.jpeg" alt="Foto 1" />
+            </div>
+            <div class="gallery-overlay">
+              <p>Los mejores recuerdos contigo 🎀</p>
+            </div>
+          </div>
+
+          <!-- Photo 5 -->
+          <div class="gallery-item">
+            <div
+              class="photo-placeholder"
+              style="background: linear-gradient(135deg, #c8f0e0, #bde0fe)"
+            >
+              <img src="assets/img/galery/9.jpeg" alt="Foto 1" />
+            </div>
+            <div class="gallery-overlay">
+              <p>El mundo es mejor contigo en él 🦋</p>
+            </div>
+          </div>
+
+          <!-- Photo 6 -->
+          <div class="gallery-item">
+            <div
+              class="photo-placeholder"
+              style="background: linear-gradient(135deg, #f9a8c9, #d8b4fe)"
+            >
+              <img src="assets/img/galery/11.jpeg" alt="Foto 1" />
+            </div>
+            <div class="gallery-overlay">
+              <p>
+                Tu sonrisa es el regalo más hermoso que el universo me ha dado
+                💫
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SPECIAL MESSAGE ========== -->
+      <section class="section message-section" id="mensaje">
+        <div class="section-title">
+          <h2>Un Mensaje Desde el Corazón</h2>
+          <div class="decoration">
+            <span class="line"></span>
+            <span class="star">✦</span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="message-box">
+          <div class="big-quote">"</div>
+          <p class="message-text">
+            Hoy quiero que sepas lo increíblemente especial que eres para mí.
+            Cada momento contigo es un tesoro que guardo en mi corazón. Tus 23
+            años están llenos de sueños por cumplir, de aventuras por vivir y de
+            amor por compartir. Que este nuevo año te traiga todo lo que mereces
+            y mucho más. ¡Te amo con todo mi ser!
+          </p>
+          <div class="heart-row">
+            <span>💖</span>
+            <span>💗</span>
+            <span>💖</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== WISH SECTION ========== -->
+      <section class="section wish-section" id="deseo">
+        <div class="section-title">
+          <h2>Pide un Deseo</h2>
+          <div class="decoration">
+            <span class="line"></span>
+            <span class="star">✦</span>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="wish-card">
+          <h3>🎂 Sopla las velas 🎂</h3>
+          <p>Cierra los ojos, pide un deseo y toca el botón...</p>
+          <button class="wish-btn">
+            <span class="btn-icon">🌟</span>
+            ¡Pedir mi deseo!
+          </button>
+        </div>
+      </section>
+
+      <!-- ========== FOOTER ========== -->
+      <footer class="footer">
+        <p>Hecho con mucho amor para ti 💕</p>
+        <span class="footer-hearts">🤍 🩷 🤍 🩷 🤍</span>
+      </footer>
+    </div>
+    <!-- /main-wrapper -->
+
+    <!-- ========== LIGHTBOX ========== -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <div class="container" style="display: none">
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
+    </div>
+
+    <script src="assets/js/music-control.js"></script>
+    <script src="assets/js/happy-birthday.js"></script>
+
+    <script>
+      function goBack() {
+        window.location.href = "index.html";
+      }
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script src="assets/js/firebase-config.js"></script>
+
+    <script>
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
+
+        setTimeout(() => {
+          agregarDatos("Cumple-Luz");
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>

@@ -728,7 +728,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   padding: 20px;
-  opacity: 0;
   transition: var(--transition);
 }
 
