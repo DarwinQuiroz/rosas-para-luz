@@ -1526,7 +1526,42 @@ body {
 /* =====================
    FOOTER
    ===================== */
-.footer {
+  /* ===== FOOTER ===== */
+.wd-footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.wd-footer-hearts {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.wd-footer-hearts span {
+  animation: wd-heartbeat 1.5s ease-in-out infinite;
+}
+
+.wd-footer-hearts span:nth-child(2) { animation-delay: 0.15s; }
+.wd-footer-hearts span:nth-child(3) { animation-delay: 0.3s; }
+.wd-footer-hearts span:nth-child(4) { animation-delay: 0.45s; }
+.wd-footer-hearts span:nth-child(5) { animation-delay: 0.6s; }
+
+.wd-footer-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.wd-footer-text strong {
+  color: var(--deep-rose);
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.1rem;
+}
+/* .footer {
   text-align: center;
   padding: 30px 20px;
   background: var(--bg-secondary);
@@ -1542,7 +1577,7 @@ body {
   font-size: 1rem;
   margin-top: 6px;
   display: block;
-}
+} */
 
 /* =====================
    LIGHTBOX
