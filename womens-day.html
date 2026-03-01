@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Una dedicatoria especial para Luz en el Día Internacional de la Mujer. Celebrando tu fortaleza, tu luz y tu belleza."
+    />
+
+    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="assets/css/back-button.css" />
+    <link rel="stylesheet" href="assets/css/music-control.css" />
+    <link rel="stylesheet" href="assets/css/womens-day.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <title>Feliz Día de la Mujer, Luz 💐</title>
+  </head>
+
+  <body class="womens-day">
+    <!-- Petal Rain Canvas -->
+    <canvas id="wd-petal-canvas"></canvas>
+
+    <!-- Floating Particles -->
+    <div class="wd-particles"></div>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-button" title="Volver">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <div class="music-control">
+      <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+          <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+        </svg>
+      </button>
+    </div>
+
+    <audio id="backgroundMusic" loop preload="auto">
+      <source src="assets/sound/quiereme-asi.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="wd-hero">
+      <span class="wd-hero-badge">8 de Marzo</span>
+
+      <h1 class="wd-hero-title">Feliz Día de la Mujer</h1>
+
+      <h2 class="wd-hero-name">✨ Luz ✨</h2>
+
+      <p
+        class="wd-hero-message wd-typewriter"
+        data-text="Porque tu nombre lo dice todo: eres la luz que ilumina cada rincón con tu sonrisa, tu fuerza y tu ternura. Hoy celebro todo lo que eres."
+      >
+        Porque tu nombre lo dice todo: eres la luz que ilumina cada rincón con
+        tu sonrisa, tu fuerza y tu ternura. Hoy celebro todo lo que eres.
+      </p>
+
+      <img
+        src="assets/img/floral-decoration.png"
+        alt="Decoración floral"
+        class="wd-hero-decoration"
+      />
+
+      <div class="wd-scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- ===== FRASES ESPECIALES ===== -->
+    <section class="wd-section" id="frases">
+      <h2 class="wd-section-title wd-reveal">💐 Frases para ti, Luz</h2>
+      <p class="wd-section-subtitle wd-reveal">
+        Cada una de estas palabras fue elegida pensando en lo extraordinaria que
+        eres
+      </p>
+
+      <div class="wd-quotes-grid">
+        <div class="wd-quote-card">
+          <span class="wd-quote-icon">🌸</span>
+          <p class="wd-quote-text">
+            "Ser mujer es un acto de valentía que se renueva cada mañana. Tú,
+            Luz, lo haces con una gracia que inspira."
+          </p>
+        </div>
+
+        <div class="wd-quote-card">
+          <span class="wd-quote-icon">🦋</span>
+          <p class="wd-quote-text">
+            "Como las mariposas, transformas todo a tu alrededor con tu
+            presencia. Eres magia en movimiento."
+          </p>
+        </div>
+
+        <div class="wd-quote-card">
+          <span class="wd-quote-icon">🌷</span>
+          <p class="wd-quote-text">
+            "La mujer más fuerte que conozco no es la que nunca cae, sino la que
+            se levanta con una sonrisa. Esa eres tú."
+          </p>
+        </div>
+
+        <div class="wd-quote-card">
+          <span class="wd-quote-icon">💫</span>
+          <p class="wd-quote-text">
+            "Tu nombre es tu destino: llevas luz a donde quiera que vas,
+            iluminas corazones y embelleces la vida."
+          </p>
+        </div>
+
+        <div class="wd-quote-card">
+          <span class="wd-quote-icon">🌺</span>
+          <p class="wd-quote-text">
+            "No necesitas una corona para ser reina. Tu inteligencia, tu dulzura
+            y tu corazón ya te coronan cada día."
+          </p>
+        </div>
+
+        <div class="wd-quote-card">
+          <span class="wd-quote-icon">🌻</span>
+          <p class="wd-quote-text">
+            "Eres como un girasol: siempre buscando la luz, sin saber que tú
+            misma eres la luz que todos buscan."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MENSAJE ESPECIAL ===== -->
+    <section class="wd-message-section" id="mensaje">
+      <div class="wd-message-card">
+        <span class="wd-message-emoji">💝</span>
+        <p class="wd-message-text">
+          Mi amada y hermosa Luz, hoy en el Día de la Mujer quiero que sepas lo
+          mucho que admiro tu fortaleza, tu dedicación y esa capacidad tan tuya
+          de hacer que todo sea mejor con tu sola presencia.
+          <br /><br />
+          Eres una mujer extraordinaria: profesional, valiente, dulce,
+          inteligente y con una luz interior que no se apaga nunca. El mundo es
+          un lugar más bonito porque tú estás en él.
+          <br /><br />
+          Gracias por ser tú. Gracias por existir. Mereces todo lo hermoso que
+          la vida tiene para ofrecer. 🌸
+        </p>
+        <p class="wd-message-signature">Con todo mi amor, por siempre 💕</p>
+      </div>
+    </section>
+
+    <div class="container" style="display: none">
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/music-control.js"></script>
+    <script src="assets/js/womens-day.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+
+    <script>
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
+
+        setTimeout(() => {
+          agregarDatos("Dia-de-la-Mujer");
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>
