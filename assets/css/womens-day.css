@@ -1,5 +1,5 @@
 /* ===== GOOGLE FONTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 /* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
@@ -36,10 +36,16 @@ html {
 }
 
 body.womens-day {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: var(--text-dark);
   overflow-x: hidden;
-  background: linear-gradient(135deg, var(--pastel-cream) 0%, var(--pastel-pink) 30%, var(--pastel-lavender) 60%, var(--pastel-sky) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--pastel-cream) 0%,
+    var(--pastel-pink) 30%,
+    var(--pastel-lavender) 60%,
+    var(--pastel-sky) 100%
+  );
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -110,21 +116,28 @@ body.womens-day {
 }
 
 .wd-hero-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--deep-rose), var(--soft-purple), var(--deep-rose));
+  background: linear-gradient(
+    135deg,
+    var(--deep-rose),
+    var(--soft-purple),
+    var(--deep-rose)
+  );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: wd-fade-slide-down 1s ease-out 0.6s both, wd-gradient-shift 4s ease infinite;
+  animation:
+    wd-fade-slide-down 1s ease-out 0.6s both,
+    wd-gradient-shift 4s ease infinite;
 }
 
 .wd-hero-subtitle {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: clamp(1.5rem, 4vw, 3rem);
   color: var(--soft-purple);
   margin-bottom: 1rem;
@@ -132,13 +145,15 @@ body.womens-day {
 }
 
 .wd-hero-name {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   font-weight: 700;
   color: var(--deep-rose);
   text-shadow: 0 0 30px rgba(201, 87, 122, 0.3);
   margin-bottom: 1rem;
-  animation: wd-fade-slide-down 1s ease-out 1.2s both, wd-glow-pulse 3s ease-in-out infinite;
+  animation:
+    wd-fade-slide-down 1s ease-out 1.2s both,
+    wd-glow-pulse 3s ease-in-out infinite;
 }
 
 .wd-hero-message {
@@ -159,7 +174,9 @@ body.womens-day {
 .wd-scroll-indicator {
   position: absolute;
   bottom: 2rem;
-  animation: wd-bounce 2s ease-in-out infinite, wd-fade-slide-down 1s ease-out 2.2s both;
+  animation:
+    wd-bounce 2s ease-in-out infinite,
+    wd-fade-slide-down 1s ease-out 2.2s both;
   cursor: pointer;
 }
 
@@ -176,7 +193,7 @@ body.womens-day {
 }
 
 .wd-section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(1.8rem, 4vw, 3rem);
   text-align: center;
   margin-bottom: 1rem;
@@ -209,7 +226,9 @@ body.womens-day {
   border-radius: 20px;
   padding: 2rem;
   text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -217,7 +236,9 @@ body.womens-day {
 .wd-quote-card.wd-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .wd-quote-card:hover {
@@ -232,7 +253,7 @@ body.womens-day {
 }
 
 .wd-quote-text {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-style: italic;
   font-size: 1.05rem;
   line-height: 1.6;
@@ -267,7 +288,9 @@ body.womens-day {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-soft);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   opacity: 0;
   transform: scale(0.9);
 }
@@ -275,7 +298,9 @@ body.womens-day {
 .wd-photo-card.wd-visible {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .wd-photo-card:hover {
@@ -288,7 +313,11 @@ body.womens-day {
   width: 100%;
   padding-top: 100%;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-lavender));
+  background: linear-gradient(
+    135deg,
+    var(--pastel-pink),
+    var(--pastel-lavender)
+  );
 }
 
 .wd-photo-wrapper img {
@@ -351,7 +380,11 @@ body.womens-day {
 .wd-message-card {
   position: relative;
   max-width: 700px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(248,200,220,0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(248, 200, 220, 0.3)
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
@@ -366,18 +399,26 @@ body.womens-day {
 .wd-message-card.wd-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .wd-message-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: -2px;
   right: -2px;
   bottom: -2px;
   border-radius: 32px;
-  background: linear-gradient(135deg, var(--pastel-rose), var(--pastel-lilac), var(--pastel-mint), var(--pastel-peach));
+  background: linear-gradient(
+    135deg,
+    var(--pastel-rose),
+    var(--pastel-lilac),
+    var(--pastel-mint),
+    var(--pastel-peach)
+  );
   background-size: 300% 300%;
   animation: wd-gradient-border 6s ease infinite;
   z-index: -1;
@@ -392,7 +433,7 @@ body.womens-day {
 }
 
 .wd-message-text {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--text-dark);
@@ -400,9 +441,185 @@ body.womens-day {
 }
 
 .wd-message-signature {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: 1.4rem;
   color: var(--deep-rose);
+}
+
+/* ===== STRENGTH SECTION ===== */
+.wd-strength-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin: 3rem 0;
+  border-top: 1px dashed rgba(200, 150, 180, 0.4);
+  border-bottom: 1px dashed rgba(200, 150, 180, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.wd-strength-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wd-strength-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.wd-strength-text {
+  flex: 1;
+  min-width: 320px;
+}
+
+.wd-strength-text p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.wd-strength-list {
+  list-style: none;
+  padding: 0;
+}
+
+.wd-strength-list li {
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 0.3s ease;
+  border-left: 4px solid var(--deep-rose);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.wd-strength-list li:hover {
+  transform: translateX(10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 20px rgba(201, 87, 122, 0.15);
+}
+
+.wd-strength-list i {
+  color: var(--deep-rose);
+  font-size: 1.3rem;
+  margin-top: 3px;
+  animation: wd-pulse-badge 2s ease-in-out infinite;
+}
+
+.wd-strength-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+/* Animated Badge */
+.wd-animated-badge {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.wd-badge-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: wd-spin-badge 24s linear infinite;
+  overflow: visible;
+}
+
+.wd-badge-svg text {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  fill: var(--text-dark);
+}
+
+.wd-badge-center {
+  font-size: 6rem;
+  animation: wd-pulse-badge 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(242, 166, 192, 0.6));
+  z-index: 2;
+}
+
+/* Floating element styles for JS */
+.wd-floating-butterfly {
+  position: fixed;
+  font-size: 1.5rem;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes wd-butterfly-fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--tr)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes wd-butterfly-flap {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.3);
+  }
+}
+
+.wd-butterfly-inner {
+  display: inline-block;
+  animation: wd-butterfly-flap 0.3s ease-in-out infinite alternate;
 }
 
 /* ===== FOOTER ===== */
@@ -425,10 +642,18 @@ body.womens-day {
   animation: wd-heartbeat 1.5s ease-in-out infinite;
 }
 
-.wd-footer-hearts span:nth-child(2) { animation-delay: 0.15s; }
-.wd-footer-hearts span:nth-child(3) { animation-delay: 0.3s; }
-.wd-footer-hearts span:nth-child(4) { animation-delay: 0.45s; }
-.wd-footer-hearts span:nth-child(5) { animation-delay: 0.6s; }
+.wd-footer-hearts span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.wd-footer-hearts span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.wd-footer-hearts span:nth-child(4) {
+  animation-delay: 0.45s;
+}
+.wd-footer-hearts span:nth-child(5) {
+  animation-delay: 0.6s;
+}
 
 .wd-footer-text {
   font-size: 0.9rem;
@@ -437,7 +662,7 @@ body.womens-day {
 
 .wd-footer-text strong {
   color: var(--deep-rose);
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: 1.1rem;
 }
 
@@ -483,12 +708,18 @@ body.womens-day {
 }
 
 @keyframes wd-gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes wd-glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 20px rgba(201, 87, 122, 0.2);
     transform: scale(1);
   }
@@ -499,27 +730,72 @@ body.womens-day {
 }
 
 @keyframes wd-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes wd-gradient-border {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes wd-spin-badge {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wd-pulse-badge {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 @keyframes wd-heartbeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.25); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.15); }
-  60% { transform: scale(1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.15);
+  }
+  60% {
+    transform: scale(1);
+  }
 }
 
 @keyframes wd-shimmer {
-  0% { left: -150%; }
-  100% { left: 150%; }
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -604,7 +880,9 @@ body.womens-day {
 .wd-reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .wd-reveal.wd-visible {
@@ -650,6 +928,11 @@ body.womens-day {
 }
 
 @keyframes wd-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }

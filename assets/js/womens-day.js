@@ -210,6 +210,63 @@
     }
   }
 
+  // ===== BUTTERFLY GENERATOR =====
+  function spawnButterfly() {
+    const butterfly = document.createElement('div');
+    butterfly.className = 'wd-floating-butterfly';
+    
+    // Random starting position (usually edges)
+    const startFromLeft = Math.random() > 0.5;
+    const startX = startFromLeft ? -50 : window.innerWidth + 50;
+    const startY = Math.random() * window.innerHeight;
+    
+    // Target position
+    const tx = (startFromLeft ? 1 : -1) * (Math.random() * window.innerWidth * 0.5 + window.innerWidth * 0.5);
+    const ty = (Math.random() - 0.5) * window.innerHeight;
+    const tr = (startFromLeft ? 1 : -1) * (Math.random() * 45 + 15);
+    
+    butterfly.style.left = `${startX}px`;
+    butterfly.style.top = `${startY}px`;
+    butterfly.style.setProperty('--tx', `${tx}px`);
+    butterfly.style.setProperty('--ty', `${ty}px`);
+    butterfly.style.setProperty('--tr', `${tr}deg`);
+    
+    const duration = Math.random() * 8 + 7; // 7 to 15 seconds
+    butterfly.style.animation = `wd-butterfly-fly ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) forwards`;
+    
+    const inner = document.createElement('div');
+    inner.className = 'wd-butterfly-inner';
+    const emojis = ['🦋', '🌸', '✨'];
+    inner.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    butterfly.appendChild(inner);
+    document.body.appendChild(butterfly);
+    
+    setTimeout(() => {
+      butterfly.remove();
+    }, duration * 1000);
+  }
+
+  // Spawn butterflies occasionally
+  setInterval(() => {
+    if (Math.random() > 0.3) {
+      spawnButterfly();
+    }
+  }, 4000);
+  
+  // Initial butterflies
+  setTimeout(spawnButterfly, 2000);
+  setTimeout(spawnButterfly, 4000);
+
+  // ===== INTERACTIVE ELEMENTS ON HOVER =====
+  document.querySelectorAll('.wd-strength-list li').forEach(item => {
+    item.addEventListener('mouseenter', function(e) {
+      if(Math.random() > 0.5) {
+        spawnButterfly();
+      }
+    });
+  });
+
   // ===== PHOTO GALLERY: Click to upload (optional interactive feature) =====
   document.querySelectorAll('.wd-photo-placeholder').forEach(placeholder => {
     placeholder.closest('.wd-photo-card')?.addEventListener('click', function () {
