@@ -1,0 +1,119 @@
+/* ============================================================
+   Transición compartida entre páginas de la experiencia
+   (jardín → cafetería → buenas noches)
+   ============================================================ */
+
+body {
+  animation: paginaEntra 1.5s ease both;
+}
+
+@keyframes paginaEntra {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.velo-transicion {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 28px;
+  text-align: center;
+  background:
+    radial-gradient(70% 50% at 50% 62%, rgba(247, 178, 103, 0.16), transparent 70%),
+    linear-gradient(180deg, #0a0e26 0%, #241539 55%, #3c2450 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.1s ease;
+}
+
+.velo-transicion.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.velo-frase {
+  margin: 0;
+  max-width: min(88vw, 560px);
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 6vw, 3rem);
+  line-height: 1.45;
+  color: #ffe9cf;
+  text-shadow: 0 0 34px rgba(247, 178, 103, 0.45);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1.2s ease 0.5s, transform 1.2s ease 0.5s;
+}
+
+.velo-transicion.activo .velo-frase {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.velo-estrellas {
+  display: flex;
+  gap: 14px;
+}
+
+.velo-estrellas span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffd6a5;
+  box-shadow: 0 0 10px 2px rgba(255, 214, 165, 0.7);
+  opacity: 0;
+  animation: veloTitila 1.6s ease-in-out infinite;
+}
+
+.velo-transicion.activo .velo-estrellas span {
+  opacity: 1;
+}
+
+.velo-estrellas span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.velo-estrellas span:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+@keyframes veloTitila {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+
+  .velo-transicion {
+    transition: opacity 0.3s ease;
+  }
+
+  .velo-frase {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+
+  .velo-estrellas span {
+    animation: none;
+    opacity: 0.8;
+  }
+}
