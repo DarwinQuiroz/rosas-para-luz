@@ -8,13 +8,13 @@
   // ---------- Datos ----------
 
   const MENSAJE_PRINCIPAL =
-    "Buenas noches, Luz. Espero que cuando cierres los ojos, todo lo bonito que mereces te encuentre primero. Y si algún sueño decide visitarte, ojalá lleve un pedacito de nosotros.";
+    "Buenas noches, mi hermosa Luz. Espero que cuando cierres los ojos, todo lo bonito que mereces te encuentre primero. Y si algún sueño decide visitarte, ojalá lleve un pedacito de nosotros.";
 
   const MENSAJE_FINAL =
     "Gracias por recorrer cada rincón de este pequeño universo que preparé para ti. Ojalá, cuando termine esta noche, recuerdes que siempre habrá alguien deseándote los sueños más bonitos.";
 
   const MENSAJE_DESPEDIDA =
-    "Buenas noches, Luz. Que descanses y que mañana te reciba con la misma luz que tú llevas a los demás.";
+    "Buenas noches, mi hermosa Luz. Que descanses y que mañana te reciba con la misma luz que tú llevas a los demás.";
 
   const MSG_LUNA = "La luna me pidió que cuidara de tus sueños.";
   const MSG_BUHO = "Los mejores sueños empiezan con una sonrisa.";
@@ -76,7 +76,9 @@
   const despedidaTexto = $("despedidaTexto");
   const btnFin = $("btnFin");
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const esMovil = window.matchMedia("(max-width: 640px)").matches;
 
   const floresTocadas = new Set();
@@ -180,7 +182,8 @@
       f.style.setProperty("--dur", rnd(5, 7.5).toFixed(2) + "s");
       f.style.setProperty("--delay", (-i * 1.3).toFixed(2) + "s");
       f.setAttribute("aria-label", "Una flor del jardín");
-      f.innerHTML = petaloSVG + '<span class="flor-tallo" aria-hidden="true"></span>';
+      f.innerHTML =
+        petaloSVG + '<span class="flor-tallo" aria-hidden="true"></span>';
       f.addEventListener("click", () => tocarFlor(f));
       floresBox.appendChild(f);
     });
@@ -192,7 +195,10 @@
     clearTimeout(cartelTimer);
     cartel.textContent = texto;
     cartel.classList.add("visible");
-    cartelTimer = setTimeout(() => cartel.classList.remove("visible"), duracion);
+    cartelTimer = setTimeout(
+      () => cartel.classList.remove("visible"),
+      duracion,
+    );
   }
 
   // ---------- Mensaje principal (letra por letra) ----------
@@ -285,7 +291,10 @@
     p.style.left = rnd(2, 98) + "%";
     p.style.setProperty("--tono", tonos[Math.floor(rnd(0, tonos.length))]);
     p.style.setProperty("--vx", rnd(-70, 70).toFixed(0) + "px");
-    p.style.setProperty("--dur", rnd(rapido ? 5 : 8, rapido ? 9 : 13).toFixed(1) + "s");
+    p.style.setProperty(
+      "--dur",
+      rnd(rapido ? 5 : 8, rapido ? 9 : 13).toFixed(1) + "s",
+    );
     p.style.setProperty("--delay", rnd(0, rapido ? 2.5 : 1).toFixed(1) + "s");
     petalosBox.appendChild(p);
     setTimeout(() => p.remove(), 17000);
@@ -329,8 +338,11 @@
     wrap.style.top = y0 + "%";
     wrap.style.setProperty("--vuelo", dur + "s");
     const angulo =
-      (Math.atan2(-dy * window.innerHeight, -dx * window.innerWidth) * 180) / Math.PI;
-    wrap.querySelector(".fugaz").style.setProperty("--cola", angulo.toFixed(0) + "deg");
+      (Math.atan2(-dy * window.innerHeight, -dx * window.innerWidth) * 180) /
+      Math.PI;
+    wrap
+      .querySelector(".fugaz")
+      .style.setProperty("--cola", angulo.toFixed(0) + "deg");
 
     let atrapada = false;
     if (atrapable) {
@@ -482,28 +494,37 @@
       const desdeY = window.innerHeight * 0.84;
       const dx = lunaX - desdeX;
       const dy = lunaY - desdeY;
-      setTimeout(() => {
-        corazon.style.transform = `translate(${dx}px, ${dy}px) scale(0.35)`;
-        corazon.style.opacity = "0";
-      }, reduceMotion ? 100 : 1200);
+      setTimeout(
+        () => {
+          corazon.style.transform = `translate(${dx}px, ${dy}px) scale(0.35)`;
+          corazon.style.opacity = "0";
+        },
+        reduceMotion ? 100 : 1200,
+      );
     });
 
-    setTimeout(() => despedidaTexto.classList.add("visible"), reduceMotion ? 800 : 6500);
+    setTimeout(
+      () => despedidaTexto.classList.add("visible"),
+      reduceMotion ? 800 : 6500,
+    );
     setTimeout(() => {
       despedidaTexto.textContent = MENSAJE_DESPEDIDA;
     }, 100);
 
     // Cierre del viaje: un último botón para volver al comienzo.
-    setTimeout(() => {
-      btnFin.hidden = false;
-      requestAnimationFrame(() => btnFin.classList.add("visible"));
-    }, reduceMotion ? 2500 : 13000);
+    setTimeout(
+      () => {
+        btnFin.hidden = false;
+        requestAnimationFrame(() => btnFin.classList.add("visible"));
+      },
+      reduceMotion ? 2500 : 13000,
+    );
   });
 
   btnFin.addEventListener("click", () => {
     transicionA(
       "index.html",
-      "Gracias por recorrer este pequeño universo. Que sueñes bonito ♥"
+      "Gracias por recorrer este pequeño universo. Que sueñes bonito ♥",
     );
   });
 
@@ -657,7 +678,7 @@
       osc.stop(t + 1.7);
       setTimeout(
         programarMelodia,
-        melodiaCada[0] + Math.random() * (melodiaCada[1] - melodiaCada[0])
+        melodiaCada[0] + Math.random() * (melodiaCada[1] - melodiaCada[0]),
       );
     }
 
@@ -774,7 +795,7 @@
       : '<i class="fa-solid fa-volume-high"></i>';
     soundBtn.setAttribute(
       "aria-label",
-      silenciado ? "Activar el sonido" : "Silenciar el sonido"
+      silenciado ? "Activar el sonido" : "Silenciar el sonido",
     );
   });
 
