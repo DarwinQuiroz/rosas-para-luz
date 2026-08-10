@@ -15,17 +15,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="assets/css/back-button.css" />
     <link rel="stylesheet" href="assets/css/transicion.css" />
-    <link rel="stylesheet" href="assets/css/cafeteria.css" />
+    <link rel="stylesheet" href="assets/css/coffee-shop.css" />
   </head>
 
   <body>
-    <button class="back-button" onclick="goBack()">
-      <i class="fa-solid fa-arrow-left"></i>
-    </button>
-
-    <button class="sound-btn" id="soundBtn" aria-label="Activar o silenciar el sonido" hidden>
+    <button
+      class="sound-btn"
+      id="soundBtn"
+      aria-label="Activar o silenciar el sonido"
+      hidden
+    >
       <i class="fa-solid fa-volume-high"></i>
     </button>
 
@@ -38,8 +38,15 @@
         <path d="M146 22 H210" stroke="currentColor" stroke-width="1" />
         <g stroke="currentColor" fill="none" stroke-linecap="round">
           <path d="M96 20 h22 a4 4 0 0 1 0 8 h-2" stroke-width="1.6" />
-          <path d="M94 20 h24 v6 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 z" stroke-width="1.6" />
-          <path d="M102 14 c-2 -3 2 -4 0 -7" stroke-width="1.4" opacity="0.85" />
+          <path
+            d="M94 20 h24 v6 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 z"
+            stroke-width="1.6"
+          />
+          <path
+            d="M102 14 c-2 -3 2 -4 0 -7"
+            stroke-width="1.4"
+            opacity="0.85"
+          />
           <path d="M110 14 c-2 -3 2 -4 0 -7" stroke-width="1.4" opacity="0.6" />
         </g>
       </svg>
@@ -80,7 +87,11 @@
       <div class="window">
         <div class="stars" id="stars"></div>
         <div class="city">
-          <svg viewBox="0 0 470 120" preserveAspectRatio="none" aria-hidden="true">
+          <svg
+            viewBox="0 0 470 120"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
             <path
               d="M0 120 V64 h28 v-18 h20 v18 h14 V38 h30 v26 h18 V52 h26 v12 h12 V20 h34 v44 h22 V46 h24 v18 h16 V30 h32 v34 h20 V56 h26 v8 h14 V36 h30 v28 h18 V50 h24 v14 h12 V26 h30 v38 h20 v56 Z"
               fill="#060a14"
@@ -127,33 +138,129 @@
         <button class="obj" data-obj="libro" aria-label="El libro">
           <svg viewBox="0 0 130 90" aria-hidden="true">
             <g transform="rotate(4 65 45)">
-              <rect x="20" y="20" width="90" height="54" rx="5" fill="#59331d" />
-              <rect x="24" y="15" width="86" height="54" rx="5" fill="#7d4c2f" />
+              <rect
+                x="20"
+                y="20"
+                width="90"
+                height="54"
+                rx="5"
+                fill="#59331d"
+              />
+              <rect
+                x="24"
+                y="15"
+                width="86"
+                height="54"
+                rx="5"
+                fill="#7d4c2f"
+              />
               <rect x="27" y="17" width="4" height="50" fill="#5a341f" />
-              <rect x="104" y="20" width="6" height="49" rx="2" fill="#efe2c8" />
-              <rect x="46" y="34" width="44" height="3" rx="1.5" fill="#d4af37" opacity="0.85" />
-              <rect x="52" y="42" width="32" height="2.5" rx="1.2" fill="#d4af37" opacity="0.5" />
+              <rect
+                x="104"
+                y="20"
+                width="6"
+                height="49"
+                rx="2"
+                fill="#efe2c8"
+              />
+              <rect
+                x="46"
+                y="34"
+                width="44"
+                height="3"
+                rx="1.5"
+                fill="#d4af37"
+                opacity="0.85"
+              />
+              <rect
+                x="52"
+                y="42"
+                width="32"
+                height="2.5"
+                rx="1.2"
+                fill="#d4af37"
+                opacity="0.5"
+              />
             </g>
           </svg>
           <span class="obj-label">nuestro libro</span>
         </button>
 
-        <button class="obj" data-obj="chocolate" aria-label="El chocolate" disabled>
+        <button
+          class="obj"
+          data-obj="chocolate"
+          aria-label="El chocolate"
+          disabled
+        >
           <svg viewBox="0 0 130 90" aria-hidden="true">
             <g transform="rotate(-6 65 45)">
-              <rect x="15" y="22" width="100" height="50" rx="6" fill="#a63d2e" />
-              <rect x="15" y="22" width="36" height="50" rx="6" fill="#d9d0c0" />
-              <rect x="20" y="28" width="11" height="11" rx="2" fill="#4a2a12" />
-              <rect x="34" y="28" width="11" height="11" rx="2" fill="#4a2a12" />
-              <rect x="20" y="43" width="11" height="11" rx="2" fill="#4a2a12" />
-              <rect x="34" y="43" width="11" height="11" rx="2" fill="#4a2a12" />
-              <rect x="60" y="22" width="14" height="50" fill="#d4af37" opacity="0.85" />
+              <rect
+                x="15"
+                y="22"
+                width="100"
+                height="50"
+                rx="6"
+                fill="#a63d2e"
+              />
+              <rect
+                x="15"
+                y="22"
+                width="36"
+                height="50"
+                rx="6"
+                fill="#d9d0c0"
+              />
+              <rect
+                x="20"
+                y="28"
+                width="11"
+                height="11"
+                rx="2"
+                fill="#4a2a12"
+              />
+              <rect
+                x="34"
+                y="28"
+                width="11"
+                height="11"
+                rx="2"
+                fill="#4a2a12"
+              />
+              <rect
+                x="20"
+                y="43"
+                width="11"
+                height="11"
+                rx="2"
+                fill="#4a2a12"
+              />
+              <rect
+                x="34"
+                y="43"
+                width="11"
+                height="11"
+                rx="2"
+                fill="#4a2a12"
+              />
+              <rect
+                x="60"
+                y="22"
+                width="14"
+                height="50"
+                fill="#d4af37"
+                opacity="0.85"
+              />
             </g>
           </svg>
           <span class="obj-label">un chocolate</span>
         </button>
 
-        <button class="obj" data-obj="taza" aria-label="La taza de café" disabled>
+        <button
+          class="obj"
+          data-obj="taza"
+          aria-label="La taza de café"
+          disabled
+        >
           <svg viewBox="0 0 120 100" aria-hidden="true">
             <path
               class="steam-line"
@@ -194,18 +301,49 @@
               fill="none"
               stroke-linecap="round"
             />
-            <path d="M94 40c8-14 22-16 30-11-5 12-17 16-30 11z" fill="#55763f" />
+            <path
+              d="M94 40c8-14 22-16 30-11-5 12-17 16-30 11z"
+              fill="#55763f"
+            />
             <path
               d="M100 36c8-4 16-5 22-4"
               stroke="#37502a"
               stroke-width="1.4"
               fill="none"
             />
-            <ellipse cx="30" cy="40" rx="17" ry="13" transform="rotate(-20 30 40)" fill="#701f2b" />
-            <ellipse cx="58" cy="40" rx="17" ry="13" transform="rotate(20 58 40)" fill="#8f303d" />
+            <ellipse
+              cx="30"
+              cy="40"
+              rx="17"
+              ry="13"
+              transform="rotate(-20 30 40)"
+              fill="#701f2b"
+            />
+            <ellipse
+              cx="58"
+              cy="40"
+              rx="17"
+              ry="13"
+              transform="rotate(20 58 40)"
+              fill="#8f303d"
+            />
             <ellipse cx="44" cy="50" rx="17" ry="11" fill="#7e2734" />
-            <ellipse cx="36" cy="32" rx="13" ry="15" transform="rotate(-14 36 32)" fill="#a63a48" />
-            <ellipse cx="52" cy="32" rx="13" ry="15" transform="rotate(14 52 32)" fill="#b44a56" />
+            <ellipse
+              cx="36"
+              cy="32"
+              rx="13"
+              ry="15"
+              transform="rotate(-14 36 32)"
+              fill="#a63a48"
+            />
+            <ellipse
+              cx="52"
+              cy="32"
+              rx="13"
+              ry="15"
+              transform="rotate(14 52 32)"
+              fill="#b44a56"
+            />
             <circle cx="44" cy="37" r="12" fill="#c25b64" />
             <path
               d="M44 28c-7 1-11 7-9 13 2 5 8 7 12 5 4-2 5-8 2-11-3-3-7-2-8 1"
@@ -228,7 +366,14 @@
         <button class="obj" data-obj="foto" aria-label="La fotografía" disabled>
           <svg viewBox="0 0 100 110" aria-hidden="true">
             <g transform="rotate(-7 50 55)">
-              <rect x="14" y="10" width="72" height="90" rx="3" fill="#f4efe4" />
+              <rect
+                x="14"
+                y="10"
+                width="72"
+                height="90"
+                rx="3"
+                fill="#f4efe4"
+              />
               <rect x="20" y="16" width="60" height="60" fill="#22304a" />
               <circle cx="64" cy="32" r="7" fill="#ffe9c4" />
               <circle cx="30" cy="26" r="1.4" fill="#fff" opacity="0.8" />
@@ -269,7 +414,9 @@
       <div class="vignette"></div>
     </div>
 
-    <p class="hint" id="hint">Empieza por el libro… cada cosa de la mesa guarda algo para ti.</p>
+    <p class="hint" id="hint">
+      Empieza por el libro… cada cosa de la mesa guarda algo para ti.
+    </p>
 
     <div class="progress" aria-hidden="true">
       <span data-p="libro"></span>
@@ -285,8 +432,8 @@
     <!-- Mensaje final -->
     <div class="final-text" id="finalText">
       <p>
-        “Ojalá algún día esta cafetería deje de ser una idea…
-        y se convierta en un recuerdo contigo.”
+        “Ojalá algún día esta cafetería deje de ser una idea… y se convierta en
+        un recuerdo contigo.”
       </p>
       <span class="firma">— nuestra pequeña cafetería ♥</span>
     </div>
@@ -301,7 +448,9 @@
 
     <!-- Chocolate -->
     <div class="stage" data-stage="chocolate">
-      <button class="stage-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="stage-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="stage-inner">
         <div class="choco" id="choco">
           <div class="choco-note">
@@ -309,8 +458,8 @@
             imagino contigo.
           </div>
           <div class="choco-body">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span> <span></span
+            ><span></span><span></span><span></span>
           </div>
           <div class="choco-lid"><span>Para ti</span></div>
         </div>
@@ -320,10 +469,14 @@
 
     <!-- Taza -->
     <div class="stage" data-stage="taza">
-      <button class="stage-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="stage-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="stage-inner">
         <div class="cup-scene" id="cupScene">
-          <p class="vapor-text">Eres la calma que uno busca<br />en los días de lluvia.</p>
+          <p class="vapor-text">
+            Eres la calma que uno busca<br />en los días de lluvia.
+          </p>
           <div class="steam"><i></i><i></i><i></i></div>
           <div class="cup"></div>
           <div class="saucer"></div>
@@ -334,7 +487,9 @@
 
     <!-- Libro -->
     <div class="stage" data-stage="libro">
-      <button class="stage-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="stage-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="stage-inner">
         <div class="book-wrap">
           <div class="book">
@@ -351,14 +506,20 @@
                 <p class="autor">para mi amada Luz</p>
               </div>
               <div class="face back">
-                <p>Capítulo uno: llegaste sin avisar, como llegan las cosas buenas.</p>
+                <p>
+                  Capítulo uno: llegaste sin avisar, como llegan las cosas
+                  buenas.
+                </p>
                 <span class="pg">1</span>
               </div>
             </div>
 
             <div class="sheet">
               <div class="face front">
-                <p>Me gustas de una forma tranquila: como la lluvia de afuera, sin prisa.</p>
+                <p>
+                  Me gustas de una forma tranquila: como la lluvia de afuera,
+                  sin prisa.
+                </p>
                 <span class="pg">2</span>
               </div>
               <div class="face back">
@@ -369,11 +530,17 @@
 
             <div class="sheet">
               <div class="face front">
-                <p>No sé cómo termina esta historia, pero me encanta el rumbo que lleva.</p>
+                <p>
+                  No sé cómo termina esta historia, pero me encanta el rumbo que
+                  lleva.
+                </p>
                 <span class="pg">4</span>
               </div>
               <div class="face back">
-                <p>Cada página en blanco es un día que todavía podemos escribir juntos.</p>
+                <p>
+                  Cada página en blanco es un día que todavía podemos escribir
+                  juntos.
+                </p>
                 <span class="pg">5</span>
               </div>
             </div>
@@ -385,7 +552,9 @@
 
     <!-- Rosa -->
     <div class="stage" data-stage="rosa">
-      <button class="stage-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="stage-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="stage-inner">
         <div class="rose-scene" id="roseScene">
           <div class="rose-wrap" id="roseWrap">
@@ -412,14 +581,20 @@
                 fill="none"
                 stroke-linecap="round"
               />
-              <path d="M69 162 C52 146 32 146 22 162 C34 178 56 176 69 162Z" fill="#4c6b3c" />
+              <path
+                d="M69 162 C52 146 32 146 22 162 C34 178 56 176 69 162Z"
+                fill="#4c6b3c"
+              />
               <path
                 d="M40 160c10-2 20 0 27 2"
                 stroke="#2f4526"
                 stroke-width="1.6"
                 fill="none"
               />
-              <path d="M71 200 C88 184 108 184 118 200 C106 216 84 214 71 200Z" fill="#55763f" />
+              <path
+                d="M71 200 C88 184 108 184 118 200 C106 216 84 214 71 200Z"
+                fill="#55763f"
+              />
               <path
                 d="M100 198c-10-2-20 0-27 2"
                 stroke="#37502a"
@@ -432,16 +607,52 @@
               />
 
               <g fill="url(#rosaOut)">
-                <ellipse cx="41" cy="64" rx="27" ry="21" transform="rotate(-28 41 64)" />
-                <ellipse cx="99" cy="64" rx="27" ry="21" transform="rotate(28 99 64)" />
-                <ellipse cx="49" cy="88" rx="24" ry="17" transform="rotate(-40 49 88)" />
-                <ellipse cx="91" cy="88" rx="24" ry="17" transform="rotate(40 91 88)" />
+                <ellipse
+                  cx="41"
+                  cy="64"
+                  rx="27"
+                  ry="21"
+                  transform="rotate(-28 41 64)"
+                />
+                <ellipse
+                  cx="99"
+                  cy="64"
+                  rx="27"
+                  ry="21"
+                  transform="rotate(28 99 64)"
+                />
+                <ellipse
+                  cx="49"
+                  cy="88"
+                  rx="24"
+                  ry="17"
+                  transform="rotate(-40 49 88)"
+                />
+                <ellipse
+                  cx="91"
+                  cy="88"
+                  rx="24"
+                  ry="17"
+                  transform="rotate(40 91 88)"
+                />
                 <ellipse cx="70" cy="94" rx="26" ry="15" />
               </g>
 
               <g fill="url(#rosaMid)">
-                <ellipse cx="52" cy="48" rx="20" ry="24" transform="rotate(-20 52 48)" />
-                <ellipse cx="88" cy="48" rx="20" ry="24" transform="rotate(20 88 48)" />
+                <ellipse
+                  cx="52"
+                  cy="48"
+                  rx="20"
+                  ry="24"
+                  transform="rotate(-20 52 48)"
+                />
+                <ellipse
+                  cx="88"
+                  cy="48"
+                  rx="20"
+                  ry="24"
+                  transform="rotate(20 88 48)"
+                />
                 <ellipse cx="70" cy="80" rx="24" ry="17" />
               </g>
 
@@ -472,8 +683,8 @@
           </div>
           <div class="petal"></div>
           <div class="petal-note" id="petalNote">
-            Cada pétalo guarda una razón para admirarte…
-            y siempre se me acaban los pétalos antes que las razones.
+            Cada pétalo guarda una razón para admirarte… y siempre se me acaban
+            los pétalos antes que las razones.
           </div>
         </div>
         <p class="stage-hint">Gírala…</p>
@@ -482,13 +693,19 @@
 
     <!-- Fotografía -->
     <div class="stage" data-stage="foto">
-      <button class="stage-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="stage-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="stage-inner">
         <div class="polaroid" id="polaroid">
           <div class="pol-card">
             <div class="pol-face pol-front">
               <div class="pol-img">
-                <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <svg
+                  viewBox="0 0 200 200"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                >
                   <rect width="200" height="200" fill="#1c2740" />
                   <rect
                     x="30"
@@ -509,11 +726,46 @@
                     d="M100 96c-9-11-24-2-15 9l15 13 15-13c9-11-6-20-15-9z"
                     fill="rgba(255,255,255,0.38)"
                   />
-                  <rect x="18" y="150" width="164" height="10" rx="4" fill="#4a3222" />
-                  <rect x="58" y="132" width="28" height="18" rx="4" fill="#f3e6cf" />
-                  <rect x="114" y="132" width="28" height="18" rx="4" fill="#f3e6cf" />
-                  <rect x="60" y="134" width="24" height="5" rx="2.5" fill="#5a3b28" />
-                  <rect x="116" y="134" width="24" height="5" rx="2.5" fill="#5a3b28" />
+                  <rect
+                    x="18"
+                    y="150"
+                    width="164"
+                    height="10"
+                    rx="4"
+                    fill="#4a3222"
+                  />
+                  <rect
+                    x="58"
+                    y="132"
+                    width="28"
+                    height="18"
+                    rx="4"
+                    fill="#f3e6cf"
+                  />
+                  <rect
+                    x="114"
+                    y="132"
+                    width="28"
+                    height="18"
+                    rx="4"
+                    fill="#f3e6cf"
+                  />
+                  <rect
+                    x="60"
+                    y="134"
+                    width="24"
+                    height="5"
+                    rx="2.5"
+                    fill="#5a3b28"
+                  />
+                  <rect
+                    x="116"
+                    y="134"
+                    width="24"
+                    height="5"
+                    rx="2.5"
+                    fill="#5a3b28"
+                  />
                 </svg>
               </div>
               <p class="pol-caption">nuestra cafetería</p>
@@ -530,7 +782,9 @@
 
     <!-- Galleta -->
     <div class="stage" data-stage="galleta">
-      <button class="stage-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="stage-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <div class="stage-inner">
         <div class="cookie-scene" id="cookieScene">
           <div class="cookie" id="cookie">
@@ -563,7 +817,7 @@
     </div>
 
     <script src="assets/js/transicion.js"></script>
-    <script src="assets/js/cafeteria.js"></script>
+    <script src="assets/js/coffee-shop.js"></script>
 
     <script>
       function goBack() {

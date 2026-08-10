@@ -12,43 +12,66 @@
       id: "admiracion",
       titulo: "Admiración",
       msg: "Admiro la pasión con la que haces cada cosa.",
-      x: 9, y: 15, fs: 1.0, dorada: false,
+      x: 9,
+      y: 15,
+      fs: 1.0,
+      dorada: false,
     },
     {
       id: "dulzura",
       titulo: "Dulzura",
       msg: "Tu forma de tratar a las personas dice mucho de tu corazón.",
-      x: 24, y: 5, fs: 1.18, dorada: false,
+      x: 24,
+      y: 5,
+      fs: 1.18,
+      dorada: false,
     },
     {
       id: "sorpresa-chocolate",
       titulo: "Flor dorada",
       msg: "Un chocolate para la persona más dulce de este jardín.",
-      x: 38, y: 13, fs: 0.85, dorada: true, arte: "chocolate",
+      x: 38,
+      y: 13,
+      fs: 0.85,
+      dorada: true,
+      arte: "chocolate",
     },
     {
       id: "sonrisa",
       titulo: "Sonrisa",
       msg: "Tu sonrisa tiene un efecto que todavía no logro explicar.",
-      x: 52, y: 17, fs: 0.95, dorada: false,
+      x: 52,
+      y: 17,
+      fs: 0.95,
+      dorada: false,
     },
     {
       id: "inteligencia",
       titulo: "Inteligencia",
       msg: "Hay algo muy bonito en la manera en que piensas.",
-      x: 66, y: 6, fs: 1.12, dorada: false,
+      x: 66,
+      y: 6,
+      fs: 1.12,
+      dorada: false,
     },
     {
       id: "carino",
       titulo: "Cariño",
       msg: "Gracias por ser exactamente como eres.",
-      x: 80, y: 16, fs: 0.98, dorada: false,
+      x: 80,
+      y: 16,
+      fs: 0.98,
+      dorada: false,
     },
     {
       id: "sorpresa-rosa",
       titulo: "Flor dorada",
       msg: "Una rosa eterna: como lo que siento por ti, no se marchita.",
-      x: 92, y: 6, fs: 1.02, dorada: true, arte: "rosa",
+      x: 92,
+      y: 6,
+      fs: 1.02,
+      dorada: true,
+      arte: "rosa",
     },
   ];
 
@@ -125,7 +148,9 @@
   let colibriTimer = null;
   let colibriAtrapado = false;
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   // ---------- Construcción de la escena ----------
 
@@ -133,7 +158,9 @@
     let petalos = "";
     for (let i = 0; i < 6; i++) {
       petalos +=
-        '<g transform="rotate(' + i * 60 + ' 60 62)">' +
+        '<g transform="rotate(' +
+        i * 60 +
+        ' 60 62)">' +
         '<ellipse class="petalo" cx="60" cy="36" rx="14" ry="27" /></g>';
     }
     return (
@@ -141,7 +168,8 @@
       '<path class="tallo" d="M60 232 C54 190 66 150 60 96" />' +
       '<path class="hoja" d="M60 178 C44 163 22 165 14 178 C26 191 47 189 60 178Z" />' +
       '<path class="hoja" d="M60 146 C76 131 98 133 106 146 C94 159 73 157 60 146Z" />' +
-      '<g class="corola">' + petalos +
+      '<g class="corola">' +
+      petalos +
       '<circle class="centro" cx="60" cy="62" r="12" /></g></svg>'
     );
   }
@@ -154,7 +182,7 @@
       btn.style.bottom = f.y + "%";
       btn.style.setProperty("--fs", f.fs);
       btn.style.setProperty("--md", "-" + (i * 0.7).toFixed(1) + "s");
-      btn.style.zIndex = 20 + Math.round((30 - f.y));
+      btn.style.zIndex = 20 + Math.round(30 - f.y);
       btn.setAttribute("aria-label", "Flor: " + f.titulo);
       btn.innerHTML = florSVG();
       btn.addEventListener("click", () => abrirFlor(f, btn));
@@ -206,8 +234,14 @@
       const w = 16 + Math.random() * 22;
       const alto = 20 + Math.random() * 48;
       const lado = (Math.random() - 0.5) * 10;
-      d += "L" + (x + w / 2 + lado).toFixed(1) + " " + (90 - alto).toFixed(1) +
-        " L" + (x + w).toFixed(1) + " 90 ";
+      d +=
+        "L" +
+        (x + w / 2 + lado).toFixed(1) +
+        " " +
+        (90 - alto).toFixed(1) +
+        " L" +
+        (x + w).toFixed(1) +
+        " 90 ";
       x += w * 0.62;
     }
     d += "Z";
@@ -275,7 +309,10 @@
       const g = ctx.createGain();
       const f = 2300 + Math.random() * 1500;
       o.frequency.setValueAtTime(f, t);
-      o.frequency.exponentialRampToValueAtTime(f * (0.6 + Math.random() * 0.3), t + 0.07);
+      o.frequency.exponentialRampToValueAtTime(
+        f * (0.6 + Math.random() * 0.3),
+        t + 0.07,
+      );
       g.gain.setValueAtTime(0.0001, t);
       g.gain.exponentialRampToValueAtTime(0.045, t + 0.015);
       g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
@@ -288,10 +325,13 @@
   }
 
   function programarPajaro() {
-    setTimeout(() => {
-      pajaro();
-      programarPajaro();
-    }, 3500 + Math.random() * 6500);
+    setTimeout(
+      () => {
+        pajaro();
+        programarPajaro();
+      },
+      3500 + Math.random() * 6500,
+    );
   }
 
   function nota(freq, cuando, dur, vol) {
@@ -389,7 +429,8 @@
   }
 
   function actualizarProgreso() {
-    progresoTxt.textContent = descubiertas.size + " / " + FLORES.length + " flores";
+    progresoTxt.textContent =
+      descubiertas.size + " / " + FLORES.length + " flores";
   }
 
   // ---------- Final: lluvia de pétalos y florecimiento ----------
@@ -422,7 +463,9 @@
       m.style.width = 18 + Math.random() * 26 + "px";
       m.style.zIndex = 15;
       m.innerHTML = florSVG();
-      m.querySelectorAll(".petalo").forEach((pt) => (pt.style.transform = "scale(1)"));
+      m.querySelectorAll(".petalo").forEach(
+        (pt) => (pt.style.transform = "scale(1)"),
+      );
       miniBox.appendChild(m);
       setTimeout(() => m.classList.add("brota"), 300 + i * 140);
     }
@@ -443,8 +486,8 @@
     arpegio([523.25, 659.25, 783.99], 0.06);
     continuarBtn.classList.remove("visible");
     transicionA(
-      "cafeteria.html",
-      "Empieza a llover… pero conozco un lugar calientito donde seguir esta historia."
+      "coffee-shop.html",
+      "Empieza a llover… pero conozco un lugar calientito donde seguir esta historia.",
     );
   });
 
@@ -491,7 +534,7 @@
     if (audio) {
       audio.master.gain.linearRampToValueAtTime(
         muted ? 0.0001 : 0.55,
-        audio.ctx.currentTime + 0.3
+        audio.ctx.currentTime + 0.3,
       );
     }
     soundBtn.innerHTML = muted

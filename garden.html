@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" href="assets/css/back-button.css" />
     <link rel="stylesheet" href="assets/css/transicion.css" />
-    <link rel="stylesheet" href="assets/css/jardin.css" />
+    <link rel="stylesheet" href="assets/css/garden.css" />
   </head>
 
   <body>
@@ -25,7 +25,12 @@
       <i class="fa-solid fa-arrow-left"></i>
     </button>
 
-    <button class="sound-btn" id="soundBtn" aria-label="Activar o silenciar el sonido" hidden>
+    <button
+      class="sound-btn"
+      id="soundBtn"
+      aria-label="Activar o silenciar el sonido"
+      hidden
+    >
       <i class="fa-solid fa-volume-high"></i>
     </button>
 
@@ -93,12 +98,22 @@
         <span class="nube n3"></span>
       </div>
 
-      <svg class="montes lejos" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <svg
+        class="montes lejos"
+        viewBox="0 0 1440 220"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
         <path
           d="M0 220 L0 150 C90 120 150 70 240 82 C330 94 370 140 460 128 C550 116 610 52 700 60 C790 68 830 130 920 126 C1010 122 1080 66 1170 78 C1260 90 1330 150 1440 132 L1440 220 Z"
         />
       </svg>
-      <svg class="montes cerca" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
+      <svg
+        class="montes cerca"
+        viewBox="0 0 1440 180"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
         <path
           d="M0 180 L0 120 C110 84 190 110 300 92 C410 74 470 34 580 48 C690 62 740 118 850 112 C960 106 1030 54 1140 64 C1250 74 1330 124 1440 104 L1440 180 Z"
         />
@@ -111,15 +126,29 @@
       <div class="flores" id="flores"></div>
       <div class="mini-flores" id="miniFlores" aria-hidden="true"></div>
 
-      <svg class="pasto" id="pasto" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <svg
+        class="pasto"
+        id="pasto"
+        viewBox="0 0 1440 90"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      ></svg>
 
-      <button class="colibri" id="colibri" aria-label="Un colibrí pasa volando" hidden>
+      <button
+        class="colibri"
+        id="colibri"
+        aria-label="Un colibrí pasa volando"
+        hidden
+      >
         <svg viewBox="0 0 130 90" aria-hidden="true">
           <path d="M4 40 L44 46 L8 52 Z" fill="#38222e" />
           <ellipse cx="66" cy="50" rx="26" ry="15" fill="#2f7d6d" />
           <path d="M88 50 C104 40 118 38 126 42 L96 58 Z" fill="#1f5a4e" />
           <circle cx="46" cy="41" r="13" fill="#37917d" />
-          <path d="M40 49 C46 56 56 58 62 55 C56 48 48 45 40 49Z" fill="#e56a92" />
+          <path
+            d="M40 49 C46 56 56 58 62 55 C56 48 48 45 40 49Z"
+            fill="#e56a92"
+          />
           <circle cx="42" cy="37" r="2.4" fill="#1c1017" />
           <path
             class="ala"
@@ -135,11 +164,13 @@
 
     <!-- Mensaje central -->
     <p class="mensaje-centro" id="mensajeCentro">
-      “Dicen que las flores hablan con su belleza…
-      pero las de este jardín también guardan todo lo bonito que pienso de ti.”
+      “Dicen que las flores hablan con su belleza… pero las de este jardín
+      también guardan todo lo bonito que pienso de ti.”
     </p>
 
-    <p class="hint" id="hint">Toca una flor… cada una guarda algo que pienso de ti.</p>
+    <p class="hint" id="hint">
+      Toca una flor… cada una guarda algo que pienso de ti.
+    </p>
 
     <!-- Tarjeta -->
     <div class="tarjeta-overlay" id="tarjetaOverlay">
@@ -190,7 +221,7 @@
     </div>
 
     <script src="assets/js/transicion.js"></script>
-    <script src="assets/js/jardin.js"></script>
+    <script src="assets/js/garden.js"></script>
 
     <script>
       function goBack() {

@@ -97,7 +97,10 @@
       steamGain.gain.setValueAtTime(0, t);
       steamGain.gain.linearRampToValueAtTime(0.14, t + 0.9);
       steamGain.gain.linearRampToValueAtTime(0, t + 3);
-      steamSrc.connect(bandpass).connect(steamGain).connect(audioCtx.destination);
+      steamSrc
+        .connect(bandpass)
+        .connect(steamGain)
+        .connect(audioCtx.destination);
       steamSrc.start(t);
       steamSrc.stop(t + 3.2);
     } catch (e) {
@@ -108,7 +111,10 @@
   function setAmbience(musicVol, rainVol) {
     music.volume = musicVol;
     if (rainGain && audioCtx) {
-      rainGain.gain.linearRampToValueAtTime(rainVol, audioCtx.currentTime + 2.5);
+      rainGain.gain.linearRampToValueAtTime(
+        rainVol,
+        audioCtx.currentTime + 2.5,
+      );
     }
   }
 
@@ -225,15 +231,21 @@
     choco.classList.add("open");
     choco.closest(".stage").classList.add("acted");
     for (let i = 0; i < 6; i++) {
-      setTimeout(() => {
-        const h = document.createElement("span");
-        h.className = "float-heart";
-        h.textContent = "♥";
-        h.style.fontSize = 14 + Math.random() * 16 + "px";
-        h.style.setProperty("--hx", (Math.random() * 120 - 60).toFixed(0) + "px");
-        choco.appendChild(h);
-        setTimeout(() => h.remove(), 2800);
-      }, 700 + i * 420);
+      setTimeout(
+        () => {
+          const h = document.createElement("span");
+          h.className = "float-heart";
+          h.textContent = "♥";
+          h.style.fontSize = 14 + Math.random() * 16 + "px";
+          h.style.setProperty(
+            "--hx",
+            (Math.random() * 120 - 60).toFixed(0) + "px",
+          );
+          choco.appendChild(h);
+          setTimeout(() => h.remove(), 2800);
+        },
+        700 + i * 420,
+      );
     }
     markObjectDone("chocolate");
   });
@@ -278,7 +290,11 @@
         sheet.closest(".stage").classList.add("acted");
         markObjectDone("libro");
       } else {
-        if (i < sheets.length - 1 && sheets[i + 1].classList.contains("flipped")) return;
+        if (
+          i < sheets.length - 1 &&
+          sheets[i + 1].classList.contains("flipped")
+        )
+          return;
         sheet.classList.remove("flipped");
       }
       turning.add(sheet);
@@ -288,7 +304,8 @@
     });
 
     sheet.addEventListener("transitionend", (e) => {
-      if (e.target === sheet && e.propertyName === "transform") settleSheet(sheet);
+      if (e.target === sheet && e.propertyName === "transform")
+        settleSheet(sheet);
     });
   });
 
@@ -348,8 +365,8 @@
     $("#continuarBtn").classList.remove("visible");
     $("#finalText").classList.remove("show");
     transicionA(
-      "buenas-noches.html",
-      "La lluvia se detuvo… y alguien dejó el cielo encendido para ti."
+      "good-night.html",
+      "La lluvia se detuvo… y alguien dejó el cielo encendido para ti.",
     );
   });
 
