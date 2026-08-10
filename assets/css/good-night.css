@@ -1163,7 +1163,7 @@ body.anochecer .oscuridad {
 
   .casita {
     left: 4%;
-    bottom: 6%;
+    bottom: 14%;
     width: clamp(160px, 46vw, 210px);
   }
 
