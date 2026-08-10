@@ -923,7 +923,7 @@ body.anochecer .oscuridad {
 
 .mensaje-principal {
   position: fixed;
-  top: 7%;
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-texto);
@@ -1187,7 +1187,7 @@ body.anochecer .oscuridad {
   }
 
   .mensaje-principal {
-    top: 9%;
+    top: 24%;
   }
 }
 
