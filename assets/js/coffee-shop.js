@@ -57,75 +57,10 @@
     }
   }
 
-  /* ---------- Sonido: lluvia + cafetera (Web Audio) + música ---------- */
-
-  let audioCtx = null;
-  let rainGain = null;
-
-  function noiseBuffer(ctx) {
-    const buffer = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
-    return buffer;
-  }
-
-  function startAmbience() {
-    try {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const buffer = noiseBuffer(audioCtx);
-
-      // lluvia constante: ruido filtrado grave
-      const rainSrc = audioCtx.createBufferSource();
-      rainSrc.buffer = buffer;
-      rainSrc.loop = true;
-      const lowpass = audioCtx.createBiquadFilter();
-      lowpass.type = "lowpass";
-      lowpass.frequency.value = 850;
-      rainGain = audioCtx.createGain();
-      rainGain.gain.value = 0.09;
-      rainSrc.connect(lowpass).connect(rainGain).connect(audioCtx.destination);
-      rainSrc.start();
-
-      // cafetera: un soplido de vapor al entrar
-      const steamSrc = audioCtx.createBufferSource();
-      steamSrc.buffer = buffer;
-      const bandpass = audioCtx.createBiquadFilter();
-      bandpass.type = "bandpass";
-      bandpass.frequency.value = 2600;
-      bandpass.Q.value = 0.8;
-      const steamGain = audioCtx.createGain();
-      const t = audioCtx.currentTime;
-      steamGain.gain.setValueAtTime(0, t);
-      steamGain.gain.linearRampToValueAtTime(0.14, t + 0.9);
-      steamGain.gain.linearRampToValueAtTime(0, t + 3);
-      steamSrc
-        .connect(bandpass)
-        .connect(steamGain)
-        .connect(audioCtx.destination);
-      steamSrc.start(t);
-      steamSrc.stop(t + 3.2);
-    } catch (e) {
-      /* sin Web Audio, la música sola acompaña */
-    }
-  }
-
-  function setAmbience(musicVol, rainVol) {
-    music.volume = musicVol;
-    if (rainGain && audioCtx) {
-      rainGain.gain.linearRampToValueAtTime(
-        rainVol,
-        audioCtx.currentTime + 2.5,
-      );
-    }
-  }
+  /* ---------- Sonido: solo la música compartida ---------- */
 
   function toggleSound() {
     muted = !muted;
-    if (muted) {
-      if (audioCtx) audioCtx.suspend();
-    } else {
-      if (audioCtx) audioCtx.resume();
-    }
     $("i", soundBtn).className = muted
       ? "fa-solid fa-volume-xmark"
       : "fa-solid fa-volume-high";
@@ -136,9 +71,6 @@
   function enter() {
     intro.classList.add("hide");
     soundBtn.hidden = false;
-
-    music.volume = 0.32;
-    startAmbience();
 
     scene.classList.add("in");
 
@@ -161,7 +93,6 @@
     if (celebrated || visited.size < TOTAL) return;
     celebrated = true;
     scene.classList.add("dim");
-    setAmbience(0.16, 0.05);
     setTimeout(() => surpriseBtn.classList.add("show"), 1600);
   }
 
@@ -352,7 +283,6 @@
     surpriseBtn.classList.remove("show");
     $(".progress").style.opacity = "0";
     scene.classList.add("final");
-    setAmbience(0.22, 0.02);
     setTimeout(() => $("#caf-finalText").classList.add("show"), 1800);
     setTimeout(() => $("#caf-continuarBtn").classList.add("visible"), 11000);
   });
@@ -375,17 +305,4 @@
 
   $("#caf-enterBtn").addEventListener("click", enter);
   soundBtn.addEventListener("click", toggleSound);
-
-  /* ---------- Salir de la escena ---------- */
-
-  function detener() {
-    if (audioCtx) {
-      try {
-        audioCtx.close();
-      } catch (e) {}
-      audioCtx = null;
-    }
-  }
-
-  window.detenerEscenaCafeteria = detener;
 })();

@@ -40,7 +40,6 @@
   // para que no siga sonando encima de la siguiente.
   const DETENER_POR_ESCENA = {
     "escena-jardin": "detenerEscenaJardin",
-    "escena-cafeteria": "detenerEscenaCafeteria",
     "escena-noche": "detenerEscenaNoche",
   };
 
