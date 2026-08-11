@@ -355,6 +355,96 @@
         text-transform: uppercase;
         font-weight: 600;
       }
+
+      /* ── Page Links Section ── */
+      .pages-section {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        margin-bottom: 20px;
+      }
+
+      .pages-section h2 {
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .pages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+      }
+
+      @media (max-width: 480px) {
+        .pages-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .pages-section {
+          padding: 15px;
+        }
+
+        .pages-section h2 {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+      }
+
+      .page-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .page-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .page-card .page-icon {
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .page-card .page-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      @media (max-width: 480px) {
+        .page-card {
+          flex-direction: column;
+          text-align: center;
+          gap: 6px;
+          padding: 12px 8px;
+          font-size: 11px;
+        }
+
+        .page-card .page-icon {
+          font-size: 26px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -394,6 +484,73 @@
         <div class="stat-card">
           <div class="stat-number" id="totalNavegadores">0</div>
           <div class="stat-label">Navegadores Únicos</div>
+        </div>
+      </div>
+
+      <!-- ── Page Links Section ── -->
+      <div class="pages-section">
+        <h2>🔗 Enlaces de Páginas</h2>
+        <div class="pages-grid">
+          <a href="universe.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #0f0c29, #302b63);">
+            <span class="page-icon">🪐</span>
+            <span class="page-name">Universo</span>
+          </a>
+          <a href="happy-birthday.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #fbc531, #e1b12c); color: #5a3e00;">
+            <span class="page-icon">🎂</span>
+            <span class="page-name">Feliz Cumpleaños</span>
+          </a>
+          <a href="womens-day.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #f7797d, #c471ed);">
+            <span class="page-icon">💐</span>
+            <span class="page-name">Día de la Mujer</span>
+          </a>
+          <a href="bubbles.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+            <span class="page-icon">💖</span>
+            <span class="page-name">Te amo!</span>
+          </a>
+          <a href="galery.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">
+            <span class="page-icon">🖼️</span>
+            <span class="page-name">Galería - 8va Maravilla</span>
+          </a>
+          <a href="newspaper.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #2c3e50, #4ca1af);">
+            <span class="page-icon">📰</span>
+            <span class="page-name">The Love Gazette</span>
+          </a>
+          <a href="netflix-page.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #141414, #e50914);">
+            <span class="page-icon">🎬</span>
+            <span class="page-name">Netflix</span>
+          </a>
+          <a href="chocolate-box.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
+            <span class="page-icon">🍫</span>
+            <span class="page-name">Caja de Chocolates</span>
+          </a>
+          <a href="favorite-person.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f); color: #5a3e2b;">
+            <span class="page-icon">💕</span>
+            <span class="page-name">Persona Favorita</span>
+          </a>
+          <a href="marvel-book.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #e52d27, #b31217);">
+            <span class="page-icon">📚</span>
+            <span class="page-name">Libro Marvel</span>
+          </a>
+          <a href="my-heart.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">
+            <span class="page-icon">❤️</span>
+            <span class="page-name">Mi Corazón</span>
+          </a>
+          <a href="thoughts.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #a770ef, #cf8bf3);">
+            <span class="page-icon">💭</span>
+            <span class="page-name">Pensamientos</span>
+          </a>
+          <a href="galaxy.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #0c0c3a, #4b0082);">
+            <span class="page-icon">🌌</span>
+            <span class="page-name">Galaxia</span>
+          </a>
+          <a href="message.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+            <span class="page-icon">💌</span>
+            <span class="page-name">Mensaje</span>
+          </a>
+          <a href="flower.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+            <span class="page-icon">🌹</span>
+            <span class="page-name">Flor</span>
+          </a>
         </div>
       </div>
 

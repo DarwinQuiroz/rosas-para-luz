@@ -56,8 +56,11 @@
     <script src="assets/js/bubble.js"></script>
 
     <script>
+      const _urlParams = new URLSearchParams(window.location.search);
+      const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+
       function goBack() {
-        window.location.href = "index.html";
+        window.location.href = _fromDashboard ? "dashboard.html" : "index.html";
       }
     </script>
 
@@ -71,9 +74,11 @@
         detectarIP();
         actualizarFechaHora();
 
-        setTimeout(() => {
-          agregarDatos("Burbujas");
-        }, 1000);
+        if (!_fromDashboard) {
+          setTimeout(() => {
+            agregarDatos("Burbujas");
+          }, 1000);
+        }
       })();
     </script>
   </body>

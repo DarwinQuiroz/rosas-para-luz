@@ -32,9 +32,9 @@
     <div class="wd-particles"></div>
 
     <!-- Back Button -->
-    <a href="index.html" class="back-button" title="Volver">
+    <button class="back-button" onclick="goBack()">
       <i class="fa-solid fa-arrow-left"></i>
-    </a>
+    </button>
 
     <div class="music-control">
       <button class="music-btn" id="musicBtn" aria-label="Toggle music">
@@ -226,6 +226,15 @@
     <script src="assets/js/music-control.js"></script>
     <script src="assets/js/womens-day.js"></script>
 
+    <script>
+      const _urlParams = new URLSearchParams(window.location.search);
+      const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+
+      function goBack() {
+        window.location.href = _fromDashboard ? "dashboard.html" : "index.html";
+      }
+    </script>
+
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="assets/js/firebase-config.js"></script>
@@ -235,9 +244,11 @@
         detectarIP();
         actualizarFechaHora();
 
-        setTimeout(() => {
-          agregarDatos("Dia-de-la-Mujer");
-        }, 1000);
+        if (!_fromDashboard) {
+          setTimeout(() => {
+            agregarDatos("Dia-de-la-Mujer");
+          }, 1000);
+        }
       })();
     </script>
   </body>

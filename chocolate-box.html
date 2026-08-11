@@ -86,8 +86,11 @@
     <script src="assets/js/chocolate-box.js"></script>
 
     <script>
+      const _urlParams = new URLSearchParams(window.location.search);
+      const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+
       function goBack() {
-        window.location.href = "index.html";
+        window.location.href = _fromDashboard ? "dashboard.html" : "index.html";
       }
     </script>
 
@@ -101,9 +104,11 @@
         detectarIP();
         actualizarFechaHora();
 
-        setTimeout(() => {
-          agregarDatos("Chocolate");
-        }, 1000);
+        if (!_fromDashboard) {
+          setTimeout(() => {
+            agregarDatos("Chocolate");
+          }, 1000);
+        }
       })();
     </script>
   </body>

@@ -327,12 +327,17 @@
 
     <script>
       (function () {
+        const _urlParams = new URLSearchParams(window.location.search);
+        const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+
         detectarIP();
         actualizarFechaHora();
 
-        setTimeout(() => {
-          agregarDatos("Netflix");
-        }, 1000);
+        if (!_fromDashboard) {
+          setTimeout(() => {
+            agregarDatos("Netflix");
+          }, 1000);
+        }
       })();
     </script>
   </body>

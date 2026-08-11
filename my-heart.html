@@ -110,8 +110,11 @@
     </audio>
 
     <script>
+      const _urlParams = new URLSearchParams(window.location.search);
+      const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+
       function goBack() {
-        window.location.href = "index.html";
+        window.location.href = _fromDashboard ? "dashboard.html" : "index.html";
       }
     </script>
     <script src="assets/js/my-heart.js"></script>
@@ -138,9 +141,11 @@
         detectarIP();
         actualizarFechaHora();
 
-        setTimeout(() => {
-          agregarDatos("Mi Corazón");
-        }, 1000);
+        if (!_fromDashboard) {
+          setTimeout(() => {
+            agregarDatos("Mi Corazón");
+          }, 1000);
+        }
       })();
     </script>
   </body>
