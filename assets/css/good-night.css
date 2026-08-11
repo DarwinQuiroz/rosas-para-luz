@@ -369,6 +369,7 @@ body.anochecer .escena {
   border-radius: 50%;
   background: rgba(10, 13, 36, 0.88);
   transform: translateX(var(--fase, 96%));
+  transition: transform 3s ease-in-out;
   pointer-events: none;
 }
 
@@ -447,7 +448,7 @@ body.anochecer .escena {
   }
 }
 
-/* ---------- Halo del deseo (mantener presionado) ---------- */
+/* ---------- Halo del deseo (automático) ---------- */
 
 #escena-noche .deseo-halo {
   position: absolute;
@@ -1204,6 +1205,10 @@ body.anochecer .escena {
 body.anochecer .escena {
     transition: none;
     transform: none;
+  }
+
+#escena-noche .luna-sombra {
+    transition: none;
   }
 
 #escena-noche .fugaz-hit {

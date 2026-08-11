@@ -43,7 +43,6 @@
   ];
 
   const TIEMPO_FINAL = 90000; // ms hasta la secuencia final
-  const INTERVALO_FUGAZ = 30000;
 
   // ---------- Elementos ----------
 
@@ -54,7 +53,6 @@
   const enterBtn = $("enterBtn");
   const soundBtn = $("soundBtn");
   const escena = $("escena");
-  const cielo = $("cielo");
   const estrellasBox = $("estrellas");
   const fugacesBox = $("fugaces");
   const luna = $("luna");
@@ -92,17 +90,28 @@
 
   // ---------- Ciclo lunar ----------
 
+  // 8 fases: llena → menguantes → nueva → crecientes
+  const FASES_LUNA = [96, 62, 38, 18, 4, -18, -38, -62];
+  let faseLunaIdx = 0;
+  let faseLunaTimer = null;
+
   function aplicarFaseLunar() {
-    let visitas = 0;
     try {
-      visitas = parseInt(localStorage.getItem("bnVisitas") || "0", 10) || 0;
-      localStorage.setItem("bnVisitas", String(visitas + 1));
+      faseLunaIdx = parseInt(localStorage.getItem("bnVisitas") || "0", 10) || 0;
+      localStorage.setItem("bnVisitas", String(faseLunaIdx + 1));
     } catch (e) {
       /* almacenamiento no disponible */
     }
-    // 8 fases: llena → menguantes → nueva → crecientes
-    const desplazamientos = [96, 62, 38, 18, 4, -18, -38, -62];
-    lunaSombra.style.setProperty("--fase", desplazamientos[visitas % 8] + "%");
+    faseLunaIdx = faseLunaIdx % FASES_LUNA.length;
+    lunaSombra.style.setProperty("--fase", FASES_LUNA[faseLunaIdx] + "%");
+  }
+
+  function programarFaseLunar() {
+    faseLunaTimer = setInterval(() => {
+      if (faseFinal || terminado) return;
+      faseLunaIdx = (faseLunaIdx + 1) % FASES_LUNA.length;
+      lunaSombra.style.setProperty("--fase", FASES_LUNA[faseLunaIdx] + "%");
+    }, 18000);
   }
 
   // ---------- Construcción del cielo ----------
@@ -316,16 +325,10 @@
 
   // ---------- Estrellas fugaces ----------
 
-  function lanzarFugaz(atrapable) {
-    const wrap = document.createElement("button");
-    wrap.type = "button";
-    wrap.className = "fugaz-hit" + (atrapable ? "" : " decorativa");
-    if (atrapable) {
-      wrap.setAttribute("aria-label", "Una estrella fugaz, ¡atrápala!");
-    } else {
-      wrap.setAttribute("aria-hidden", "true");
-      wrap.tabIndex = -1;
-    }
+  function lanzarFugaz() {
+    const wrap = document.createElement("span");
+    wrap.className = "fugaz-hit decorativa";
+    wrap.setAttribute("aria-hidden", "true");
     wrap.innerHTML = '<span class="fugaz" aria-hidden="true"></span>';
 
     const desdeIzq = Math.random() < 0.5;
@@ -345,33 +348,13 @@
       .querySelector(".fugaz")
       .style.setProperty("--cola", angulo.toFixed(0) + "deg");
 
-    let atrapada = false;
-    if (atrapable) {
-      wrap.addEventListener("pointerdown", (e) => {
-        if (atrapada || terminado) return;
-        atrapada = true;
-        e.stopPropagation();
-        const rect = wrap.getBoundingClientRect();
-        wrap.style.transition = "none";
-        wrap.style.left = rect.left + rect.width / 2 + "px";
-        wrap.style.top = rect.top + rect.height / 2 + "px";
-        wrap.style.transform = "none";
-        wrap.classList.add("atrapada");
-        mostrarCartel(MSG_FUGAZ, 7000);
-        audio.destello();
-        setTimeout(() => wrap.remove(), 900);
-      });
-    }
-
     fugacesBox.appendChild(wrap);
 
     if (reduceMotion) {
       // Sin vuelo: aparece unos segundos y se desvanece.
       setTimeout(() => {
-        if (!atrapada) {
-          wrap.style.opacity = "0";
-          setTimeout(() => wrap.remove(), 600);
-        }
+        wrap.style.opacity = "0";
+        setTimeout(() => wrap.remove(), 600);
       }, 2600);
       return;
     }
@@ -382,71 +365,52 @@
       });
     });
     setTimeout(() => {
-      if (!atrapada) {
-        wrap.style.opacity = "0";
-        setTimeout(() => wrap.remove(), 600);
-      }
+      wrap.style.opacity = "0";
+      setTimeout(() => wrap.remove(), 600);
     }, dur * 1000);
   }
 
-  function programarFugaces() {
-    setTimeout(() => {
-      if (terminado) return;
-      lanzarFugaz(true);
-      setInterval(() => {
-        if (!terminado && !document.hidden) lanzarFugaz(true);
-      }, INTERVALO_FUGAZ);
-    }, 12000);
-  }
+  // ---------- Estrellas fugaces automáticas ----------
+  // Una sola, sola al entrar, con su mensaje; después, grupos cada 10s con
+  // una frase distinta cada vez, hasta que arranca la secuencia final.
 
-  // ---------- Deseo: mantener presionado el cielo ----------
+  const FRASES_FUGACES = [
+    MSG_DESEO,
+    "Cada estrella que cruza el cielo lleva un pensamiento hacia ti.",
+    "Si pudiera bajarte una estrella, elegiría la más brillante.",
+    "El cielo entero se puso de acuerdo para brillar solo para ti esta noche.",
+    "Con cada estrella que cae, pienso una vez más en ti.",
+  ];
+  let fraseFugazIdx = 0;
 
-  let deseoTimer = null;
-  let deseoHalo = null;
-  let deseoX = 0;
-  let deseoY = 0;
-
-  function cancelarDeseo() {
-    clearTimeout(deseoTimer);
-    deseoTimer = null;
-    if (deseoHalo) {
-      deseoHalo.remove();
-      deseoHalo = null;
-    }
-  }
-
-  cielo.addEventListener("pointerdown", (e) => {
-    if (e.target.closest("button") || terminado || !comenzado) return;
-    deseoX = e.clientX;
-    deseoY = e.clientY;
-
-    deseoHalo = document.createElement("span");
-    deseoHalo.className = "deseo-halo";
-    deseoHalo.style.left = e.clientX + "px";
-    deseoHalo.style.top = e.clientY + "px";
-    escena.appendChild(deseoHalo);
-
-    deseoTimer = setTimeout(() => {
-      cancelarDeseo();
-      cumplirDeseo();
-    }, 3000);
-  });
-
-  window.addEventListener("pointerup", cancelarDeseo);
-  window.addEventListener("pointercancel", cancelarDeseo);
-  window.addEventListener("pointermove", (e) => {
-    if (deseoTimer && Math.hypot(e.clientX - deseoX, e.clientY - deseoY) > 20) {
-      cancelarDeseo();
-    }
-  });
-
-  function cumplirDeseo() {
+  function grupoFugaces() {
+    if (terminado) return;
     const total = reduceMotion ? 4 : 11;
     for (let i = 0; i < total; i++) {
-      setTimeout(() => lanzarFugaz(false), i * 220);
+      setTimeout(lanzarFugaz, i * 220);
     }
-    mostrarCartel(MSG_DESEO, 7000);
+    mostrarCartel(FRASES_FUGACES[fraseFugazIdx % FRASES_FUGACES.length], 8500);
+    fraseFugazIdx++;
     audio.destello();
+  }
+
+  function programarFugaces() {
+    // La primera estrella, sola, apenas empieza la noche.
+    setTimeout(() => {
+      if (terminado) return;
+      lanzarFugaz();
+      mostrarCartel(MSG_FUGAZ, 7000);
+      audio.destello();
+    }, 12000);
+
+    // De ahí en más, grupos automáticos cada 10 segundos.
+    setTimeout(() => {
+      if (terminado) return;
+      grupoFugaces();
+      setInterval(() => {
+        if (!terminado && !document.hidden) grupoFugaces();
+      }, 10000);
+    }, 20000);
   }
 
   // ---------- Secuencia final ----------
@@ -825,6 +789,7 @@
     }, 1600);
 
     programarFugaces();
+    programarFaseLunar();
     setTimeout(brisaDePetalos, 8000);
     setTimeout(iniciarFinal, TIEMPO_FINAL);
   });
@@ -834,7 +799,7 @@
   function detener() {
     terminado = true;
     clearTimeout(cartelTimer);
-    clearTimeout(deseoTimer);
+    clearInterval(faseLunaTimer);
     audio.detener();
   }
 
