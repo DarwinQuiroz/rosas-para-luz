@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Un pequeño universo para ti</title>
+    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Karla:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/back-button.css" />
+    <link rel="stylesheet" href="assets/css/transicion.css" />
+    <link rel="stylesheet" href="assets/css/universo.css" />
+    <link rel="stylesheet" href="assets/css/garden.css" />
+    <link rel="stylesheet" href="assets/css/coffee-shop.css" />
+    <link rel="stylesheet" href="assets/css/good-night.css" />
+  </head>
+
+  <body>
+    <!-- Música compartida: un único elemento para las 3 escenas -->
+    <audio id="musica" loop preload="auto">
+      <source src="assets/sound/perfect.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Solo aparece si el navegador bloquea el autoplay -->
+    <button class="music-btn" id="musicBtn" aria-label="Reproducir música" hidden>
+      <i class="fa-solid fa-music"></i> Reproducir música
+    </button>
+
+    <!-- ============================================================
+         Escena 1: El jardín donde florece mi amor
+         ============================================================ -->
+    <section class="escena-seccion" id="escena-jardin">
+      <button class="back-button" onclick="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+      <button
+        class="sound-btn"
+        id="gdn-soundBtn"
+        aria-label="Activar o silenciar el sonido"
+        hidden
+      >
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
+
+      <!-- Gradientes compartidos por todas las flores -->
+      <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <defs>
+          <radialGradient id="gradPetalo" cx="35%" cy="30%" r="85%">
+            <stop offset="0%" stop-color="#ffd9e2" />
+            <stop offset="55%" stop-color="#f59ab4" />
+            <stop offset="100%" stop-color="#d66088" />
+          </radialGradient>
+          <radialGradient id="gradPetaloOro" cx="35%" cy="30%" r="85%">
+            <stop offset="0%" stop-color="#ffefb8" />
+            <stop offset="55%" stop-color="#f2c14e" />
+            <stop offset="100%" stop-color="#cf9226" />
+          </radialGradient>
+          <radialGradient id="gradPetaloBlanco" cx="35%" cy="30%" r="85%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#f3c9d8" />
+          </radialGradient>
+          <radialGradient id="gradCentro" cx="40%" cy="35%" r="80%">
+            <stop offset="0%" stop-color="#ffe49a" />
+            <stop offset="100%" stop-color="#d99a2b" />
+          </radialGradient>
+          <radialGradient id="gradCentroOro" cx="40%" cy="35%" r="80%">
+            <stop offset="0%" stop-color="#a56a2a" />
+            <stop offset="100%" stop-color="#6e4415" />
+          </radialGradient>
+        </defs>
+      </svg>
+
+      <!-- Portada -->
+      <div class="intro" id="gdn-intro">
+        <span class="intro-petalo" aria-hidden="true"></span>
+        <span class="intro-petalo" aria-hidden="true"></span>
+        <span class="intro-petalo" aria-hidden="true"></span>
+        <span class="intro-petalo" aria-hidden="true"></span>
+        <span class="intro-petalo" aria-hidden="true"></span>
+        <span class="intro-petalo" aria-hidden="true"></span>
+        <p class="intro-eyebrow">Página 1 de 3</p>
+        <h1>El jardín donde<br />florece mi amor</h1>
+        <svg class="intro-ornamento" viewBox="0 0 220 24" aria-hidden="true">
+          <path d="M10 12 H86" stroke="currentColor" stroke-width="1" />
+          <path d="M134 12 H210" stroke="currentColor" stroke-width="1" />
+          <g fill="currentColor">
+            <ellipse cx="110" cy="6.5" rx="2.8" ry="5.2" />
+            <ellipse cx="110" cy="17.5" rx="2.8" ry="5.2" />
+            <ellipse cx="104.5" cy="12" rx="5.2" ry="2.8" />
+            <ellipse cx="115.5" cy="12" rx="5.2" ry="2.8" />
+          </g>
+          <circle cx="110" cy="12" r="2.4" fill="#e9b949" />
+        </svg>
+        <p class="intro-sub">Atardece. Todo está tranquilo. Camina despacio.</p>
+        <button class="enter-btn" id="gdn-enterBtn">Entrar al jardín</button>
+      </div>
+
+      <!-- Escena -->
+      <main class="scene" id="gdn-scene" aria-label="Jardín al atardecer">
+        <div class="sky">
+          <div class="estrellas" aria-hidden="true"></div>
+          <div class="sun"></div>
+          <div class="bruma" aria-hidden="true"></div>
+          <span class="nube n1"></span>
+          <span class="nube n2"></span>
+          <span class="nube n3"></span>
+        </div>
+
+        <svg
+          class="montes lejos"
+          viewBox="0 0 1440 220"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 220 L0 150 C90 120 150 70 240 82 C330 94 370 140 460 128 C550 116 610 52 700 60 C790 68 830 130 920 126 C1010 122 1080 66 1170 78 C1260 90 1330 150 1440 132 L1440 220 Z"
+          />
+        </svg>
+        <svg
+          class="montes cerca"
+          viewBox="0 0 1440 180"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 180 L0 120 C110 84 190 110 300 92 C410 74 470 34 580 48 C690 62 740 118 850 112 C960 106 1030 54 1140 64 C1250 74 1330 124 1440 104 L1440 180 Z"
+          />
+        </svg>
+
+        <div class="particulas" id="gdn-particulas" aria-hidden="true"></div>
+        <div class="hojitas" id="gdn-hojitas" aria-hidden="true"></div>
+
+        <div class="prado"></div>
+        <div class="flores" id="gdn-flores"></div>
+        <div class="mini-flores" id="gdn-miniFlores" aria-hidden="true"></div>
+
+        <svg
+          class="pasto"
+          id="gdn-pasto"
+          viewBox="0 0 1440 90"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        ></svg>
+
+        <button
+          class="colibri"
+          id="gdn-colibri"
+          aria-label="Un colibrí pasa volando"
+          hidden
+        >
+          <svg viewBox="0 0 130 90" aria-hidden="true">
+            <path d="M4 40 L44 46 L8 52 Z" fill="#38222e" />
+            <ellipse cx="66" cy="50" rx="26" ry="15" fill="#2f7d6d" />
+            <path d="M88 50 C104 40 118 38 126 42 L96 58 Z" fill="#1f5a4e" />
+            <circle cx="46" cy="41" r="13" fill="#37917d" />
+            <path
+              d="M40 49 C46 56 56 58 62 55 C56 48 48 45 40 49Z"
+              fill="#e56a92"
+            />
+            <circle cx="42" cy="37" r="2.4" fill="#1c1017" />
+            <path
+              class="ala"
+              d="M60 46 C70 12 96 8 106 18 C98 34 80 46 62 52 Z"
+              fill="#8fd0b8"
+              opacity="0.92"
+            />
+          </svg>
+        </button>
+
+        <div class="vineta" aria-hidden="true"></div>
+      </main>
+
+      <!-- Mensaje central -->
+      <p class="mensaje-centro" id="gdn-mensajeCentro">
+        “Dicen que las flores hablan con su belleza… pero las de este jardín
+        también guardan todo lo bonito que pienso de ti.”
+      </p>
+
+      <p class="hint" id="gdn-hint">
+        Toca una flor… cada una guarda algo que pienso de ti.
+      </p>
+
+      <!-- Tarjeta -->
+      <div class="tarjeta-overlay" id="gdn-tarjetaOverlay">
+        <div class="tarjeta" id="gdn-tarjeta" role="dialog" aria-live="polite">
+          <p class="tarjeta-eyebrow" id="gdn-tarjetaEyebrow"></p>
+          <div class="tarjeta-arte" id="gdn-tarjetaArte"></div>
+          <p class="tarjeta-msg" id="gdn-tarjetaMsg"></p>
+          <svg class="tarjeta-flor" viewBox="0 0 40 40" aria-hidden="true">
+            <g fill="#d98aa8">
+              <ellipse cx="20" cy="11" rx="4.5" ry="8" />
+              <ellipse cx="20" cy="29" rx="4.5" ry="8" />
+              <ellipse cx="11" cy="20" rx="8" ry="4.5" />
+              <ellipse cx="29" cy="20" rx="8" ry="4.5" />
+            </g>
+            <circle cx="20" cy="20" r="4.5" fill="#e8b84b" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Progreso -->
+      <div class="progreso" id="gdn-progreso" hidden>
+        <div class="petalos-bar" id="gdn-petalosBar" aria-hidden="true"></div>
+        <span class="progreso-txt" id="gdn-progresoTxt">0 / 7 flores</span>
+      </div>
+
+      <!-- Mensaje final -->
+      <div class="final-text" id="gdn-finalText">
+        <p>“El jardín floreció…<br />igual que todo lo que siento por ti.”</p>
+        <span class="firma">— tu jardinero de pensamientos bonitos ♥</span>
+      </div>
+
+      <!-- Continuar el viaje -->
+      <button class="continuar-btn" id="gdn-continuarBtn">
+        <i class="fa-solid fa-mug-hot" aria-hidden="true"></i>
+        Sigamos… nuestra cafetería nos espera
+      </button>
+    </section>
+
+    <!-- ============================================================
+         Escena 2: Nuestra pequeña cafetería
+         ============================================================ -->
+    <section class="escena-seccion" id="escena-cafeteria" hidden>
+      <button
+        class="sound-btn"
+        id="caf-soundBtn"
+        aria-label="Activar o silenciar el sonido"
+        hidden
+      >
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
+
+      <!-- Portada -->
+      <div class="intro" id="caf-intro">
+        <p class="intro-eyebrow">Página 2 de 3</p>
+        <h1>Nuestra pequeña<br />cafetería</h1>
+        <svg class="intro-ornamento" viewBox="0 0 220 34" aria-hidden="true">
+          <path d="M10 22 H74" stroke="currentColor" stroke-width="1" />
+          <path d="M146 22 H210" stroke="currentColor" stroke-width="1" />
+          <g stroke="currentColor" fill="none" stroke-linecap="round">
+            <path d="M96 20 h22 a4 4 0 0 1 0 8 h-2" stroke-width="1.6" />
+            <path
+              d="M94 20 h24 v6 a8 8 0 0 1 -8 8 h-8 a8 8 0 0 1 -8 -8 z"
+              stroke-width="1.6"
+            />
+            <path
+              d="M102 14 c-2 -3 2 -4 0 -7"
+              stroke-width="1.4"
+              opacity="0.85"
+            />
+            <path d="M110 14 c-2 -3 2 -4 0 -7" stroke-width="1.4" opacity="0.6" />
+          </g>
+        </svg>
+        <p class="intro-sub">Afuera llueve. Adentro, todo invita a quedarse.</p>
+        <button class="enter-btn" id="caf-enterBtn">Entrar</button>
+      </div>
+
+      <!-- Frase inicial -->
+      <div class="quote" id="caf-introQuote">
+        <p>
+          “Si algún día compartimos un chocolate aquí, prometo escuchar cada una
+          de tus historias.”
+        </p>
+      </div>
+
+      <!-- Escena -->
+      <div class="scene" id="caf-scene">
+        <div class="wall"></div>
+
+        <div class="pizarra" aria-hidden="true">
+          <span class="pizarra-titulo">Menú de hoy</span>
+          <span class="pizarra-linea">café con calma</span>
+          <span class="pizarra-linea">chocolate caliente</span>
+          <span class="pizarra-linea">historias por contar</span>
+          <span class="pizarra-corazon">♥</span>
+        </div>
+
+        <div class="guirnalda" aria-hidden="true">
+          <span class="foco"></span>
+          <span class="foco"></span>
+          <span class="foco"></span>
+          <span class="foco"></span>
+          <span class="foco"></span>
+          <span class="foco"></span>
+          <span class="foco"></span>
+        </div>
+
+        <div class="window">
+          <div class="stars" id="caf-stars"></div>
+          <div class="city">
+            <svg
+              viewBox="0 0 470 120"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M0 120 V64 h28 v-18 h20 v18 h14 V38 h30 v26 h18 V52 h26 v12 h12 V20 h34 v44 h22 V46 h24 v18 h16 V30 h32 v34 h20 V56 h26 v8 h14 V36 h30 v28 h18 V50 h24 v14 h12 V26 h30 v38 h20 v56 Z"
+                fill="#060a14"
+              />
+              <g fill="#f2a65a" opacity="0.5">
+                <rect x="36" y="70" width="4" height="5" />
+                <rect x="98" y="48" width="4" height="5" />
+                <rect x="112" y="58" width="4" height="5" />
+                <rect x="168" y="30" width="4" height="5" />
+                <rect x="180" y="44" width="4" height="5" />
+                <rect x="232" y="54" width="4" height="5" />
+                <rect x="262" y="40" width="4" height="5" />
+                <rect x="274" y="52" width="4" height="5" />
+                <rect x="330" y="46" width="4" height="5" />
+                <rect x="344" y="56" width="4" height="5" />
+                <rect x="404" y="36" width="4" height="5" />
+                <rect x="416" y="50" width="4" height="5" />
+              </g>
+            </svg>
+          </div>
+          <div class="rain" id="caf-rain"></div>
+          <div class="bars"></div>
+        </div>
+
+        <div class="lamp">
+          <div class="cord"></div>
+          <div class="shade"></div>
+          <div class="bulb"></div>
+        </div>
+        <div class="light-cone"></div>
+
+        <div class="table">
+          <div class="table-top"></div>
+        </div>
+
+        <div class="vela" aria-hidden="true">
+          <span class="halo"></span>
+          <span class="llama"></span>
+          <span class="cuerpo"></span>
+          <span class="plato"></span>
+        </div>
+
+        <div class="objects">
+          <button class="obj" data-obj="libro" aria-label="El libro">
+            <svg viewBox="0 0 130 90" aria-hidden="true">
+              <g transform="rotate(4 65 45)">
+                <rect
+                  x="20"
+                  y="20"
+                  width="90"
+                  height="54"
+                  rx="5"
+                  fill="#59331d"
+                />
+                <rect
+                  x="24"
+                  y="15"
+                  width="86"
+                  height="54"
+                  rx="5"
+                  fill="#7d4c2f"
+                />
+                <rect x="27" y="17" width="4" height="50" fill="#5a341f" />
+                <rect
+                  x="104"
+                  y="20"
+                  width="6"
+                  height="49"
+                  rx="2"
+                  fill="#efe2c8"
+                />
+                <rect
+                  x="46"
+                  y="34"
+                  width="44"
+                  height="3"
+                  rx="1.5"
+                  fill="#d4af37"
+                  opacity="0.85"
+                />
+                <rect
+                  x="52"
+                  y="42"
+                  width="32"
+                  height="2.5"
+                  rx="1.2"
+                  fill="#d4af37"
+                  opacity="0.5"
+                />
+              </g>
+            </svg>
+            <span class="obj-label">nuestro libro</span>
+          </button>
+
+          <button
+            class="obj"
+            data-obj="chocolate"
+            aria-label="El chocolate"
+            disabled
+          >
+            <svg viewBox="0 0 130 90" aria-hidden="true">
+              <g transform="rotate(-6 65 45)">
+                <rect
+                  x="15"
+                  y="22"
+                  width="100"
+                  height="50"
+                  rx="6"
+                  fill="#a63d2e"
+                />
+                <rect
+                  x="15"
+                  y="22"
+                  width="36"
+                  height="50"
+                  rx="6"
+                  fill="#d9d0c0"
+                />
+                <rect
+                  x="20"
+                  y="28"
+                  width="11"
+                  height="11"
+                  rx="2"
+                  fill="#4a2a12"
+                />
+                <rect
+                  x="34"
+                  y="28"
+                  width="11"
+                  height="11"
+                  rx="2"
+                  fill="#4a2a12"
+                />
+                <rect
+                  x="20"
+                  y="43"
+                  width="11"
+                  height="11"
+                  rx="2"
+                  fill="#4a2a12"
+                />
+                <rect
+                  x="34"
+                  y="43"
+                  width="11"
+                  height="11"
+                  rx="2"
+                  fill="#4a2a12"
+                />
+                <rect
+                  x="60"
+                  y="22"
+                  width="14"
+                  height="50"
+                  fill="#d4af37"
+                  opacity="0.85"
+                />
+              </g>
+            </svg>
+            <span class="obj-label">un chocolate</span>
+          </button>
+
+          <button
+            class="obj"
+            data-obj="taza"
+            aria-label="La taza de café"
+            disabled
+          >
+            <svg viewBox="0 0 120 100" aria-hidden="true">
+              <path
+                class="steam-line"
+                d="M46 26c-4-6 4-8 0-15"
+                stroke="#fff"
+                stroke-width="2.5"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                class="steam-line b"
+                d="M64 24c-4-6 4-8 0-15"
+                stroke="#fff"
+                stroke-width="2.5"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <ellipse cx="58" cy="90" rx="46" ry="7" fill="#2a1b0f" />
+              <ellipse cx="58" cy="86" rx="40" ry="7" fill="#e8d7ba" />
+              <path d="M26 38h64v16a32 28 0 0 1-64 0z" fill="#f3e6cf" />
+              <path
+                d="M90 42c14 0 18 6 15 14-3 8-13 10-20 8"
+                fill="none"
+                stroke="#f3e6cf"
+                stroke-width="7"
+              />
+              <ellipse cx="58" cy="38" rx="32" ry="7" fill="#5a3b28" />
+            </svg>
+            <span class="obj-label">tu café</span>
+          </button>
+
+          <button class="obj" data-obj="rosa" aria-label="La rosa" disabled>
+            <svg viewBox="0 0 150 80" aria-hidden="true">
+              <path
+                d="M60 40 C90 32 118 46 142 38"
+                stroke="#4c6b3c"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M94 40c8-14 22-16 30-11-5 12-17 16-30 11z"
+                fill="#55763f"
+              />
+              <path
+                d="M100 36c8-4 16-5 22-4"
+                stroke="#37502a"
+                stroke-width="1.4"
+                fill="none"
+              />
+              <ellipse
+                cx="30"
+                cy="40"
+                rx="17"
+                ry="13"
+                transform="rotate(-20 30 40)"
+                fill="#701f2b"
+              />
+              <ellipse
+                cx="58"
+                cy="40"
+                rx="17"
+                ry="13"
+                transform="rotate(20 58 40)"
+                fill="#8f303d"
+              />
+              <ellipse cx="44" cy="50" rx="17" ry="11" fill="#7e2734" />
+              <ellipse
+                cx="36"
+                cy="32"
+                rx="13"
+                ry="15"
+                transform="rotate(-14 36 32)"
+                fill="#a63a48"
+              />
+              <ellipse
+                cx="52"
+                cy="32"
+                rx="13"
+                ry="15"
+                transform="rotate(14 52 32)"
+                fill="#b44a56"
+              />
+              <circle cx="44" cy="37" r="12" fill="#c25b64" />
+              <path
+                d="M44 28c-7 1-11 7-9 13 2 5 8 7 12 5 4-2 5-8 2-11-3-3-7-2-8 1"
+                stroke="#7e2734"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M20 34c-3 5-3 10-1 14"
+                stroke="rgba(255,255,255,0.16)"
+                stroke-width="1.6"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="obj-label">una rosa</span>
+          </button>
+
+          <button class="obj" data-obj="foto" aria-label="La fotografía" disabled>
+            <svg viewBox="0 0 100 110" aria-hidden="true">
+              <g transform="rotate(-7 50 55)">
+                <rect
+                  x="14"
+                  y="10"
+                  width="72"
+                  height="90"
+                  rx="3"
+                  fill="#f4efe4"
+                />
+                <rect x="20" y="16" width="60" height="60" fill="#22304a" />
+                <circle cx="64" cy="32" r="7" fill="#ffe9c4" />
+                <circle cx="30" cy="26" r="1.4" fill="#fff" opacity="0.8" />
+                <circle cx="42" cy="34" r="1.1" fill="#fff" opacity="0.6" />
+                <circle cx="36" cy="48" r="1.3" fill="#fff" opacity="0.7" />
+                <path
+                  d="M50 62c-5-6-13-1-8 5l8 7 8-7c5-6-3-11-8-5z"
+                  fill="#c25b64"
+                />
+              </g>
+            </svg>
+            <span class="obj-label">una foto</span>
+          </button>
+
+          <button class="obj" data-obj="galleta" aria-label="La galleta" disabled>
+            <svg viewBox="0 0 100 90" aria-hidden="true">
+              <circle cx="50" cy="48" r="34" fill="#c98a4b" />
+              <path
+                d="M22 40a34 34 0 0 1 56-16"
+                stroke="#e0af74"
+                stroke-width="5"
+                fill="none"
+                stroke-linecap="round"
+                opacity="0.6"
+              />
+              <circle cx="40" cy="38" r="4.5" fill="#5f3a1e" />
+              <circle cx="60" cy="32" r="3.6" fill="#5f3a1e" />
+              <circle cx="66" cy="54" r="4.4" fill="#5f3a1e" />
+              <circle cx="47" cy="60" r="3.4" fill="#5f3a1e" />
+              <circle cx="30" cy="54" r="3" fill="#5f3a1e" />
+              <circle cx="54" cy="46" r="2.6" fill="#5f3a1e" />
+            </svg>
+            <span class="obj-label">una galleta</span>
+          </button>
+        </div>
+
+        <div class="dim-layer"></div>
+        <div class="vignette"></div>
+      </div>
+
+      <p class="hint" id="caf-hint">
+        Empieza por el libro… cada cosa de la mesa guarda algo para ti.
+      </p>
+
+      <div class="progress" aria-hidden="true">
+        <span data-p="libro"></span>
+        <span data-p="chocolate"></span>
+        <span data-p="taza"></span>
+        <span data-p="rosa"></span>
+        <span data-p="foto"></span>
+        <span data-p="galleta"></span>
+      </div>
+
+      <button class="surprise-btn" id="caf-surpriseBtn">Una última sorpresa</button>
+
+      <!-- Mensaje final -->
+      <div class="final-text" id="caf-finalText">
+        <p>
+          “Ojalá algún día esta cafetería deje de ser una idea… y se convierta en
+          un recuerdo contigo.”
+        </p>
+        <span class="firma">— nuestra pequeña cafetería ♥</span>
+      </div>
+
+      <!-- Continuar el viaje -->
+      <button class="continuar-btn" id="caf-continuarBtn">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        Salgamos a mirar el cielo…
+      </button>
+
+      <!-- ============ Escenarios ============ -->
+
+      <!-- Chocolate -->
+      <div class="stage" data-stage="chocolate">
+        <button class="stage-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="stage-inner">
+          <div class="choco" id="caf-choco">
+            <div class="choco-note">
+              Hay chocolates muy dulces… pero ninguno tanto como los momentos que
+              imagino contigo.
+            </div>
+            <div class="choco-body">
+              <span></span><span></span><span></span><span></span> <span></span
+              ><span></span><span></span><span></span>
+            </div>
+            <div class="choco-lid"><span>Para ti</span></div>
+          </div>
+          <p class="stage-hint">Ábrelo…</p>
+        </div>
+      </div>
+
+      <!-- Taza -->
+      <div class="stage" data-stage="taza">
+        <button class="stage-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="stage-inner">
+          <div class="cup-scene" id="caf-cupScene">
+            <p class="vapor-text">
+              Eres la calma que uno busca<br />en los días de lluvia.
+            </p>
+            <div class="steam"><i></i><i></i><i></i></div>
+            <div class="cup"></div>
+            <div class="saucer"></div>
+          </div>
+          <p class="stage-hint">Tócala…</p>
+        </div>
+      </div>
+
+      <!-- Libro -->
+      <div class="stage" data-stage="libro">
+        <button class="stage-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="stage-inner">
+          <div class="book-wrap">
+            <div class="book">
+              <div class="page-base">
+                <p>
+                  Fin… por ahora.<br />Las mejores historias siempre tienen
+                  segunda parte. ♥
+                </p>
+              </div>
+
+              <div class="sheet">
+                <div class="face front cover">
+                  <h2>Nuestra historia</h2>
+                  <p class="autor">para mi amada Luz</p>
+                </div>
+                <div class="face back">
+                  <p>
+                    Capítulo uno: llegaste sin avisar, como llegan las cosas
+                    buenas.
+                  </p>
+                  <span class="pg">1</span>
+                </div>
+              </div>
+
+              <div class="sheet">
+                <div class="face front">
+                  <p>
+                    Me gustas de una forma tranquila: como la lluvia de afuera,
+                    sin prisa.
+                  </p>
+                  <span class="pg">2</span>
+                </div>
+                <div class="face back">
+                  <p>Tu risa debería venir con advertencia: provoca releerla.</p>
+                  <span class="pg">3</span>
+                </div>
+              </div>
+
+              <div class="sheet">
+                <div class="face front">
+                  <p>
+                    No sé cómo termina esta historia, pero me encanta el rumbo que
+                    lleva.
+                  </p>
+                  <span class="pg">4</span>
+                </div>
+                <div class="face back">
+                  <p>
+                    Cada página en blanco es un día que todavía podemos escribir
+                    juntos.
+                  </p>
+                  <span class="pg">5</span>
+                </div>
+              </div>
+            </div>
+            <p class="stage-hint">Pasa las páginas…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rosa -->
+      <div class="stage" data-stage="rosa">
+        <button class="stage-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="stage-inner">
+          <div class="rose-scene" id="caf-roseScene">
+            <div class="rose-wrap" id="caf-roseWrap">
+              <svg viewBox="0 0 140 260" aria-hidden="true">
+                <defs>
+                  <radialGradient id="rosaOut" cx="38%" cy="30%" r="85%">
+                    <stop offset="0%" stop-color="#b44a56" />
+                    <stop offset="100%" stop-color="#701f2b" />
+                  </radialGradient>
+                  <radialGradient id="rosaMid" cx="40%" cy="32%" r="80%">
+                    <stop offset="0%" stop-color="#cf6470" />
+                    <stop offset="100%" stop-color="#8f303d" />
+                  </radialGradient>
+                  <radialGradient id="rosaIn" cx="42%" cy="35%" r="75%">
+                    <stop offset="0%" stop-color="#e18894" />
+                    <stop offset="100%" stop-color="#a63a48" />
+                  </radialGradient>
+                </defs>
+
+                <path
+                  d="M70 104 C66 155 75 205 70 252"
+                  stroke="#3f5c32"
+                  stroke-width="6"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M69 162 C52 146 32 146 22 162 C34 178 56 176 69 162Z"
+                  fill="#4c6b3c"
+                />
+                <path
+                  d="M40 160c10-2 20 0 27 2"
+                  stroke="#2f4526"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+                <path
+                  d="M71 200 C88 184 108 184 118 200 C106 216 84 214 71 200Z"
+                  fill="#55763f"
+                />
+                <path
+                  d="M100 198c-10-2-20 0-27 2"
+                  stroke="#37502a"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+                <path
+                  d="M70 92 C58 100 52 112 56 122 C62 114 68 108 70 104 C72 108 78 114 84 122 C88 112 82 100 70 92Z"
+                  fill="#4c6b3c"
+                />
+
+                <g fill="url(#rosaOut)">
+                  <ellipse
+                    cx="41"
+                    cy="64"
+                    rx="27"
+                    ry="21"
+                    transform="rotate(-28 41 64)"
+                  />
+                  <ellipse
+                    cx="99"
+                    cy="64"
+                    rx="27"
+                    ry="21"
+                    transform="rotate(28 99 64)"
+                  />
+                  <ellipse
+                    cx="49"
+                    cy="88"
+                    rx="24"
+                    ry="17"
+                    transform="rotate(-40 49 88)"
+                  />
+                  <ellipse
+                    cx="91"
+                    cy="88"
+                    rx="24"
+                    ry="17"
+                    transform="rotate(40 91 88)"
+                  />
+                  <ellipse cx="70" cy="94" rx="26" ry="15" />
+                </g>
+
+                <g fill="url(#rosaMid)">
+                  <ellipse
+                    cx="52"
+                    cy="48"
+                    rx="20"
+                    ry="24"
+                    transform="rotate(-20 52 48)"
+                  />
+                  <ellipse
+                    cx="88"
+                    cy="48"
+                    rx="20"
+                    ry="24"
+                    transform="rotate(20 88 48)"
+                  />
+                  <ellipse cx="70" cy="80" rx="24" ry="17" />
+                </g>
+
+                <circle cx="70" cy="58" r="21" fill="url(#rosaIn)" />
+                <path
+                  d="M70 42 C59 44 52 53 55 63 C58 72 66 76 72 73 C79 70 81 61 76 56 C72 52 65 53 64 58"
+                  stroke="#7e2734"
+                  stroke-width="3"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+
+                <path
+                  d="M34 52 C30 60 30 68 33 74"
+                  stroke="rgba(255,255,255,0.18)"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M106 52 C110 60 110 68 107 74"
+                  stroke="rgba(255,255,255,0.14)"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="petal"></div>
+            <div class="petal-note" id="caf-petalNote">
+              Cada pétalo guarda una razón para admirarte… y siempre se me acaban
+              los pétalos antes que las razones.
+            </div>
+          </div>
+          <p class="stage-hint">Gírala…</p>
+        </div>
+      </div>
+
+      <!-- Fotografía -->
+      <div class="stage" data-stage="foto">
+        <button class="stage-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="stage-inner">
+          <div class="polaroid" id="caf-polaroid">
+            <div class="pol-card">
+              <div class="pol-face pol-front">
+                <div class="pol-img">
+                  <svg
+                    viewBox="0 0 200 200"
+                    preserveAspectRatio="xMidYMid slice"
+                    aria-hidden="true"
+                  >
+                    <rect width="200" height="200" fill="#1c2740" />
+                    <rect
+                      x="30"
+                      y="22"
+                      width="140"
+                      height="112"
+                      rx="8"
+                      fill="#101a2e"
+                      stroke="#3a4a68"
+                      stroke-width="4"
+                    />
+                    <circle cx="140" cy="48" r="12" fill="#ffe9c4" />
+                    <circle cx="58" cy="44" r="1.6" fill="#fff" opacity="0.85" />
+                    <circle cx="76" cy="60" r="1.2" fill="#fff" opacity="0.6" />
+                    <circle cx="96" cy="40" r="1.4" fill="#fff" opacity="0.75" />
+                    <circle cx="64" cy="86" r="1.2" fill="#fff" opacity="0.55" />
+                    <path
+                      d="M100 96c-9-11-24-2-15 9l15 13 15-13c9-11-6-20-15-9z"
+                      fill="rgba(255,255,255,0.38)"
+                    />
+                    <rect
+                      x="18"
+                      y="150"
+                      width="164"
+                      height="10"
+                      rx="4"
+                      fill="#4a3222"
+                    />
+                    <rect
+                      x="58"
+                      y="132"
+                      width="28"
+                      height="18"
+                      rx="4"
+                      fill="#f3e6cf"
+                    />
+                    <rect
+                      x="114"
+                      y="132"
+                      width="28"
+                      height="18"
+                      rx="4"
+                      fill="#f3e6cf"
+                    />
+                    <rect
+                      x="60"
+                      y="134"
+                      width="24"
+                      height="5"
+                      rx="2.5"
+                      fill="#5a3b28"
+                    />
+                    <rect
+                      x="116"
+                      y="134"
+                      width="24"
+                      height="5"
+                      rx="2.5"
+                      fill="#5a3b28"
+                    />
+                  </svg>
+                </div>
+                <p class="pol-caption">nuestra cafetería</p>
+              </div>
+              <div class="pol-face pol-back">
+                <p>“Mi lugar favorito siempre será donde estés tú.”</p>
+                <i class="fa-solid fa-heart"></i>
+              </div>
+            </div>
+          </div>
+          <p class="stage-hint">Tómala y dale la vuelta…</p>
+        </div>
+      </div>
+
+      <!-- Galleta -->
+      <div class="stage" data-stage="galleta">
+        <button class="stage-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="stage-inner">
+          <div class="cookie-scene" id="caf-cookieScene">
+            <div class="cookie" id="caf-cookie">
+              <div class="half left"></div>
+              <div class="half right"></div>
+              <div class="fortune">
+                “El destino tiene muy buen gusto cuando une personas.”
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="stage-hint">Rómpela…</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Escena 3: Buenas noches, Luz
+         ============================================================ -->
+    <section class="escena-seccion" id="escena-noche" hidden>
+      <button
+        class="sound-btn"
+        id="noc-soundBtn"
+        aria-label="Silenciar el sonido"
+        hidden
+      >
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
+
+      <!-- Escena nocturna -->
+      <div
+        class="escena"
+        id="noc-escena"
+        aria-label="Una noche estrellada para mi hermosa Luz"
+      >
+        <div class="cielo" id="noc-cielo">
+          <div id="noc-estrellas"></div>
+
+          <div class="nube nube-a" aria-hidden="true"></div>
+          <div class="nube nube-b" aria-hidden="true"></div>
+          <div class="nube nube-c" aria-hidden="true"></div>
+
+          <button class="luna" id="noc-luna" aria-label="La luna">
+            <span class="luna-cuerpo">
+              <svg class="luna-cara" viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="68" cy="28" r="6" fill="#e8c98f" opacity="0.55" />
+                <circle cx="30" cy="68" r="4" fill="#e8c98f" opacity="0.5" />
+                <circle cx="60" cy="74" r="2.6" fill="#e8c98f" opacity="0.5" />
+                <path
+                  d="M28 44 q6 6 12 0"
+                  stroke="#b9873f"
+                  stroke-width="2.6"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M58 44 q6 6 12 0"
+                  stroke="#b9873f"
+                  stroke-width="2.6"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  class="boca-neutra"
+                  d="M45 61 q4 2.6 8 0"
+                  stroke="#b9873f"
+                  stroke-width="2.4"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path
+                  class="boca-sonrisa"
+                  d="M40 58 q9 10 18 0"
+                  stroke="#b9873f"
+                  stroke-width="2.8"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <circle
+                  class="mejilla"
+                  cx="27"
+                  cy="56"
+                  r="4.5"
+                  fill="#f4a9a0"
+                  opacity="0.55"
+                />
+                <circle
+                  class="mejilla"
+                  cx="72"
+                  cy="56"
+                  r="4.5"
+                  fill="#f4a9a0"
+                  opacity="0.55"
+                />
+              </svg>
+              <span class="luna-sombra" id="noc-lunaSombra" aria-hidden="true"></span>
+            </span>
+          </button>
+
+          <div id="noc-fugaces"></div>
+        </div>
+
+        <div class="suelo">
+          <svg
+            class="colinas"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              fill="#161239"
+              d="M0,200 C240,140 420,220 720,180 C980,150 1200,210 1440,170 L1440,320 L0,320 Z"
+            />
+            <path
+              fill="#0d0a26"
+              d="M0,250 C300,210 560,270 860,240 C1120,215 1300,260 1440,235 L1440,320 L0,320 Z"
+            />
+          </svg>
+
+          <div class="arbol">
+            <svg viewBox="0 0 200 260" aria-hidden="true">
+              <path
+                d="M92 260 L90 140 Q88 120 76 104 L84 100 Q96 116 100 140 L104 116 Q107 106 118 98 L124 104 Q113 115 110 138 L108 260 Z"
+                fill="#241a10"
+              />
+              <ellipse cx="100" cy="80" rx="72" ry="56" fill="#16241d" />
+              <ellipse cx="58" cy="112" rx="46" ry="36" fill="#1a2b22" />
+              <ellipse cx="146" cy="106" rx="46" ry="38" fill="#131f19" />
+              <ellipse cx="100" cy="62" rx="44" ry="32" fill="#1c2f25" />
+            </svg>
+
+            <button
+              class="buho"
+              id="noc-buho"
+              aria-label="Un pequeño búho escondido en el árbol"
+            >
+              <svg viewBox="0 0 80 80" aria-hidden="true">
+                <path d="M22 20 L30 6 L36 22 Z" fill="#33251a" />
+                <path d="M44 22 L50 6 L58 20 Z" fill="#33251a" />
+                <ellipse cx="40" cy="46" rx="24" ry="30" fill="#3a2b1e" />
+                <ellipse cx="40" cy="57" rx="15" ry="17" fill="#57422c" />
+                <path
+                  d="M32 52 q8 5 16 0 M32 60 q8 5 16 0"
+                  stroke="#3a2b1e"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <g class="ojos">
+                  <circle cx="30" cy="36" r="9" fill="#f2e3bd" />
+                  <circle cx="50" cy="36" r="9" fill="#f2e3bd" />
+                  <circle cx="30" cy="36" r="4.2" fill="#17100a" />
+                  <circle cx="50" cy="36" r="4.2" fill="#17100a" />
+                  <circle cx="31.5" cy="34.5" r="1.3" fill="#ffffff" />
+                  <circle cx="51.5" cy="34.5" r="1.3" fill="#ffffff" />
+                </g>
+                <path d="M36 44 L44 44 L40 51 Z" fill="#f7b267" />
+                <path
+                  d="M33 75 v4 M40 75 v4 M47 75 v4"
+                  stroke="#f7b267"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+            <span class="buho-huu" id="noc-buhoHuu" aria-hidden="true">Huu…</span>
+          </div>
+
+          <div class="casita">
+            <svg viewBox="0 0 260 220" aria-hidden="true">
+              <rect x="182" y="52" width="20" height="52" fill="#241b3f" />
+              <rect
+                x="40"
+                y="110"
+                width="180"
+                height="95"
+                rx="4"
+                fill="#2b2148"
+              />
+              <path d="M20 115 L130 28 L240 115 Z" fill="#1d1440" />
+              <path
+                d="M20 115 L130 28 L240 115"
+                stroke="#3b2c63"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <rect
+                x="146"
+                y="150"
+                width="38"
+                height="55"
+                rx="4"
+                fill="#191133"
+              />
+              <circle cx="153" cy="179" r="2.6" fill="#f7b267" />
+              <rect x="30" y="203" width="200" height="6" rx="3" fill="#0d0a26" />
+            </svg>
+
+            <button
+              class="ventana"
+              id="noc-ventana"
+              aria-label="La ventana iluminada de la casita"
+            >
+              <span class="ventana-luz" aria-hidden="true"></span>
+              <span class="ventana-cruz" aria-hidden="true"></span>
+              <span class="postigo izq" aria-hidden="true"></span>
+              <span class="postigo der" aria-hidden="true"></span>
+              <span class="taza" aria-hidden="true">
+                <svg viewBox="0 0 60 50">
+                  <ellipse cx="28" cy="44" rx="20" ry="4" fill="#7c4a2a" />
+                  <path d="M14 18 h28 v12 a14 10 0 0 1 -28 0 Z" fill="#f5e7d0" />
+                  <ellipse cx="28" cy="19" rx="14" ry="4" fill="#6b4226" />
+                  <path
+                    d="M43 22 q11 4 0 14"
+                    stroke="#f5e7d0"
+                    stroke-width="3.5"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span class="vapor v1"></span>
+                <span class="vapor v2"></span>
+                <span class="vapor v3"></span>
+              </span>
+            </button>
+            <span class="mensaje-vapor" id="noc-mensajeVapor"></span>
+          </div>
+
+          <div class="flores" id="noc-flores"></div>
+        </div>
+
+        <div id="noc-petalos" aria-hidden="true"></div>
+        <div id="noc-particulas" aria-hidden="true"></div>
+        <div class="oscuridad" id="noc-oscuridad" aria-hidden="true"></div>
+      </div>
+
+      <p class="mensaje-principal" id="noc-mensajePrincipal" aria-live="polite"></p>
+      <div class="cartel" id="noc-cartel" role="status" aria-live="polite"></div>
+
+      <!-- Secuencia final -->
+      <section class="final" id="noc-final" hidden>
+        <p id="noc-finalTexto"></p>
+        <button class="btn-beso" id="noc-btnBeso" hidden>
+          Cerrar con un beso de buenas noches
+        </button>
+      </section>
+
+      <!-- Despedida -->
+      <section class="despedida" id="noc-despedida" hidden>
+        <span class="despedida-luna" id="noc-despedidaLuna" aria-hidden="true"></span>
+        <svg class="corazon" id="noc-corazon" viewBox="0 0 32 30" aria-hidden="true">
+          <path
+            d="M16 29 C6 20 0 14 0 8 C0 3 4 0 8.5 0 C12 0 15 2.5 16 5 C17 2.5 20 0 23.5 0 C28 0 32 3 32 8 C32 14 26 20 16 29 Z"
+            fill="#ffc8dd"
+          />
+        </svg>
+        <p class="despedida-texto" id="noc-despedidaTexto"></p>
+        <button class="btn-fin" id="noc-btnFin" hidden>
+          <i class="fa-solid fa-heart" aria-hidden="true"></i>
+          Fin de este pequeño viaje
+        </button>
+      </section>
+
+      <!-- Portada -->
+      <div class="intro" id="noc-intro">
+        <p class="intro-eyebrow">Página 3 de 3 · Antes de dormir</p>
+        <h1>Buenas noches, mi hermosa<br />Luz</h1>
+        <svg class="intro-ornamento" viewBox="0 0 220 24" aria-hidden="true">
+          <path d="M10 12 H86" stroke="currentColor" stroke-width="1" />
+          <path d="M134 12 H210" stroke="currentColor" stroke-width="1" />
+          <g fill="currentColor">
+            <path
+              d="M110 2 L112.4 9.2 L120 12 L112.4 14.8 L110 22 L107.6 14.8 L100 12 L107.6 9.2 Z"
+            />
+          </g>
+          <circle cx="110" cy="12" r="1.8" fill="#ffd6a5" />
+        </svg>
+        <p class="intro-sub">El cielo ya está listo para ti. Entra despacio…</p>
+        <button class="intro-btn" id="noc-enterBtn">Entrar de puntillas</button>
+      </div>
+    </section>
+
+    <!-- Panel de depuración de Firebase (oculto, compartido por las 3 escenas) -->
+    <div class="container" style="display: none">
+      <div id="status" class="status disconnected">Conectando...</div>
+      <div id="error" class="error" style="display: none"></div>
+
+      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
+      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
+      <label
+        >Navegador:
+        <strong id="miNavegador" style="color: #667eea">-</strong></label
+      >
+    </div>
+
+    <script src="assets/js/transicion.js"></script>
+    <script src="assets/js/shared-music.js"></script>
+    <script src="assets/js/garden.js"></script>
+    <script src="assets/js/coffee-shop.js"></script>
+    <script src="assets/js/good-night.js"></script>
+
+    <script>
+      function goBack() {
+        window.location.href = "index.html";
+      }
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script src="assets/js/firebase-config.js"></script>
+
+    <script>
+      (function () {
+        detectarIP();
+        actualizarFechaHora();
+
+        setTimeout(() => {
+          agregarDatos("Jardin");
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>

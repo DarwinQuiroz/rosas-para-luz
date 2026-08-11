@@ -5,7 +5,7 @@
                Karla (interfaz)
    ============================================================ */
 
-:root {
+#escena-jardin {
   /* cielo al atardecer, de noche violeta a horizonte dorado */
   --cielo-noche: #3d2b56;
   --cielo-1: #6e4177;
@@ -29,35 +29,20 @@
   --script: "Great Vibes", cursive;
 }
 
-* {
+#escena-jardin,
+#escena-jardin * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
+#escena-jardin {
   font-family: var(--karla);
   background: var(--cielo-2);
   overflow: hidden;
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-:focus-visible {
+#escena-jardin :focus-visible {
   outline: 2px solid rgba(233, 185, 73, 0.95);
   outline-offset: 3px;
   border-radius: 4px;
@@ -65,7 +50,7 @@ button {
 
 /* ============ Portada ============ */
 
-.intro {
+#escena-jardin .intro {
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -91,22 +76,22 @@ button {
   transition: opacity 1.4s ease, visibility 1.4s;
 }
 
-.intro.oculta {
+#escena-jardin .intro.oculta {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.intro-eyebrow {
+#escena-jardin .intro-eyebrow {
   font-size: 11px;
   letter-spacing: 0.55em;
   text-indent: 0.55em;
   text-transform: uppercase;
   color: rgba(255, 238, 216, 0.7);
-  animation: intro-sube 1.1s ease-out both;
+  animation: intro-sube-gdn 1.1s ease-out both;
 }
 
-.intro h1 {
+#escena-jardin .intro h1 {
   font-family: var(--script);
   font-weight: 400;
   font-size: clamp(48px, 11vw, 96px);
@@ -115,27 +100,27 @@ button {
   text-shadow:
     0 2px 10px rgba(46, 14, 50, 0.45),
     0 0 44px rgba(255, 176, 130, 0.35);
-  animation: intro-sube 1.1s ease-out 0.15s both;
+  animation: intro-sube-gdn 1.1s ease-out 0.15s both;
 }
 
-.intro-ornamento {
+#escena-jardin .intro-ornamento {
   width: min(220px, 56vw);
   height: 24px;
   color: rgba(255, 238, 216, 0.65);
-  animation: intro-sube 1.1s ease-out 0.3s both;
+  animation: intro-sube-gdn 1.1s ease-out 0.3s both;
 }
 
-.intro-sub {
+#escena-jardin .intro-sub {
   font-family: var(--cormorant);
   font-style: italic;
   font-size: clamp(17px, 2.6vw, 20px);
   letter-spacing: 0.04em;
   color: rgba(255, 238, 216, 0.85);
   max-width: 36ch;
-  animation: intro-sube 1.1s ease-out 0.45s both;
+  animation: intro-sube-gdn 1.1s ease-out 0.45s both;
 }
 
-.enter-btn {
+#escena-jardin .enter-btn {
   margin-top: 18px;
   padding: 15px 44px;
   min-height: 48px;
@@ -154,44 +139,50 @@ button {
   text-transform: uppercase;
   backdrop-filter: blur(4px);
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-  animation: intro-sube 1.1s ease-out 0.6s both;
+  animation: intro-sube-gdn 1.1s ease-out 0.6s both;
 }
 
-.enter-btn:hover {
+#escena-jardin .enter-btn:hover {
   background: rgba(233, 185, 73, 0.22);
   box-shadow: 0 0 26px rgba(233, 185, 73, 0.35);
   transform: translateY(-2px);
 }
 
-.enter-btn:active {
+#escena-jardin .enter-btn:active {
   transform: translateY(0) scale(0.97);
 }
 
-@keyframes intro-sube {
+@keyframes intro-sube-gdn {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* pétalos que caen en la portada */
-.intro-petalo {
+
+#escena-jardin .intro-petalo {
   position: absolute;
   top: -5vh;
   width: 14px;
   height: 18px;
   border-radius: 62% 38% 60% 40% / 70% 32% 68% 30%;
   background: linear-gradient(140deg, rgba(255, 217, 226, 0.6), rgba(238, 143, 174, 0.45));
-  animation: intro-caer linear infinite;
+  animation: intro-caer-gdn linear infinite;
   pointer-events: none;
 }
 
-.intro-petalo:nth-child(1) { left: 8%; animation-duration: 13s; animation-delay: -2s; }
-.intro-petalo:nth-child(2) { left: 24%; animation-duration: 17s; animation-delay: -9s; transform: scale(0.8); }
-.intro-petalo:nth-child(3) { left: 43%; animation-duration: 15s; animation-delay: -5s; }
-.intro-petalo:nth-child(4) { left: 61%; animation-duration: 18s; animation-delay: -12s; transform: scale(1.2); }
-.intro-petalo:nth-child(5) { left: 78%; animation-duration: 14s; animation-delay: -7s; transform: scale(0.9); }
-.intro-petalo:nth-child(6) { left: 91%; animation-duration: 16s; animation-delay: -3s; }
+#escena-jardin .intro-petalo:nth-child(1) { left: 8%; animation-duration: 13s; animation-delay: -2s; }
 
-@keyframes intro-caer {
+#escena-jardin .intro-petalo:nth-child(2) { left: 24%; animation-duration: 17s; animation-delay: -9s; transform: scale(0.8); }
+
+#escena-jardin .intro-petalo:nth-child(3) { left: 43%; animation-duration: 15s; animation-delay: -5s; }
+
+#escena-jardin .intro-petalo:nth-child(4) { left: 61%; animation-duration: 18s; animation-delay: -12s; transform: scale(1.2); }
+
+#escena-jardin .intro-petalo:nth-child(5) { left: 78%; animation-duration: 14s; animation-delay: -7s; transform: scale(0.9); }
+
+#escena-jardin .intro-petalo:nth-child(6) { left: 91%; animation-duration: 16s; animation-delay: -3s; }
+
+@keyframes intro-caer-gdn {
   0% { transform: translate(0, 0) rotate(0deg); }
   50% { transform: translate(-3vw, 55vh) rotate(300deg); }
   100% { transform: translate(2vw, 112vh) rotate(640deg); }
@@ -199,7 +190,7 @@ button {
 
 /* ============ Botón de sonido ============ */
 
-.sound-btn {
+#escena-jardin .sound-btn {
   position: fixed;
   top: 18px;
   right: 18px;
@@ -215,20 +206,20 @@ button {
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
-.sound-btn:hover {
+#escena-jardin .sound-btn:hover {
   background: rgba(36, 18, 42, 0.62);
   box-shadow: 0 0 18px rgba(233, 185, 73, 0.25);
 }
 
 /* ============ Cielo ============ */
 
-.scene {
+#escena-jardin .scene {
   position: fixed;
   inset: 0;
   overflow: hidden;
 }
 
-.sky {
+#escena-jardin .sky {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -243,7 +234,8 @@ button {
 }
 
 /* primeras estrellas arriba */
-.estrellas {
+
+#escena-jardin .estrellas {
   position: absolute;
   inset: 0 0 55% 0;
   background-image:
@@ -257,15 +249,15 @@ button {
     radial-gradient(1.3px 1.3px at 94% 34%, rgba(255, 244, 224, 0.7), transparent 55%),
     radial-gradient(1.4px 1.4px at 6% 44%, rgba(255, 244, 224, 0.6), transparent 55%),
     radial-gradient(1.4px 1.4px at 58% 42%, rgba(255, 244, 224, 0.55), transparent 55%);
-  animation: titilar 6s ease-in-out infinite alternate;
+  animation: titilar-gdn 6s ease-in-out infinite alternate;
 }
 
-@keyframes titilar {
+@keyframes titilar-gdn {
   from { opacity: 0.5; }
   to { opacity: 1; }
 }
 
-.sun {
+#escena-jardin .sun {
   position: absolute;
   left: 50%;
   bottom: 25%;
@@ -280,16 +272,17 @@ button {
     rgba(255, 176, 120, 0.25) 55%,
     transparent 72%
   );
-  animation: sol-respira 7s ease-in-out infinite alternate;
+  animation: sol-respira-gdn 7s ease-in-out infinite alternate;
 }
 
-@keyframes sol-respira {
+@keyframes sol-respira-gdn {
   from { transform: translateX(-50%) scale(1); opacity: 0.92; }
   to { transform: translateX(-50%) scale(1.06); opacity: 1; }
 }
 
 /* bruma cálida sobre el horizonte */
-.bruma {
+
+#escena-jardin .bruma {
   position: absolute;
   left: 0;
   right: 0;
@@ -304,48 +297,50 @@ button {
   filter: blur(6px);
 }
 
-.nube {
+#escena-jardin .nube {
   position: absolute;
   height: 5vmin;
   width: 26vmin;
   border-radius: 999px;
   background: rgba(255, 214, 228, 0.26);
   filter: blur(12px);
-  animation: nube-deriva linear infinite;
+  animation: nube-deriva-gdn linear infinite;
 }
 
-.nube.n1 { top: 12%; animation-duration: 95s; }
-.nube.n2 { top: 22%; width: 34vmin; animation-duration: 130s; animation-delay: -40s; }
-.nube.n3 { top: 7%; width: 18vmin; animation-duration: 110s; animation-delay: -80s; }
+#escena-jardin .nube.n1 { top: 12%; animation-duration: 95s; }
 
-@keyframes nube-deriva {
+#escena-jardin .nube.n2 { top: 22%; width: 34vmin; animation-duration: 130s; animation-delay: -40s; }
+
+#escena-jardin .nube.n3 { top: 7%; width: 18vmin; animation-duration: 110s; animation-delay: -80s; }
+
+@keyframes nube-deriva-gdn {
   from { transform: translateX(-40vmin); }
   to { transform: translateX(110vw); }
 }
 
 /* ============ Montañas y prado ============ */
 
-.montes {
+#escena-jardin .montes {
   position: absolute;
   left: 0;
   width: 100%;
 }
 
-.montes.lejos {
+#escena-jardin .montes.lejos {
   bottom: 24%;
   height: 26vh;
   fill: var(--monte-lejos);
   opacity: 0.6;
 }
 
-.montes.cerca {
+#escena-jardin .montes.cerca {
   bottom: 23%;
   height: 20vh;
   fill: var(--monte-cerca);
   opacity: 0.95;
 }
 
-.prado {
+#escena-jardin .prado {
   position: absolute;
   left: -4%;
   right: -4%;
@@ -361,7 +356,7 @@ button {
   box-shadow: inset 0 22px 34px rgba(12, 26, 18, 0.35);
 }
 
-.pasto {
+#escena-jardin .pasto {
   position: absolute;
   left: 0;
   bottom: -2px;
@@ -371,7 +366,7 @@ button {
   opacity: 0.95;
 }
 
-.vineta {
+#escena-jardin .vineta {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -384,7 +379,7 @@ button {
 
 /* ============ Luciérnagas y hojas ============ */
 
-.particula {
+#escena-jardin .particula {
   position: absolute;
   width: 5px;
   height: 5px;
@@ -392,31 +387,31 @@ button {
   background: radial-gradient(circle, #fff3c4 0%, rgba(255, 220, 120, 0.55) 55%, transparent 75%);
   box-shadow: 0 0 10px 2px rgba(255, 224, 130, 0.4);
   animation:
-    flotar ease-in-out infinite alternate,
-    luciernaga 3.4s ease-in-out infinite;
+    flotar-gdn ease-in-out infinite alternate,
+    luciernaga-gdn 3.4s ease-in-out infinite;
 }
 
-@keyframes flotar {
+@keyframes flotar-gdn {
   from { transform: translateY(0); }
   to { transform: translateY(-7vh); }
 }
 
-@keyframes luciernaga {
+@keyframes luciernaga-gdn {
   0%, 100% { opacity: 0.15; }
   50% { opacity: 0.95; }
 }
 
-.hojita {
+#escena-jardin .hojita {
   position: absolute;
   width: 13px;
   height: 13px;
   background: linear-gradient(135deg, #8bb073, #47714a);
   border-radius: 0 100% 0 100%;
   opacity: 0.8;
-  animation: hoja-deriva linear infinite;
+  animation: hoja-deriva-gdn linear infinite;
 }
 
-@keyframes hoja-deriva {
+@keyframes hoja-deriva-gdn {
   0% { transform: translate(-6vw, 0) rotate(0deg); }
   50% { transform: translate(48vw, 6vh) rotate(320deg); }
   100% { transform: translate(106vw, -2vh) rotate(680deg); }
@@ -424,7 +419,7 @@ button {
 
 /* ============ Flores ============ */
 
-.flor {
+#escena-jardin .flor {
   position: absolute;
   border: none;
   background: none;
@@ -433,33 +428,33 @@ button {
   width: calc(var(--fs, 1) * clamp(60px, 11vmin, 104px));
 }
 
-.flor svg {
+#escena-jardin .flor svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
   transform-origin: 50% 100%;
-  animation: mecer 5.4s ease-in-out infinite alternate;
+  animation: mecer-gdn 5.4s ease-in-out infinite alternate;
   animation-delay: var(--md, 0s);
 }
 
-@keyframes mecer {
+@keyframes mecer-gdn {
   from { transform: rotate(-2.2deg); }
   to { transform: rotate(2.4deg); }
 }
 
-.flor .tallo {
+#escena-jardin .flor .tallo {
   fill: none;
   stroke: #35592e;
   stroke-width: 5;
   stroke-linecap: round;
 }
 
-.flor .hoja {
+#escena-jardin .flor .hoja {
   fill: #47714a;
 }
 
-.flor .petalo {
+#escena-jardin .flor .petalo {
   fill: url(#gradPetalo);
   stroke: rgba(90, 20, 50, 0.22);
   stroke-width: 1;
@@ -468,92 +463,108 @@ button {
   transition: transform 0.9s cubic-bezier(0.34, 1.45, 0.4, 1);
 }
 
-.flor .centro {
+#escena-jardin .flor .centro {
   fill: url(#gradCentro);
   transform-origin: 60px 62px;
   transition: transform 0.7s ease 0.3s;
 }
 
-.flor .corola {
+#escena-jardin .flor .corola {
   transform-origin: 60px 62px;
   transition: transform 0.8s ease, filter 0.8s ease;
   filter: drop-shadow(0 0 0 rgba(255, 158, 181, 0));
 }
 
 /* respiración sutil mientras esperan */
-.flor:not(.abierta) .corola {
-  animation: latido 3.8s ease-in-out infinite;
+
+#escena-jardin .flor:not(.abierta) .corola {
+  animation: latido-gdn 3.8s ease-in-out infinite;
   animation-delay: var(--md, 0s);
 }
 
-@keyframes latido {
+@keyframes latido-gdn {
   0%, 100% { filter: drop-shadow(0 0 2px rgba(255, 158, 181, 0.18)); }
   50% { filter: drop-shadow(0 0 10px rgba(255, 158, 181, 0.6)); }
 }
 
 /* apertura escalonada de pétalos */
-.flor.abierta .petalo { transform: scale(1); }
-.flor.abierta g:nth-of-type(1) .petalo { transition-delay: 0s; }
-.flor.abierta g:nth-of-type(2) .petalo { transition-delay: 0.08s; }
-.flor.abierta g:nth-of-type(3) .petalo { transition-delay: 0.16s; }
-.flor.abierta g:nth-of-type(4) .petalo { transition-delay: 0.24s; }
-.flor.abierta g:nth-of-type(5) .petalo { transition-delay: 0.32s; }
-.flor.abierta g:nth-of-type(6) .petalo { transition-delay: 0.4s; }
 
-.flor.abierta .corola {
+#escena-jardin .flor.abierta .petalo { transform: scale(1); }
+
+#escena-jardin .flor.abierta g:nth-of-type(1) .petalo { transition-delay: 0s; }
+
+#escena-jardin .flor.abierta g:nth-of-type(2) .petalo { transition-delay: 0.08s; }
+
+#escena-jardin .flor.abierta g:nth-of-type(3) .petalo { transition-delay: 0.16s; }
+
+#escena-jardin .flor.abierta g:nth-of-type(4) .petalo { transition-delay: 0.24s; }
+
+#escena-jardin .flor.abierta g:nth-of-type(5) .petalo { transition-delay: 0.32s; }
+
+#escena-jardin .flor.abierta g:nth-of-type(6) .petalo { transition-delay: 0.4s; }
+
+#escena-jardin .flor.abierta .corola {
   animation: none;
   transform: scale(1.12);
   filter: drop-shadow(0 0 18px var(--rosa-brillo));
 }
 
-.flor.abierta .centro {
+#escena-jardin .flor.abierta .centro {
   transform: scale(1.15);
 }
 
 /* doradas */
-.flor.dorada .petalo { fill: url(#gradPetaloOro); }
-.flor.dorada .centro { fill: url(#gradCentroOro); }
 
-.flor.dorada:not(.abierta) .corola {
-  animation: latido-oro 2.6s ease-in-out infinite;
+#escena-jardin .flor.dorada .petalo { fill: url(#gradPetaloOro); }
+
+#escena-jardin .flor.dorada .centro { fill: url(#gradCentroOro); }
+
+#escena-jardin .flor.dorada:not(.abierta) .corola {
+  animation: latido-oro-gdn 2.6s ease-in-out infinite;
 }
 
-@keyframes latido-oro {
+@keyframes latido-oro-gdn {
   0%, 100% { filter: drop-shadow(0 0 3px rgba(233, 185, 73, 0.45)); }
   50% { filter: drop-shadow(0 0 14px rgba(233, 185, 73, 1)); }
 }
 
-.flor.dorada.abierta .corola {
+#escena-jardin .flor.dorada.abierta .corola {
   filter: drop-shadow(0 0 20px rgba(233, 185, 73, 0.95));
 }
 
 /* mini flores del florecimiento final */
-.mini-flor {
+
+#escena-jardin .mini-flor {
   position: absolute;
   transform: translateX(-50%) scale(0);
   transition: transform 0.9s cubic-bezier(0.34, 1.5, 0.4, 1);
   pointer-events: none;
 }
 
-.mini-flor.brota { transform: translateX(-50%) scale(1); }
+#escena-jardin .mini-flor.brota { transform: translateX(-50%) scale(1); }
 
-.mini-flor svg {
+#escena-jardin .mini-flor svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
 }
 
-.mini-flor .tallo { fill: none; stroke: #35592e; stroke-width: 5; stroke-linecap: round; }
-.mini-flor .hoja { fill: #47714a; }
-.mini-flor .petalo { fill: url(#gradPetalo); }
-.mini-flor.blanca .petalo { fill: url(#gradPetaloBlanco); }
-.mini-flor.oro .petalo { fill: url(#gradPetaloOro); }
-.mini-flor .centro { fill: url(#gradCentro); }
+#escena-jardin .mini-flor .tallo { fill: none; stroke: #35592e; stroke-width: 5; stroke-linecap: round; }
+
+#escena-jardin .mini-flor .hoja { fill: #47714a; }
+
+#escena-jardin .mini-flor .petalo { fill: url(#gradPetalo); }
+
+#escena-jardin .mini-flor.blanca .petalo { fill: url(#gradPetaloBlanco); }
+
+#escena-jardin .mini-flor.oro .petalo { fill: url(#gradPetaloOro); }
+
+#escena-jardin .mini-flor .centro { fill: url(#gradCentro); }
 
 /* ============ Pétalos que caen ============ */
 
-.petalo-lluvia {
+#escena-jardin .petalo-lluvia {
   position: fixed;
   top: -4vh;
   width: 13px;
@@ -563,10 +574,10 @@ button {
   opacity: 0.9;
   pointer-events: none;
   z-index: 70;
-  animation: petalo-cae linear forwards;
+  animation: petalo-cae-gdn linear forwards;
 }
 
-@keyframes petalo-cae {
+@keyframes petalo-cae-gdn {
   0% { transform: translate(0, 0) rotate(0deg); }
   25% { transform: translate(4vw, 28vh) rotate(160deg); }
   50% { transform: translate(-3vw, 55vh) rotate(300deg); }
@@ -576,7 +587,7 @@ button {
 
 /* ============ Colibrí ============ */
 
-.colibri {
+#escena-jardin .colibri {
   position: absolute;
   left: 0;
   top: 24%;
@@ -589,7 +600,7 @@ button {
   visibility: hidden;
 }
 
-.colibri svg {
+#escena-jardin .colibri svg {
   display: block;
   width: 100%;
   height: auto;
@@ -597,12 +608,12 @@ button {
   filter: drop-shadow(0 2px 6px rgba(30, 12, 34, 0.35));
 }
 
-.colibri.volando {
+#escena-jardin .colibri.volando {
   visibility: visible;
-  animation: vuelo 9s linear forwards;
+  animation: vuelo-gdn 9s linear forwards;
 }
 
-@keyframes vuelo {
+@keyframes vuelo-gdn {
   0% { transform: translate(-16vw, 0); }
   20% { transform: translate(18vw, -3vh); }
   40% { transform: translate(42vw, 2vh); }
@@ -611,27 +622,27 @@ button {
   100% { transform: translate(114vw, -2vh); }
 }
 
-.colibri .ala {
+#escena-jardin .colibri .ala {
   transform-origin: 62px 48px;
-  animation: aleteo 0.14s ease-in-out infinite alternate;
+  animation: aleteo-gdn 0.14s ease-in-out infinite alternate;
 }
 
-@keyframes aleteo {
+@keyframes aleteo-gdn {
   from { transform: rotate(-24deg); }
   to { transform: rotate(30deg); }
 }
 
-.colibri.atrapado {
+#escena-jardin .colibri.atrapado {
   animation-play-state: paused;
 }
 
-.colibri.atrapado svg {
+#escena-jardin .colibri.atrapado svg {
   filter: drop-shadow(0 0 16px rgba(255, 220, 160, 1));
 }
 
 /* ============ Textos flotantes ============ */
 
-.mensaje-centro {
+#escena-jardin .mensaje-centro {
   position: fixed;
   top: 13%;
   left: 50%;
@@ -651,10 +662,11 @@ button {
   pointer-events: none;
 }
 
-.mensaje-centro.visible { opacity: 1; }
-.mensaje-centro.apagada { opacity: 0; }
+#escena-jardin .mensaje-centro.visible { opacity: 1; }
 
-.hint {
+#escena-jardin .mensaje-centro.apagada { opacity: 0; }
+
+#escena-jardin .hint {
   position: fixed;
   bottom: 76px;
   left: 50%;
@@ -674,11 +686,11 @@ button {
   pointer-events: none;
 }
 
-.hint.visible { opacity: 1; }
+#escena-jardin .hint.visible { opacity: 1; }
 
 /* ============ Tarjeta ============ */
 
-.tarjeta-overlay {
+#escena-jardin .tarjeta-overlay {
   position: fixed;
   inset: 0;
   z-index: 80;
@@ -692,13 +704,13 @@ button {
   transition: background 0.6s ease, backdrop-filter 0.6s ease, visibility 0.6s;
 }
 
-.tarjeta-overlay.abierta {
+#escena-jardin .tarjeta-overlay.abierta {
   visibility: visible;
   background: rgba(38, 12, 40, 0.5);
   backdrop-filter: blur(3px);
 }
 
-.tarjeta {
+#escena-jardin .tarjeta {
   position: relative;
   width: min(380px, 92vw);
   padding: 40px 34px 30px;
@@ -717,8 +729,9 @@ button {
 }
 
 /* esquinas doradas */
-.tarjeta::before,
-.tarjeta::after {
+
+#escena-jardin .tarjeta::before,
+#escena-jardin .tarjeta::after {
   content: "";
   position: absolute;
   width: 26px;
@@ -727,26 +740,26 @@ button {
   border-style: solid;
 }
 
-.tarjeta::before {
+#escena-jardin .tarjeta::before {
   top: 14px;
   left: 14px;
   border-width: 1.5px 0 0 1.5px;
   border-radius: 6px 0 0 0;
 }
 
-.tarjeta::after {
+#escena-jardin .tarjeta::after {
   bottom: 14px;
   right: 14px;
   border-width: 0 1.5px 1.5px 0;
   border-radius: 0 0 6px 0;
 }
 
-.tarjeta-overlay.abierta .tarjeta {
+#escena-jardin .tarjeta-overlay.abierta .tarjeta {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-.tarjeta-eyebrow {
+#escena-jardin .tarjeta-eyebrow {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.45em;
@@ -756,20 +769,20 @@ button {
   margin-bottom: 16px;
 }
 
-.tarjeta-arte {
+#escena-jardin .tarjeta-arte {
   display: none;
   margin: 0 auto 10px;
   width: 96px;
 }
 
-.tarjeta-arte.visible { display: block; }
+#escena-jardin .tarjeta-arte.visible { display: block; }
 
-.tarjeta-arte svg {
+#escena-jardin .tarjeta-arte svg {
   width: 100%;
   height: auto;
 }
 
-.tarjeta-msg {
+#escena-jardin .tarjeta-msg {
   font-family: var(--cormorant);
   font-style: italic;
   font-weight: 500;
@@ -777,7 +790,7 @@ button {
   line-height: 1.5;
 }
 
-.tarjeta-flor {
+#escena-jardin .tarjeta-flor {
   width: 26px;
   height: 26px;
   margin-top: 18px;
@@ -786,7 +799,7 @@ button {
 
 /* ============ Progreso ============ */
 
-.progreso {
+#escena-jardin .progreso {
   position: fixed;
   bottom: 16px;
   left: 50%;
@@ -802,12 +815,12 @@ button {
   border: 1px solid rgba(233, 185, 73, 0.3);
 }
 
-.petalos-bar {
+#escena-jardin .petalos-bar {
   display: flex;
   gap: 7px;
 }
 
-.petalo-dot {
+#escena-jardin .petalo-dot {
   width: 11px;
   height: 14px;
   border-radius: 62% 38% 60% 40% / 70% 32% 68% 30%;
@@ -815,18 +828,18 @@ button {
   transition: background 0.6s, box-shadow 0.6s, transform 0.6s;
 }
 
-.petalo-dot.lleno {
+#escena-jardin .petalo-dot.lleno {
   background: linear-gradient(140deg, #ffd9e2, #ee8fae);
   box-shadow: 0 0 8px rgba(255, 158, 181, 0.8);
   transform: scale(1.15);
 }
 
-.petalo-dot.lleno.oro {
+#escena-jardin .petalo-dot.lleno.oro {
   background: linear-gradient(140deg, #ffefb8, #e9b949);
   box-shadow: 0 0 8px rgba(233, 185, 73, 0.9);
 }
 
-.progreso-txt {
+#escena-jardin .progreso-txt {
   font-size: 12px;
   letter-spacing: 0.12em;
   color: #f7ead2;
@@ -834,7 +847,7 @@ button {
 
 /* ============ Mensaje final ============ */
 
-.final-text {
+#escena-jardin .final-text {
   position: fixed;
   top: 10%;
   left: 50%;
@@ -848,13 +861,13 @@ button {
   pointer-events: none;
 }
 
-.final-text.visible {
+#escena-jardin .final-text.visible {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
 
-.final-text p {
+#escena-jardin .final-text p {
   font-family: var(--script);
   font-weight: 400;
   font-size: clamp(32px, 6.4vw, 54px);
@@ -865,7 +878,7 @@ button {
     0 0 40px rgba(255, 176, 130, 0.35);
 }
 
-.final-text .firma {
+#escena-jardin .final-text .firma {
   display: inline-block;
   margin-top: 14px;
   font-family: var(--karla);
@@ -877,40 +890,44 @@ button {
 
 /* ============ Accesibilidad y móvil ============ */
 
-@media (prefers-reduced-motion: reduce) {
-  .flor svg,
-  .nube,
-  .hojita,
-  .particula,
-  .flor:not(.abierta) .corola,
-  .colibri .ala,
-  .sun,
-  .estrellas,
-  .intro-petalo,
-  .intro-eyebrow,
-  .intro h1,
-  .intro-ornamento,
-  .intro-sub,
-  .enter-btn {
+@media (prefers-reduced-motion: reduce) {#escena-jardin .flor svg,
+#escena-jardin .nube,
+#escena-jardin .hojita,
+#escena-jardin .particula,
+#escena-jardin .flor:not(.abierta) .corola,
+#escena-jardin .colibri .ala,
+#escena-jardin .sun,
+#escena-jardin .estrellas,
+#escena-jardin .intro-petalo,
+#escena-jardin .intro-eyebrow,
+#escena-jardin .intro h1,
+#escena-jardin .intro-ornamento,
+#escena-jardin .intro-sub,
+#escena-jardin .enter-btn {
     animation: none !important;
   }
 
-  .colibri.volando {
+#escena-jardin .colibri.volando {
     animation-duration: 18s;
   }
+
 }
 
-@media (max-width: 560px) {
-  .mensaje-centro { top: 11%; }
-  .hint { bottom: 72px; font-size: 12px; }
-  .sun { bottom: 23%; width: 52vmin; height: 52vmin; }
-  .tarjeta { padding: 34px 26px 26px; }
-  .final-text { top: 8%; }
+@media (max-width: 560px) {#escena-jardin .mensaje-centro { top: 11%; }
+
+#escena-jardin .hint { bottom: 72px; font-size: 12px; }
+
+#escena-jardin .sun { bottom: 23%; width: 52vmin; height: 52vmin; }
+
+#escena-jardin .tarjeta { padding: 34px 26px 26px; }
+
+#escena-jardin .final-text { top: 8%; }
+
 }
 
 /* ============ Continuar el viaje (hacia la cafetería) ============ */
 
-.continuar-btn {
+#escena-jardin .continuar-btn {
   position: fixed;
   left: 50%;
   bottom: 7%;
@@ -941,31 +958,31 @@ button {
   pointer-events: none;
   transition: opacity 1.8s ease, transform 1.8s ease, visibility 1.8s,
     box-shadow 0.3s ease;
-  animation: continuarRespira 3.4s ease-in-out infinite;
+  animation: continuarRespira-gdn 3.4s ease-in-out infinite;
 }
 
-.continuar-btn i {
+#escena-jardin .continuar-btn i {
   color: var(--oro-suave);
   font-size: 14px;
 }
 
-.continuar-btn.visible {
+#escena-jardin .continuar-btn.visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 
-.continuar-btn:hover {
+#escena-jardin .continuar-btn:hover {
   background: rgba(233, 185, 73, 0.22);
   box-shadow: 0 0 30px rgba(233, 185, 73, 0.4);
 }
 
-.continuar-btn:active {
+#escena-jardin .continuar-btn:active {
   transform: translateX(-50%) scale(0.97);
 }
 
-@keyframes continuarRespira {
+@keyframes continuarRespira-gdn {
   0%,
   100% {
     box-shadow: 0 0 18px rgba(233, 185, 73, 0.2);
@@ -975,10 +992,10 @@ button {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .continuar-btn {
+@media (prefers-reduced-motion: reduce) {#escena-jardin .continuar-btn {
     animation: none;
     transition: opacity 0.4s ease;
     transform: translateX(-50%);
   }
+
 }

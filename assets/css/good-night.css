@@ -2,7 +2,7 @@
    Buenas noches, Luz — estilos
    ============================================================ */
 
-:root {
+#escena-noche {
   --azul-noche: #0e1438;
   --morado: #2e1f5c;
   --lavanda: #573c8a;
@@ -26,16 +26,12 @@
   --z-despedida: 30;
 }
 
-* {
+#escena-noche,
+#escena-noche * {
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
+#escena-noche {
   margin: 0;
   overflow: hidden;
   min-height: 100dvh;
@@ -46,20 +42,14 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-
-button:focus-visible {
+#escena-noche button:focus-visible {
   outline: 2px solid var(--amarillo);
   outline-offset: 3px;
 }
 
 /* ---------- Botón de sonido ---------- */
 
-.sound-btn {
+#escena-noche .sound-btn {
   position: fixed;
   top: 18px;
   right: 18px;
@@ -75,14 +65,14 @@ button:focus-visible {
   transition: background 0.25s ease, transform 0.25s ease;
 }
 
-.sound-btn:hover {
+#escena-noche .sound-btn:hover {
   background: rgba(46, 31, 92, 0.75);
   transform: scale(1.06);
 }
 
 /* ---------- Intro ---------- */
 
-.intro {
+#escena-noche .intro {
   position: fixed;
   inset: 0;
   z-index: var(--z-intro);
@@ -98,13 +88,13 @@ button:focus-visible {
   transition: opacity 1.4s ease, visibility 1.4s;
 }
 
-.intro.oculta {
+#escena-noche .intro.oculta {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.intro-eyebrow {
+#escena-noche .intro-eyebrow {
   margin: 0 0 10px;
   font-family: "Karla", sans-serif;
   font-size: 0.72rem;
@@ -113,7 +103,7 @@ button:focus-visible {
   color: var(--rosa);
 }
 
-.intro h1 {
+#escena-noche .intro h1 {
   margin: 0;
   font-family: "Great Vibes", cursive;
   font-weight: 400;
@@ -123,20 +113,20 @@ button:focus-visible {
   text-shadow: 0 0 32px rgba(247, 178, 103, 0.35);
 }
 
-.intro-ornamento {
+#escena-noche .intro-ornamento {
   width: min(220px, 55vw);
   margin: 18px 0 8px;
   color: rgba(255, 214, 165, 0.7);
 }
 
-.intro-sub {
+#escena-noche .intro-sub {
   margin: 6px 0 30px;
   font-style: italic;
   font-size: clamp(1.05rem, 3vw, 1.25rem);
   color: rgba(255, 233, 207, 0.85);
 }
 
-.intro-btn {
+#escena-noche .intro-btn {
   min-height: 52px;
   padding: 14px 34px;
   border: 1px solid rgba(255, 214, 165, 0.55);
@@ -150,19 +140,19 @@ button:focus-visible {
   box-shadow: 0 0 24px rgba(247, 178, 103, 0.18);
 }
 
-.intro-btn:hover {
+#escena-noche .intro-btn:hover {
   transform: translateY(-2px) scale(1.03);
   background: linear-gradient(160deg, rgba(247, 178, 103, 0.34), rgba(255, 200, 221, 0.2));
   box-shadow: 0 0 36px rgba(247, 178, 103, 0.32);
 }
 
-.intro-btn:active {
+#escena-noche .intro-btn:active {
   transform: scale(0.97);
 }
 
 /* ---------- Escena ---------- */
 
-.escena {
+#escena-noche .escena {
   position: fixed;
   inset: 0;
   overflow: hidden;
@@ -187,21 +177,21 @@ body.anochecer .escena {
 
 /* ---------- Cielo y estrellas ---------- */
 
-.cielo {
+#escena-noche .cielo {
   position: absolute;
   inset: 0 0 26%;
   z-index: var(--z-cielo);
 }
 
-.estrella {
+#escena-noche .estrella {
   position: absolute;
   border-radius: 50%;
   background: var(--blanco);
   opacity: var(--base, 0.6);
-  animation: titilar var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
+  animation: titilar-noc var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
 }
 
-@keyframes titilar {
+@keyframes titilar-noc {
   0%,
   100% {
     opacity: calc(var(--base, 0.6) * 0.35);
@@ -213,7 +203,7 @@ body.anochecer .escena {
   }
 }
 
-.estrella-btn {
+#escena-noche .estrella-btn {
   position: absolute;
   width: 44px;
   height: 44px;
@@ -226,7 +216,7 @@ body.anochecer .escena {
   z-index: 2;
 }
 
-.estrella-btn .nucleo {
+#escena-noche .estrella-btn .nucleo {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -234,21 +224,21 @@ body.anochecer .escena {
   box-shadow:
     0 0 8px 2px rgba(255, 255, 255, 0.85),
     0 0 18px 6px rgba(255, 214, 165, 0.4);
-  animation: pulsoEstrella var(--dur, 3.4s) ease-in-out var(--delay, 0s) infinite;
+  animation: pulsoEstrella-noc var(--dur, 3.4s) ease-in-out var(--delay, 0s) infinite;
 }
 
-.estrella-btn:hover .nucleo,
-.estrella-btn:focus-visible .nucleo {
+#escena-noche .estrella-btn:hover .nucleo,
+#escena-noche .estrella-btn:focus-visible .nucleo {
   box-shadow:
     0 0 12px 4px rgba(255, 255, 255, 0.95),
     0 0 26px 10px rgba(255, 200, 221, 0.55);
 }
 
-.estrella-btn.leida .nucleo {
+#escena-noche .estrella-btn.leida .nucleo {
   background: var(--rosa);
 }
 
-@keyframes pulsoEstrella {
+@keyframes pulsoEstrella-noc {
   0%,
   100% {
     transform: scale(0.9);
@@ -262,7 +252,7 @@ body.anochecer .escena {
 
 /* ---------- Nubes ---------- */
 
-.nube {
+#escena-noche .nube {
   position: absolute;
   left: -30%;
   width: clamp(180px, 24vw, 320px);
@@ -275,16 +265,16 @@ body.anochecer .escena {
   opacity: 0.13;
   filter: blur(3px);
   z-index: var(--z-nubes);
-  animation: nubeCruza var(--dur, 40s) linear var(--delay, 0s) infinite;
+  animation: nubeCruza-noc var(--dur, 40s) linear var(--delay, 0s) infinite;
   pointer-events: none;
 }
 
-.nube-a {
+#escena-noche .nube-a {
   top: 12%;
   --dur: 40s;
 }
 
-.nube-b {
+#escena-noche .nube-b {
   top: 26%;
   --dur: 52s;
   --delay: -18s;
@@ -292,7 +282,7 @@ body.anochecer .escena {
   opacity: 0.1;
 }
 
-.nube-c {
+#escena-noche .nube-c {
   top: 40%;
   --dur: 47s;
   --delay: -33s;
@@ -300,7 +290,7 @@ body.anochecer .escena {
   opacity: 0.08;
 }
 
-@keyframes nubeCruza {
+@keyframes nubeCruza-noc {
   to {
     transform: translateX(165vw);
   }
@@ -308,7 +298,7 @@ body.anochecer .escena {
 
 /* ---------- Luna ---------- */
 
-.luna {
+#escena-noche .luna {
   position: absolute;
   top: 9%;
   right: 11%;
@@ -321,7 +311,7 @@ body.anochecer .escena {
   border-radius: 50%;
 }
 
-.luna-cuerpo {
+#escena-noche .luna-cuerpo {
   position: relative;
   display: block;
   width: 100%;
@@ -332,10 +322,10 @@ body.anochecer .escena {
   box-shadow:
     0 0 34px 10px rgba(255, 233, 190, 0.4),
     0 0 90px 30px rgba(255, 214, 165, 0.18);
-  animation: lunaRespira 6s ease-in-out infinite;
+  animation: lunaRespira-noc 6s ease-in-out infinite;
 }
 
-@keyframes lunaRespira {
+@keyframes lunaRespira-noc {
   0%,
   100% {
     transform: scale(1);
@@ -351,29 +341,29 @@ body.anochecer .escena {
   }
 }
 
-.luna-cara {
+#escena-noche .luna-cara {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.luna .boca-sonrisa,
-.luna .mejilla {
+#escena-noche .luna .boca-sonrisa,
+#escena-noche .luna .mejilla {
   opacity: 0;
   transition: opacity 0.8s ease;
 }
 
-.luna.sonrie .boca-sonrisa,
-.luna.sonrie .mejilla {
+#escena-noche .luna.sonrie .boca-sonrisa,
+#escena-noche .luna.sonrie .mejilla {
   opacity: 1;
 }
 
-.luna.sonrie .boca-neutra {
+#escena-noche .luna.sonrie .boca-neutra {
   opacity: 0;
 }
 
-.luna-sombra {
+#escena-noche .luna-sombra {
   position: absolute;
   inset: -4%;
   border-radius: 50%;
@@ -384,14 +374,14 @@ body.anochecer .escena {
 
 /* ---------- Estrellas fugaces ---------- */
 
-#fugaces {
+#escena-noche #fugaces {
   position: absolute;
   inset: 0;
   z-index: var(--z-fugaz);
   pointer-events: none;
 }
 
-.fugaz-hit {
+#escena-noche .fugaz-hit {
   position: absolute;
   width: 48px;
   height: 48px;
@@ -405,11 +395,11 @@ body.anochecer .escena {
   transition: transform var(--vuelo, 1.9s) linear, opacity 0.5s ease;
 }
 
-.fugaz-hit.decorativa {
+#escena-noche .fugaz-hit.decorativa {
   pointer-events: none;
 }
 
-.fugaz {
+#escena-noche .fugaz {
   position: relative;
   width: 4px;
   height: 4px;
@@ -420,7 +410,7 @@ body.anochecer .escena {
     0 0 20px 8px rgba(255, 214, 165, 0.45);
 }
 
-.fugaz::after {
+#escena-noche .fugaz::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -433,15 +423,15 @@ body.anochecer .escena {
   border-radius: 999px;
 }
 
-.fugaz-hit.atrapada .fugaz {
-  animation: fugazBrilla 0.7s ease forwards;
+#escena-noche .fugaz-hit.atrapada .fugaz {
+  animation: fugazBrilla-noc 0.7s ease forwards;
 }
 
-.fugaz-hit.atrapada .fugaz::after {
+#escena-noche .fugaz-hit.atrapada .fugaz::after {
   opacity: 0;
 }
 
-@keyframes fugazBrilla {
+@keyframes fugazBrilla-noc {
   0% {
     transform: scale(1);
   }
@@ -459,7 +449,7 @@ body.anochecer .escena {
 
 /* ---------- Halo del deseo (mantener presionado) ---------- */
 
-.deseo-halo {
+#escena-noche .deseo-halo {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -469,10 +459,10 @@ body.anochecer .escena {
   background: radial-gradient(circle, rgba(255, 214, 165, 0.28), transparent 70%);
   pointer-events: none;
   z-index: var(--z-fugaz);
-  animation: haloCrece 3s ease-out forwards;
+  animation: haloCrece-noc 3s ease-out forwards;
 }
 
-@keyframes haloCrece {
+@keyframes haloCrece-noc {
   to {
     transform: scale(7);
     opacity: 0.15;
@@ -481,7 +471,7 @@ body.anochecer .escena {
 
 /* ---------- Suelo, colinas ---------- */
 
-.suelo {
+#escena-noche .suelo {
   position: absolute;
   inset: auto 0 0;
   height: 46%;
@@ -489,11 +479,11 @@ body.anochecer .escena {
   pointer-events: none;
 }
 
-.suelo button {
+#escena-noche .suelo button {
   pointer-events: auto;
 }
 
-.colinas {
+#escena-noche .colinas {
   position: absolute;
   inset: auto 0 0;
   width: 100%;
@@ -502,20 +492,20 @@ body.anochecer .escena {
 
 /* ---------- Casita ---------- */
 
-.casita {
+#escena-noche .casita {
   position: absolute;
   left: 10%;
   bottom: 7%;
   width: clamp(150px, 21vw, 250px);
 }
 
-.casita > svg {
+#escena-noche .casita > svg {
   display: block;
   width: 100%;
   filter: drop-shadow(0 6px 18px rgba(5, 6, 20, 0.55));
 }
 
-.ventana {
+#escena-noche .ventana {
   position: absolute;
   left: 24.5%;
   top: 56%;
@@ -531,14 +521,14 @@ body.anochecer .escena {
   perspective: 300px;
 }
 
-.ventana-luz {
+#escena-noche .ventana-luz {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 50% 62%, #ffe9b0 0%, #f7b267 55%, #b96f35 100%);
-  animation: velaFlicker 4.6s ease-in-out infinite;
+  animation: velaFlicker-noc 4.6s ease-in-out infinite;
 }
 
-@keyframes velaFlicker {
+@keyframes velaFlicker-noc {
   0%,
   100% {
     opacity: 0.92;
@@ -570,7 +560,7 @@ body.anochecer .escena {
   }
 }
 
-.ventana-cruz {
+#escena-noche .ventana-cruz {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -580,7 +570,7 @@ body.anochecer .escena {
   transition: opacity 1s ease;
 }
 
-.postigo {
+#escena-noche .postigo {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -592,29 +582,29 @@ body.anochecer .escena {
   pointer-events: none;
 }
 
-.ventana.abierta .ventana-cruz {
+#escena-noche .ventana.abierta .ventana-cruz {
   opacity: 0;
 }
 
-.postigo.izq {
+#escena-noche .postigo.izq {
   left: 0;
   transform-origin: left center;
 }
 
-.postigo.der {
+#escena-noche .postigo.der {
   right: 0;
   transform-origin: right center;
 }
 
-.ventana.abierta .postigo.izq {
+#escena-noche .ventana.abierta .postigo.izq {
   transform: rotateY(-104deg);
 }
 
-.ventana.abierta .postigo.der {
+#escena-noche .ventana.abierta .postigo.der {
   transform: rotateY(104deg);
 }
 
-.taza {
+#escena-noche .taza {
   position: absolute;
   left: 50%;
   bottom: 12%;
@@ -624,17 +614,17 @@ body.anochecer .escena {
   transition: opacity 1.2s ease 1.4s, transform 1.2s ease 1.4s;
 }
 
-.ventana.abierta .taza {
+#escena-noche .ventana.abierta .taza {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
 
-.taza svg {
+#escena-noche .taza svg {
   display: block;
   width: 100%;
 }
 
-.vapor {
+#escena-noche .vapor {
   position: absolute;
   bottom: 78%;
   left: 40%;
@@ -646,21 +636,21 @@ body.anochecer .escena {
   opacity: 0;
 }
 
-.ventana.abierta .vapor {
-  animation: vaporSube 2.8s ease-in var(--delay, 0s) infinite;
+#escena-noche .ventana.abierta .vapor {
+  animation: vaporSube-noc 2.8s ease-in var(--delay, 0s) infinite;
 }
 
-.vapor.v2 {
+#escena-noche .vapor.v2 {
   left: 52%;
   --delay: 0.9s;
 }
 
-.vapor.v3 {
+#escena-noche .vapor.v3 {
   left: 62%;
   --delay: 1.7s;
 }
 
-@keyframes vaporSube {
+@keyframes vaporSube-noc {
   0% {
     opacity: 0;
     transform: translateY(0) scaleY(0.7);
@@ -674,7 +664,7 @@ body.anochecer .escena {
   }
 }
 
-.mensaje-vapor {
+#escena-noche .mensaje-vapor {
   position: absolute;
   left: 50%;
   bottom: 104%;
@@ -691,26 +681,26 @@ body.anochecer .escena {
   pointer-events: none;
 }
 
-.mensaje-vapor.visible {
+#escena-noche .mensaje-vapor.visible {
   opacity: 1;
   transform: translateX(-50%) translateY(-6px);
 }
 
 /* ---------- Árbol y búho ---------- */
 
-.arbol {
+#escena-noche .arbol {
   position: absolute;
   right: 6%;
   bottom: 9%;
   width: clamp(130px, 18vw, 220px);
 }
 
-.arbol > svg {
+#escena-noche .arbol > svg {
   display: block;
   width: 100%;
 }
 
-.buho {
+#escena-noche .buho {
   position: absolute;
   left: 34%;
   top: 34%;
@@ -723,22 +713,22 @@ body.anochecer .escena {
   transition: transform 0.3s ease;
 }
 
-.buho:hover {
+#escena-noche .buho:hover {
   transform: scale(1.08);
 }
 
-.buho svg {
+#escena-noche .buho svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.buho .ojos {
+#escena-noche .buho .ojos {
   transform-origin: center 38%;
-  animation: buhoParpadea 6s ease-in-out infinite;
+  animation: buhoParpadea-noc 6s ease-in-out infinite;
 }
 
-@keyframes buhoParpadea {
+@keyframes buhoParpadea-noc {
   0%,
   91%,
   100% {
@@ -752,7 +742,7 @@ body.anochecer .escena {
   }
 }
 
-.buho-huu {
+#escena-noche .buho-huu {
   position: absolute;
   left: 30%;
   top: 16%;
@@ -766,20 +756,20 @@ body.anochecer .escena {
   pointer-events: none;
 }
 
-.buho-huu.visible {
+#escena-noche .buho-huu.visible {
   opacity: 1;
   transform: translateY(-8px);
 }
 
 /* ---------- Flores ---------- */
 
-.flores {
+#escena-noche .flores {
   position: absolute;
   inset: auto 0 0;
   height: 30%;
 }
 
-.flor {
+#escena-noche .flor {
   position: absolute;
   bottom: 4%;
   padding: 0;
@@ -787,11 +777,11 @@ body.anochecer .escena {
   background: transparent;
   width: clamp(44px, calc(58px * var(--fs, 1)), 74px);
   transform-origin: bottom center;
-  animation: florMece var(--dur, 6s) ease-in-out var(--delay, 0s) infinite alternate;
+  animation: florMece-noc var(--dur, 6s) ease-in-out var(--delay, 0s) infinite alternate;
   transition: color 0.9s ease;
 }
 
-@keyframes florMece {
+@keyframes florMece-noc {
   from {
     transform: rotate(-2.6deg);
   }
@@ -800,7 +790,7 @@ body.anochecer .escena {
   }
 }
 
-.flor-tallo {
+#escena-noche .flor-tallo {
   display: block;
   width: 3px;
   height: clamp(26px, calc(40px * var(--fs, 1)), 52px);
@@ -809,33 +799,37 @@ body.anochecer .escena {
   background: linear-gradient(#41603c, #26381f);
 }
 
-.flor svg {
+#escena-noche .flor svg {
   display: block;
   width: 100%;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
 }
 
-.flor.tocada svg {
+#escena-noche .flor.tocada svg {
   filter: drop-shadow(0 0 12px currentColor);
 }
 
-.flor-c0 { color: var(--rosa); }
-.flor-c1 { color: var(--amarillo); }
-.flor-c2 { color: var(--calida); }
-.flor-c3 { color: #c9a8f5; }
-.flor-c4 { color: var(--blanco); }
+#escena-noche .flor-c0 { color: var(--rosa); }
+
+#escena-noche .flor-c1 { color: var(--amarillo); }
+
+#escena-noche .flor-c2 { color: var(--calida); }
+
+#escena-noche .flor-c3 { color: #c9a8f5; }
+
+#escena-noche .flor-c4 { color: var(--blanco); }
 
 /* ---------- Pétalos y partículas ---------- */
 
-#petalos,
-#particulas {
+#escena-noche #petalos,
+#escena-noche #particulas {
   position: absolute;
   inset: 0;
   z-index: var(--z-ambiente);
   pointer-events: none;
 }
 
-.petalo {
+#escena-noche .petalo {
   position: absolute;
   top: -4vh;
   width: 11px;
@@ -843,10 +837,10 @@ body.anochecer .escena {
   border-radius: 62% 38% 55% 45%;
   background: var(--tono, var(--rosa));
   opacity: 0.85;
-  animation: petCae var(--dur, 9s) linear var(--delay, 0s) forwards;
+  animation: petCae-noc var(--dur, 9s) linear var(--delay, 0s) forwards;
 }
 
-@keyframes petCae {
+@keyframes petCae-noc {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
     opacity: 0;
@@ -869,7 +863,7 @@ body.anochecer .escena {
   }
 }
 
-.particula {
+#escena-noche .particula {
   position: absolute;
   bottom: -3vh;
   width: var(--tam, 5px);
@@ -879,10 +873,10 @@ body.anochecer .escena {
   filter: blur(0.6px);
   box-shadow: 0 0 8px 2px var(--tono, var(--calida));
   opacity: 0;
-  animation: particulaSube var(--dur, 22s) linear var(--delay, 0s) infinite;
+  animation: particulaSube-noc var(--dur, 22s) linear var(--delay, 0s) infinite;
 }
 
-@keyframes particulaSube {
+@keyframes particulaSube-noc {
   0% {
     transform: translate3d(0, 0, 0);
     opacity: 0;
@@ -905,7 +899,7 @@ body.anochecer .escena {
 
 /* ---------- Oscuridad final ---------- */
 
-.oscuridad {
+#escena-noche .oscuridad {
   position: absolute;
   inset: 0;
   z-index: var(--z-oscuridad);
@@ -921,7 +915,7 @@ body.anochecer .oscuridad {
 
 /* ---------- Mensaje principal ---------- */
 
-.mensaje-principal {
+#escena-noche .mensaje-principal {
   position: fixed;
   top: 12%;
   left: 50%;
@@ -939,19 +933,19 @@ body.anochecer .oscuridad {
   transition: opacity 3.5s ease;
 }
 
-.mensaje-principal.desvanecido {
+#escena-noche .mensaje-principal.desvanecido {
   opacity: 0;
 }
 
-.caret {
+#escena-noche .caret {
   display: inline-block;
   width: 1px;
   margin-left: 2px;
   border-right: 2px solid var(--amarillo);
-  animation: caretParpadea 0.9s steps(1) infinite;
+  animation: caretParpadea-noc 0.9s steps(1) infinite;
 }
 
-@keyframes caretParpadea {
+@keyframes caretParpadea-noc {
   50% {
     opacity: 0;
   }
@@ -959,7 +953,7 @@ body.anochecer .oscuridad {
 
 /* ---------- Cartel de mensajes ---------- */
 
-.cartel {
+#escena-noche .cartel {
   position: fixed;
   bottom: 9%;
   left: 50%;
@@ -984,7 +978,7 @@ body.anochecer .oscuridad {
   pointer-events: none;
 }
 
-.cartel.visible {
+#escena-noche .cartel.visible {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
@@ -992,12 +986,12 @@ body.anochecer .oscuridad {
 
 /* ---------- Final ---------- */
 
-.final[hidden],
-.despedida[hidden] {
+#escena-noche .final[hidden],
+#escena-noche .despedida[hidden] {
   display: none;
 }
 
-.final {
+#escena-noche .final {
   position: fixed;
   inset: 0;
   z-index: var(--z-final);
@@ -1011,7 +1005,7 @@ body.anochecer .oscuridad {
   pointer-events: none;
 }
 
-.final p {
+#escena-noche .final p {
   margin: 0;
   width: min(88vw, 620px);
   font-style: italic;
@@ -1021,7 +1015,7 @@ body.anochecer .oscuridad {
   text-shadow: 0 1px 20px rgba(4, 5, 18, 0.95), 0 0 30px rgba(247, 178, 103, 0.28);
 }
 
-.btn-beso {
+#escena-noche .btn-beso {
   pointer-events: auto;
   min-height: 54px;
   padding: 15px 34px;
@@ -1037,22 +1031,22 @@ body.anochecer .oscuridad {
   transition: opacity 2s ease, transform 2s ease, box-shadow 0.3s ease;
 }
 
-.btn-beso.visible {
+#escena-noche .btn-beso.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.btn-beso:hover {
+#escena-noche .btn-beso:hover {
   box-shadow: 0 0 44px rgba(255, 200, 221, 0.45);
 }
 
-.btn-beso:active {
+#escena-noche .btn-beso:active {
   transform: scale(0.97);
 }
 
 /* ---------- Despedida ---------- */
 
-.despedida {
+#escena-noche .despedida {
   position: fixed;
   inset: 0;
   z-index: var(--z-despedida);
@@ -1066,11 +1060,11 @@ body.anochecer .oscuridad {
   transition: background 4s ease;
 }
 
-.despedida.activa {
+#escena-noche .despedida.activa {
   background: rgba(3, 4, 14, 0.94);
 }
 
-.despedida-luna {
+#escena-noche .despedida-luna {
   position: fixed;
   width: 120px;
   height: 120px;
@@ -1081,11 +1075,11 @@ body.anochecer .oscuridad {
   pointer-events: none;
 }
 
-.despedida.activa .despedida-luna {
+#escena-noche .despedida.activa .despedida-luna {
   opacity: 1;
 }
 
-.corazon {
+#escena-noche .corazon {
   position: fixed;
   left: 50%;
   bottom: 16%;
@@ -1097,7 +1091,7 @@ body.anochecer .oscuridad {
   pointer-events: none;
 }
 
-.despedida-texto {
+#escena-noche .despedida-texto {
   margin: 0;
   width: min(88vw, 600px);
   text-align: center;
@@ -1111,16 +1105,16 @@ body.anochecer .oscuridad {
   transition: opacity 3s ease, transform 3s ease;
 }
 
-.despedida-texto.visible {
+#escena-noche .despedida-texto.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.btn-fin[hidden] {
+#escena-noche .btn-fin[hidden] {
   display: none;
 }
 
-.btn-fin {
+#escena-noche .btn-fin {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1137,87 +1131,87 @@ body.anochecer .oscuridad {
   transition: opacity 2.5s ease, transform 2.5s ease, box-shadow 0.3s ease;
 }
 
-.btn-fin i {
+#escena-noche .btn-fin i {
   color: var(--rosa);
   font-size: 0.85em;
 }
 
-.btn-fin.visible {
+#escena-noche .btn-fin.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.btn-fin:hover {
+#escena-noche .btn-fin:hover {
   box-shadow: 0 0 30px rgba(255, 200, 221, 0.3);
 }
 
 /* ---------- Móvil ---------- */
 
-@media (max-width: 640px) {
-  .luna {
+@media (max-width: 640px) {#escena-noche .luna {
     top: 7%;
     right: 7%;
     width: clamp(104px, 27vw, 130px);
     height: clamp(104px, 27vw, 130px);
   }
 
-  .casita {
+#escena-noche .casita {
     left: 4%;
     bottom: 14%;
     width: clamp(160px, 46vw, 210px);
   }
 
-  .arbol {
+#escena-noche .arbol {
     right: 1%;
     bottom: 8%;
     width: clamp(120px, 34vw, 160px);
   }
 
-  .escena {
+#escena-noche .escena {
     transform: scale(1.04);
   }
 
-  body.anochecer .escena {
+body.anochecer .escena {
     transform: scale(1.16);
   }
 
-  .cartel {
+#escena-noche .cartel {
     bottom: 12%;
     padding: 12px 20px;
   }
 
-  .mensaje-principal {
+#escena-noche .mensaje-principal {
     top: 24%;
   }
+
 }
 
 /* ---------- Movimiento reducido ---------- */
 
-@media (prefers-reduced-motion: reduce) {
-  .estrella,
-  .estrella-btn .nucleo,
-  .nube,
-  .luna-cuerpo,
-  .ventana-luz,
-  .flor,
-  .vapor,
-  .particula,
-  .buho .ojos,
-  .caret {
+@media (prefers-reduced-motion: reduce) {#escena-noche .estrella,
+#escena-noche .estrella-btn .nucleo,
+#escena-noche .nube,
+#escena-noche .luna-cuerpo,
+#escena-noche .ventana-luz,
+#escena-noche .flor,
+#escena-noche .vapor,
+#escena-noche .particula,
+#escena-noche .buho .ojos,
+#escena-noche .caret {
     animation: none !important;
   }
 
-  .escena,
-  body.anochecer .escena {
+#escena-noche .escena,
+body.anochecer .escena {
     transition: none;
     transform: none;
   }
 
-  .fugaz-hit {
+#escena-noche .fugaz-hit {
     transition: opacity 0.5s ease;
   }
 
-  .nube {
+#escena-noche .nube {
     transform: translateX(40vw);
   }
+
 }

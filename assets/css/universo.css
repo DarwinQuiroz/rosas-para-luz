@@ -1,0 +1,29 @@
+/* ============================================================
+   Reset y mecánica compartidos por las 3 escenas fusionadas
+   (jardín → cafetería → buenas noches)
+   ============================================================ */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Cada escena es una raíz de posicionamiento a pantalla completa; solo la
+   activa se muestra (ver [hidden] arriba). Sin transform/filter aquí: los
+   overlays internos usan position: fixed y dependen del viewport real. */
+.escena-seccion {
+  position: fixed;
+  inset: 0;
+}

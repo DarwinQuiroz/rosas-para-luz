@@ -5,16 +5,17 @@
 (function () {
   "use strict";
 
-  const $ = (sel, ctx) => (ctx || document).querySelector(sel);
-  const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
+  const raiz = document.getElementById("escena-cafeteria");
+  const $ = (sel, ctx) => (ctx || raiz).querySelector(sel);
+  const $$ = (sel, ctx) => Array.from((ctx || raiz).querySelectorAll(sel));
 
-  const scene = $("#scene");
-  const intro = $("#intro");
-  const quote = $("#introQuote");
-  const hint = $("#hint");
-  const soundBtn = $("#soundBtn");
-  const surpriseBtn = $("#surpriseBtn");
-  const music = $("#bgMusic");
+  const scene = $("#caf-scene");
+  const intro = $("#caf-intro");
+  const quote = $("#caf-introQuote");
+  const hint = $("#caf-hint");
+  const soundBtn = $("#caf-soundBtn");
+  const surpriseBtn = $("#caf-surpriseBtn");
+  const music = document.getElementById("musica");
 
   const TOTAL = 6;
   let quoteTimers = [];
@@ -28,7 +29,7 @@
   /* ---------- Lluvia y estrellas en la ventana ---------- */
 
   function buildRain(count) {
-    const rain = $("#rain");
+    const rain = $("#caf-rain");
     for (let i = 0; i < count; i++) {
       const d = document.createElement("span");
       d.className = "drop";
@@ -42,7 +43,7 @@
   }
 
   function buildStars(count) {
-    const stars = $("#stars");
+    const stars = $("#caf-stars");
     for (let i = 0; i < count; i++) {
       const s = document.createElement("span");
       s.className = "star";
@@ -225,7 +226,7 @@
   }
 
   /* Chocolate: se abre, aparece la nota y suben corazones */
-  const choco = $("#choco");
+  const choco = $("#caf-choco");
   choco.addEventListener("click", () => {
     if (choco.classList.contains("open")) return;
     choco.classList.add("open");
@@ -251,7 +252,7 @@
   });
 
   /* Taza: sale vapor y el mensaje se escribe en él */
-  const cupScene = $("#cupScene");
+  const cupScene = $("#caf-cupScene");
   cupScene.addEventListener("click", () => {
     if (cupScene.classList.contains("touched")) return;
     cupScene.classList.add("touched");
@@ -310,18 +311,18 @@
   });
 
   /* Rosa: gira, cae un pétalo y el pétalo trae un mensaje */
-  const roseScene = $("#roseScene");
-  const roseWrap = $("#roseWrap");
+  const roseScene = $("#caf-roseScene");
+  const roseWrap = $("#caf-roseWrap");
   roseWrap.addEventListener("click", () => {
     if (roseScene.classList.contains("spun")) return;
     roseScene.classList.add("spun");
     roseScene.closest(".stage").classList.add("acted");
-    setTimeout(() => $("#petalNote").classList.add("show"), 3800);
+    setTimeout(() => $("#caf-petalNote").classList.add("show"), 3800);
     markObjectDone("rosa");
   });
 
   /* Fotografía: se toma y se gira */
-  const polaroid = $("#polaroid");
+  const polaroid = $("#caf-polaroid");
   polaroid.addEventListener("click", () => {
     polaroid.classList.toggle("flipped");
     polaroid.closest(".stage").classList.add("acted");
@@ -329,8 +330,8 @@
   });
 
   /* Galleta: se rompe y aparece la fortuna */
-  const cookie = $("#cookie");
-  const cookieScene = $("#cookieScene");
+  const cookie = $("#caf-cookie");
+  const cookieScene = $("#caf-cookieScene");
   cookie.addEventListener("click", () => {
     if (cookie.classList.contains("cracked")) return;
     cookie.classList.add("cracked");
@@ -355,17 +356,17 @@
     $(".progress").style.opacity = "0";
     scene.classList.add("final");
     setAmbience(0.22, 0.02);
-    setTimeout(() => $("#finalText").classList.add("show"), 1800);
-    setTimeout(() => $("#continuarBtn").classList.add("visible"), 11000);
+    setTimeout(() => $("#caf-finalText").classList.add("show"), 1800);
+    setTimeout(() => $("#caf-continuarBtn").classList.add("visible"), 11000);
   });
 
   /* ---------- Continuar hacia buenas noches ---------- */
 
-  $("#continuarBtn").addEventListener("click", () => {
-    $("#continuarBtn").classList.remove("visible");
-    $("#finalText").classList.remove("show");
+  $("#caf-continuarBtn").addEventListener("click", () => {
+    $("#caf-continuarBtn").classList.remove("visible");
+    $("#caf-finalText").classList.remove("show");
     transicionA(
-      "good-night.html",
+      "escena-noche",
       "La lluvia se detuvo… y alguien dejó el cielo encendido para ti.",
     );
   });
@@ -375,6 +376,19 @@
   buildRain(42);
   buildStars(110);
 
-  $("#enterBtn").addEventListener("click", enter);
+  $("#caf-enterBtn").addEventListener("click", enter);
   soundBtn.addEventListener("click", toggleSound);
+
+  /* ---------- Salir de la escena ---------- */
+
+  function detener() {
+    if (audioCtx) {
+      try {
+        audioCtx.close();
+      } catch (e) {}
+      audioCtx = null;
+    }
+  }
+
+  window.detenerEscenaCafeteria = detener;
 })();
