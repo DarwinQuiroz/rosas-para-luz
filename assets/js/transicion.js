@@ -76,7 +76,9 @@
       if (siguiente) siguiente.hidden = false;
 
       const pagina = PAGINA_POR_ESCENA[destino];
-      if (pagina && typeof window.agregarDatos === "function") {
+      const _urlParams = new URLSearchParams(window.location.search);
+      const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+      if (pagina && !_fromDashboard && typeof window.agregarDatos === "function") {
         window.agregarDatos(pagina);
       }
 
