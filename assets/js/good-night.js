@@ -380,6 +380,10 @@
     "Si pudiera bajarte una estrella, elegiría la más brillante.",
     "El cielo entero se puso de acuerdo para brillar solo para ti esta noche.",
     "Con cada estrella que cae, pienso una vez más en ti.",
+    "Tu risa es mi constelación favorita.",
+    "No hay lucero en el cielo que brille como tu sonrisa.",
+    "Si pudiera bajar una estrella, elegiría la más brillante.",
+    "Las estrellas brillan por ti.",
   ];
   let fraseFugazIdx = 0;
 
