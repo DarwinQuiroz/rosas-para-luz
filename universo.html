@@ -26,12 +26,17 @@
   <body>
     <!-- Música compartida: un único elemento para las 3 escenas -->
     <audio id="musica" loop preload="auto">
-      <source src="assets/sound/perfect.mp3" type="audio/mpeg" />
+      <source src="assets/sound/young-and-beautiful.mp3" type="audio/mpeg" />
       Tu navegador no soporta el elemento de audio.
     </audio>
 
     <!-- Solo aparece si el navegador bloquea el autoplay -->
-    <button class="music-btn" id="musicBtn" aria-label="Reproducir música" hidden>
+    <button
+      class="music-btn"
+      id="musicBtn"
+      aria-label="Reproducir música"
+      hidden
+    >
       <i class="fa-solid fa-music"></i> Reproducir música
     </button>
 
@@ -258,7 +263,11 @@
               stroke-width="1.4"
               opacity="0.85"
             />
-            <path d="M110 14 c-2 -3 2 -4 0 -7" stroke-width="1.4" opacity="0.6" />
+            <path
+              d="M110 14 c-2 -3 2 -4 0 -7"
+              stroke-width="1.4"
+              opacity="0.6"
+            />
           </g>
         </svg>
         <p class="intro-sub">Afuera llueve. Adentro, todo invita a quedarse.</p>
@@ -574,7 +583,12 @@
             <span class="obj-label">una rosa</span>
           </button>
 
-          <button class="obj" data-obj="foto" aria-label="La fotografía" disabled>
+          <button
+            class="obj"
+            data-obj="foto"
+            aria-label="La fotografía"
+            disabled
+          >
             <svg viewBox="0 0 100 110" aria-hidden="true">
               <g transform="rotate(-7 50 55)">
                 <rect
@@ -599,7 +613,12 @@
             <span class="obj-label">una foto</span>
           </button>
 
-          <button class="obj" data-obj="galleta" aria-label="La galleta" disabled>
+          <button
+            class="obj"
+            data-obj="galleta"
+            aria-label="La galleta"
+            disabled
+          >
             <svg viewBox="0 0 100 90" aria-hidden="true">
               <circle cx="50" cy="48" r="34" fill="#c98a4b" />
               <path
@@ -638,13 +657,15 @@
         <span data-p="galleta"></span>
       </div>
 
-      <button class="surprise-btn" id="caf-surpriseBtn">Una última sorpresa</button>
+      <button class="surprise-btn" id="caf-surpriseBtn">
+        Una última sorpresa
+      </button>
 
       <!-- Mensaje final -->
       <div class="final-text" id="caf-finalText">
         <p>
-          “Ojalá algún día esta cafetería deje de ser una idea… y se convierta en
-          un recuerdo contigo.”
+          “Ojalá algún día esta cafetería deje de ser una idea… y se convierta
+          en un recuerdo contigo.”
         </p>
         <span class="firma">— nuestra pequeña cafetería ♥</span>
       </div>
@@ -665,8 +686,8 @@
         <div class="stage-inner">
           <div class="choco" id="caf-choco">
             <div class="choco-note">
-              Hay chocolates muy dulces… pero ninguno tanto como los momentos que
-              imagino contigo.
+              Hay chocolates muy dulces… pero ninguno tanto como los momentos
+              que imagino contigo.
             </div>
             <div class="choco-body">
               <span></span><span></span><span></span><span></span> <span></span
@@ -734,7 +755,9 @@
                   <span class="pg">2</span>
                 </div>
                 <div class="face back">
-                  <p>Tu risa debería venir con advertencia: provoca releerla.</p>
+                  <p>
+                    Tu risa debería venir con advertencia: provoca releerla.
+                  </p>
                   <span class="pg">3</span>
                 </div>
               </div>
@@ -742,8 +765,8 @@
               <div class="sheet">
                 <div class="face front">
                   <p>
-                    No sé cómo termina esta historia, pero me encanta el rumbo que
-                    lleva.
+                    No sé cómo termina esta historia, pero me encanta el rumbo
+                    que lleva.
                   </p>
                   <span class="pg">4</span>
                 </div>
@@ -894,8 +917,8 @@
             </div>
             <div class="petal"></div>
             <div class="petal-note" id="caf-petalNote">
-              Cada pétalo guarda una razón para admirarte… y siempre se me acaban
-              los pétalos antes que las razones.
+              Cada pétalo guarda una razón para admirarte… y siempre se me
+              acaban los pétalos antes que las razones.
             </div>
           </div>
           <p class="stage-hint">Gírala…</p>
@@ -929,10 +952,28 @@
                       stroke-width="4"
                     />
                     <circle cx="140" cy="48" r="12" fill="#ffe9c4" />
-                    <circle cx="58" cy="44" r="1.6" fill="#fff" opacity="0.85" />
+                    <circle
+                      cx="58"
+                      cy="44"
+                      r="1.6"
+                      fill="#fff"
+                      opacity="0.85"
+                    />
                     <circle cx="76" cy="60" r="1.2" fill="#fff" opacity="0.6" />
-                    <circle cx="96" cy="40" r="1.4" fill="#fff" opacity="0.75" />
-                    <circle cx="64" cy="86" r="1.2" fill="#fff" opacity="0.55" />
+                    <circle
+                      cx="96"
+                      cy="40"
+                      r="1.4"
+                      fill="#fff"
+                      opacity="0.75"
+                    />
+                    <circle
+                      cx="64"
+                      cy="86"
+                      r="1.2"
+                      fill="#fff"
+                      opacity="0.55"
+                    />
                     <path
                       d="M100 96c-9-11-24-2-15 9l15 13 15-13c9-11-6-20-15-9z"
                       fill="rgba(255,255,255,0.38)"
@@ -1090,7 +1131,11 @@
                   opacity="0.55"
                 />
               </svg>
-              <span class="luna-sombra" id="noc-lunaSombra" aria-hidden="true"></span>
+              <span
+                class="luna-sombra"
+                id="noc-lunaSombra"
+                aria-hidden="true"
+              ></span>
             </span>
           </button>
 
@@ -1160,7 +1205,9 @@
                 />
               </svg>
             </button>
-            <span class="buho-huu" id="noc-buhoHuu" aria-hidden="true">Huu…</span>
+            <span class="buho-huu" id="noc-buhoHuu" aria-hidden="true"
+              >Huu…</span
+            >
           </div>
 
           <div class="casita">
@@ -1191,7 +1238,14 @@
                 fill="#191133"
               />
               <circle cx="153" cy="179" r="2.6" fill="#f7b267" />
-              <rect x="30" y="203" width="200" height="6" rx="3" fill="#0d0a26" />
+              <rect
+                x="30"
+                y="203"
+                width="200"
+                height="6"
+                rx="3"
+                fill="#0d0a26"
+              />
             </svg>
 
             <button
@@ -1206,7 +1260,10 @@
               <span class="taza" aria-hidden="true">
                 <svg viewBox="0 0 60 50">
                   <ellipse cx="28" cy="44" rx="20" ry="4" fill="#7c4a2a" />
-                  <path d="M14 18 h28 v12 a14 10 0 0 1 -28 0 Z" fill="#f5e7d0" />
+                  <path
+                    d="M14 18 h28 v12 a14 10 0 0 1 -28 0 Z"
+                    fill="#f5e7d0"
+                  />
                   <ellipse cx="28" cy="19" rx="14" ry="4" fill="#6b4226" />
                   <path
                     d="M43 22 q11 4 0 14"
@@ -1232,8 +1289,17 @@
         <div class="oscuridad" id="noc-oscuridad" aria-hidden="true"></div>
       </div>
 
-      <p class="mensaje-principal" id="noc-mensajePrincipal" aria-live="polite"></p>
-      <div class="cartel" id="noc-cartel" role="status" aria-live="polite"></div>
+      <p
+        class="mensaje-principal"
+        id="noc-mensajePrincipal"
+        aria-live="polite"
+      ></p>
+      <div
+        class="cartel"
+        id="noc-cartel"
+        role="status"
+        aria-live="polite"
+      ></div>
 
       <!-- Secuencia final -->
       <section class="final" id="noc-final" hidden>
@@ -1245,8 +1311,17 @@
 
       <!-- Despedida -->
       <section class="despedida" id="noc-despedida" hidden>
-        <span class="despedida-luna" id="noc-despedidaLuna" aria-hidden="true"></span>
-        <svg class="corazon" id="noc-corazon" viewBox="0 0 32 30" aria-hidden="true">
+        <span
+          class="despedida-luna"
+          id="noc-despedidaLuna"
+          aria-hidden="true"
+        ></span>
+        <svg
+          class="corazon"
+          id="noc-corazon"
+          viewBox="0 0 32 30"
+          aria-hidden="true"
+        >
           <path
             d="M16 29 C6 20 0 14 0 8 C0 3 4 0 8.5 0 C12 0 15 2.5 16 5 C17 2.5 20 0 23.5 0 C28 0 32 3 32 8 C32 14 26 20 16 29 Z"
             fill="#ffc8dd"
