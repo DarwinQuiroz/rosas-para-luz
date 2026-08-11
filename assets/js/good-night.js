@@ -47,7 +47,8 @@
 
   // ---------- Elementos ----------
 
-  const $ = (id) => document.getElementById(id);
+  const raiz = document.getElementById("escena-noche");
+  const $ = (id) => raiz.querySelector("#noc-" + id);
 
   const intro = $("intro");
   const enterBtn = $("enterBtn");
@@ -772,6 +773,14 @@
       return muted;
     }
 
+    function detenerAudio() {
+      if (!activo) return;
+      activo = false;
+      try {
+        ctx.close();
+      } catch (e) {}
+    }
+
     document.addEventListener("visibilitychange", () => {
       if (!ctx) return;
       if (document.hidden) ctx.suspend();
@@ -785,6 +794,7 @@
       calmar,
       despedida: despedidaSonido,
       alternarSilencio,
+      detener: detenerAudio,
     };
   })();
 
@@ -818,6 +828,17 @@
     setTimeout(brisaDePetalos, 8000);
     setTimeout(iniciarFinal, TIEMPO_FINAL);
   });
+
+  // ---------- Salir de la escena ----------
+
+  function detener() {
+    terminado = true;
+    clearTimeout(cartelTimer);
+    clearTimeout(deseoTimer);
+    audio.detener();
+  }
+
+  window.detenerEscenaNoche = detener;
 
   // ---------- Inicio ----------
 

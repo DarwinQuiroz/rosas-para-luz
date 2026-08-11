@@ -1,6 +1,8 @@
 /* ============================================================
-   Transición compartida entre páginas de la experiencia
-   Uso: transicionA("siguiente.html", "Una frase para el camino…")
+   Transición compartida entre las escenas del universo
+   Uso: transicionA("escena-cafeteria", "Una frase para el camino…")
+        — si el destino no es una escena ("escena-…"), navega de
+          verdad (usado solo para volver a index.html al final).
    ============================================================ */
 
 (function () {
@@ -27,23 +29,65 @@
     );
   }
 
+  // Al entrar a cada escena se registra la visita (salvo el jardín, que ya
+  // se registra al cargar la página).
+  const PAGINA_POR_ESCENA = {
+    "escena-cafeteria": "Cafeteria",
+    "escena-noche": "BuenasNoches",
+  };
+
+  // Detiene el ambiente sonoro (WebAudio) de la escena que se abandona,
+  // para que no siga sonando encima de la siguiente.
+  const DETENER_POR_ESCENA = {
+    "escena-jardin": "detenerEscenaJardin",
+    "escena-cafeteria": "detenerEscenaCafeteria",
+    "escena-noche": "detenerEscenaNoche",
+  };
+
   let enCamino = false;
 
-  window.transicionA = function (url, texto, espera) {
+  window.transicionA = function (destino, texto, espera) {
     if (enCamino) return;
     enCamino = true;
 
-    sessionStorage.setItem("isTransitioning", "true");
     frase.textContent = texto || "";
     requestAnimationFrame(() => velo.classList.add("activo"));
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setTimeout(
-      () => {
-        window.location.href = url;
-      },
-      reduce ? 600 : espera || 3400
-    );
+    const tiempo = reduce ? 600 : espera || 3400;
+
+    setTimeout(() => {
+      const esEscena = destino.indexOf("escena-") === 0;
+
+      if (!esEscena) {
+        window.location.href = destino;
+        return;
+      }
+
+      const actual = document.querySelector(".escena-seccion:not([hidden])");
+      if (actual) {
+        const detenerFn = DETENER_POR_ESCENA[actual.id];
+        if (detenerFn && typeof window[detenerFn] === "function") {
+          window[detenerFn]();
+        }
+        actual.hidden = true;
+      }
+
+      const siguiente = document.getElementById(destino);
+      if (siguiente) siguiente.hidden = false;
+
+      const pagina = PAGINA_POR_ESCENA[destino];
+      if (pagina && typeof window.agregarDatos === "function") {
+        window.agregarDatos(pagina);
+      }
+
+      window.scrollTo(0, 0);
+
+      setTimeout(() => {
+        velo.classList.remove("activo");
+        enCamino = false;
+      }, 400);
+    }, tiempo);
   };
 
   // Si se vuelve con el botón atrás (bfcache), retirar el velo.

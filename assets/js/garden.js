@@ -119,7 +119,8 @@
 
   // ---------- Elementos ----------
 
-  const $ = (id) => document.getElementById(id);
+  const raiz = document.getElementById("escena-jardin");
+  const $ = (id) => raiz.querySelector("#gdn-" + id);
 
   const intro = $("intro");
   const enterBtn = $("enterBtn");
@@ -254,6 +255,7 @@
 
   let audio = null;
   let muted = false;
+  let escenaActiva = true;
 
   function initAudio() {
     try {
@@ -327,6 +329,7 @@
   function programarPajaro() {
     setTimeout(
       () => {
+        if (!escenaActiva) return;
         pajaro();
         programarPajaro();
       },
@@ -445,7 +448,7 @@
       if (Math.random() < 0.2) {
         p.style.background = "linear-gradient(140deg, #ffefb8, #f2c14e)";
       }
-      document.body.appendChild(p);
+      raiz.appendChild(p);
       setTimeout(() => p.remove(), 14000);
     }
   }
@@ -486,7 +489,7 @@
     arpegio([523.25, 659.25, 783.99], 0.06);
     continuarBtn.classList.remove("visible");
     transicionA(
-      "coffee-shop.html",
+      "escena-cafeteria",
       "Empieza a llover… pero conozco un lugar calientito donde seguir esta historia.",
     );
   });
@@ -495,7 +498,10 @@
 
   function programarColibri() {
     clearTimeout(colibriTimer);
-    colibriTimer = setTimeout(vueloColibri, 12000 + Math.random() * 14000);
+    colibriTimer = setTimeout(() => {
+      if (!escenaActiva) return;
+      vueloColibri();
+    }, 12000 + Math.random() * 14000);
   }
 
   function vueloColibri() {
@@ -554,6 +560,22 @@
     setTimeout(() => hint.classList.add("visible"), 7000);
     programarColibri();
   });
+
+  // ---------- Salir de la escena ----------
+
+  function detener() {
+    escenaActiva = false;
+    clearTimeout(colibriTimer);
+    clearTimeout(cerrarTimer);
+    if (audio) {
+      try {
+        audio.ctx.close();
+      } catch (e) {}
+      audio = null;
+    }
+  }
+
+  window.detenerEscenaJardin = detener;
 
   // ---------- Init ----------
 
