@@ -956,7 +956,7 @@ body.anochecer .oscuridad {
 
 #escena-noche .cartel {
   position: fixed;
-  bottom: 9%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%) translateY(16px);
   z-index: var(--z-cartel);
@@ -1176,7 +1176,7 @@ body.anochecer .escena {
   }
 
 #escena-noche .cartel {
-    bottom: 12%;
+    bottom: 20%;
     padding: 12px 20px;
   }
 
