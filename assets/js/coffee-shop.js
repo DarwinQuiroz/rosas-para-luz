@@ -14,7 +14,6 @@
   const hint = $("#hint");
   const soundBtn = $("#soundBtn");
   const surpriseBtn = $("#surpriseBtn");
-  const music = $("#bgMusic");
 
   const TOTAL = 6;
   let quoteTimers = [];
@@ -109,7 +108,7 @@
   }
 
   function setAmbience(musicVol, rainVol) {
-    music.volume = musicVol;
+    if (window.__sharedMusic) window.__sharedMusic.volume = musicVol;
     if (rainGain && audioCtx) {
       rainGain.gain.linearRampToValueAtTime(
         rainVol,
@@ -121,10 +120,8 @@
   function toggleSound() {
     muted = !muted;
     if (muted) {
-      music.pause();
       if (audioCtx) audioCtx.suspend();
     } else {
-      music.play().catch(() => {});
       if (audioCtx) audioCtx.resume();
     }
     $("i", soundBtn).className = muted
@@ -138,8 +135,7 @@
     intro.classList.add("hide");
     soundBtn.hidden = false;
 
-    music.volume = 0.32;
-    music.play().catch(() => {});
+    if (window.__sharedMusic) window.__sharedMusic.volume = 0.32;
     startAmbience();
 
     scene.classList.add("in");

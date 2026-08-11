@@ -29,6 +29,10 @@
       <i class="fa-solid fa-volume-high"></i>
     </button>
 
+    <button class="music-btn" id="musicBtn" aria-label="Reproducir música" hidden>
+      <i class="fa-solid fa-music"></i> Reproducir música
+    </button>
+
     <!-- Portada -->
     <div class="intro" id="intro">
       <p class="intro-eyebrow">Página 2 de 3</p>
@@ -799,11 +803,6 @@
       </div>
     </div>
 
-    <audio id="bgMusic" loop preload="auto">
-      <source src="assets/sound/perfect.mp3" type="audio/mpeg" />
-      Tu navegador no soporta el elemento de audio.
-    </audio>
-
     <div class="container" style="display: none">
       <div id="status" class="status disconnected">Conectando...</div>
       <div id="error" class="error" style="display: none"></div>
@@ -817,6 +816,7 @@
     </div>
 
     <script src="assets/js/transicion.js"></script>
+    <script src="assets/js/shared-music.js"></script>
     <script src="assets/js/coffee-shop.js"></script>
 
     <script>

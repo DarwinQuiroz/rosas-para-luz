@@ -33,6 +33,7 @@
     if (enCamino) return;
     enCamino = true;
 
+    sessionStorage.setItem("isTransitioning", "true");
     frase.textContent = texto || "";
     requestAnimationFrame(() => velo.classList.add("activo"));
 
