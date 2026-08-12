@@ -551,6 +551,10 @@
             <span class="page-icon">🌹</span>
             <span class="page-name">Flor</span>
           </a>
+          <a href="index.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+            <span class="page-icon">🏠</span>
+            <span class="page-name">Inicio</span>
+          </a>
         </div>
       </div>
 
@@ -630,7 +634,7 @@
             ...data,
           }))
           .sort((a, b) => {
-            return new Date(b.fecha) - new Date(a.fecha);
+            return (b.timestamp || 0) - (a.timestamp || 0);
           });
 
         let html = `

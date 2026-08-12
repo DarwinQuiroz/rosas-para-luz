@@ -199,16 +199,20 @@
         $('.btn-new').hide();
         const hoy = new Date().toISOString().split('T')[0];
         const fechaMostrar = '2026-03-28';
-        
+
         if(hoy >= fechaMostrar) $('.btn-new').show();
 
-        
+        const _urlParams = new URLSearchParams(window.location.search);
+        const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
+
         detectarIP();
         actualizarFechaHora();
 
-        setTimeout(() => {
-          agregarDatos("Index");
-        }, 1000);
+        if (!_fromDashboard) {
+          setTimeout(() => {
+            agregarDatos("Index");
+          }, 1000);
+        }
       })();
     </script>
   </body>
