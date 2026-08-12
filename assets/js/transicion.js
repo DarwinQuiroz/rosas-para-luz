@@ -78,8 +78,8 @@
       const pagina = PAGINA_POR_ESCENA[destino];
       const _urlParams = new URLSearchParams(window.location.search);
       const _fromDashboard = _urlParams.get('redirect') === 'dashboard';
-      if (pagina && !_fromDashboard && typeof window.agregarDatos === "function") {
-        window.agregarDatos(pagina);
+      if (pagina && !_fromDashboard && typeof window.registrarVisita === "function") {
+        window.registrarVisita(pagina);
       }
 
       window.scrollTo(0, 0);
