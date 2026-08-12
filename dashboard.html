@@ -623,6 +623,20 @@
         actualizarTimestamp();
       });
 
+      // Formatear un timestamp de Firebase como fecha y hora legible
+      function formatearFecha(timestamp) {
+        const opciones = {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        return new Date(timestamp).toLocaleString("es-ES", opciones);
+      }
+
       // Mostrar tabla con los datos
       function mostrarTabla(datos) {
         const tablaContenedor = document.getElementById("tablaContenedor");
@@ -663,9 +677,9 @@
                         <td><span class="ip-badge">${
                           registro.pagina
                         }</span></td>
-                        <td><span class="fecha-badge">📅 ${
-                          registro.fecha
-                        }</span></td>
+                        <td><span class="fecha-badge">📅 ${formatearFecha(
+                          registro.timestamp
+                        )}</span></td>
                         <td>
                             <button class="btn-delete" onclick="eliminarRegistro('${
                               registro.id

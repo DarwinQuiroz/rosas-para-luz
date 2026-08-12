@@ -161,17 +161,6 @@
 
         <hr class="separator" />
 
-        <div class="container" style="display: none">
-          <div id="status" class="status disconnected">Conectando...</div>
-          <div id="error" class="error" style="display: none"></div>
-
-          <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
-          <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
-          <label
-            >Navegador:
-            <strong id="miNavegador" style="color: #667eea">-</strong></label
-          >
-        </div>
 
         <footer class="interactive-footer">
           <h3>¿QUÉ TANTO ME AMAS HOY?</h3>
@@ -204,13 +193,8 @@
 
     <script>
       (function () {
-        detectarIP();
-        actualizarFechaHora();
-
         if (!_fromDashboard) {
-          setTimeout(() => {
-            agregarDatos("Periódico");
-          }, 1000);
+          registrarVisita("Periódico");
         }
       })();
     </script>

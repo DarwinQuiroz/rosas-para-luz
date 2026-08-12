@@ -40,18 +40,6 @@
     <div class="message">Te amo! ❤️</div>
     <div id="bubbles-text"></div>
 
-    <div class="container" style="display: none">
-      <div id="status" class="status disconnected">Conectando...</div>
-      <div id="error" class="error" style="display: none"></div>
-
-      <label>Tu IP: <strong id="miIP">Detectando...</strong></label>
-      <label>Fecha y Hora: <strong id="fechaHora">-</strong></label>
-      <label
-        >Navegador:
-        <strong id="miNavegador" style="color: #667eea">-</strong></label
-      >
-    </div>
-
     <script src="assets/js/music-control.js"></script>
     <script src="assets/js/bubble.js"></script>
 
@@ -71,13 +59,8 @@
 
     <script>
       (function () {
-        detectarIP();
-        actualizarFechaHora();
-
         if (!_fromDashboard) {
-          setTimeout(() => {
-            agregarDatos("Burbujas");
-          }, 1000);
+          registrarVisita("Burbujas");
         }
       })();
     </script>
