@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Dashboard</title>
 
@@ -14,16 +20,62 @@
         box-sizing: border-box;
       }
 
+      :root {
+        --font-display: "Sora", "Segoe UI", sans-serif;
+        --font-body: "Inter", "Segoe UI", sans-serif;
+
+        --color-primary: #6d28d9;
+        --color-primary-light: #8b5cf6;
+        --color-primary-dark: #4c1d95;
+
+        --text-primary: #1e1b2e;
+        --text-secondary: #6b7280;
+        --text-muted: #9791ad;
+
+        --surface: #ffffff;
+        --surface-alt: #f8f7fc;
+        --border-color: #eae7f6;
+
+        --radius-lg: 18px;
+        --radius-md: 12px;
+        --radius-sm: 8px;
+
+        --shadow-sm: 0 1px 2px rgba(30, 27, 75, 0.06);
+        --shadow-md: 0 10px 30px rgba(30, 27, 75, 0.08);
+        --shadow-lg: 0 24px 60px rgba(30, 27, 75, 0.16);
+
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      html {
+        min-height: 100dvh;
+      }
+
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
+        font-family: var(--font-body);
+        color: var(--text-primary);
+        background: radial-gradient(120% 140% at 15% 0%, #2e2a5c 0%, #4c1d95 45%, #7c3aed 100%);
+        min-height: 100dvh;
         padding: 15px;
+        -webkit-font-smoothing: antialiased;
       }
 
       @media (min-width: 768px) {
         body {
-          padding: 20px;
+          padding: 32px;
+        }
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid #c4b5fd;
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
         }
       }
 
@@ -33,44 +85,73 @@
       }
 
       .header {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        background: var(--surface);
+        padding: 22px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
         margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
       }
 
       @media (min-width: 768px) {
         .header {
-          padding: 30px;
-          margin-bottom: 30px;
+          padding: 32px 36px;
+          margin-bottom: 28px;
         }
       }
 
+      .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
       .header h1 {
-        color: #333;
-        margin-bottom: 15px;
-        font-size: 24px;
+        font-family: var(--font-display);
+        color: var(--text-primary);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .header h1 svg {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        color: var(--color-primary);
       }
 
       @media (min-width: 768px) {
         .header h1 {
-          font-size: 32px;
-          margin-bottom: 10px;
+          font-size: 30px;
+        }
+
+        .header h1 svg {
+          width: 30px;
+          height: 30px;
         }
       }
 
       .header-info {
         display: flex;
-        gap: 15px;
+        gap: 18px;
         flex-wrap: wrap;
         margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--border-color);
       }
 
       @media (min-width: 768px) {
         .header-info {
-          gap: 30px;
-          margin-top: 20px;
+          gap: 36px;
+          margin-top: 22px;
+          padding-top: 22px;
         }
       }
 
@@ -80,57 +161,83 @@
       }
 
       .info-label {
-        color: #999;
-        font-size: 12px;
+        color: var(--text-muted);
+        font-size: 11px;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
         font-weight: 600;
       }
 
       .info-value {
-        color: #667eea;
+        font-family: var(--font-display);
+        color: var(--color-primary);
         font-size: 18px;
         font-weight: 700;
+        letter-spacing: -0.01em;
       }
 
       .status {
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-size: 14px;
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-size: 13px;
         text-align: center;
         font-weight: 600;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .status svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
       }
 
       .status.connected {
-        background: #d4edda;
-        color: #155724;
+        background: #e9f9f1;
+        color: #047857;
       }
 
       .status.disconnected {
-        background: #f8d7da;
-        color: #721c24;
+        background: #fdedee;
+        color: #b91c1c;
       }
 
       .table-container {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
         overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.6);
       }
 
       .table-header {
-        background: #f8f9fa;
-        padding: 20px;
-        border-bottom: 2px solid #eee;
+        background: var(--surface-alt);
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border-color);
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
       .table-header h2 {
-        color: #333;
-        font-size: 18px;
+        font-family: var(--font-display);
+        color: var(--text-primary);
+        font-size: 17px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .table-header h2 svg,
+      .pages-section h2 svg {
+        width: 19px;
+        height: 19px;
+        flex-shrink: 0;
+        color: var(--color-primary);
       }
 
       .btn-group {
@@ -143,11 +250,11 @@
           flex-direction: column;
           align-items: flex-start;
           gap: 15px;
-          padding: 15px;
+          padding: 16px;
         }
 
         .table-header h2 {
-          font-size: 16px;
+          font-size: 15px;
         }
 
         .btn-group {
@@ -163,31 +270,48 @@
       }
 
       button {
-        padding: 8px 16px;
+        font-family: var(--font-body);
+        padding: 9px 18px;
         border: none;
-        border-radius: 5px;
-        font-size: 14px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      }
+
+      button svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+      }
+
+      .btn-delete svg {
+        width: 13px;
+        height: 13px;
       }
 
       .btn-refresh {
-        background: #667eea;
+        background: var(--color-primary);
         color: white;
       }
 
       .btn-refresh:hover {
-        background: #764ba2;
+        background: var(--color-primary-dark);
       }
 
       .btn-delete-all {
-        background: #dc3545;
-        color: white;
+        background: #fdedee;
+        color: #dc2626;
       }
 
       .btn-delete-all:hover {
-        background: #c82333;
+        background: #dc2626;
+        color: white;
+        box-shadow: var(--shadow-sm);
       }
 
       table {
@@ -196,27 +320,33 @@
       }
 
       thead {
-        background: #f8f9fa;
-        border-bottom: 2px solid #ddd;
+        background: var(--surface-alt);
+        border-bottom: 1px solid var(--border-color);
       }
 
       th {
-        padding: 15px;
+        padding: 14px 16px;
         text-align: left;
-        color: #555;
+        color: var(--text-secondary);
         font-weight: 600;
-        font-size: 13px;
+        font-size: 12px;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
       }
 
       td {
-        padding: 15px;
-        border-bottom: 1px solid #eee;
-        color: #333;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-primary);
+        font-size: 14px;
+      }
+
+      tbody tr {
+        transition: background-color 0.15s var(--ease);
       }
 
       tbody tr:hover {
-        background: #f5f5f5;
+        background: var(--surface-alt);
       }
 
       tbody tr:last-child td {
@@ -267,114 +397,152 @@
       }
 
       .ip-badge {
-        background: #e7f3ff;
-        color: #0066cc;
-        padding: 4px 8px;
-        border-radius: 3px;
-        font-family: "Courier New", monospace;
-        font-size: 13px;
+        background: #eef0ff;
+        color: #4338ca;
+        padding: 4px 9px;
+        border-radius: var(--radius-sm);
+        font-family: "SF Mono", "Courier New", monospace;
+        font-size: 12px;
       }
 
       .navegador-badge {
-        background: #fff3cd;
-        color: #856404;
-        padding: 4px 8px;
-        border-radius: 3px;
-        font-size: 13px;
+        background: #fef6e7;
+        color: #92400e;
+        padding: 4px 9px;
+        border-radius: var(--radius-sm);
+        font-size: 12px;
         font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
       }
 
       .fecha-badge {
-        color: #666;
+        color: var(--text-secondary);
         font-size: 13px;
+        font-variant-numeric: tabular-nums;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .navegador-badge svg,
+      .fecha-badge svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
       }
 
       .btn-delete {
-        background: #dc3545;
-        color: white;
+        background: transparent;
+        color: #dc2626;
+        border: 1px solid #fbd5d8;
         padding: 6px 12px;
         font-size: 12px;
       }
 
       .btn-delete:hover {
-        background: #c82333;
+        background: #dc2626;
+        border-color: #dc2626;
+        color: white;
       }
 
       .no-data {
-        padding: 40px;
+        padding: 50px 20px;
         text-align: center;
-        color: #999;
+        color: var(--text-muted);
       }
 
       .no-data-icon {
-        font-size: 48px;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .no-data-icon svg {
+        width: 44px;
+        height: 44px;
+        color: #d8d5e8;
+      }
+
+      .no-data h3 {
+        font-family: var(--font-display);
+        color: var(--text-primary);
+        margin-bottom: 6px;
       }
 
       .loading {
-        padding: 40px;
+        padding: 50px;
         text-align: center;
-        color: #667eea;
+        color: var(--color-primary);
         font-weight: 600;
       }
 
       .error-message {
-        background: #f8d7da;
-        color: #721c24;
-        padding: 15px;
-        border-radius: 5px;
+        background: #fdedee;
+        color: #b91c1c;
+        padding: 15px 18px;
+        border-radius: var(--radius-sm);
         margin-bottom: 20px;
-        border-left: 4px solid #dc3545;
+        border-left: 4px solid #dc2626;
+        font-weight: 500;
       }
 
       .stats {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
+        gap: 16px;
         margin-bottom: 20px;
       }
 
       .stat-card {
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        background: var(--surface);
+        padding: 22px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
         text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.6);
       }
 
       .stat-number {
-        font-size: 32px;
+        font-family: var(--font-display);
+        font-size: 30px;
         font-weight: 700;
-        color: #667eea;
-        margin-bottom: 5px;
+        color: var(--color-primary);
+        margin-bottom: 6px;
+        letter-spacing: -0.02em;
       }
 
       .stat-label {
-        color: #999;
-        font-size: 12px;
+        color: var(--text-muted);
+        font-size: 11px;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         font-weight: 600;
       }
 
       /* ── Page Links Section ── */
       .pages-section {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        padding: 25px;
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: 26px;
         margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
       }
 
       .pages-section h2 {
-        color: #333;
-        font-size: 20px;
+        font-family: var(--font-display);
+        color: var(--text-primary);
+        font-size: 19px;
+        font-weight: 700;
         margin-bottom: 20px;
       }
 
       .pages-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 15px;
+        gap: 14px;
       }
 
       @media (max-width: 480px) {
@@ -384,7 +552,7 @@
         }
 
         .pages-section {
-          padding: 15px;
+          padding: 16px;
         }
 
         .pages-section h2 {
@@ -398,32 +566,38 @@
         align-items: center;
         gap: 12px;
         padding: 14px 16px;
-        border-radius: 10px;
+        border-radius: var(--radius-md);
         text-decoration: none;
         color: white;
+        font-family: var(--font-body);
         font-weight: 600;
         font-size: 14px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
         position: relative;
         overflow: hidden;
       }
 
       .page-card::after {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
         pointer-events: none;
       }
 
       .page-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        box-shadow: var(--shadow-lg);
       }
 
       .page-card .page-icon {
-        font-size: 22px;
         flex-shrink: 0;
+        display: flex;
+      }
+
+      .page-card .page-icon svg {
+        width: 22px;
+        height: 22px;
       }
 
       .page-card .page-name {
@@ -441,8 +615,163 @@
           font-size: 11px;
         }
 
-        .page-card .page-icon {
-          font-size: 26px;
+        .page-card .page-icon svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      /* ── Confirmation Modal ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 27, 46, 0.55);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.2s var(--ease);
+      }
+
+      .modal-overlay[hidden] {
+        display: none;
+      }
+
+      .modal-overlay.is-open {
+        opacity: 1;
+      }
+
+      .modal {
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: 28px;
+        max-width: 380px;
+        width: 100%;
+        text-align: center;
+        transform: translateY(10px) scale(0.96);
+        opacity: 0;
+        transition: transform 0.22s var(--ease), opacity 0.22s var(--ease);
+      }
+
+      .modal-overlay.is-open .modal {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      .modal-icon {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 16px;
+        border-radius: 50%;
+        background: #fdedee;
+        color: #dc2626;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-icon svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .modal-title {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+
+      .modal-message {
+        color: var(--text-secondary);
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .modal-typed {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .modal-typed-label {
+        display: block;
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+
+      .modal-typed-label strong {
+        color: #dc2626;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .modal-typed-input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-body);
+        font-size: 14px;
+        color: var(--text-primary);
+        transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+      }
+
+      .modal-typed-input:focus {
+        outline: none;
+        border-color: #dc2626;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .modal-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 11px 16px;
+      }
+
+      .modal-btn-cancel {
+        background: var(--surface-alt);
+        color: var(--text-primary);
+      }
+
+      .modal-btn-cancel:hover {
+        background: var(--border-color);
+      }
+
+      .modal-btn-confirm {
+        background: #dc2626;
+        color: white;
+      }
+
+      .modal-btn-confirm:hover:not(:disabled) {
+        background: #b91c1c;
+      }
+
+      .modal-btn-confirm:disabled {
+        background: #f3a8a8;
+        cursor: not-allowed;
+      }
+
+      @media (max-width: 480px) {
+        .modal {
+          padding: 22px;
+        }
+
+        .modal-actions {
+          flex-direction: column-reverse;
         }
       }
     </style>
@@ -450,15 +779,11 @@
   <body>
     <div class="container">
       <div class="header">
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-          "
-        >
-          <h1>📊 Dashboard</h1>
+        <div class="header-top">
+          <h1>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            Dashboard
+          </h1>
           <div id="status" class="status disconnected">Conectando...</div>
         </div>
 
@@ -489,70 +814,73 @@
 
       <!-- ── Page Links Section ── -->
       <div class="pages-section">
-        <h2>🔗 Enlaces de Páginas</h2>
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><path d="M8 12h8"/></svg>
+          Enlaces de Páginas
+        </h2>
         <div class="pages-grid">
           <a href="universe.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #0f0c29, #302b63);">
-            <span class="page-icon">🪐</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(35 12 12)"/></svg></span>
             <span class="page-name">Universo</span>
           </a>
           <a href="happy-birthday.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #fbc531, #e1b12c); color: #5a3e00;">
-            <span class="page-icon">🎂</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M4 17h16"/><path d="M8 11V8M12 11V8M16 11V8"/><circle cx="8" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="6" r="1" fill="currentColor" stroke="none"/></svg></span>
             <span class="page-name">Feliz Cumpleaños</span>
           </a>
           <a href="womens-day.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #f7797d, #c471ed);">
-            <span class="page-icon">💐</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.3"/><path d="M12 9.4a2.3 2.3 0 1 1 0-4.6a2.3 2.3 0 0 1 0 4.6Z"/><path d="M12 14.6a2.3 2.3 0 1 1 0 4.6a2.3 2.3 0 0 1 0-4.6Z"/><path d="M9.4 12a2.3 2.3 0 1 1-4.6 0a2.3 2.3 0 0 1 4.6 0Z"/><path d="M14.6 12a2.3 2.3 0 1 1 4.6 0a2.3 2.3 0 0 1-4.6 0Z"/></svg></span>
             <span class="page-name">Día de la Mujer</span>
           </a>
           <a href="bubbles.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-            <span class="page-icon">💖</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></span>
             <span class="page-name">Te amo!</span>
           </a>
           <a href="galery.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">
-            <span class="page-icon">🖼️</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.3"/><path d="M21 15l-5-5-4 4-2-2-6 6"/></svg></span>
             <span class="page-name">Galería - 8va Maravilla</span>
           </a>
           <a href="newspaper.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #2c3e50, #4ca1af);">
-            <span class="page-icon">📰</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h13a2 2 0 0 1 2 2v13a1 1 0 0 0 1 1H6a2 2 0 0 1-2-2Z"/><path d="M8 8h7M8 12h7M8 16h4"/></svg></span>
             <span class="page-name">The Love Gazette</span>
           </a>
           <a href="netflix-page.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #141414, #e50914);">
-            <span class="page-icon">🎬</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l2-4h3l-2 4Z"/><path d="M8 8l2-4h3l-2 4Z"/><path d="M13 8l2-4h3l-2 4Z"/><rect x="3" y="8" width="18" height="12" rx="1"/></svg></span>
             <span class="page-name">Netflix</span>
           </a>
           <a href="chocolate-box.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
-            <span class="page-icon">🍫</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M3 13h18"/><path d="M12 9v12"/><path d="M12 9c-1.5-3-5-4-5-1.5S9 9 12 9Z"/><path d="M12 9c1.5-3 5-4 5-1.5S15 9 12 9Z"/></svg></span>
             <span class="page-name">Caja de Chocolates</span>
           </a>
           <a href="favorite-person.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f); color: #5a3e2b;">
-            <span class="page-icon">💕</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.6 5.9l6.4.6l-4.8 4.3l1.4 6.3L12 16.6l-5.6 3l1.4-6.3l-4.8-4.3l6.4-.6Z"/></svg></span>
             <span class="page-name">Persona Favorita</span>
           </a>
           <a href="marvel-book.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #e52d27, #b31217);">
-            <span class="page-icon">📚</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h12"/></svg></span>
             <span class="page-name">Libro Marvel</span>
           </a>
           <a href="my-heart.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">
-            <span class="page-icon">❤️</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-6.7-4.2-9-8.3A5 5 0 0 1 12 6a5 5 0 0 1 9 6.2c-2.3 4.1-9 8.3-9 8.3Z"/><path d="M6.5 12h2.5l1.5-2.5l2 4l1.5-2.5H16.5"/></svg></span>
             <span class="page-name">Mi Corazón</span>
           </a>
           <a href="thoughts.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #a770ef, #cf8bf3);">
-            <span class="page-icon">💭</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-8.5 8.5A8.4 8.4 0 0 1 8 19.2L3 21l1.8-5A8.5 8.5 0 1 1 21 12Z"/></svg></span>
             <span class="page-name">Pensamientos</span>
           </a>
           <a href="galaxy.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #0c0c3a, #4b0082);">
-            <span class="page-icon">🌌</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5Z"/><path d="M19 15l.75 2.25L22 18l-2.25.75L19 21l-.75-2.25L16 18l2.25-.75Z"/></svg></span>
             <span class="page-name">Galaxia</span>
           </a>
           <a href="message.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
-            <span class="page-icon">💌</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6l9-6"/></svg></span>
             <span class="page-name">Mensaje</span>
           </a>
           <a href="flower.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-            <span class="page-icon">🌹</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M12 11v10"/><path d="M12 16c-2 0-4 1-4 3"/><path d="M12 18c2 0 4 1 4 3"/></svg></span>
             <span class="page-name">Flor</span>
           </a>
           <a href="index.html?redirect=dashboard" class="page-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-            <span class="page-icon">🏠</span>
+            <span class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7l8 7"/><path d="M6 10v9a1 1 0 0 0 1 1h3v-6h4v6h3a1 1 0 0 0 1-1v-9"/></svg></span>
             <span class="page-name">Inicio</span>
           </a>
         </div>
@@ -560,16 +888,38 @@
 
       <div class="table-container">
         <div class="table-header">
-          <h2>📋 Registros</h2>
+          <h2>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8a1 1 0 0 1 1 1v1h1a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1V4a1 1 0 0 1 1-1Z"/><path d="M9 11h6M9 15h6M9 19h3"/></svg>
+            Registros
+          </h2>
           <div class="btn-group">
             <button class="btn-delete-all" onclick="eliminarTodo()">
-              🗑️ Eliminar Todo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>
+              Eliminar Todo
             </button>
           </div>
         </div>
 
         <div id="tablaContenedor">
           <div class="loading">Cargando datos...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay" hidden>
+      <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalMessage">
+        <div class="modal-icon" id="modalIcon"></div>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-message" id="modalMessage"></p>
+        <div class="modal-typed" id="modalTypedWrap" hidden>
+          <label class="modal-typed-label" for="modalTypedInput">
+            Escribe <strong id="modalTypedWord"></strong> para confirmar
+          </label>
+          <input type="text" id="modalTypedInput" class="modal-typed-input" autocomplete="off" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn modal-btn-cancel" id="modalCancelBtn">Cancelar</button>
+          <button type="button" class="modal-btn modal-btn-confirm" id="modalConfirmBtn"></button>
         </div>
       </div>
     </div>
@@ -595,6 +945,141 @@
       const db = firebase.database();
       let datosRef = db.ref("visitas");
 
+      // Íconos SVG reutilizados en el contenido generado dinámicamente
+      const ICON_CHECK_CIRCLE =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3l4.7-5.1"/></svg>';
+      const ICON_X_CIRCLE =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>';
+      const ICON_GLOBE =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>';
+      const ICON_CALENDAR =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg>';
+      const ICON_INBOX =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2 3h4l2-3h4"/><path d="M5.5 5h13l2.5 7v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7Z"/></svg>';
+      const ICON_ALERT_TRIANGLE =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L21.5 20h-19L12 3.5Z"/><path d="M12 9.5v4.5"/><circle cx="12" cy="17" r="0.75" fill="currentColor" stroke="none"/></svg>';
+
+      // Modal de confirmación (reemplaza confirm() nativo)
+      const modalOverlay = document.getElementById("modalOverlay");
+      const modalIcon = document.getElementById("modalIcon");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalMessage = document.getElementById("modalMessage");
+      const modalTypedWrap = document.getElementById("modalTypedWrap");
+      const modalTypedWord = document.getElementById("modalTypedWord");
+      const modalTypedInput = document.getElementById("modalTypedInput");
+      const modalCancelBtn = document.getElementById("modalCancelBtn");
+      const modalConfirmBtn = document.getElementById("modalConfirmBtn");
+
+      modalIcon.innerHTML = ICON_ALERT_TRIANGLE;
+
+      function mostrarConfirmacion({ title, message, confirmText, requireWord }) {
+        return new Promise((resolve) => {
+          if (!modalOverlay.hidden) {
+            resolve(false);
+            return;
+          }
+
+          const lastFocused = document.activeElement;
+
+          modalTitle.textContent = title;
+          modalMessage.textContent = message;
+          modalConfirmBtn.textContent = confirmText;
+
+          if (requireWord) {
+            modalTypedWrap.hidden = false;
+            modalTypedWord.textContent = requireWord;
+            modalTypedInput.value = "";
+            modalConfirmBtn.disabled = true;
+          } else {
+            modalTypedWrap.hidden = true;
+            modalConfirmBtn.disabled = false;
+          }
+
+          function focusables() {
+            return [modalCancelBtn, requireWord ? modalTypedInput : null, modalConfirmBtn].filter(
+              (el) => el && !el.disabled
+            );
+          }
+
+          function onTypedInput() {
+            modalConfirmBtn.disabled =
+              modalTypedInput.value.trim().toUpperCase() !== requireWord;
+          }
+
+          function cleanup(result) {
+            modalOverlay.classList.remove("is-open");
+            document.removeEventListener("keydown", onKeydown);
+            modalCancelBtn.removeEventListener("click", onCancel);
+            modalConfirmBtn.removeEventListener("click", onConfirm);
+            modalOverlay.removeEventListener("click", onOverlayClick);
+            if (requireWord) {
+              modalTypedInput.removeEventListener("input", onTypedInput);
+            }
+            setTimeout(() => {
+              modalOverlay.hidden = true;
+            }, 180);
+            if (lastFocused && typeof lastFocused.focus === "function") {
+              lastFocused.focus();
+            }
+            resolve(result);
+          }
+
+          function onCancel() {
+            cleanup(false);
+          }
+
+          function onConfirm() {
+            if (requireWord && modalTypedInput.value.trim().toUpperCase() !== requireWord) {
+              return;
+            }
+            cleanup(true);
+          }
+
+          function onOverlayClick(event) {
+            if (event.target === modalOverlay) {
+              cleanup(false);
+            }
+          }
+
+          function onKeydown(event) {
+            if (event.key === "Escape") {
+              cleanup(false);
+              return;
+            }
+            if (event.key === "Enter" && document.activeElement !== modalCancelBtn) {
+              onConfirm();
+              return;
+            }
+            if (event.key === "Tab") {
+              const items = focusables();
+              const first = items[0];
+              const last = items[items.length - 1];
+              if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+              } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+              }
+            }
+          }
+
+          if (requireWord) {
+            modalTypedInput.addEventListener("input", onTypedInput);
+          }
+          modalCancelBtn.addEventListener("click", onCancel);
+          modalConfirmBtn.addEventListener("click", onConfirm);
+          modalOverlay.addEventListener("click", onOverlayClick);
+          document.addEventListener("keydown", onKeydown);
+
+          modalOverlay.hidden = false;
+          requestAnimationFrame(() => {
+            modalOverlay.classList.add("is-open");
+            (requireWord ? modalTypedInput : modalConfirmBtn).focus();
+          });
+        });
+      }
+
       // Detectar conexión
       firebase
         .database()
@@ -603,10 +1088,10 @@
           const statusDiv = document.getElementById("status");
 
           if (snapshot.val()) {
-            statusDiv.textContent = "✓ Conectado";
+            statusDiv.innerHTML = `${ICON_CHECK_CIRCLE}<span>Conectado</span>`;
             statusDiv.className = "status connected";
           } else {
-            statusDiv.textContent = "✗ Desconectado";
+            statusDiv.innerHTML = `${ICON_X_CIRCLE}<span>Desconectado</span>`;
             statusDiv.className = "status disconnected";
           }
         });
@@ -671,13 +1156,13 @@
                     <tr>
                         <td>${index + 1}</td>
                         <td><span class="ip-badge">${registro.ip}</span></td>
-                        <td><span class="navegador-badge">🌐 ${
+                        <td><span class="navegador-badge">${ICON_GLOBE} ${
                           registro.navegador
                         }</span></td>
                         <td><span class="ip-badge">${
                           registro.pagina
                         }</span></td>
-                        <td><span class="fecha-badge">📅 ${formatearFecha(
+                        <td><span class="fecha-badge">${ICON_CALENDAR} ${formatearFecha(
                           registro.timestamp
                         )}</span></td>
                         <td>
@@ -704,7 +1189,7 @@
         const tablaContenedor = document.getElementById("tablaContenedor");
         tablaContenedor.innerHTML = `
                 <div class="no-data">
-                    <div class="no-data-icon">📭</div>
+                    <div class="no-data-icon">${ICON_INBOX}</div>
                     <h3>No hay registros</h3>
                     <p>Aún no se han guardado datos en la base de datos</p>
                 </div>
@@ -744,8 +1229,15 @@
       }
 
       // Eliminar registro individual
-      function eliminarRegistro(id) {
-        if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+      async function eliminarRegistro(id) {
+        const confirmado = await mostrarConfirmacion({
+          title: "Eliminar registro",
+          message:
+            "Esta acción eliminará el registro de forma permanente y no se puede deshacer.",
+          confirmText: "Eliminar",
+        });
+
+        if (confirmado) {
           datosRef
             .child(id)
             .remove()
@@ -756,17 +1248,19 @@
       }
 
       // Eliminar todo
-      function eliminarTodo() {
-        if (
-          confirm(
-            "⚠️ ¿Estás seguro? Esta acción eliminará TODOS los registros y no se puede deshacer."
-          )
-        ) {
-          if (confirm("Confirma nuevamente para eliminar TODO:")) {
-            datosRef.remove().catch((error) => {
-              mostrarError("Error al eliminar: " + error.message);
-            });
-          }
+      async function eliminarTodo() {
+        const confirmado = await mostrarConfirmacion({
+          title: "Eliminar todos los registros",
+          message:
+            "Esta acción eliminará TODOS los registros de forma permanente y no se puede deshacer.",
+          confirmText: "Eliminar todo",
+          requireWord: "ELIMINAR",
+        });
+
+        if (confirmado) {
+          datosRef.remove().catch((error) => {
+            mostrarError("Error al eliminar: " + error.message);
+          });
         }
       }
 
