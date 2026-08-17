@@ -86,8 +86,58 @@
       color: var(--text-primary);
       min-height: 100dvh;
       padding: 15px;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       transition: color 0.4s var(--ease);
+    }
+
+    /* ── Entrance choreography ── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .header,
+    .stats,
+    .pages-section,
+    .table-container {
+      animation: fadeInUp 0.6s var(--ease) both;
+    }
+
+    .stats {
+      animation-delay: 0.06s;
+    }
+
+    .pages-section {
+      animation-delay: 0.12s;
+    }
+
+    .table-container {
+      animation-delay: 0.18s;
+    }
+
+    .row-enter {
+      animation: fadeInUp 0.4s var(--ease) both;
     }
 
     body::before,
@@ -195,7 +245,7 @@
     .header h1 {
       font-family: var(--font-display);
       color: var(--text-primary);
-      font-size: 22px;
+      font-size: clamp(20px, 4.5vw, 30px);
       font-weight: 700;
       letter-spacing: -0.02em;
       display: flex;
@@ -208,13 +258,14 @@
       height: 24px;
       flex-shrink: 0;
       color: var(--accent);
+      transition: transform 0.3s var(--ease);
+    }
+
+    .header h1:hover svg {
+      transform: rotate(-6deg) scale(1.06);
     }
 
     @media (min-width: 768px) {
-      .header h1 {
-        font-size: 30px;
-      }
-
       .header h1 svg {
         width: 30px;
         height: 30px;
@@ -255,9 +306,10 @@
     .info-value {
       font-family: var(--font-display);
       color: var(--accent);
-      font-size: 18px;
+      font-size: clamp(15px, 3vw, 18px);
       font-weight: 700;
       letter-spacing: -0.01em;
+      font-variant-numeric: tabular-nums;
     }
 
     .status {
@@ -420,7 +472,11 @@
       align-items: center;
       gap: 8px;
       transition: background-color 0.2s var(--ease), color 0.2s var(--ease),
-        transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+        transform 0.15s var(--ease), box-shadow 0.2s var(--ease);
+    }
+
+    button:active {
+      transform: scale(0.97);
     }
 
     button svg {
@@ -454,9 +510,21 @@
       box-shadow: var(--shadow-sm);
     }
 
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     table {
       width: 100%;
+      min-width: 560px;
       border-collapse: collapse;
+    }
+
+    @media (min-width: 768px) {
+      table {
+        min-width: 0;
+      }
     }
 
     thead {
@@ -642,15 +710,22 @@
       box-shadow: var(--shadow-md);
       text-align: center;
       border: 1px solid var(--card-edge);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
     }
 
     .stat-number {
       font-family: var(--font-display);
-      font-size: 30px;
+      font-size: clamp(24px, 5vw, 30px);
       font-weight: 700;
       color: var(--accent);
       margin-bottom: 6px;
       letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-label {
@@ -674,7 +749,7 @@
     .pages-section h2 {
       font-family: var(--font-display);
       color: var(--text-primary);
-      font-size: 19px;
+      font-size: clamp(16px, 3.5vw, 19px);
       font-weight: 700;
       margin-bottom: 20px;
     }
@@ -712,10 +787,29 @@
       font-family: var(--font-body);
       font-weight: 600;
       font-size: 14px;
-      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s var(--ease);
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      animation: popIn 0.5s var(--ease) both;
     }
+
+    .pages-grid .page-card:nth-child(1) { animation-delay: 0.02s; }
+    .pages-grid .page-card:nth-child(2) { animation-delay: 0.05s; }
+    .pages-grid .page-card:nth-child(3) { animation-delay: 0.08s; }
+    .pages-grid .page-card:nth-child(4) { animation-delay: 0.11s; }
+    .pages-grid .page-card:nth-child(5) { animation-delay: 0.14s; }
+    .pages-grid .page-card:nth-child(6) { animation-delay: 0.17s; }
+    .pages-grid .page-card:nth-child(7) { animation-delay: 0.20s; }
+    .pages-grid .page-card:nth-child(8) { animation-delay: 0.23s; }
+    .pages-grid .page-card:nth-child(9) { animation-delay: 0.26s; }
+    .pages-grid .page-card:nth-child(10) { animation-delay: 0.29s; }
+    .pages-grid .page-card:nth-child(11) { animation-delay: 0.32s; }
+    .pages-grid .page-card:nth-child(12) { animation-delay: 0.35s; }
+    .pages-grid .page-card:nth-child(13) { animation-delay: 0.38s; }
+    .pages-grid .page-card:nth-child(14) { animation-delay: 0.41s; }
+    .pages-grid .page-card:nth-child(15) { animation-delay: 0.44s; }
+    .pages-grid .page-card:nth-child(16) { animation-delay: 0.47s; }
 
     .page-card::after {
       content: "";
@@ -1461,6 +1555,33 @@
       actualizarTimestamp();
     });
 
+    // Animar un número contando suavemente hacia el valor nuevo
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    function animarNumero(el, valorNuevo) {
+      const valorActual = parseInt(el.textContent, 10) || 0;
+      if (prefersReducedMotion || valorActual === valorNuevo) {
+        el.textContent = valorNuevo;
+        return;
+      }
+      const duracion = 500;
+      const inicio = performance.now();
+      function paso(ahora) {
+        const progreso = Math.min((ahora - inicio) / duracion, 1);
+        const facilitado = 1 - Math.pow(1 - progreso, 3);
+        const valor = Math.round(
+          valorActual + (valorNuevo - valorActual) * facilitado
+        );
+        el.textContent = valor;
+        if (progreso < 1) {
+          requestAnimationFrame(paso);
+        }
+      }
+      requestAnimationFrame(paso);
+    }
+
     // Formatear un timestamp de Firebase como fecha y hora legible
     function formatearFecha(timestamp) {
       const opciones = {
@@ -1490,6 +1611,7 @@
         });
 
       let html = `
+                <div class="table-scroll">
                 <table>
                     <thead>
                         <tr>
@@ -1505,8 +1627,9 @@
             `;
 
       registros.forEach((registro, index) => {
+        const delay = Math.min(index * 30, 300);
         html += `
-                    <tr>
+                    <tr class="row-enter" style="animation-delay:${delay}ms">
                         <td>${index + 1}</td>
                         <td><span class="ip-badge">${registro.ip}</span></td>
                         <td><span class="navegador-badge">${ICON_GLOBE} ${registro.navegador
@@ -1529,6 +1652,7 @@
       html += `
                     </tbody>
                 </table>
+                </div>
             `;
 
       tablaContenedor.innerHTML = html;
@@ -1555,11 +1679,12 @@
       const ipsUnicas = new Set(registros.map((r) => r.ip));
       const navegadoresUnicos = new Set(registros.map((r) => r.navegador));
 
-      document.getElementById("totalRegistros").textContent =
-        registros.length;
-      document.getElementById("totalIPs").textContent = ipsUnicas.size;
-      document.getElementById("totalNavegadores").textContent =
-        navegadoresUnicos.size;
+      animarNumero(document.getElementById("totalRegistros"), registros.length);
+      animarNumero(document.getElementById("totalIPs"), ipsUnicas.size);
+      animarNumero(
+        document.getElementById("totalNavegadores"),
+        navegadoresUnicos.size
+      );
     }
 
     // Actualizar timestamp
