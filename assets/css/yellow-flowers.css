@@ -1,0 +1,1467 @@
+/* ==========================================================================
+   Flores Amarillas para Ti — variables
+   ========================================================================== */
+
+:root {
+  --yf-ivory: #fffdf5;
+  --yf-cream: #fff8e7;
+  --yf-butter: #f8e7a1;
+  --yf-floral: #f4c542;
+  --yf-golden: #e7b93e;
+  --yf-gold: #d6a72c;
+  --yf-olive: #718355;
+  --yf-leaf: #a3b18a;
+  --yf-brown: #6d5140;
+  --yf-ink: #49392c;
+  --yf-white: #fffefa;
+  --yf-shadow: rgba(109, 81, 64, 0.16);
+
+  --yf-grad-morning: linear-gradient(180deg, #fffdf5 0%, #fff4c7 100%);
+  --yf-grad-afternoon: linear-gradient(180deg, #fff4c7 0%, #f4c542 100%);
+  --yf-grad-sunset: linear-gradient(180deg, #f4c542 0%, #f3a35c 55%, #d98273 100%);
+
+  --yf-font-title: "Cormorant Garamond", "Playfair Display", serif;
+  --yf-font-body: "Montserrat", sans-serif;
+  --yf-font-script: "Dancing Script", cursive;
+
+  --yf-ease-bloom: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --yf-speed: 1;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.yf-body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--yf-ivory);
+  color: var(--yf-ink);
+  font-family: var(--yf-font-body);
+  font-weight: 400;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  position: relative;
+}
+
+.yf-body :focus-visible {
+  outline: 2px solid var(--yf-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.yf-skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--yf-ink);
+  color: var(--yf-white);
+  padding: 0.6rem 1rem;
+  z-index: 2000;
+  border-radius: 0 0 8px 0;
+}
+
+.yf-skip-link:focus {
+  left: 0;
+}
+
+.yf-body .back-button {
+  color: var(--yf-gold);
+  border-color: var(--yf-gold);
+  background: rgba(255, 253, 245, 0.65);
+}
+
+.yf-body .back-button:hover {
+  background: var(--yf-golden);
+  color: var(--yf-white);
+  border-color: var(--yf-golden);
+}
+
+em {
+  font-style: italic;
+  color: var(--yf-gold);
+}
+
+/* ==========================================================================
+   Controles flotantes (música / movimiento)
+   ========================================================================== */
+
+.yf-controls {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.yf-control-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--yf-gold);
+  background: rgba(255, 253, 245, 0.75);
+  color: var(--yf-gold);
+  font-size: 16px;
+  cursor: pointer;
+  touch-action: manipulation;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.yf-control-btn:hover {
+  transform: scale(1.08);
+  background: var(--yf-golden);
+  color: var(--yf-white);
+}
+
+.yf-control-btn[aria-pressed="true"] {
+  background: var(--yf-golden);
+  color: var(--yf-white);
+}
+
+.yf-volume {
+  width: 0;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  accent-color: var(--yf-gold);
+  pointer-events: none;
+}
+
+.yf-controls:hover .yf-volume,
+.yf-controls:focus-within .yf-volume {
+  width: 80px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Indicador de progreso (tallo → flor)
+   ========================================================================== */
+
+.yf-progress {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 46vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 900;
+}
+
+.yf-progress__track {
+  flex: 1;
+  width: 3px;
+  background: rgba(109, 81, 64, 0.15);
+  border-radius: 3px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.yf-progress__fill {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--yf-leaf), var(--yf-olive));
+  border-radius: 3px;
+  transition: height 0.15s linear;
+}
+
+.yf-progress__flower {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.4rem;
+  opacity: 0.35;
+  transform: scale(0.7);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.yf-progress__flower svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.yf-progress__flower .petal {
+  fill: var(--yf-golden);
+  stroke: var(--yf-gold);
+  stroke-width: 1;
+}
+
+.yf-progress__flower .core {
+  fill: var(--yf-brown);
+}
+
+.yf-progress__flower.is-full {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+@media (max-width: 860px) {
+  .yf-progress {
+    right: auto;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 0 14px;
+    gap: 0.4rem;
+  }
+  .yf-progress__track {
+    height: 3px;
+    width: 100%;
+    align-items: stretch;
+  }
+  .yf-progress__fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--yf-leaf), var(--yf-golden));
+    transition: width 0.15s linear;
+  }
+  .yf-progress__flower {
+    margin-top: 0;
+  }
+}
+
+/* ==========================================================================
+   Capas ambientales: pétalos, mariposas, ráfagas
+   ========================================================================== */
+
+.petals-field,
+.yf-butterfly-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.petal-particle {
+  position: absolute;
+  top: -5vh;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #fff3c4, var(--yf-golden) 70%);
+  border-radius: 60% 40% 60% 40%;
+  opacity: 0.85;
+  animation: yf-fall linear forwards;
+}
+
+@keyframes yf-fall {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(var(--drift, 40px), 110vh, 0) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+.petal-burst {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 60% 40% 60% 40%;
+  background: radial-gradient(circle at 30% 30%, #fff3c4, var(--yf-golden) 70%);
+  pointer-events: none;
+  z-index: 50;
+  animation: yf-burst 0.9s ease-out forwards;
+}
+
+@keyframes yf-burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--bx, 40px), var(--by, -40px)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+.yf-light-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff6d8;
+  box-shadow: 0 0 8px 2px rgba(247, 213, 118, 0.7);
+  animation: yf-twinkle 2.6s ease-in-out infinite;
+}
+
+@keyframes yf-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+.yf-butterfly {
+  position: fixed;
+  font-size: 1.6rem;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 60;
+  filter: drop-shadow(0 4px 6px rgba(109, 81, 64, 0.25));
+  animation: yf-butterfly-flap 0.6s ease-in-out infinite alternate, yf-butterfly-fly linear forwards;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+@keyframes yf-butterfly-flap {
+  from {
+    transform: scaleX(1) rotate(0deg);
+  }
+  to {
+    transform: scaleX(0.85) rotate(6deg);
+  }
+}
+
+@keyframes yf-butterfly-fly {
+  0% {
+    transform: translate(var(--bfx0, 0), var(--bfy0, 0));
+  }
+  50% {
+    transform: translate(var(--bfx1, 50vw), var(--bfy1, -40px));
+  }
+  100% {
+    transform: translate(var(--bfx2, 100vw), var(--bfy2, 0));
+  }
+}
+
+/* ==========================================================================
+   Toast (mensajes emergentes / easter eggs)
+   ========================================================================== */
+
+.yf-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 20px);
+  background: var(--yf-ink);
+  color: var(--yf-white);
+  padding: 0.85rem 1.4rem;
+  border-radius: 30px;
+  font-size: 0.92rem;
+  max-width: min(90vw, 420px);
+  text-align: center;
+  z-index: 1500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 14px 30px rgba(73, 57, 44, 0.3);
+}
+
+.yf-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ==========================================================================
+   Revelado al hacer scroll
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Layout general de secciones
+   ========================================================================== */
+
+main {
+  position: relative;
+  z-index: 3;
+}
+
+.yf-section {
+  padding: 6rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.yf-section[data-bg="morning"] {
+  background: var(--yf-grad-morning);
+}
+.yf-section[data-bg="cream"] {
+  background: var(--yf-cream);
+}
+.yf-section[data-bg="ivory"] {
+  background: var(--yf-ivory);
+}
+.yf-section[data-bg="afternoon"] {
+  background: var(--yf-grad-afternoon);
+  transition: background 1.2s ease;
+}
+.yf-section[data-bg="afternoon"].is-golden-field {
+  background: linear-gradient(180deg, #f8e7a1 0%, #e7b93e 60%, #d6a72c 100%);
+}
+.yf-section[data-bg="afternoon"].is-sunset-transition {
+  background: var(--yf-grad-sunset);
+  color: var(--yf-white);
+}
+.yf-section[data-bg="afternoon"].is-sunset-transition .yf-verse,
+.yf-section[data-bg="afternoon"].is-sunset-transition .yf-lead {
+  color: var(--yf-white);
+}
+.yf-section[data-bg="sunset"] {
+  background: var(--yf-grad-sunset);
+  color: var(--yf-white);
+}
+.yf-section[data-bg="sunset"] .yf-h2,
+.yf-section[data-bg="sunset"] .yf-lead,
+.yf-section[data-bg="sunset"] .yf-verse {
+  color: var(--yf-white);
+}
+
+.yf-section--wide {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.yf-section:not(.yf-section--wide) > * {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   Tipografía
+   ========================================================================== */
+
+.yf-h1 {
+  font-family: var(--yf-font-title);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  line-height: 1.08;
+  color: var(--yf-brown);
+  margin: 0 0 1rem;
+}
+
+.yf-h2 {
+  font-family: var(--yf-font-title);
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  color: var(--yf-brown);
+  margin: 0 0 1.2rem;
+}
+
+.yf-lead {
+  font-family: var(--yf-font-title);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.5;
+  color: var(--yf-ink);
+  margin: 0 0 0.8rem;
+}
+
+.yf-verse {
+  font-family: var(--yf-font-title);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.7;
+  color: var(--yf-ink);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+
+.yf-verse--after {
+  color: var(--yf-gold);
+  font-weight: 600;
+}
+
+.yf-detail {
+  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+  letter-spacing: 0.03em;
+  color: var(--yf-brown);
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
+}
+
+.yf-script {
+  font-family: var(--yf-font-script);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   CTA / botones
+   ========================================================================== */
+
+.yf-cta {
+  background: var(--yf-golden);
+  color: var(--yf-white);
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 40px;
+  font-family: var(--yf-font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 14px 30px var(--yf-shadow);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.yf-cta:hover {
+  background: var(--yf-gold);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 34px var(--yf-shadow);
+}
+
+.yf-cta:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.yf-cta--small {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+}
+
+.yf-cta:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* ==========================================================================
+   1. HERO
+   ========================================================================== */
+
+.yf-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+}
+
+.hero-flower {
+  width: 200px;
+  height: 230px;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  animation: yf-sway 7s ease-in-out infinite;
+  transform-origin: 50% 95%;
+}
+
+@keyframes yf-sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+.hero-flower__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.hero-flower__stem {
+  stroke: var(--yf-olive);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 110;
+  stroke-dashoffset: 110;
+  animation: yf-draw 0.9s ease forwards;
+}
+
+.hero-flower__leaf {
+  fill: none;
+  stroke: var(--yf-leaf);
+  stroke-width: 8;
+  stroke-linecap: round;
+  opacity: 0;
+  transform-origin: center;
+  animation: yf-leaf-in 0.6s ease forwards;
+}
+
+.hero-flower__leaf--1 {
+  animation-delay: 0.7s;
+}
+.hero-flower__leaf--2 {
+  animation-delay: 0.95s;
+}
+
+@keyframes yf-leaf-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-flower__petals {
+  transform-origin: 0 0;
+  animation: yf-bloom-in 1.1s var(--yf-ease-bloom) forwards;
+  animation-delay: 1.3s;
+}
+
+@keyframes yf-bloom-in {
+  0% {
+    transform: translate(110px, 120px) scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(110px, 120px) scale(1);
+    opacity: 1;
+  }
+}
+
+.hero-flower .petal {
+  fill: var(--yf-floral);
+  stroke: var(--yf-gold);
+  stroke-width: 1;
+}
+
+.hero-flower__core {
+  fill: var(--yf-brown);
+}
+
+.hero-flower.is-bumped {
+  animation: yf-bump 0.5s ease;
+}
+
+@keyframes yf-bump {
+  0%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+  40% {
+    transform: scale(1.12) rotate(-3deg);
+  }
+}
+
+/* ==========================================================================
+   2. BOUQUET (regalo)
+   ========================================================================== */
+
+.bouquet-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4rem;
+  margin: 2rem auto;
+  max-width: 640px;
+}
+
+.bouquet-flower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 110px;
+}
+
+.bouquet-flower__btn {
+  width: 78px;
+  height: 78px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  padding: 0;
+}
+
+.bouquet-flower__btn svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bouquet-flower .petals {
+  transform-origin: 50px 50px;
+  transform: scale(0.35);
+  transition: transform 0.7s var(--yf-ease-bloom);
+}
+
+.bouquet-flower .petal {
+  fill: var(--yf-floral);
+  stroke: var(--yf-gold);
+  stroke-width: 1;
+  opacity: 0.55;
+  transition: opacity 0.7s ease;
+}
+
+.bouquet-flower .core {
+  fill: var(--yf-brown);
+  transform-origin: 50px 50px;
+}
+
+.bouquet-flower__btn:hover .petals {
+  transform: scale(0.45);
+}
+
+.bouquet-flower.is-open .petals {
+  transform: scale(1);
+}
+
+.bouquet-flower.is-open .petal {
+  opacity: 1;
+}
+
+.bouquet-flower.is-open .core {
+  animation: yf-pulse 0.6s ease;
+}
+
+@keyframes yf-pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bouquet-flower__msg {
+  font-family: var(--yf-font-title);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--yf-brown);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.bouquet-flower.is-open .bouquet-flower__msg {
+  opacity: 1;
+  max-height: 200px;
+}
+
+/* ==========================================================================
+   3. JARDÍN DE RAZONES
+   ========================================================================== */
+
+.reasons-garden {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem 1.2rem;
+  padding: 1rem 0 2rem;
+}
+
+.reason-flower {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  width: 52px;
+  height: 64px;
+  padding: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  filter: saturate(0.7) brightness(0.97);
+}
+
+.reason-flower svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.reason-flower .petal {
+  stroke-width: 1;
+}
+
+.reason-flower--sunflower .petal {
+  fill: var(--yf-golden);
+  stroke: var(--yf-gold);
+}
+.reason-flower--sunflower .core {
+  fill: var(--yf-brown);
+}
+
+.reason-flower--daisy .petal {
+  fill: var(--yf-white);
+  stroke: var(--yf-butter);
+}
+.reason-flower--daisy .core {
+  fill: var(--yf-golden);
+}
+
+.reason-flower--special .petal {
+  fill: var(--yf-butter);
+  stroke: var(--yf-gold);
+}
+.reason-flower--special .core {
+  fill: var(--yf-olive);
+}
+
+.reason-flower:nth-child(3n) {
+  transform: translateY(10px);
+}
+.reason-flower:nth-child(4n) {
+  transform: translateY(-8px);
+}
+.reason-flower:nth-child(5n) {
+  width: 44px;
+  height: 54px;
+}
+
+.reason-flower:hover,
+.reason-flower:focus-visible {
+  transform: translateY(-6px) scale(1.1);
+  filter: saturate(1.15) brightness(1.05);
+}
+
+.reason-flower.is-discovered {
+  filter: none;
+  animation: yf-glow 1s ease;
+}
+
+@keyframes yf-glow {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(231, 185, 62, 0));
+  }
+  40% {
+    filter: drop-shadow(0 0 14px rgba(231, 185, 62, 0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(231, 185, 62, 0));
+  }
+}
+
+.reason-flower--golden .petal {
+  fill: var(--yf-floral);
+  stroke: var(--yf-gold);
+}
+.reason-flower--golden .core {
+  fill: var(--yf-gold);
+}
+
+.reason-flower--golden {
+  opacity: 0.55;
+  transform: scale(0.8) translateY(14px);
+  filter: saturate(0.7) brightness(0.97) drop-shadow(0 0 0 rgba(231, 185, 62, 0));
+}
+
+.reason-flower--golden:hover,
+.reason-flower--golden.is-discovered {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   4. RECUERDOS (álbum botánico)
+   ========================================================================== */
+
+.memories-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 0;
+}
+
+.memories-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--yf-leaf), var(--yf-olive));
+  opacity: 0.4;
+}
+
+.memory-card {
+  position: relative;
+  background: var(--yf-white);
+  border: 1px solid rgba(214, 167, 44, 0.25);
+  border-radius: 4px;
+  padding: 0.9rem 0.9rem 1.2rem;
+  width: 250px;
+  box-shadow: 0 16px 30px var(--yf-shadow);
+  cursor: pointer;
+  touch-action: manipulation;
+  transform: rotate(var(--tilt, -4deg));
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.memory-card:nth-child(even) {
+  align-self: flex-end;
+}
+
+.memory-card:hover,
+.memory-card:focus-visible {
+  transform: rotate(0deg) translateY(-4px) scale(1.03);
+  box-shadow: 0 22px 38px var(--yf-shadow);
+}
+
+.memory-card__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: radial-gradient(circle at 50% 35%, var(--yf-butter), var(--yf-cream) 75%);
+  border: 1px dashed rgba(214, 167, 44, 0.35);
+}
+
+.memory-card__date {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--yf-gold);
+  margin: 0.6rem 0 0.2rem;
+}
+
+.memory-card__caption {
+  font-family: var(--yf-font-title);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--yf-ink);
+  margin: 0;
+}
+
+/* ==========================================================================
+   5. CARTA
+   ========================================================================== */
+
+.letter-card {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  background: var(--yf-white);
+  border: 1px solid rgba(214, 167, 44, 0.25);
+  border-radius: 18px;
+  padding: 2.6rem 2rem 2rem;
+  box-shadow: 0 20px 42px var(--yf-shadow);
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  font: inherit;
+  color: inherit;
+}
+
+.letter-card__flower {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  filter: sepia(0.15);
+}
+
+.letter-card__text {
+  font-family: var(--yf-font-title);
+  font-size: 1.25rem;
+  line-height: 1.85;
+  color: var(--yf-ink);
+  min-height: 10em;
+}
+
+.letter-card__text p {
+  margin: 0 0 1em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.letter-card__text p.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.letter-card__signature {
+  text-align: right;
+  color: var(--yf-gold);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-top: 1.2rem;
+}
+
+.letter-card__hint {
+  display: block;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--yf-brown);
+  opacity: 0.6;
+  margin-top: 1.2rem;
+}
+
+/* ==========================================================================
+   6. PLANTAR JARDÍN
+   ========================================================================== */
+
+.plant-field {
+  position: relative;
+  min-height: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem 0 0;
+  border-bottom: 3px solid rgba(113, 131, 85, 0.35);
+  transition: border-color 1s ease;
+}
+
+.plant-field.has-lights {
+  background-image: radial-gradient(circle, rgba(247, 213, 118, 0.5) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.plant-field.golden-field {
+  border-bottom-color: var(--yf-gold);
+}
+
+.plant-flower {
+  width: 40px;
+  height: 56px;
+  animation: yf-plant-grow 0.9s var(--yf-ease-bloom) both;
+}
+
+@keyframes yf-plant-grow {
+  0% {
+    transform: scale(0.2) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.plant-flower svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.plant-flower .petal {
+  fill: var(--yf-floral);
+  stroke: var(--yf-gold);
+  stroke-width: 0.6;
+}
+
+.plant-flower .core {
+  fill: var(--yf-brown);
+}
+
+.plant-butterfly-deco {
+  position: absolute;
+  top: -18px;
+  font-size: 1.1rem;
+  animation: yf-butterfly-flap 0.6s ease-in-out infinite alternate;
+}
+
+/* ==========================================================================
+   7. ÚLTIMA FLOR
+   ========================================================================== */
+
+.final-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-flower {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  transition: width 0.4s ease, height 0.4s ease;
+  margin: 1rem 0;
+}
+
+.final-flower.is-active {
+  width: 240px;
+  height: 280px;
+}
+
+.final-flower__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.final-flower__stem {
+  stroke: var(--yf-olive);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 110;
+  stroke-dashoffset: 110;
+}
+
+.final-flower.is-active .final-flower__stem {
+  animation: yf-draw 1.1s ease forwards;
+}
+
+.final-flower__leaf {
+  fill: none;
+  stroke: var(--yf-leaf);
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.final-flower.is-active .final-flower__leaf--1 {
+  animation: yf-leaf-in 0.7s ease forwards;
+  animation-delay: 0.9s;
+}
+.final-flower.is-active .final-flower__leaf--2 {
+  animation: yf-leaf-in 0.7s ease forwards;
+  animation-delay: 1.15s;
+}
+
+.final-flower__petals {
+  transform-origin: 0 0;
+  opacity: 0;
+}
+
+.final-flower.is-active .final-flower__petals {
+  animation: yf-bloom-in-final 1.6s var(--yf-ease-bloom) forwards;
+  animation-delay: 1.6s;
+}
+
+@keyframes yf-bloom-in-final {
+  0% {
+    transform: translate(110px, 120px) scale(0.08);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(110px, 120px) scale(1);
+    opacity: 1;
+  }
+}
+
+.final-flower .petal {
+  fill: var(--yf-floral);
+  stroke: var(--yf-gold);
+  stroke-width: 1;
+}
+
+.final-flower__core {
+  fill: var(--yf-brown);
+}
+
+@keyframes yf-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.final-message {
+  margin-top: 1.5rem;
+}
+
+.final-message p {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.final-message p.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.final-signature {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--yf-brown);
+  text-shadow: 0 1px 8px rgba(255, 253, 245, 0.6);
+  margin-top: 1.2rem;
+}
+
+.final-signature span {
+  font-family: var(--yf-font-body);
+  font-size: 1rem;
+  color: var(--yf-ink);
+  text-shadow: none;
+}
+
+.yf-section[data-bg="afternoon"].is-sunset-transition .final-signature {
+  color: var(--yf-white);
+  text-shadow: 0 1px 10px rgba(109, 81, 64, 0.45);
+}
+
+.yf-section[data-bg="afternoon"].is-sunset-transition .final-signature span {
+  color: var(--yf-white);
+}
+
+/* ==========================================================================
+   8. FINAL CINEMATOGRÁFICO
+   ========================================================================== */
+
+.yf-finale {
+  padding-bottom: 4rem;
+}
+
+.yf-field {
+  font-size: 1.6rem;
+  letter-spacing: 0.4rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 2.2;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.yf-footer {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+  background: linear-gradient(180deg, #d98273, #c96a5c);
+  color: var(--yf-white);
+  font-family: var(--yf-font-title);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Modales (razones / recuerdos)
+   ========================================================================== */
+
+.yf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(73, 57, 44, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.yf-modal-backdrop[hidden] {
+  display: none;
+}
+
+.yf-modal-backdrop.is-visible {
+  opacity: 1;
+}
+
+.yf-modal {
+  background: var(--yf-white);
+  border-radius: 20px;
+  padding: 2.2rem 1.8rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(73, 57, 44, 0.35);
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.yf-modal-backdrop.is-visible .yf-modal {
+  transform: translateY(0) scale(1);
+}
+
+.yf-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: var(--yf-cream);
+  color: var(--yf-brown);
+  cursor: pointer;
+}
+
+.yf-modal__icon {
+  width: 64px;
+  height: 76px;
+  margin: 0 auto;
+}
+
+.yf-modal__icon svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.yf-modal__icon .petal {
+  fill: var(--yf-golden);
+  stroke: var(--yf-gold);
+  stroke-width: 1;
+}
+
+.yf-modal__icon .core {
+  fill: var(--yf-brown);
+}
+
+.yf-modal__icon--golden .petal {
+  fill: var(--yf-floral);
+}
+.yf-modal__icon--golden .core {
+  fill: var(--yf-gold);
+  filter: drop-shadow(0 0 10px rgba(231, 185, 62, 0.8));
+}
+
+.yf-modal__label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--yf-gold);
+  margin: 0.4rem 0 0.2rem;
+}
+
+.yf-modal__title {
+  font-family: var(--yf-font-title);
+  font-size: 1.5rem;
+  color: var(--yf-brown);
+  margin: 0 0 0.8rem;
+}
+
+.yf-modal__text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--yf-ink);
+  margin: 0 0 1.4rem;
+}
+
+.yf-modal--memory .yf-modal__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  background: radial-gradient(circle at 50% 35%, var(--yf-butter), var(--yf-cream) 75%);
+  border: 1px dashed rgba(214, 167, 44, 0.35);
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .memories-timeline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .memories-timeline::before {
+    left: 0;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+  .memory-card:nth-child(even) {
+    align-self: flex-start;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .yf-section {
+    padding: 4.5rem 1.2rem;
+  }
+  .yf-controls {
+    top: 54px;
+  }
+}
+
+@media (max-width: 460px) {
+  .bouquet-flower {
+    width: 92px;
+  }
+  .memory-card {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* ==========================================================================
+   Cursor / hover-only interactions solo en desktop con puntero fino
+   ========================================================================== */
+
+@media (hover: none), (pointer: coarse) {
+  .yf-controls:hover .yf-volume {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* ==========================================================================
+   Accesibilidad: prefers-reduced-motion y toggle manual
+   ========================================================================== */
+
+.yf-body.reduced-motion *,
+.yf-body.reduced-motion *::before,
+.yf-body.reduced-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.15s !important;
+  scroll-behavior: auto !important;
+}
+
+.yf-body.reduced-motion .petals-field,
+.yf-body.reduced-motion .yf-butterfly-layer {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petals-field,
+  .yf-butterfly-layer {
+    display: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.15s !important;
+  }
+}
